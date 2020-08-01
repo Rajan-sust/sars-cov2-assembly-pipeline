@@ -4,7 +4,8 @@
 
 mapfile -t sra_list < "${1}"
 
-mkdir -p -v fastqc multiqc trimmomatic trimmed_fastqc trimmed_multiqc megahit trinity
+mkdir -p -v fastqc multiqc trimmomatic trimmed_fastqc trimmed_multiqc \
+            megahit trinity abyss 
 
 for sra in "${sra_list[@]}"; do
   fastq-dump --split-files --outdir data --gzip "${sra}"
@@ -34,5 +35,10 @@ for sra in "${sra_list[@]}"; do
   Trinity --seqType fq --max_memory 10G --left  "${pgz_1}" --right "${pgz_2}" --no_bowtie --CPU 40 --full_cleanup
   mv trinity_out_dir.Trinity.fasta "trinity/${sra}.fasta"
   python quast-5.0.2/quast.py -o "quast_results/trinity/${sra}" -r MN908947.3.fasta -t 40 "trinity/${sra}.fasta"
-  
+
+  mkdir -p "abyss/${sra}"
+  cd "abyss/${sra}/"
+  # SRR12162385-unitigs.fa SRR12162385-contigs.fa SRR12162385-scaffolds.fa
+  abyss-pe name="${sra}" j=40 in='${pgz_1} ${pgz_2}'
+  cd ../..
 done
