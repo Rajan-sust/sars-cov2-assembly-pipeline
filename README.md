@@ -15,6 +15,7 @@ conda install -c bioconda trimmomatic
 conda install -c bioconda megahit
 wget https://sourceforge.net/projects/quast/files/quast-5.0.2.tar.gz \
 && tar -zxvf quast-5.0.2.tar.gz
+conda install -c bioconda trinity
 ```
 
 ### Run the Script for PE

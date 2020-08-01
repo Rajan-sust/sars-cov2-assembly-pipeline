@@ -4,7 +4,7 @@
 
 mapfile -t sra_list < "${1}"
 
-mkdir -p -v fastqc multiqc trimmomatic trimmed_fastqc trimmed_multiqc megahit
+mkdir -p -v fastqc multiqc trimmomatic trimmed_fastqc trimmed_multiqc megahit trinity
 
 for sra in "${sra_list[@]}"; do
   fastq-dump --split-files --outdir data --gzip "${sra}"
@@ -30,6 +30,9 @@ for sra in "${sra_list[@]}"; do
   megahit -1 "${pgz_1}" -2 "${pgz_2}" -o "megahit/${sra}" --out-prefix "${sra}"
   rm -rf "megahit/${sra}/intermediate_contigs"
   python quast-5.0.2/quast.py -o "quast_results/megahit/${sra}" -r MN908947.3.fasta -t 40 "megahit/${sra}/${sra}.contigs.fa"
-
-
+  
+  Trinity --seqType fq --max_memory 10G --left  "${pgz_1}" --right "${pgz_2}" --no_bowtie --CPU 40 --full_cleanup
+  mv trinity_out_dir.Trinity.fasta "trinity/${sra}.fasta"
+  python quast-5.0.2/quast.py -o "quast_results/trinity/${sra}" -r MN908947.3.fasta -t 40 "trinity/${sra}.fasta"
+  
 done
