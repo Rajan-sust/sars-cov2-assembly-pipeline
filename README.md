@@ -12,6 +12,9 @@ tail -n +2 COVID19_14.06.20_metadata_subsampled.csv | tr ',' '\t' | cut -f2,5 | 
 conda install -c bioconda fastqc
 pip install multiqc
 conda install -c bioconda trimmomatic
+conda install -c bioconda megahit
+wget https://sourceforge.net/projects/quast/files/quast-5.0.2.tar.gz \
+&& tar -zxvf quast-5.0.2.tar.gz
 ```
 
 ### Run the Script for PE

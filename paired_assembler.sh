@@ -28,5 +28,8 @@ for sra in "${sra_list[@]}"; do
   multiqc -f trimmed_fastqc -o trimmed_multiqc
 
   megahit -1 "${pgz_1}" -2 "${pgz_2}" -o "megahit/${sra}" --out-prefix "${sra}"
+  rm -rf "megahit/${sra}/intermediate_contigs"
+  python quast-5.0.2/quast.py -o "quast_results/megahit/${sra}" -r MN908947.3.fasta -t 40 "megahit/${sra}/${sra}.contigs.fa"
+
 
 done
