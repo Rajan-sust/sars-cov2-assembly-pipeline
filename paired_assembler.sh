@@ -5,7 +5,7 @@
 mapfile -t sra_list < "${1}"
 
 mkdir -p -v fastqc multiqc trimmomatic trimmed_fastqc trimmed_multiqc \
-            megahit trinity abyss 
+            megahit trinity
 
 for sra in "${sra_list[@]}"; do
   fastq-dump --split-files --outdir data --gzip "${sra}"
@@ -40,9 +40,9 @@ for sra in "${sra_list[@]}"; do
   cd "abyss/${sra}/"
   # SRR12162385-unitigs.fa SRR12162385-contigs.fa SRR12162385-scaffolds.fa
   abyss-pe name="${sra}" k=63 j=40 in="../../${pgz_1} ../../${pgz_2}"
-  # abyss-pe name="${sra}" k=63 j=40 in='${pgz_1} ${pgz_2}'
   cd ../..
   
-  spades.py -1 "${pgz_1}" -2 "${pgz_2}" --rna -t 40 -o spades
+  mkdir -p "spades/${sra}"
+  spades.py -1 "${pgz_1}" -2 "${pgz_2}" --rna -t 40 -o "spades/${sra}"
 
 done
