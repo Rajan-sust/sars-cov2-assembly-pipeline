@@ -40,14 +40,14 @@ for sra in "${sra_list[@]}"; do
   cd "abyss/${sra}-63/"
   abyss-pe name="${sra}" k=63 j=40 in="../../${pgz_1} ../../${pgz_2}"
   cd ../..
-  python quast-5.0.2/quast.py -o "quast_results/abyss/${sra}-63" -r MN908947.3.fasta -t 40 "abyss/${sra}-63/${sra}-scaffolds.fasta"
+  python quast-5.0.2/quast.py -o "quast_results/abyss/${sra}-63" -r MN908947.3.fasta -t 40 "abyss/${sra}-63/${sra}-scaffolds.fa"
 
 
   mkdir -p "abyss/${sra}-127"
   cd "abyss/${sra}-127/"
   abyss-pe name="${sra}" k=127 j=40 in="../../${pgz_1} ../../${pgz_2}"
   cd ../..
-  python quast-5.0.2/quast.py -o "quast_results/abyss/${sra}-127" -r MN908947.3.fasta -t 40 "abyss/${sra}-127/${sra}-scaffolds.fasta"
+  python quast-5.0.2/quast.py -o "quast_results/abyss/${sra}-127" -r MN908947.3.fasta -t 40 "abyss/${sra}-127/${sra}-scaffolds.fa"
 
   mkdir -p "spades/${sra}"
   spades.py -1 "${pgz_1}" -2 "${pgz_2}" --rna -t 40 -o "spades/${sra}"
