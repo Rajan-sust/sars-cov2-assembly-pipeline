@@ -39,6 +39,10 @@ for sra in "${sra_list[@]}"; do
   mkdir -p "abyss/${sra}"
   cd "abyss/${sra}/"
   # SRR12162385-unitigs.fa SRR12162385-contigs.fa SRR12162385-scaffolds.fa
-  abyss-pe name="${sra}" j=40 in='${pgz_1} ${pgz_2}'
+  abyss-pe name="${sra}" k=63 j=40 in="../../${pgz_1} ../../${pgz_2}"
+  # abyss-pe name="${sra}" k=63 j=40 in='${pgz_1} ${pgz_2}'
   cd ../..
+  
+  spades.py -1 "${pgz_1}" -2 "${pgz_2}" --rna -t 40 -o spades
+
 done
