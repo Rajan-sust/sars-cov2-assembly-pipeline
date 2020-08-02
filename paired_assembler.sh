@@ -5,7 +5,7 @@
 mapfile -t sra_list < "${1}"
 
 mkdir -p -v fastqc multiqc trimmomatic trimmed_fastqc trimmed_multiqc \
-            megahit trinity
+            megahit trinity velveth velvetg
 
 for sra in "${sra_list[@]}"; do
   fastq-dump --split-files --outdir data --gzip "${sra}"
@@ -20,6 +20,7 @@ for sra in "${sra_list[@]}"; do
   ugz_1="trimmomatic/${sra}_1U.fastq.gz"
   pgz_2="trimmomatic/${sra}_2P.fastq.gz"
   ugz_2="trimmomatic/${sra}_2U.fastq.gz"
+
   
   trimmomatic PE "${fastq_1}" "${fastq_2}" "${pgz_1}" "${ugz_1}" "${pgz_2}" "${ugz_2}" \
   SLIDINGWINDOW:4:20 MINLEN:25 ILLUMINACLIP:"${2}":2:40:15
@@ -27,7 +28,7 @@ for sra in "${sra_list[@]}"; do
   fastqc -o trimmed_fastqc "${pgz_1}" "${pgz_2}"
 
   multiqc -f trimmed_fastqc -o trimmed_multiqc
-
+  
   megahit -1 "${pgz_1}" -2 "${pgz_2}" -o "megahit/${sra}" --out-prefix "${sra}"
   rm -rf "megahit/${sra}/intermediate_contigs"
   python quast-5.0.2/quast.py -o "quast_results/megahit/${sra}" -r MN908947.3.fasta -t 40 "megahit/${sra}/${sra}.contigs.fa"
@@ -40,17 +41,24 @@ for sra in "${sra_list[@]}"; do
   cd "abyss/${sra}-63/"
   abyss-pe name="${sra}" k=63 j=40 in="../../${pgz_1} ../../${pgz_2}"
   cd ../..
-  python quast-5.0.2/quast.py -o "quast_results/abyss/${sra}-63" -r MN908947.3.fasta -t 40 "abyss/${sra}-63/${sra}-scaffolds.fa"
+  python quast-5.0.2/quast.py -o "quast_results/abyss/${sra}-63" -r MN908947.3.fasta -t 40 "abyss/${sra}-63/${sra}-scaffolds.fasta"
 
 
   mkdir -p "abyss/${sra}-127"
   cd "abyss/${sra}-127/"
   abyss-pe name="${sra}" k=127 j=40 in="../../${pgz_1} ../../${pgz_2}"
   cd ../..
-  python quast-5.0.2/quast.py -o "quast_results/abyss/${sra}-127" -r MN908947.3.fasta -t 40 "abyss/${sra}-127/${sra}-scaffolds.fa"
+  python quast-5.0.2/quast.py -o "quast_results/abyss/${sra}-127" -r MN908947.3.fasta -t 40 "abyss/${sra}-127/${sra}-scaffolds.fasta"
 
   mkdir -p "spades/${sra}"
   spades.py -1 "${pgz_1}" -2 "${pgz_2}" --rna -t 40 -o "spades/${sra}"
   python quast-5.0.2/quast.py -o "quast_results/spades/${sra}" -r MN908947.3.fasta -t 40 "spades/${sra}/transcripts.fasta"
   
+
+  mkdir -p "metaspades/${sra}"
+  metaspades.py -1 "${pgz_1}" -2 "${pgz_2}" -t 40 -o "metaspades/${sra}"
+  python quast-5.0.2/quast.py -o "quast_results/metaspades/${sra}" -r MN908947.3.fasta -t 40 "metaspades/${sra}/scaffolds.fasta"
+
+  velveth "velveth/${sra}" 31 -short -separate -fastq "${pgz_1}" "${pgz_2}"
+
 done

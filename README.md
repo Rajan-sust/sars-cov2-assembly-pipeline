@@ -24,6 +24,7 @@ conda install -c bioconda trimmomatic
 conda install -c bioconda megahit
 conda install -c bioconda trinity
 conda install -c bioconda spades
+conda install -c bioconda velvet
 ```
 
 ```
