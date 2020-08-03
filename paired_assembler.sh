@@ -5,7 +5,7 @@
 mapfile -t sra_list < "${1}"
 
 mkdir -p -v fastqc multiqc trimmomatic trimmed_fastqc trimmed_multiqc \
-            megahit trinity velveth velvetg
+            megahit trinity velvet velvetg
 
 for sra in "${sra_list[@]}"; do
   fastq-dump --split-files --outdir data --gzip "${sra}"
@@ -58,7 +58,10 @@ for sra in "${sra_list[@]}"; do
   mkdir -p "metaspades/${sra}"
   metaspades.py -1 "${pgz_1}" -2 "${pgz_2}" -t 40 -o "metaspades/${sra}"
   python quast-5.0.2/quast.py -o "quast_results/metaspades/${sra}" -r MN908947.3.fasta -t 40 "metaspades/${sra}/scaffolds.fasta"
+  
 
-  velveth "velveth/${sra}" 31 -short -separate -fastq "${pgz_1}" "${pgz_2}"
+  velveth "velvet/${sra}" 31 -short -separate -fastq "${pgz_1}" "${pgz_2}"
+  velvetg "velvet/${sra}" -read_trkg yes
+  python quast-5.0.2/quast.py -o "quast_results/velvet/${sra}" -r MN908947.3.fasta -t 40 "velvet/${sra}/contigs.fa"
 
 done
