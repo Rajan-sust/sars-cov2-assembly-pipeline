@@ -1,11 +1,14 @@
 #!/bin/bash
 # $1 -> path of the paired_sra_list.txt
 # $2 -> path of the adapter file for PE
+# assemblers with multi k-mer assembly approach: spades, metaspades, megahit, trinity
+# assemblers with fixed k-mer assembly approach: velvet, abyss 
+
 
 mapfile -t sra_list < "${1}"
 
 mkdir -p -v fastqc multiqc trimmomatic trimmed_fastqc trimmed_multiqc \
-            megahit trinity velvet velvetg
+            megahit trinity velvet
 
 for sra in "${sra_list[@]}"; do
   fastq-dump --split-files --outdir data --gzip "${sra}"
@@ -14,8 +17,6 @@ for sra in "${sra_list[@]}"; do
   
   fastqc -o fastqc "${fastq_1}" "${fastq_2}"
   
-  multiqc -f fastqc -o multiqc
- 
   pgz_1="trimmomatic/${sra}_1P.fastq.gz"
   ugz_1="trimmomatic/${sra}_1U.fastq.gz"
   pgz_2="trimmomatic/${sra}_2P.fastq.gz"
@@ -27,8 +28,6 @@ for sra in "${sra_list[@]}"; do
 
   fastqc -o trimmed_fastqc "${pgz_1}" "${pgz_2}"
 
-  multiqc -f trimmed_fastqc -o trimmed_multiqc
-  
   megahit -1 "${pgz_1}" -2 "${pgz_2}" -o "megahit/${sra}" --out-prefix "${sra}"
   rm -rf "megahit/${sra}/intermediate_contigs"
   python quast-5.0.2/quast.py -o "quast_results/megahit/${sra}" -r MN908947.3.fasta -t 40 "megahit/${sra}/${sra}.contigs.fa"
@@ -65,3 +64,6 @@ for sra in "${sra_list[@]}"; do
   python quast-5.0.2/quast.py -o "quast_results/velvet/${sra}" -r MN908947.3.fasta -t 40 "velvet/${sra}/contigs.fa"
 
 done
+
+multiqc -f fastqc -o multiqc
+multiqc -f trimmed_fastqc -o trimmed_multiqc
