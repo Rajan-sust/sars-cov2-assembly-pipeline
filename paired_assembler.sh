@@ -70,7 +70,7 @@ for sra in "${sra_list[@]}"; do
   velvetg "velvet/${sra}" -read_trkg yes
   python quast-5.0.2/quast.py -o "quast_results/velvet/${sra}" -r MN908947.3.fasta -t 40 "velvet/${sra}/contigs.fa"
   cp "velvet/${sra}/contigs.fa" "output/${sra}_velvet_PE.fasta"
-  cp "quast_results/velvet/${sra}/report.tsv" "output/${sra}_metaspades_PE_quast.tsv"
+  cp "quast_results/velvet/${sra}/report.tsv" "output/${sra}_velvet_PE_quast.tsv"
 
   
   mkdir -p "ray/${sra}"

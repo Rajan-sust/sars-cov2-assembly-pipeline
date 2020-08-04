@@ -25,6 +25,7 @@ conda install -c bioconda megahit
 conda install -c bioconda trinity
 conda install -c bioconda spades
 conda install -c bioconda velvet
+conda install -c bioconda ray
 ```
 
 ```
