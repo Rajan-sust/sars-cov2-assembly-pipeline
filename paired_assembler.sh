@@ -19,10 +19,10 @@ function quast_cp_zip_rm() {
     continue
   fi
 
-  if [[ -e "${1}.zip" ]]; then
-    zip -ur "${1}.zip" "${1}/${2}"
+  if [[ -e "${1}_backup.zip" ]]; then
+    zip -ur "${1}_backup.zip" "${1}/${2}"
   else
-    zip -r "${1}.zip" "${1}/${2}"
+    zip -r "${1}_backup.zip" "${1}/${2}"
   fi
   
   rm -rf "${1}/${2}"
@@ -51,7 +51,6 @@ for sra in "${sra_list[@]}"; do
   rm -rf "megahit/${sra}/intermediate_contigs"
   quast_cp_zip_rm "megahit" "${sra}" "megahit/${sra}/${sra}.contigs.fa"
   
-
   Trinity --seqType fq --max_memory 10G --left  "${pgz_1}" --right "${pgz_2}" --no_bowtie --CPU 40 --full_cleanup
   mv trinity_out_dir.Trinity.fasta "trinity/${sra}.fasta"
   quast_cp_zip_rm "trinity" "${sra}" "trinity/${sra}.fasta"
@@ -85,7 +84,7 @@ for sra in "${sra_list[@]}"; do
   mpiexec -n 10 Ray -k 21 -p  "trimmomatic/${sra}_1P.fastq" "trimmomatic/${sra}_1P.fastq" -o "ray/${sra}"
   gzip "trimmomatic/${sra}_1P.fastq" "trimmomatic/${sra}_1P.fastq"
   quast_cp_zip_rm "ray" "${sra}" "ray/${sra}/Scafolds.fasta"
-
+  
   # rm -f "data/${sra}*"
   
 done
