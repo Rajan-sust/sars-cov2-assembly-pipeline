@@ -81,11 +81,11 @@ for sra in "${sra_list[@]}"; do
   
   mkdir -p "ray/${sra}"
   gunzip "${pgz_1}" "${pgz_2}"
-  mpiexec -n 10 Ray -k 21 -p  "trimmomatic/${sra}_1P.fastq" "trimmomatic/${sra}_1P.fastq" -o "ray/${sra}"
-  gzip "trimmomatic/${sra}_1P.fastq" "trimmomatic/${sra}_1P.fastq"
+  mpiexec -n 10 Ray -k 21 -p  "trimmomatic/${sra}_1P.fastq" "trimmomatic/${sra}_2P.fastq" -o "ray/${sra}"
+  gzip "trimmomatic/${sra}_1P.fastq" "trimmomatic/${sra}_2P.fastq"
   quast_cp_zip_rm "ray" "${sra}" "ray/${sra}/Scafolds.fasta"
   
-  # rm -f "data/${sra}*"
+  rm -f "data/${sra}*"
   
 done
 
