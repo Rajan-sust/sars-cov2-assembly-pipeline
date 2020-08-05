@@ -10,10 +10,23 @@ mkdir -p -v fastqc multiqc trimmomatic trimmed_fastqc trimmed_multiqc \
             megahit trinity velvet output
 
 # $1: assembly name, $2: sra, $3: assembly output full path
-function execute_quast_cp_in_output() {
+function quast_cp_zip_rm() {
   python quast-5.0.2/quast.py -o "quast_results/${1}/${2}" -r MN908947.3.fasta -t 40 "${3}"
   cp "${3}" "output/${2}_${1}_PE.fasta"
   cp "quast_results/${1}/${2}/report.tsv" "output/${2}_${1}_PE_quast.tsv"
+  
+  if [[ "${1}" == "trinity" ]]; then
+    continue
+  fi
+
+  if [[ -e "${1}.zip" ]]; then
+    zip -ur "${1}.zip" "${1}/${2}"
+  else
+    zip -r "${1}.zip" "${1}/${2}"
+  fi
+  
+  rm -rf "${1}/${2}"
+
 }
 
 for sra in "${sra_list[@]}"; do
@@ -36,42 +49,44 @@ for sra in "${sra_list[@]}"; do
   
   megahit -1 "${pgz_1}" -2 "${pgz_2}" -o "megahit/${sra}" --out-prefix "${sra}"
   rm -rf "megahit/${sra}/intermediate_contigs"
-  execute_quast_cp_in_output "megahit" "${sra}" "megahit/${sra}/${sra}.contigs.fa"
+  quast_cp_zip_rm "megahit" "${sra}" "megahit/${sra}/${sra}.contigs.fa"
   
 
   Trinity --seqType fq --max_memory 10G --left  "${pgz_1}" --right "${pgz_2}" --no_bowtie --CPU 40 --full_cleanup
   mv trinity_out_dir.Trinity.fasta "trinity/${sra}.fasta"
-  execute_quast_cp_in_output "trinity" "${sra}" "trinity/${sra}.fasta"
+  quast_cp_zip_rm "trinity" "${sra}" "trinity/${sra}.fasta"
   
   mkdir -p "abyss63/${sra}"
   cd "abyss63/${sra}/"
   abyss-pe name="${sra}" k=63 j=40 in="../../${pgz_1} ../../${pgz_2}"
   cd ../..
-  execute_quast_cp_in_output "abyss63" "${sra}" "abyss63/${sra}/${sra}-scaffolds.fa"
+  quast_cp_zip_rm "abyss63" "${sra}" "abyss63/${sra}/${sra}-scaffolds.fa"
   
   mkdir -p "abyss127/${sra}"
   cd "abyss127/${sra}/"
   abyss-pe name="${sra}" k=127 j=40 in="../../${pgz_1} ../../${pgz_2}"
   cd ../..
-  execute_quast_cp_in_output "abyss127" "${sra}" "abyss127/${sra}/${sra}-scaffolds.fa"
+  quast_cp_zip_rm "abyss127" "${sra}" "abyss127/${sra}/${sra}-scaffolds.fa"
   
   mkdir -p "spades/${sra}"
   spades.py -1 "${pgz_1}" -2 "${pgz_2}" --rna -t 40 -o "spades/${sra}"
-  execute_quast_cp_in_output "spades" "${sra}" "spades/${sra}/transcripts.fasta"
+  quast_cp_zip_rm "spades" "${sra}" "spades/${sra}/transcripts.fasta"
   
   mkdir -p "metaspades/${sra}"
   metaspades.py -1 "${pgz_1}" -2 "${pgz_2}" -t 40 -o "metaspades/${sra}"
-  execute_quast_cp_in_output "metaspades" "${sra}" "metaspades/${sra}/scaffolds.fasta"
+  quast_cp_zip_rm "metaspades" "${sra}" "metaspades/${sra}/scaffolds.fasta"
   
   velveth "velvet/${sra}" 31 -short -separate -fastq "${pgz_1}" "${pgz_2}"
   velvetg "velvet/${sra}" -read_trkg yes
-  execute_quast_cp_in_output "velvet" "${sra}" "velvet/${sra}/contigs.fa"
+  quast_cp_zip_rm "velvet" "${sra}" "velvet/${sra}/contigs.fa"
   
   mkdir -p "ray/${sra}"
   gunzip "${pgz_1}" "${pgz_2}"
   mpiexec -n 10 Ray -k 21 -p  "trimmomatic/${sra}_1P.fastq" "trimmomatic/${sra}_1P.fastq" -o "ray/${sra}"
   gzip "trimmomatic/${sra}_1P.fastq" "trimmomatic/${sra}_1P.fastq"
-  execute_quast_cp_in_output "ray" "${sra}" "ray/${sra}/Scafolds.fasta"
+  quast_cp_zip_rm "ray" "${sra}" "ray/${sra}/Scafolds.fasta"
+
+  # rm -f "data/${sra}*"
   
 done
 
