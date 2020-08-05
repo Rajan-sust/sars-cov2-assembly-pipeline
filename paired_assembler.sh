@@ -7,6 +7,13 @@ mapfile -t sra_list < "${1}"
 mkdir -p -v fastqc multiqc trimmomatic trimmed_fastqc trimmed_multiqc \
             megahit trinity velvet output
 
+# $1: assembly name, $2: sra, $3: assembly output full path
+function execute_quast_cp_in_output() {
+  python quast-5.0.2/quast.py -o "quast_results/${1}/${2}" -r MN908947.3.fasta -t 40 "${3}"
+  cp "${3}" "output/${2}_${1}_PE.fasta"
+  cp "quast_results/${1}/${2}/report.tsv" "output/${2}_${1}_PE_quast.tsv"
+}
+
 for sra in "${sra_list[@]}"; do
   fastq-dump --split-files --outdir data --gzip "${sra}"
   fastq_1="data/${sra}_1.fastq.gz"
@@ -27,59 +34,67 @@ for sra in "${sra_list[@]}"; do
   
   megahit -1 "${pgz_1}" -2 "${pgz_2}" -o "megahit/${sra}" --out-prefix "${sra}"
   rm -rf "megahit/${sra}/intermediate_contigs"
-  python quast-5.0.2/quast.py -o "quast_results/megahit/${sra}" -r MN908947.3.fasta -t 40 "megahit/${sra}/${sra}.contigs.fa"
-  cp "megahit/${sra}/${sra}.contigs.fa" "output/${sra}_megahit_PE.fasta"
-  cp "quast_results/megahit/${sra}/report.tsv" "output/${sra}_megahit_PE_quast.tsv"
+  execute_quast_cp_in_output "megahit" "${sra}" "megahit/${sra}/${sra}.contigs.fa"
+  # python quast-5.0.2/quast.py -o "quast_results/megahit/${sra}" -r MN908947.3.fasta -t 40 "megahit/${sra}/${sra}.contigs.fa"
+  # cp "megahit/${sra}/${sra}.contigs.fa" "output/${sra}_megahit_PE.fasta"
+  # cp "quast_results/megahit/${sra}/report.tsv" "output/${sra}_megahit_PE_quast.tsv"
    
 
   Trinity --seqType fq --max_memory 10G --left  "${pgz_1}" --right "${pgz_2}" --no_bowtie --CPU 40 --full_cleanup
   mv trinity_out_dir.Trinity.fasta "trinity/${sra}.fasta"
-  python quast-5.0.2/quast.py -o "quast_results/trinity/${sra}" -r MN908947.3.fasta -t 40 "trinity/${sra}.fasta"
-  cp "trinity/${sra}.fasta" "output/${sra}_trinity_PE.fasta"
-  cp "quast_results/trinity/${sra}/report.tsv" "output/${sra}_trinity_PE_quast.tsv"
+  execute_quast_cp_in_output "trinity" "${sra}" "trinity/${sra}.fasta"
+  # python quast-5.0.2/quast.py -o "quast_results/trinity/${sra}" -r MN908947.3.fasta -t 40 "trinity/${sra}.fasta"
+  # cp "trinity/${sra}.fasta" "output/${sra}_trinity_PE.fasta"
+  # cp "quast_results/trinity/${sra}/report.tsv" "output/${sra}_trinity_PE_quast.tsv"
 
-  mkdir -p "abyss/${sra}-63"
-  cd "abyss/${sra}-63/"
+  mkdir -p "abyss63/${sra}"
+  cd "abyss63/${sra}/"
   abyss-pe name="${sra}" k=63 j=40 in="../../${pgz_1} ../../${pgz_2}"
   cd ../..
-  python quast-5.0.2/quast.py -o "quast_results/abyss/${sra}-63" -r MN908947.3.fasta -t 40 "abyss/${sra}-63/${sra}-scaffolds.fasta"
-  cp "abyss/${sra}-63/${sra}-scaffolds.fasta" "output/${sra}_abyss63_PE.fasta"
-  cp "quast_results/abyss/${sra}-63/report.tsv" "output/${sra}_abyss63_PE_quast.tsv"
+  execute_quast_cp_in_output "abyss63" "${sra}" "abyss63/${sra}/${sra}-scaffolds.fasta"
+  # python quast-5.0.2/quast.py -o "quast_results/abyss/${sra}-63" -r MN908947.3.fasta -t 40 "abyss/${sra}-63/${sra}-scaffolds.fasta"
+  # cp "abyss/${sra}-63/${sra}-scaffolds.fasta" "output/${sra}_abyss63_PE.fasta"
+  # cp "quast_results/abyss/${sra}-63/report.tsv" "output/${sra}_abyss63_PE_quast.tsv"
 
-  mkdir -p "abyss/${sra}-127"
-  cd "abyss/${sra}-127/"
+  mkdir -p "abyss127/${sra}"
+  cd "abyss127/${sra}/"
   abyss-pe name="${sra}" k=127 j=40 in="../../${pgz_1} ../../${pgz_2}"
   cd ../..
-  python quast-5.0.2/quast.py -o "quast_results/abyss/${sra}-127" -r MN908947.3.fasta -t 40 "abyss/${sra}-127/${sra}-scaffolds.fasta"
-  cp "abyss/${sra}-127/${sra}-scaffolds.fasta" "output/${sra}_abyss127_PE.fasta"
-  cp "quast_results/abyss/${sra}-127/report.tsv" "output/${sra}_abyss127_PE_quast.tsv"
+  execute_quast_cp_in_output "abyss127" "${sra}" "abyss127/${sra}/${sra}-scaffolds.fasta"
+  # python quast-5.0.2/quast.py -o "quast_results/abyss/${sra}-127" -r MN908947.3.fasta -t 40 "abyss/${sra}-127/${sra}-scaffolds.fasta"
+  # cp "abyss/${sra}-127/${sra}-scaffolds.fasta" "output/${sra}_abyss127_PE.fasta"
+  # cp "quast_results/abyss/${sra}-127/report.tsv" "output/${sra}_abyss127_PE_quast.tsv"
 
   mkdir -p "spades/${sra}"
   spades.py -1 "${pgz_1}" -2 "${pgz_2}" --rna -t 40 -o "spades/${sra}"
-  python quast-5.0.2/quast.py -o "quast_results/spades/${sra}" -r MN908947.3.fasta -t 40 "spades/${sra}/transcripts.fasta"
-  cp "spades/${sra}/transcripts.fasta" "output/${sra}_spades_PE.fasta"
-  cp "quast_results/spades/${sra}/report.tsv" "output/${sra}_spades_PE_quast.tsv"
+  execute_quast_cp_in_output "spades" "${sra}" "spades/${sra}/transcripts.fasta"
+  # python quast-5.0.2/quast.py -o "quast_results/spades/${sra}" -r MN908947.3.fasta -t 40 "spades/${sra}/transcripts.fasta"
+  # cp "spades/${sra}/transcripts.fasta" "output/${sra}_spades_PE.fasta"
+  # cp "quast_results/spades/${sra}/report.tsv" "output/${sra}_spades_PE_quast.tsv"
 
   mkdir -p "metaspades/${sra}"
   metaspades.py -1 "${pgz_1}" -2 "${pgz_2}" -t 40 -o "metaspades/${sra}"
-  python quast-5.0.2/quast.py -o "quast_results/metaspades/${sra}" -r MN908947.3.fasta -t 40 "metaspades/${sra}/scaffolds.fasta"
-  cp "metaspades/${sra}/scaffolds.fasta" "output/${sra}_metaspades_PE.fasta"
-  cp "quast_results/metaspades/${sra}/report.tsv" "output/${sra}_metaspades_PE_quast.tsv"
+  execute_quast_cp_in_output "metaspades" "${sra}" "metaspades/${sra}/scaffolds.fasta"
+  # python quast-5.0.2/quast.py -o "quast_results/metaspades/${sra}" -r MN908947.3.fasta -t 40 "metaspades/${sra}/scaffolds.fasta"
+  # cp "metaspades/${sra}/scaffolds.fasta" "output/${sra}_metaspades_PE.fasta"
+  # cp "quast_results/metaspades/${sra}/report.tsv" "output/${sra}_metaspades_PE_quast.tsv"
 
   velveth "velvet/${sra}" 31 -short -separate -fastq "${pgz_1}" "${pgz_2}"
   velvetg "velvet/${sra}" -read_trkg yes
-  python quast-5.0.2/quast.py -o "quast_results/velvet/${sra}" -r MN908947.3.fasta -t 40 "velvet/${sra}/contigs.fa"
-  cp "velvet/${sra}/contigs.fa" "output/${sra}_velvet_PE.fasta"
-  cp "quast_results/velvet/${sra}/report.tsv" "output/${sra}_velvet_PE_quast.tsv"
+  execute_quast_cp_in_output "velvet" "${sra}" "velvet/${sra}/contigs.fa"
+  # python quast-5.0.2/quast.py -o "quast_results/velvet/${sra}" -r MN908947.3.fasta -t 40 "velvet/${sra}/contigs.fa"
+  # cp "velvet/${sra}/contigs.fa" "output/${sra}_velvet_PE.fasta"
+  # cp "quast_results/velvet/${sra}/report.tsv" "output/${sra}_velvet_PE_quast.tsv"
 
   
   mkdir -p "ray/${sra}"
   gunzip "${pgz_1}" "${pgz_2}"
   mpiexec -n 10 Ray -k 21 -p  "trimmomatic/${sra}_1P.fastq" "trimmomatic/${sra}_1P.fastq" -o "ray/${sra}"
-  python quast-5.0.2/quast.py -o "quast_results/ray/${sra}" -r MN908947.3.fasta -t 40 "ray/${sra}/Scafolds.fasta"
   gzip "trimmomatic/${sra}_1P.fastq" "trimmomatic/${sra}_1P.fastq"
-  cp "ray/${sra}/Scafolds.fasta" "output/${sra}_ray_PE.fasta"
-  cp "quast_results/ray/${sra}/report.tsv" "output/${sra}_ray_PE_quast.tsv"
+  execute_quast_cp_in_output "ray" "${sra}" "ray/${sra}/Scafolds.fasta"
+  # python quast-5.0.2/quast.py -o "quast_results/ray/${sra}" -r MN908947.3.fasta -t 40 "ray/${sra}/Scafolds.fasta"
+  # cp "ray/${sra}/Scafolds.fasta" "output/${sra}_ray_PE.fasta"
+  # cp "quast_results/ray/${sra}/report.tsv" "output/${sra}_ray_PE_quast.tsv"
 
 
 done
