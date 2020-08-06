@@ -7,17 +7,13 @@
 mapfile -t sra_list < "${1}"
 
 mkdir -p -v fastqc multiqc trimmomatic trimmed_fastqc trimmed_multiqc \
-            megahit trinity velvet output
+            megahit velvet output
 
 # $1: assembly name, $2: sra, $3: assembly output full path
 function quast_cp_zip_rm() {
   python quast-5.0.2/quast.py -o "quast_results/${1}/${2}" -r MN908947.3.fasta -t 40 "${3}"
   cp "${3}" "output/${2}_${1}_PE.fasta"
   cp "quast_results/${1}/${2}/report.tsv" "output/${2}_${1}_PE_quast.tsv"
-  
-  if [[ "${1}" == "trinity" ]]; then
-    continue
-  fi
 
   if [[ -e "${1}_backup.zip" ]]; then
     zip -ur "${1}_backup.zip" "${1}/${2}"
@@ -51,9 +47,10 @@ for sra in "${sra_list[@]}"; do
   rm -rf "megahit/${sra}/intermediate_contigs"
   quast_cp_zip_rm "megahit" "${sra}" "megahit/${sra}/${sra}.contigs.fa"
   
+  mkdir -p "trinity/${sra}"
   Trinity --seqType fq --max_memory 10G --left  "${pgz_1}" --right "${pgz_2}" --no_bowtie --CPU 40 --full_cleanup
-  mv trinity_out_dir.Trinity.fasta "trinity/${sra}.fasta"
-  quast_cp_zip_rm "trinity" "${sra}" "trinity/${sra}.fasta"
+  mv trinity_out_dir.Trinity.fasta "trinity/${sra}/${sra}.fasta"
+  quast_cp_zip_rm "trinity" "${sra}" "trinity/${sra}/${sra}.fasta"
   
   mkdir -p "abyss63/${sra}"
   cd "abyss63/${sra}/"
@@ -78,14 +75,15 @@ for sra in "${sra_list[@]}"; do
   velveth "velvet/${sra}" 31 -short -separate -fastq "${pgz_1}" "${pgz_2}"
   velvetg "velvet/${sra}" -read_trkg yes
   quast_cp_zip_rm "velvet" "${sra}" "velvet/${sra}/contigs.fa"
-  
+
   mkdir -p "ray/${sra}"
   gunzip "${pgz_1}" "${pgz_2}"
   mpiexec -n 10 Ray -k 21 -p  "trimmomatic/${sra}_1P.fastq" "trimmomatic/${sra}_2P.fastq" -o "ray/${sra}"
   gzip "trimmomatic/${sra}_1P.fastq" "trimmomatic/${sra}_2P.fastq"
   quast_cp_zip_rm "ray" "${sra}" "ray/${sra}/Scafolds.fasta"
   
-  rm -f "data/${sra}*"
+
+  rm -rf "data/"
   
 done
 
