@@ -1,3 +1,5 @@
+### Analysis can be found [HERE](https://github.com/Rajan-sust/covid19-Assembly/blob/development/script/Assembly_analysis.md).
+
 ### Single and Paired SRA list files
 
 ```
