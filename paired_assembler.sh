@@ -2,7 +2,7 @@
 # $1 -> path of the paired_sra_list.txt
 # $2 -> path of the adapter file for PE
 # velvet, abyss, ray and soapdenovo2: kmer = 21,63,99 
-# quast will not create output if contifs are <500bp
+# quast will not create output if contigs are <500bp
 
 mapfile -t sra_list < "${1}"
 
@@ -86,7 +86,7 @@ for sra in "${sra_list[@]}"; do
     quast_cp_zip_rm "ray${kmer}" "${sra}" "ray${kmer}/${sra}/Scaffolds.fasta"
   done
 
-#velvet and metavelvet
+# velvet and metavelvet
   for kmer in 21 63 99; do
     mkdir - p "velvet${kmer}"
     velveth "velvet${kmer}/${sra}" $kmer -short -separate -fastq "${pgz_1}" "${pgz_2}"
