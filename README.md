@@ -3,8 +3,8 @@
 ### Single and Paired SRA list files
 
 ```
-PE_561samples_final_561runs.txt
-SE_300samples_final_300runs.txt
+files/PE_561samples_final_561runs.txt
+files/SE_300samples_final_300runs.txt
 ```
 
 ### Requirements Installation
