@@ -1,9 +1,8 @@
-### Single and Paired SRA ID Selection
+### Single and Paired SRA list files
 
 ```
-tail -n +2 COVID19_14.06.20_metadata_subsampled.csv | tr ',' '\t' | cut -f2,5 | grep "SINGLE" | cut -f1 > single_sra_list.txt 
-
-tail -n +2 COVID19_14.06.20_metadata_subsampled.csv | tr ',' '\t' | cut -f2,5 | grep "PAIRED" | cut -f1 > paired_sra_list.txt  
+PE_561samples_final_561runs.txt
+SE_300samples_final_300runs.txt
 ```
 
 ### Requirements Installation
