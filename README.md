@@ -1,9 +1,10 @@
-### Single and Paired SRA ID Selection
+### Analysis can be found [HERE](https://github.com/Rajan-sust/covid19-Assembly/blob/development/script/Assembly_analysis.md).
+
+### Single and Paired SRA list files
 
 ```
-tail -n +2 COVID19_14.06.20_metadata_subsampled.csv | tr ',' '\t' | cut -f2,5 | grep "SINGLE" | cut -f1 > single_sra_list.txt 
-
-tail -n +2 COVID19_14.06.20_metadata_subsampled.csv | tr ',' '\t' | cut -f2,5 | grep "PAIRED" | cut -f1 > paired_sra_list.txt  
+files/PE_561samples_final_561runs.txt
+files/SE_300samples_final_300runs.txt
 ```
 
 ### Requirements Installation

@@ -1,0 +1,562 @@
+Platform,Run,SRA_Sample,Instrument,LibraryLayout,Assay_Type,LibrarySelection,LibrarySource,Organism,geo_loc_name,host,host_disease,Consent,LibType
+ILLUMINA,ERR4304935,ERS4669610,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11828424,SRS6693450,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4085145,ERS4538422,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11772246,SRS6644929,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11577932,SRS6508566,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11494716,SRS6439063,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11577969,SRS6508529,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11828432,SRS6693442,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12162373,SRS6956751,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4085119,ERS4535832,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4210055,ERS4631484,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4305161,ERS4626043,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12019398,SRS6845538,Illumina NovaSeq 6000,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:CA,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12045921,SRS6866483,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11869148,SRS6730836,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12017041,SRS6843750,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4238596,ERS4625388,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4304895,ERS4670647,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11597206,SRS6525339,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,China:Shanghai,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11695911,SRS6598923,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11578126,SRS6508882,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11494662,SRS6439117,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11826839,SRS6692095,Illumina MiniSeq,PAIRED,AMPLICON,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: NSW,Homo sapiens,Respiratory diease,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4238292,ERS4625318,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4244453,ERS4662662,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11578289,SRS6508719,Illumina iSeq 100,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11479040,SRS6424864,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4305284,ERS4629838,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12045777,SRS6866627,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11597163,SRS6525381,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,China:Shanghai,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4238254,ERS4625392,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11494696,SRS6439083,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4238272,ERS4625360,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4238271,ERS4625328,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12162380,SRS6956744,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11676287,SRS6588350,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12162329,SRS6956795,Illumina iSeq 100,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4238579,ERS4625273,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11857957,SRS6720265,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11622209,SRS6545185,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4238320,ERS4625468,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11622192,SRS6545202,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12109430,SRS6920209,Illumina MiSeq,PAIRED,AMPLICON,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,South Africa: KZN,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12173379,SRS6966826,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:TX,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4085147,ERS4535845,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4329214,ERS4809687,Illumina NovaSeq 6000,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12185984,SRS6978224,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4305243,ERS4626691,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11826966,SRS6691968,Illumina iSeq 100,PAIRED,AMPLICON,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: NSW,Homo sapiens,Respiratory diease,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11578294,SRS6508714,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4329248,ERS4809721,Illumina NovaSeq 6000,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11915914,SRS6763604,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4238201,ERS4625160,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11857975,SRS6720247,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11826828,SRS6692106,Illumina MiniSeq,PAIRED,AMPLICON,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: NSW,Homo sapiens,Respiratory diease,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12162375,SRS6956749,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12045842,SRS6866562,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11622201,SRS6545193,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12017042,SRS6843749,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11772227,SRS6644948,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11578388,SRS6508933,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Northern Territory,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11597182,SRS6525363,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,China:Shanghai,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11622180,SRS6545214,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12045933,SRS6866471,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12109452,SRS6920187,Illumina MiSeq,PAIRED,AMPLICON,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,South Africa: KZN,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4329421,ERS4809894,Illumina NovaSeq 6000,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4238406,ERS4625479,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4329229,ERS4809702,Illumina NovaSeq 6000,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4304934,ERS4669173,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12161779,SRS6956404,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: New Orleans, LA",Homo sapiens,COVID19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12161819,SRS6956364,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: New Orleans, LA",Homo sapiens,COVID19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12173405,SRS6966800,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:TX,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11851944,SRS6714821,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12186000,SRS6978208,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11965930,SRS6808535,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11915884,SRS6763634,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11915924,SRS6763594,Illumina iSeq 100,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11494462,SRS6439005,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4305113,ERS4600041,unspecified,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4305021,ERS4627073,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11826887,SRS6692047,Illumina iSeq 100,PAIRED,AMPLICON,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: NSW,Homo sapiens,Respiratory diease,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11494564,SRS6439215,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Northern Territory,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11915827,SRS6763691,Illumina iSeq 100,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11813146,SRS6680264,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11728611,SRS6609699,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11578267,SRS6508741,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11622158,SRS6545236,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Northern Territory,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11513116,SRS6452812,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11578032,SRS6508466,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11622211,SRS6545183,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4329334,ERS4809807,Illumina NovaSeq 6000,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4304970,ERS4631239,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11607622,SRS6534229,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11827006,SRS6691928,Illumina iSeq 100,PAIRED,AMPLICON,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: NSW,Homo sapiens,Respiratory diease,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11563851,SRS6496559,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11578210,SRS6508798,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4305106,ERS4625872,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11577837,SRS6508661,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4305225,ERS4626276,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12045928,SRS6866476,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12182180,SRS6974600,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182179,SRS6974601,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182178,SRS6974602,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182177,SRS6974603,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182176,SRS6974604,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182175,SRS6974605,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182174,SRS6974606,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182173,SRS6974607,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182172,SRS6974608,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182171,SRS6974609,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182170,SRS6974610,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182169,SRS6974611,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182168,SRS6974612,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182167,SRS6974613,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182166,SRS6974614,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182165,SRS6974615,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182164,SRS6974616,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182163,SRS6974617,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182162,SRS6974618,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182161,SRS6974619,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182160,SRS6974620,Illumina MiSeq,PAIRED,OTHER,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182129,SRS6974553,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182128,SRS6974554,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182127,SRS6974555,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182126,SRS6974556,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182125,SRS6974557,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182124,SRS6974558,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182123,SRS6974559,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182122,SRS6974560,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182121,SRS6974561,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182120,SRS6974562,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182119,SRS6974563,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182118,SRS6974564,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182117,SRS6974565,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182116,SRS6974566,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182115,SRS6974567,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182114,SRS6974568,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182113,SRS6974569,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182159,SRS6974570,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182158,SRS6974571,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182157,SRS6974572,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182156,SRS6974573,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182155,SRS6974574,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182154,SRS6974575,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182153,SRS6974576,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182152,SRS6974577,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182151,SRS6974578,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182150,SRS6974579,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182149,SRS6974580,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182148,SRS6974581,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182147,SRS6974582,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182146,SRS6974583,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182145,SRS6974584,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182144,SRS6974585,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182143,SRS6974586,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182142,SRS6974587,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182141,SRS6974588,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182140,SRS6974589,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182139,SRS6974590,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182138,SRS6974591,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182137,SRS6974592,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182136,SRS6974593,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182135,SRS6974594,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182134,SRS6974595,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182133,SRS6974596,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182132,SRS6974597,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182131,SRS6974598,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR12182130,SRS6974599,Illumina MiSeq,PAIRED,OTHER,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Czech Republic,Homo sapiens,NA,public,PE: OTHER of VIRAL RNA
+ILLUMINA,SRR11953795,SRS6797094,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953986,SRS6796920,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953820,SRS6797073,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953923,SRS6796976,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953762,SRS6796774,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953993,SRS6796743,Illumina HiSeq 2500,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953767,SRS6796769,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953988,SRS6796917,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11939564,SRS6784337,Illumina MiSeq,PAIRED,RNA-Seq,unspecified,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953821,SRS6797070,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954228,SRS6797166,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954243,SRS6797152,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954186,SRS6797206,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953968,SRS6796935,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953979,SRS6796925,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953884,SRS6797012,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954087,SRS6797293,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953804,SRS6797087,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953880,SRS6797016,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953690,SRS6796843,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953727,SRS6796807,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953789,SRS6796747,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954198,SRS6797193,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954106,SRS6797275,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954152,SRS6797234,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954019,SRS6796788,Illumina HiSeq 2500,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954024,SRS6796884,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954253,SRS6797143,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953956,SRS6796947,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953881,SRS6797015,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954098,SRS6797282,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954041,SRS6796743,Illumina HiSeq 2500,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954064,SRS6797313,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954113,SRS6797269,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11939565,SRS6784336,Illumina MiSeq,PAIRED,RNA-Seq,unspecified,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954018,SRS6796889,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11939558,SRS6784343,Illumina MiSeq,PAIRED,RNA-Seq,unspecified,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954128,SRS6797256,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953909,SRS6796989,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953720,SRS6796814,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954094,SRS6797286,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953718,SRS6796816,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954184,SRS6797205,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954170,SRS6797218,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953842,SRS6797051,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953879,SRS6797017,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953949,SRS6796952,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954303,SRS6797097,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954236,SRS6797158,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953749,SRS6796786,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953878,SRS6797018,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953951,SRS6796846,Illumina HiSeq 2500,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954168,SRS6797221,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953919,SRS6796980,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954223,SRS6797171,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11513776,SRS6452975,Illumina iSeq 100,PAIRED,RNA-Seq,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Cambodia:Sihanoukville,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953976,SRS6796928,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954216,SRS6796812,Illumina HiSeq 2500,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953906,SRS6796992,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953945,SRS6796955,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953728,SRS6796806,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953898,SRS6796998,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953721,SRS6796813,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953991,SRS6796914,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954206,SRS6797186,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953864,SRS6797031,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954117,SRS6797265,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953889,SRS6797007,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953841,SRS6797052,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953751,SRS6796784,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953867,SRS6797028,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954063,SRS6797314,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954020,SRS6796888,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953964,SRS6796939,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953925,SRS6796975,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953687,SRS6796846,Illumina HiSeq 2500,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953692,SRS6796841,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11939985,SRS6784701,Illumina MiSeq,PAIRED,RNA-Seq,unspecified,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953834,SRS6797059,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953805,SRS6797085,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954250,SRS6797145,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953782,SRS6796754,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954183,SRS6796846,Illumina HiSeq 2500,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954021,SRS6796887,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954028,SRS6796880,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954118,SRS6797266,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954081,SRS6796812,Illumina HiSeq 2500,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954036,SRS6796872,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954164,SRS6796757,Illumina HiSeq 2500,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953725,SRS6796809,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953888,SRS6797008,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954291,SRS6797108,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954044,SRS6796866,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954276,SRS6797122,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954091,SRS6797289,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953747,SRS6796788,Illumina HiSeq 2500,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953801,SRS6797089,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953763,SRS6796773,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11953838,SRS6797054,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,SRR11954005,SRS6796901,Illumina NovaSeq 6000,PAIRED,RNA-Seq,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Massachusetts,Homo sapiens,COVID-19,public,PE: RNA-Seq of VIRAL RNA
+ILLUMINA,ERR4208653,ERS4630109,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4206536,ERS4628071,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4208305,ERS4629770,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4207637,ERS4629146,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4205231,ERS4626780,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4208260,ERS4626385,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4205160,ERS4626713,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4206448,ERS4627986,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11409417,SRS6357438,Illumina MiSeq,PAIRED,Targeted-Capture,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4208135,ERS4629605,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11772666,SRS6645411,Illumina MiSeq,PAIRED,Targeted-Capture,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:Minnesota,Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11772685,SRS6645406,Illumina MiSeq,PAIRED,Targeted-Capture,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:Minnesota,Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783621,SRS6655020,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783571,SRS6655070,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783579,SRS6655062,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4204166,ERS4625760,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783600,SRS6655041,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4208255,ERS4629722,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783592,SRS6655049,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4205753,ERS4627298,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4205378,ERS4626927,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4204812,ERS4626402,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783582,SRS6655059,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783610,SRS6655031,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783589,SRS6655052,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4207070,ERS4626805,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4206025,ERS4627566,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4208581,ERS4630035,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4206450,ERS4627987,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783573,SRS6655068,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783613,SRS6655028,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4204720,ERS4626312,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783617,SRS6655024,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783619,SRS6655022,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783580,SRS6655061,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4206015,ERS4627556,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4206571,ERS4575800,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783625,SRS6655016,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4206820,ERS4628348,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783598,SRS6655043,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783620,SRS6655021,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783601,SRS6655040,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4208993,ERS4630434,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4209027,ERS4630472,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4207715,ERS4629222,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4207355,ERS4628871,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4206324,ERS4627860,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4204222,ERS4625816,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4208279,ERS4629745,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783578,SRS6655063,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4207012,ERS4628537,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4205466,ERS4627015,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4208917,ERS4630361,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783591,SRS6655050,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783594,SRS6655047,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783612,SRS6655029,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4206040,ERS4627584,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4205283,ERS4626824,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783593,SRS6655048,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4206143,ERS4627687,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4205254,ERS4626802,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4209122,ERS4630560,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783584,SRS6655057,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4207248,ERS4627468,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4204410,ERS4626003,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4206763,ERS4628290,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4208822,ERS4630269,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4208998,ERS4630439,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4206986,ERS4628512,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4204912,ERS4626501,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783590,SRS6655051,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4204337,ERS4625936,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4205760,ERS4627306,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4208180,ERS4627536,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4206117,ERS4627658,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4205382,ERS4626931,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4205353,ERS4626903,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4204492,ERS4626084,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4206733,ERS4628261,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11903415,SRS6752452,Illumina MiniSeq,PAIRED,Targeted-Capture,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Canada: Toronto,Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783622,SRS6655019,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783609,SRS6655032,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783611,SRS6655030,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4205575,ERS4627124,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11772651,SRS6645414,Illumina MiSeq,PAIRED,Targeted-Capture,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4207369,ERS4626492,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783575,SRS6655066,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4205439,ERS4626988,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11783576,SRS6655065,NextSeq 550,PAIRED,Targeted-Capture,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: Hamilton, MT",Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4205028,ERS4626617,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4206114,ERS4627655,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,SRR11772663,SRS6645412,Illumina MiSeq,PAIRED,Targeted-Capture,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:Minnesota,Homo sapiens,COVID-19,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4205392,ERS4626941,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4206809,ERS4628338,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4205789,ERS4627334,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4208556,ERS4630010,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4208761,ERS4630210,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4204831,ERS4626423,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4206263,ERS4627803,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4205464,ERS4627014,NextSeq 550,PAIRED,Targeted-Capture,other,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: Targeted-Capture of VIRAL RNA
+ILLUMINA,ERR4316795,ERS4801495,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316392,ERS4801101,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316686,ERS4801455,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316516,ERS4801210,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4326275,ERS4802385,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4296986,ERS4773521,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4326292,ERS4802355,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316363,ERS4801097,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4296994,ERS4773447,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316709,ERS4801453,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317471,ERS4802100,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317399,ERS4802070,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317590,ERS4802231,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316359,ERS4801135,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316401,ERS4801118,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316651,ERS4801334,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317835,ERS4802711,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316816,ERS4801488,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316658,ERS4801340,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4315133,ERS4799948,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4329091,ERS4809563,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4297008,ERS4773530,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317563,ERS4802196,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317819,ERS4802563,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317571,ERS4802347,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4321689,ERS4802686,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316437,ERS4801043,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317423,ERS4802058,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316517,ERS4801163,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316579,ERS4801344,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317813,ERS4802610,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4296976,ERS4773523,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317767,ERS4802584,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317715,ERS4802552,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4327772,ERS4808621,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316345,ERS4801052,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4296974,ERS4773458,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317559,ERS4802500,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316665,ERS4801304,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4315051,ERS4799892,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317746,ERS4802713,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4315056,ERS4799902,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317498,ERS4802269,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317591,ERS4802307,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316757,ERS4801431,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316719,ERS4801351,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316470,ERS4801176,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317390,ERS4801524,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317511,ERS4802110,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4321687,ERS4802646,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316642,ERS4801357,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4315138,ERS4799978,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317565,ERS4802331,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316700,ERS4801293,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317422,ERS4802142,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317823,ERS4802792,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317832,ERS4802786,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4288666,ERS4773539,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316583,ERS4801314,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316422,ERS4801185,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4329190,ERS4809579,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316691,ERS4801324,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4315059,ERS4799901,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316373,ERS4801110,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317554,ERS4802218,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316728,ERS4801400,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317779,ERS4802592,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317641,ERS4802763,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316760,ERS4801445,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4321690,ERS4802643,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316585,ERS4801384,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317460,ERS4802248,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316386,ERS4801062,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316523,ERS4801162,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316649,ERS4801291,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317631,ERS4802724,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4315130,ERS4799959,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4296967,ERS4773505,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317361,ERS4801462,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317264,ERS4801517,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317466,ERS4802099,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4320138,ERS4802470,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316284,ERS4800956,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316419,ERS4801064,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316323,ERS4801048,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317780,ERS4802729,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317615,ERS4802702,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316275,ERS4801025,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4326756,ERS4802121,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4329162,ERS4809610,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316697,ERS4801353,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316749,ERS4801566,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316260,ERS4801013,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317526,ERS4802056,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316440,ERS4801191,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4327140,ERS4808564,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4317378,ERS4801535,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4326299,ERS4802417,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316818,ERS4801464,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,ERR4316423,ERS4801095,Illumina MiSeq,PAIRED,WGA,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: WGA of VIRAL RNA
+ILLUMINA,SRR11393704,SRS6357438,Illumina MiSeq,PAIRED,WGS,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR11528307,SRS6465773,Illumina MiniSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Canada,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR11528306,SRS6465774,Illumina MiniSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Canada,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR11587600,SRS6517448,Illumina MiSeq,PAIRED,WGS,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: New York,Panthera tigris jacksoni,Severe acute respiratory syndrome coronavirus 2,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR11587601,SRS6517448,Illumina MiSeq,PAIRED,WGS,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: New York,Panthera tigris jacksoni,Severe acute respiratory syndrome coronavirus 2,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR11587602,SRS6517448,Illumina MiSeq,PAIRED,WGS,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: New York,Panthera tigris jacksoni,Severe acute respiratory syndrome coronavirus 2,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR11587606,SRS6517448,Illumina MiSeq,PAIRED,WGS,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: New York,Panthera tigris jacksoni,Severe acute respiratory syndrome coronavirus 2,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR11607709,SRS6534261,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Washington,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR11607710,SRS6534261,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Washington,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR11607707,SRS6534262,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Washington,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR11607708,SRS6534262,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Washington,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192446,SRS6983048,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:CA,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192445,SRS6983049,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:CA,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192444,SRS6983050,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:CA,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192443,SRS6983051,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:CO,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192442,SRS6983052,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:CO,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192441,SRS6983053,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:HI,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192440,SRS6983054,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:HI,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192439,SRS6983055,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:IN,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192438,SRS6983056,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:NY,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192437,SRS6983057,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:NY,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192436,SRS6983058,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:NY,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192435,SRS6983059,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:NY,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192434,SRS6983060,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:CA,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192433,SRS6983061,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:NY,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192432,SRS6983062,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:NY,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192431,SRS6983063,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:NY,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192430,SRS6983064,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:NY,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192429,SRS6983065,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:NY,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192428,SRS6983066,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:NY,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192427,SRS6983067,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:NY,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192426,SRS6983068,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:NY,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192425,SRS6983069,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:NY,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192424,SRS6983070,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:OK,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192423,SRS6983071,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:CA,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192422,SRS6983072,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:WA,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192421,SRS6983073,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:WA,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192420,SRS6983074,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:CA,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192419,SRS6983075,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:CA,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192418,SRS6983076,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:CA,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192417,SRS6983077,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:CA,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192416,SRS6983078,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:CA,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12192415,SRS6983079,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:CA,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12008188,SRS6836072,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: NY,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12008187,SRS6836073,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: WA,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12008186,SRS6836074,NextSeq 500,PAIRED,WGS,Hybrid Selection,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: CA,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR11945456,SRS6789482,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Morocco,Homo sapiens,NA,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030625,SRS6853496,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030624,SRS6853497,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030623,SRS6853498,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030622,SRS6853499,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030621,SRS6853500,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030620,SRS6853501,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030619,SRS6853502,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030618,SRS6853503,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030617,SRS6853504,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030616,SRS6853505,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030615,SRS6853506,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030614,SRS6853507,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030613,SRS6853508,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030612,SRS6853509,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030611,SRS6853510,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030610,SRS6853511,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030609,SRS6853512,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030608,SRS6853513,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030607,SRS6853514,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030606,SRS6853515,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030605,SRS6853516,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030604,SRS6853517,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030603,SRS6853518,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030602,SRS6853519,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030601,SRS6853520,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030600,SRS6853521,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030599,SRS6853522,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030598,SRS6853523,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030597,SRS6853524,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030596,SRS6853525,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030595,SRS6853526,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030594,SRS6853527,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030593,SRS6853528,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030592,SRS6853529,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030591,SRS6853530,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030590,SRS6853531,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030589,SRS6853532,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030588,SRS6853533,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030587,SRS6853534,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030586,SRS6853535,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030585,SRS6853536,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030584,SRS6853537,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030583,SRS6853538,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030582,SRS6853539,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030581,SRS6853540,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
+ILLUMINA,SRR12030580,SRS6853541,Illumina MiSeq,PAIRED,WGS,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Qatar,Homo sapiens,COVID-19,public,PE: WGS of VIRAL RNA
