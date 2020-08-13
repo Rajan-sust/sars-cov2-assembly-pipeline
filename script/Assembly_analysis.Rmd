@@ -171,3 +171,12 @@ kable(ab2, caption = "List of total 9 different categories. Maximum 100 samples 
     
 ```
 
+### check read quality
+
+```{r, eval=F}
+#unzip files
+cd /projects/epigenomics3/temp/rislam/assembly/rajan/asm_pe/output_bioRxiv_100samples/trimmed_fastqc
+for f in *RR*/fastqc_data.txt; do echo $f; grep "Total Sequences\|Sequences flagged as poor quality\|Sequence length\|%GC" $f; done | paste - - - - -  | awk '{gsub("/fastqc_data.txt", ""); print }' >read_QC_matrix.txt
+```
+
+
