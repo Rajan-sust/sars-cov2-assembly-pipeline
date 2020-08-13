@@ -9,6 +9,160 @@ output:
 
 
 
+### alaysis
+
+
+```r
+library(tidyverse)
+library(reshape2)
+x = read_tsv("~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/bioRxiv_1074_assembly_report_PE_amplicon_viralRNA.tsv")
+x2 = melt(x, id.vars = "Assembly")
+x2$Assembly = gsub("# ", "", x2$Assembly)
+x3 = data.frame(str_split_fixed(x2$variable, "_", 3), value = as.numeric(x2$value), x2)
+
+#
+make_boxplot = function(variableToPlot)
+{
+  x4 = x3 %>% filter(Assembly == variableToPlot) 
+  ggplot(x4, aes(X2, value)) +
+    geom_boxplot() +
+    geom_jitter(alpha = .5, width = .1) +
+    xlab("") +
+    ylab(variableToPlot) +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
+}
+
+make_boxplot("Genome fraction (%)")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+
+```r
+make_boxplot("Largest contig")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-2.png)<!-- -->
+
+```r
+make_boxplot("Total length")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-3.png)<!-- -->
+
+```r
+make_boxplot("contigs")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-4.png)<!-- -->
+
+```r
+make_boxplot("contigs (>= 1000 bp)")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-5.png)<!-- -->
+
+```r
+make_boxplot("Largest alignment")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-6.png)<!-- -->
+
+```r
+make_boxplot("mismatches per 100 kbp")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-7.png)<!-- -->
+
+```r
+make_boxplot("indels per 100 kbp")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-8.png)<!-- -->
+
+```r
+make_boxplot("Total aligned length")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-9.png)<!-- -->
+
+```r
+make_boxplot("misassemblies")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-10.png)<!-- -->
+
+```r
+make_boxplot("N50")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-11.png)<!-- -->
+
+```r
+make_boxplot("N75")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-12.png)<!-- -->
+
+```r
+make_boxplot("L50")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-13.png)<!-- -->
+
+```r
+make_boxplot("L75")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-14.png)<!-- -->
+
+```r
+make_boxplot("NA50")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-15.png)<!-- -->
+
+```r
+make_boxplot("NA75")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-16.png)<!-- -->
+
+```r
+make_boxplot("LA50")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-17.png)<!-- -->
+
+```r
+make_boxplot("LA75")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-18.png)<!-- -->
+
+```r
+# genomic feature
+x4 = x3 %>% filter(Assembly == "genomic features") 
+x4$value.1 = gsub("part", "", x4$value.1)
+x5 = data.frame(str_split_fixed(x4$value.1,"\\+", 2), x4) 
+x6 = data.frame(assembly = x5$X2, match = as.numeric(as.character(x5$X1.1)), mismatch = as.numeric(as.character(x5$X2.1)))
+
+# 
+  ggplot(x6, aes(assembly, match/49)) +
+    geom_boxplot() +
+    geom_jitter(alpha = .5, width = .1) +
+    xlab("") +
+    ylab("% features mapped") +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-19.png)<!-- -->
+
+### dataset 
+
 
 ```r
 library(tidyverse)
@@ -189,12 +343,20 @@ set.seed(2020)
 b3 = c2 %>% filter(LibraryLayout == "SINGLE" & Assay_Type == "Targeted-Capture" & LibrarySource == "VIRAL RNA") %>%
     mutate(LibType = "SE: Targeted-Capture of VIRAL RNA") %>% sample_n(100)
 
+#dataset
 ab_pe = rbind(a1, a2, a3, a4, a5, a6)
 ab_se = rbind(b1, b2, b3)
 #write_csv(ab_pe, "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/PE_561samples_final.csv")
 #write_csv(ab_se, "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/SE_300samples_final.csv")
 #write.table(ab_pe$Run, "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/PE_561samples_final_561runs.txt", col.names = F, row.names = F, quote = F)
 #write.table(ab_se$Run, "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/SE_300samples_final_300runs.txt", col.names = F, row.names = F, quote = F)
+#write_csv(a1, "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/PE_100samples_amplicon_bioRxiv.csv")
+#write.table(a1[,2], "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/PE_100samples_amplicon_bioRxiv_100runs.txt", col.names = F, row.names = F, quote = F)
+
+# test ram and cpu
+set.seed(2020)
+#20 samples will be selected from amplicon with similar depth
+#ram = a1 %>% sample_n(20)
 
 ab = rbind(ab_pe, ab_se)
 ab2 = ab %>% group_by(LibType) %>% tally()

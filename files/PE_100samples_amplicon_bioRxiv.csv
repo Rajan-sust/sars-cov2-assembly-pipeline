@@ -1,0 +1,101 @@
+Platform,Run,SRA_Sample,Instrument,LibraryLayout,Assay_Type,LibrarySelection,LibrarySource,Organism,geo_loc_name,host,host_disease,Consent,LibType
+ILLUMINA,ERR4304935,ERS4669610,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11828424,SRS6693450,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4085145,ERS4538422,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11772246,SRS6644929,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11577932,SRS6508566,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11494716,SRS6439063,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11577969,SRS6508529,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11828432,SRS6693442,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12162373,SRS6956751,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4085119,ERS4535832,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4210055,ERS4631484,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4305161,ERS4626043,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12019398,SRS6845538,Illumina NovaSeq 6000,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:CA,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12045921,SRS6866483,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11869148,SRS6730836,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12017041,SRS6843750,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4238596,ERS4625388,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4304895,ERS4670647,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11597206,SRS6525339,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,China:Shanghai,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11695911,SRS6598923,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11578126,SRS6508882,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11494662,SRS6439117,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11826839,SRS6692095,Illumina MiniSeq,PAIRED,AMPLICON,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: NSW,Homo sapiens,Respiratory diease,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4238292,ERS4625318,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4244453,ERS4662662,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11578289,SRS6508719,Illumina iSeq 100,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11479040,SRS6424864,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4305284,ERS4629838,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12045777,SRS6866627,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11597163,SRS6525381,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,China:Shanghai,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4238254,ERS4625392,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11494696,SRS6439083,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4238272,ERS4625360,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4238271,ERS4625328,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12162380,SRS6956744,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11676287,SRS6588350,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12162329,SRS6956795,Illumina iSeq 100,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4238579,ERS4625273,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11857957,SRS6720265,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11622209,SRS6545185,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4238320,ERS4625468,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11622192,SRS6545202,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12109430,SRS6920209,Illumina MiSeq,PAIRED,AMPLICON,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,South Africa: KZN,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12173379,SRS6966826,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:TX,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4085147,ERS4535845,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4329214,ERS4809687,Illumina NovaSeq 6000,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12185984,SRS6978224,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4305243,ERS4626691,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11826966,SRS6691968,Illumina iSeq 100,PAIRED,AMPLICON,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: NSW,Homo sapiens,Respiratory diease,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11578294,SRS6508714,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4329248,ERS4809721,Illumina NovaSeq 6000,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11915914,SRS6763604,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4238201,ERS4625160,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11857975,SRS6720247,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11826828,SRS6692106,Illumina MiniSeq,PAIRED,AMPLICON,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: NSW,Homo sapiens,Respiratory diease,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12162375,SRS6956749,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12045842,SRS6866562,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11622201,SRS6545193,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12017042,SRS6843749,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11772227,SRS6644948,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11578388,SRS6508933,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Northern Territory,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11597182,SRS6525363,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,China:Shanghai,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11622180,SRS6545214,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12045933,SRS6866471,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12109452,SRS6920187,Illumina MiSeq,PAIRED,AMPLICON,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,South Africa: KZN,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4329421,ERS4809894,Illumina NovaSeq 6000,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4238406,ERS4625479,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4329229,ERS4809702,Illumina NovaSeq 6000,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4304934,ERS4669173,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12161779,SRS6956404,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: New Orleans, LA",Homo sapiens,COVID19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12161819,SRS6956364,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,"USA: New Orleans, LA",Homo sapiens,COVID19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12173405,SRS6966800,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:TX,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11851944,SRS6714821,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12186000,SRS6978208,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11965930,SRS6808535,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA: Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11915884,SRS6763634,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11915924,SRS6763594,Illumina iSeq 100,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11494462,SRS6439005,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4305113,ERS4600041,unspecified,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4305021,ERS4627073,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11826887,SRS6692047,Illumina iSeq 100,PAIRED,AMPLICON,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: NSW,Homo sapiens,Respiratory diease,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11494564,SRS6439215,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Northern Territory,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11915827,SRS6763691,Illumina iSeq 100,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11813146,SRS6680264,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11728611,SRS6609699,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11578267,SRS6508741,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11622158,SRS6545236,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Northern Territory,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11513116,SRS6452812,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11578032,SRS6508466,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11622211,SRS6545183,NextSeq 500,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4329334,ERS4809807,Illumina NovaSeq 6000,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4304970,ERS4631239,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11607622,SRS6534229,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11827006,SRS6691928,Illumina iSeq 100,PAIRED,AMPLICON,RT-PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: NSW,Homo sapiens,Respiratory diease,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11563851,SRS6496559,Illumina MiSeq,PAIRED,AMPLICON,cDNA,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA:Virginia,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11578210,SRS6508798,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4305106,ERS4625872,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR11577837,SRS6508661,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,Australia: Victoria,Homo sapiens,COVID-19,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,ERR4305225,ERS4626276,NextSeq 550,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,NA,NA,NA,public,PE: AMPLICON of VIRAL RNA
+ILLUMINA,SRR12045928,SRS6866476,Illumina MiSeq,PAIRED,AMPLICON,PCR,VIRAL RNA,Severe acute respiratory syndrome coronavirus 2,USA,Homo sapiens,severe acute respiratory syndrome,public,PE: AMPLICON of VIRAL RNA
