@@ -98,6 +98,7 @@ make_boxplot("misassemblies")
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-10.png)<!-- -->
 
 ```r
+#make_boxplot("unaligned contigs")
 make_boxplot("N50")
 ```
 
@@ -153,7 +154,7 @@ x5 = data.frame(str_split_fixed(x4$value.1,"\\+", 2), x4)
 x6 = data.frame(assembly = x5$X2, match = as.numeric(as.character(x5$X1.1)), mismatch = as.numeric(as.character(x5$X2.1)))
 
 # 
-  ggplot(x6, aes(assembly, match/49)) +
+  ggplot(x6, aes(assembly, 100*(match/49))) +
     geom_boxplot() +
     geom_jitter(alpha = .5, width = .1) +
     xlab("") +
@@ -169,31 +170,36 @@ x6 = data.frame(assembly = x5$X2, match = as.numeric(as.character(x5$X1.1)), mis
 ggsave("percent features mapped.pdf", width = 15, height = 10, units = "cm")
 ```
 
+### 90% of the genome is covered by single contig
+
+
+```r
+#90%=29903*.9
+contig = x3 %>% filter(Assembly == "Largest contig") %>% filter(value >=26912.7)
+ggplot(contig, aes(X2)) +
+    geom_histogram(stat = "count") +
+    xlab("") +
+    ylab("Count") +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
+```
+
+```
+## Warning: Ignoring unknown parameters: binwidth, bins, pad
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+
+```r
+ggsave("90_percent_genome_single_contig.pdf", width = 15, height = 10, units = "cm")
+```
+
 ### correlation read vs genome
 
 
 ```r
 library(tidyverse)
-```
-
-```
-## ── Attaching packages ───────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
-```
-
-```
-## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
-## ✓ tibble  3.0.3     ✓ dplyr   1.0.1
-## ✓ tidyr   1.1.1     ✓ stringr 1.4.0
-## ✓ readr   1.3.1     ✓ forcats 0.5.0
-```
-
-```
-## ── Conflicts ──────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
-```
-
-```r
 r = read.table("~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/read_QC_matrix.txt")[,c(1,4)]
 r2 = data.frame(id = str_split_fixed(r$V1, "_", 2), read = r$V4)
 head(r2$id[,1])
@@ -219,33 +225,37 @@ ggplot(rx2, aes(value, read/1e6)) +
         axis.text = element_text(color = "black", angle = 0, hjust = 1)) 
 ```
 
-```
-## Warning: Removed 38 rows containing non-finite values (stat_smooth).
-```
-
-```
-## Warning: Removed 38 rows containing missing values (geom_point).
-```
-
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
 
 ```r
 ggsave("readVsGenome.pdf", width = 20, height = 15, units = "cm")
-```
 
-```
-## Warning: Removed 38 rows containing non-finite values (stat_smooth).
-
-## Warning: Removed 38 rows containing missing values (geom_point).
-```
-
-```r
 rx3 = na.omit(rx2)
 cor(rx3$value, rx3$read, method = "spearman")
 ```
 
 ```
 ## [1] 0.1937081
+```
+
+```r
+#read dist; not needed
+```
+
+
+### align fasta to reference
+
+
+```r
+#https://www.biostars.org/p/110213/
+# Build reference genome database
+cd /projects/epigenomics3/temp/rislam/assembly/rajan/asm_pe/output_bioRxiv_100samples/ref/
+
+gmap_build -D dir/ -d refgenome MN908947.3.fasta
+# Alignment
+gmap -D dir/refgenome/ -d refgenome -f samse -t 8 ../*fasta | samtools view -Shb - | samtools sort - alignment
+
+samtools index aligment.bam
 ```
 
 
