@@ -49,6 +49,7 @@ make_boxplot("mismatches per 100 kbp")
 make_boxplot("indels per 100 kbp")
 make_boxplot("Total aligned length")
 make_boxplot("misassemblies")
+#make_boxplot("unaligned contigs")
 make_boxplot("N50")
 make_boxplot("N75")
 make_boxplot("L50")
@@ -65,7 +66,7 @@ x5 = data.frame(str_split_fixed(x4$value.1,"\\+", 2), x4)
 x6 = data.frame(assembly = x5$X2, match = as.numeric(as.character(x5$X1.1)), mismatch = as.numeric(as.character(x5$X2.1)))
 
 # 
-  ggplot(x6, aes(assembly, match/49)) +
+  ggplot(x6, aes(assembly, 100*(match/49))) +
     geom_boxplot() +
     geom_jitter(alpha = .5, width = .1) +
     xlab("") +
@@ -76,9 +77,24 @@ x6 = data.frame(assembly = x5$X2, match = as.numeric(as.character(x5$X1.1)), mis
 ggsave("percent features mapped.pdf", width = 15, height = 10, units = "cm")
 ```
 
-### correlation read vs genome
+### 90% of the genome is covered by single contig
 
 ```{r}
+#90%=29903*.9
+contig = x3 %>% filter(Assembly == "Largest contig") %>% filter(value >=26912.7)
+ggplot(contig, aes(X2)) +
+    geom_histogram(stat = "count") +
+    xlab("") +
+    ylab("Count") +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
+ggsave("90_percent_genome_single_contig.pdf", width = 15, height = 10, units = "cm")
+```
+
+### correlation read vs genome
+
+```{r , cache=TRUE, warning=FALSE, message=FALSE}
 library(tidyverse)
 r = read.table("~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/read_QC_matrix.txt")[,c(1,4)]
 r2 = data.frame(id = str_split_fixed(r$V1, "_", 2), read = r$V4)
@@ -99,9 +115,27 @@ ggplot(rx2, aes(value, read/1e6)) +
         axis.text = element_text(color = "black", angle = 0, hjust = 1)) 
 ggsave("readVsGenome.pdf", width = 20, height = 15, units = "cm")
 
-
 rx3 = na.omit(rx2)
 cor(rx3$value, rx3$read, method = "spearman")
+
+#read dist; not needed
+
+
+```
+
+
+### align fasta to reference
+
+```{r, eval=FALSE}
+#https://www.biostars.org/p/110213/
+# Build reference genome database
+cd /projects/epigenomics3/temp/rislam/assembly/rajan/asm_pe/output_bioRxiv_100samples/ref/
+
+gmap_build -D dir/ -d refgenome MN908947.3.fasta
+# Alignment
+gmap -D dir/refgenome/ -d refgenome -f samse -t 8 ../*fasta | samtools view -Shb - | samtools sort - alignment
+
+samtools index aligment.bam
 ```
 
 
