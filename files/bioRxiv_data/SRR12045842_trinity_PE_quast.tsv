@@ -1,0 +1,27 @@
+Assembly	SRR12045842
+# contigs (>= 0 bp)	70
+# contigs (>= 1000 bp)	1
+# contigs (>= 5000 bp)	0
+# contigs (>= 10000 bp)	0
+# contigs (>= 25000 bp)	0
+# contigs (>= 50000 bp)	0
+Total length (>= 0 bp)	29537
+Total length (>= 1000 bp)	1958
+Total length (>= 5000 bp)	0
+Total length (>= 10000 bp)	0
+Total length (>= 25000 bp)	0
+Total length (>= 50000 bp)	0
+# contigs	16
+Largest contig	1958
+Total length	12097
+Reference length	29903
+GC (%)	54.55
+Reference GC (%)	37.97
+N50	723
+N75	649
+L50	7
+L75	11
+# unaligned contigs	16 + 0 part
+Unaligned length	12097
+# N's per 100 kbp	0.00
+NGA50	-

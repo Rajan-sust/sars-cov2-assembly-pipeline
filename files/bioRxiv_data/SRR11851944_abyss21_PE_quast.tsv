@@ -1,0 +1,45 @@
+Assembly	SRR11851944_scaffolds
+# contigs (>= 0 bp)	7332
+# contigs (>= 1000 bp)	4
+# contigs (>= 5000 bp)	0
+# contigs (>= 10000 bp)	0
+# contigs (>= 25000 bp)	0
+# contigs (>= 50000 bp)	0
+Total length (>= 0 bp)	281405
+Total length (>= 1000 bp)	5566
+Total length (>= 5000 bp)	0
+Total length (>= 10000 bp)	0
+Total length (>= 25000 bp)	0
+Total length (>= 50000 bp)	0
+# contigs	30
+Largest contig	1622
+Total length	24019
+Reference length	29903
+GC (%)	44.26
+Reference GC (%)	37.97
+N50	801
+NG50	728
+N75	667
+NG75	527
+L50	12
+LG50	15
+L75	20
+LG75	27
+# misassemblies	0
+# misassembled contigs	0
+Misassembled contigs length	0
+# local misassemblies	0
+# scaffold gap ext. mis.	0
+# scaffold gap loc. mis.	0
+# unaligned mis. contigs	0
+# unaligned contigs	17 + 0 part
+Unaligned length	12409
+Genome fraction (%)	38.692
+Duplication ratio	1.003
+# N's per 100 kbp	249.80
+# mismatches per 100 kbp	25.93
+# indels per 100 kbp	0.00
+# genomic features	8 + 13 part
+Largest alignment	1622
+Total aligned length	11610
+NGA50	-
