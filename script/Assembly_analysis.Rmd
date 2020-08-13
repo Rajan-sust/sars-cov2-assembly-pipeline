@@ -80,6 +80,7 @@ ggsave("percent features mapped.pdf", width = 15, height = 10, units = "cm")
 ### 90% of the genome is covered by single contig
 
 ```{r}
+library(tidyverse)
 #90%=29903*.9
 contig = x3 %>% filter(Assembly == "Largest contig") %>% filter(value >=26912.7)
 ggplot(contig, aes(X2)) +
@@ -120,6 +121,34 @@ cor(rx3$value, rx3$read, method = "spearman")
 
 #read dist; not needed
 
+
+```
+
+
+### sample to assembler
+
+```{r, message = FALSE}
+library(tidyverse)
+rx2 %>% filter(Assembly == "Genome fraction (%)") %>% na.omit() %>%
+    ggplot(aes(fct_reorder(id, read), X2, color = X2)) +
+    geom_point(aes(size = value, alpha = .5)) +
+    ylab("") +
+    xlab("Samples are sorted by number of reads") + 
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 0, hjust = 1),
+        axis.text.x=element_blank()) 
+
+ggsave("sampleVsassembler_color_bk.pdf", width = 30, height = 20, units = "cm")
+
+# select 4 samples with high and low mean frac to plot in mvista
+#high = SRR11578289 (97.4), SRR11597206 (94.4)
+#low = SRR11828432, SRR11828424
+#ref: MN908947.3
+
+mvista = x3 %>% filter(Assembly == "Genome fraction (%)") %>% na.omit() %>%
+    group_by(X1) %>%
+    summarise(mean = mean(value)) %>% arrange(mean)
 
 ```
 

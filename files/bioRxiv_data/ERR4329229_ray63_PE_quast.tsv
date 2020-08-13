@@ -1,0 +1,52 @@
+Assembly	Scaffolds
+# contigs (>= 0 bp)	19
+# contigs (>= 1000 bp)	9
+# contigs (>= 5000 bp)	1
+# contigs (>= 10000 bp)	0
+# contigs (>= 25000 bp)	0
+# contigs (>= 50000 bp)	0
+Total length (>= 0 bp)	29449
+Total length (>= 1000 bp)	24672
+Total length (>= 5000 bp)	5339
+Total length (>= 10000 bp)	0
+Total length (>= 25000 bp)	0
+Total length (>= 50000 bp)	0
+# contigs	13
+Largest contig	5339
+Total length	27178
+Reference length	29903
+GC (%)	38.17
+Reference GC (%)	37.97
+N50	2993
+NG50	2793
+N75	1863
+NG75	1373
+L50	4
+LG50	5
+L75	7
+LG75	8
+# misassemblies	0
+# misassembled contigs	0
+Misassembled contigs length	0
+# local misassemblies	0
+# scaffold gap ext. mis.	0
+# scaffold gap loc. mis.	1
+# unaligned mis. contigs	0
+# unaligned contigs	0 + 0 part
+Unaligned length	0
+Genome fraction (%)	89.710
+Duplication ratio	1.013
+# N's per 100 kbp	739.57
+# mismatches per 100 kbp	52.19
+# indels per 100 kbp	14.91
+# genomic features	28 + 21 part
+Largest alignment	5339
+Total aligned length	26977
+NA50	2993
+NGA50	2793
+NA75	1863
+NGA75	1373
+LA50	4
+LGA50	5
+LA75	7
+LGA75	8

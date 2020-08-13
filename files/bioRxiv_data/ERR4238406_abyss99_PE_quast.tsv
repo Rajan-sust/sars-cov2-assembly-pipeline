@@ -1,0 +1,52 @@
+Assembly	ERR4238406_scaffolds
+# contigs (>= 0 bp)	22
+# contigs (>= 1000 bp)	10
+# contigs (>= 5000 bp)	0
+# contigs (>= 10000 bp)	0
+# contigs (>= 25000 bp)	0
+# contigs (>= 50000 bp)	0
+Total length (>= 0 bp)	30559
+Total length (>= 1000 bp)	22790
+Total length (>= 5000 bp)	0
+Total length (>= 10000 bp)	0
+Total length (>= 25000 bp)	0
+Total length (>= 50000 bp)	0
+# contigs	17
+Largest contig	4660
+Total length	28685
+Reference length	29903
+GC (%)	38.12
+Reference GC (%)	37.97
+N50	1949
+NG50	1949
+N75	1307
+NG75	1253
+L50	5
+LG50	5
+L75	9
+LG75	10
+# misassemblies	0
+# misassembled contigs	0
+Misassembled contigs length	0
+# local misassemblies	0
+# scaffold gap ext. mis.	0
+# scaffold gap loc. mis.	0
+# unaligned mis. contigs	0
+# unaligned contigs	0 + 0 part
+Unaligned length	0
+Genome fraction (%)	93.780
+Duplication ratio	1.023
+# N's per 100 kbp	0.00
+# mismatches per 100 kbp	32.09
+# indels per 100 kbp	0.00
+# genomic features	32 + 17 part
+Largest alignment	4660
+Total aligned length	28668
+NA50	1949
+NGA50	1949
+NA75	1307
+NGA75	1253
+LA50	5
+LGA50	5
+LA75	9
+LGA75	10

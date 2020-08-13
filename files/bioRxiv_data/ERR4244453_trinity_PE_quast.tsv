@@ -1,0 +1,48 @@
+Assembly	ERR4244453
+# contigs (>= 0 bp)	4
+# contigs (>= 1000 bp)	3
+# contigs (>= 5000 bp)	2
+# contigs (>= 10000 bp)	0
+# contigs (>= 25000 bp)	0
+# contigs (>= 50000 bp)	0
+Total length (>= 0 bp)	18211
+Total length (>= 1000 bp)	17980
+Total length (>= 5000 bp)	16145
+Total length (>= 10000 bp)	0
+Total length (>= 25000 bp)	0
+Total length (>= 50000 bp)	0
+# contigs	3
+Largest contig	8814
+Total length	17980
+Reference length	29903
+GC (%)	39.03
+Reference GC (%)	37.97
+N50	7331
+NG50	7331
+N75	7331
+L50	2
+LG50	2
+L75	2
+# misassemblies	0
+# misassembled contigs	0
+Misassembled contigs length	0
+# local misassemblies	0
+# scaffold gap ext. mis.	0
+# scaffold gap loc. mis.	0
+# unaligned mis. contigs	0
+# unaligned contigs	0 + 0 part
+Unaligned length	0
+Genome fraction (%)	60.128
+Duplication ratio	1.000
+# N's per 100 kbp	0.00
+# mismatches per 100 kbp	44.49
+# indels per 100 kbp	0.00
+# genomic features	36 + 13 part
+Largest alignment	8814
+Total aligned length	17980
+NA50	7331
+NGA50	7331
+NA75	7331
+LA50	2
+LGA50	2
+LA75	2

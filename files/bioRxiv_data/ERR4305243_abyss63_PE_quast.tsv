@@ -1,0 +1,48 @@
+Assembly	ERR4305243_scaffolds
+# contigs (>= 0 bp)	359
+# contigs (>= 1000 bp)	6
+# contigs (>= 5000 bp)	0
+# contigs (>= 10000 bp)	0
+# contigs (>= 25000 bp)	0
+# contigs (>= 50000 bp)	0
+Total length (>= 0 bp)	58655
+Total length (>= 1000 bp)	8995
+Total length (>= 5000 bp)	0
+Total length (>= 10000 bp)	0
+Total length (>= 25000 bp)	0
+Total length (>= 50000 bp)	0
+# contigs	16
+Largest contig	2849
+Total length	15447
+Reference length	29903
+GC (%)	37.40
+Reference GC (%)	37.97
+N50	1115
+NG50	504
+N75	685
+L50	5
+LG50	16
+L75	10
+# misassemblies	0
+# misassembled contigs	0
+Misassembled contigs length	0
+# local misassemblies	0
+# scaffold gap ext. mis.	0
+# scaffold gap loc. mis.	0
+# unaligned mis. contigs	0
+# unaligned contigs	0 + 0 part
+Unaligned length	0
+Genome fraction (%)	51.677
+Duplication ratio	1.000
+# N's per 100 kbp	323.69
+# mismatches per 100 kbp	19.41
+# indels per 100 kbp	6.47
+# genomic features	4 + 17 part
+Largest alignment	2849
+Total aligned length	15447
+NA50	1115
+NGA50	504
+NA75	685
+LA50	5
+LGA50	16
+LA75	10
