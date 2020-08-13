@@ -21,6 +21,7 @@ x2$Assembly = gsub("# ", "", x2$Assembly)
 x3 = data.frame(str_split_fixed(x2$variable, "_", 3), value = as.numeric(x2$value), x2)
 
 #
+setwd("~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/plots/")
 make_boxplot = function(variableToPlot)
 {
   x4 = x3 %>% filter(Assembly == variableToPlot) 
@@ -32,6 +33,9 @@ make_boxplot = function(variableToPlot)
     theme(panel.background = element_rect(fill = "white"),
         panel.border = element_rect(fill = NA, colour = "black", size = .5),
         axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
+  
+  #filename = str_replace_all(variableToPlot, "[[:punct:]]", "")
+  #ggsave(filename=paste(filename,".pdf", sep="_"), width = 15, height = 10, units = "cm", device = 'pdf')
 }
 
 make_boxplot("Genome fraction (%)")
@@ -160,6 +164,10 @@ x6 = data.frame(assembly = x5$X2, match = as.numeric(as.character(x5$X1.1)), mis
 ```
 
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-19.png)<!-- -->
+
+```r
+ggsave("percent features mapped.pdf", width = 15, height = 10, units = "cm")
+```
 
 ### dataset 
 
