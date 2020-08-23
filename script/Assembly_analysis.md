@@ -25,6 +25,12 @@ setwd("~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/plots/")
 make_boxplot = function(variableToPlot)
 {
   x4 = x3 %>% filter(Assembly == variableToPlot) 
+  stat = x4 %>%
+    group_by(X2) %>%
+    summarize(mean = mean(value, na.rm = TRUE),
+            median = median(value, na.rm = TRUE))
+  
+  print(stat)
   ggplot(x4, aes(X2, value)) +
     geom_boxplot() +
     geom_jitter(alpha = .5, width = .1) +
@@ -41,10 +47,54 @@ make_boxplot = function(variableToPlot)
 make_boxplot("Genome fraction (%)")
 ```
 
+```
+## # A tibble: 16 x 3
+##    X2            mean median
+##    <fct>        <dbl>  <dbl>
+##  1 abyss21      84.8   94.8 
+##  2 abyss63      83.5   95.6 
+##  3 abyss99      70.6   81.5 
+##  4 megahit      97.5   99.7 
+##  5 metaspades   97.5   99.7 
+##  6 metavelvet21  7.03   3.89
+##  7 metavelvet63 23.5   10.6 
+##  8 metavelvet99 25.2   21.3 
+##  9 ray21        90.4   94.8 
+## 10 ray63        91.6   95.0 
+## 11 ray99        91.6   95.0 
+## 12 spades       96.7   99.2 
+## 13 trinity      81.4   98.0 
+## 14 velvet21      7.15   4.78
+## 15 velvet63     23.8   11.2 
+## 16 velvet99     25.7   21.1
+```
+
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
 
 ```r
 make_boxplot("Largest contig")
+```
+
+```
+## # A tibble: 16 x 3
+##    X2             mean median
+##    <fct>         <dbl>  <dbl>
+##  1 abyss21      12912. 12340.
+##  2 abyss63      10376.  6950 
+##  3 abyss99       5917.  2826 
+##  4 megahit      23680. 28204 
+##  5 metaspades   23846. 29828 
+##  6 metavelvet21   755.   667 
+##  7 metavelvet63  1521.   814 
+##  8 metavelvet99  1120.   991 
+##  9 ray21        15248. 14898.
+## 10 ray63        14237. 13042 
+## 11 ray99        14216. 13042 
+## 12 spades       18965. 17698.
+## 13 trinity      16179. 17251 
+## 14 velvet21       755.   667 
+## 15 velvet63      1512.   810 
+## 16 velvet99      1140.  1008
 ```
 
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-2.png)<!-- -->
@@ -53,10 +103,54 @@ make_boxplot("Largest contig")
 make_boxplot("Total length")
 ```
 
+```
+## # A tibble: 16 x 3
+##    X2             mean median
+##    <fct>         <dbl>  <dbl>
+##  1 abyss21      25718. 28690.
+##  2 abyss63      25518. 28960 
+##  3 abyss99      21873. 25571 
+##  4 megahit      32533. 29884.
+##  5 metaspades   31636. 29892.
+##  6 metavelvet21  2804.  1430 
+##  7 metavelvet63  7677.  3507 
+##  8 metavelvet99  8651.  6620 
+##  9 ray21        30382. 30377 
+## 10 ray63        30308. 29811 
+## 11 ray99        30306. 29811 
+## 12 spades       39610. 30484.
+## 13 trinity      32700. 29827 
+## 14 velvet21      2803.  1430 
+## 15 velvet63      7741.  3523 
+## 16 velvet99      8799.  6710
+```
+
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-3.png)<!-- -->
 
 ```r
 make_boxplot("contigs")
+```
+
+```
+## # A tibble: 16 x 3
+##    X2            mean median
+##    <fct>        <dbl>  <dbl>
+##  1 abyss21       7.76    5  
+##  2 abyss63      10.2     9  
+##  3 abyss99      13.9    14.5
+##  4 megahit       6.52    2  
+##  5 metaspades    5.37    2  
+##  6 metavelvet21  4.32    2  
+##  7 metavelvet63  8       5  
+##  8 metavelvet99 11.4    10  
+##  9 ray21         7.56    4.5
+## 10 ray63         8.11    5  
+## 11 ray99         8.12    5  
+## 12 spades        8.48    5  
+## 13 trinity       8.79    3.5
+## 14 velvet21      4.32    2  
+## 15 velvet63      8.14    5  
+## 16 velvet99     11.6    10
 ```
 
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-4.png)<!-- -->
@@ -65,10 +159,54 @@ make_boxplot("contigs")
 make_boxplot("contigs (>= 1000 bp)")
 ```
 
+```
+## # A tibble: 16 x 3
+##    X2            mean median
+##    <fct>        <dbl>  <dbl>
+##  1 abyss21       3.88    3  
+##  2 abyss63       5.38    5  
+##  3 abyss99       5.36    5.5
+##  4 megahit       3.09    2  
+##  5 metaspades    2.79    1  
+##  6 metavelvet21  0.32    0  
+##  7 metavelvet63  1.76    0  
+##  8 metavelvet99  1.56    0  
+##  9 ray21         5.45    4  
+## 10 ray63         5.89    4  
+## 11 ray99         5.90    4  
+## 12 spades        5.67    4  
+## 13 trinity       4.54    3  
+## 14 velvet21      0.32    0  
+## 15 velvet63      1.71    0  
+## 16 velvet99      1.56    1
+```
+
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-5.png)<!-- -->
 
 ```r
 make_boxplot("Largest alignment")
+```
+
+```
+## # A tibble: 16 x 3
+##    X2             mean median
+##    <fct>         <dbl>  <dbl>
+##  1 abyss21      13111. 12314.
+##  2 abyss63      10592.  6996 
+##  3 abyss99       6017.  2917 
+##  4 megahit      23870. 29079 
+##  5 metaspades   24064. 29815 
+##  6 metavelvet21   779.   681 
+##  7 metavelvet63  1593.   841 
+##  8 metavelvet99  1080.   969 
+##  9 ray21        14817. 13799 
+## 10 ray63        14233. 13346 
+## 11 ray99        14212. 13346 
+## 12 spades       18527. 18945 
+## 13 trinity      15790  16706 
+## 14 velvet21       782.   681 
+## 15 velvet63      1585.   822.
+## 16 velvet99      1098    967
 ```
 
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-6.png)<!-- -->
@@ -77,10 +215,54 @@ make_boxplot("Largest alignment")
 make_boxplot("mismatches per 100 kbp")
 ```
 
+```
+## # A tibble: 16 x 3
+##    X2            mean median
+##    <fct>        <dbl>  <dbl>
+##  1 abyss21       24.6   25.3
+##  2 abyss63       27.1   26.9
+##  3 abyss99       27.4   25.6
+##  4 megahit       28.8   27.2
+##  5 metaspades    26.6   26.8
+##  6 metavelvet21  61.1    0  
+##  7 metavelvet63  40.4   19.6
+##  8 metavelvet99  58.1   31.1
+##  9 ray21         38.9   36.9
+## 10 ray63         39.4   37.7
+## 11 ray99         39.3   37.7
+## 12 spades        55.2   36.9
+## 13 trinity       35.8   30.8
+## 14 velvet21      61.1    0  
+## 15 velvet63      40.2   19.4
+## 16 velvet99      61.8   34.8
+```
+
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-7.png)<!-- -->
 
 ```r
 make_boxplot("indels per 100 kbp")
+```
+
+```
+## # A tibble: 16 x 3
+##    X2             mean median
+##    <fct>         <dbl>  <dbl>
+##  1 abyss21       9.77    3.48
+##  2 abyss63       5.69    3.39
+##  3 abyss99       7.38    0   
+##  4 megahit       1.80    0   
+##  5 metaspades    0.966   0   
+##  6 metavelvet21  4.52    0   
+##  7 metavelvet63  4.21    0   
+##  8 metavelvet99 23.0     0   
+##  9 ray21         7.23    3.35
+## 10 ray63         9.44    3.61
+## 11 ray99         9.41    3.61
+## 12 spades       12.1     3.42
+## 13 trinity       4.80    0   
+## 14 velvet21      2.87    0   
+## 15 velvet63      3.48    0   
+## 16 velvet99     25.6     0
 ```
 
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-8.png)<!-- -->
@@ -89,10 +271,54 @@ make_boxplot("indels per 100 kbp")
 make_boxplot("Total aligned length")
 ```
 
+```
+## # A tibble: 16 x 3
+##    X2             mean median
+##    <fct>         <dbl>  <dbl>
+##  1 abyss21      25541. 28664.
+##  2 abyss63      25150. 28892 
+##  3 abyss99      21509. 25098.
+##  4 megahit      29217. 29814 
+##  5 metaspades   29203. 29821 
+##  6 metavelvet21  2103.  1165 
+##  7 metavelvet63  7078.  3156.
+##  8 metavelvet99  7585.  6362.
+##  9 ray21        29294. 29823 
+## 10 ray63        29062. 29740 
+## 11 ray99        29060. 29740 
+## 12 spades       36456. 29930 
+## 13 trinity      30214. 29819 
+## 14 velvet21      2139.  1430 
+## 15 velvet63      7143.  3334.
+## 16 velvet99      7733.  6378
+```
+
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-9.png)<!-- -->
 
 ```r
 make_boxplot("misassemblies")
+```
+
+```
+## # A tibble: 16 x 3
+##    X2             mean median
+##    <fct>         <dbl>  <dbl>
+##  1 abyss21      0.0128      0
+##  2 abyss63      0.0270      0
+##  3 abyss99      0.0938      0
+##  4 megahit      0.111       0
+##  5 metaspades   0           0
+##  6 metavelvet21 0           0
+##  7 metavelvet63 0           0
+##  8 metavelvet99 0.258       0
+##  9 ray21        0.617       0
+## 10 ray63        0.235       0
+## 11 ray99        0.235       0
+## 12 spades       0.370       0
+## 13 trinity      0.0494      0
+## 14 velvet21     0           0
+## 15 velvet63     0           0
+## 16 velvet99     0.226       0
 ```
 
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-10.png)<!-- -->
@@ -102,10 +328,54 @@ make_boxplot("misassemblies")
 make_boxplot("N50")
 ```
 
+```
+## # A tibble: 16 x 3
+##    X2             mean median
+##    <fct>         <dbl>  <dbl>
+##  1 abyss21      11643.  8250.
+##  2 abyss63       8927.  4117 
+##  3 abyss99       4241.  1278.
+##  4 megahit      22997. 28204 
+##  5 metaspades   23082. 29828 
+##  6 metavelvet21   671.   596 
+##  7 metavelvet63   890.   648 
+##  8 metavelvet99   708.   658 
+##  9 ray21        13430. 12080.
+## 10 ray63        12477.  8068 
+## 11 ray99        12477.  8068 
+## 12 spades       16764. 15790.
+## 13 trinity      15029. 13837 
+## 14 velvet21       673.   596 
+## 15 velvet63       880.   629 
+## 16 velvet99       706.   663
+```
+
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-11.png)<!-- -->
 
 ```r
 make_boxplot("N75")
+```
+
+```
+## # A tibble: 16 x 3
+##    X2             mean median
+##    <fct>         <dbl>  <dbl>
+##  1 abyss21       8296.  5720.
+##  2 abyss63       6135.  2545 
+##  3 abyss99       2238.   713 
+##  4 megahit      19433. 26626 
+##  5 metaspades   19953. 29431 
+##  6 metavelvet21   593.   556 
+##  7 metavelvet63   704.   560 
+##  8 metavelvet99   608.   584 
+##  9 ray21         9378.  6886.
+## 10 ray63         9410.  6212.
+## 11 ray99         9410.  6212.
+## 12 spades       11730.  7612.
+## 13 trinity      11173.  7110.
+## 14 velvet21       593.   558 
+## 15 velvet63       721.   560 
+## 16 velvet99       610.   586
 ```
 
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-12.png)<!-- -->
@@ -114,10 +384,54 @@ make_boxplot("N75")
 make_boxplot("L50")
 ```
 
+```
+## # A tibble: 16 x 3
+##    X2            mean median
+##    <fct>        <dbl>  <dbl>
+##  1 abyss21       2.56      2
+##  2 abyss63       3.22      3
+##  3 abyss99       4.88      4
+##  4 megahit       1.85      1
+##  5 metaspades    1.59      1
+##  6 metavelvet21  2.28      1
+##  7 metavelvet63  3.39      2
+##  8 metavelvet99  4.98      5
+##  9 ray21         2.41      2
+## 10 ray63         2.60      2
+## 11 ray99         2.61      2
+## 12 spades        2.37      2
+## 13 trinity       2.39      1
+## 14 velvet21      2.28      1
+## 15 velvet63      3.51      3
+## 16 velvet99      5.08      5
+```
+
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-13.png)<!-- -->
 
 ```r
 make_boxplot("L75")
+```
+
+```
+## # A tibble: 16 x 3
+##    X2            mean median
+##    <fct>        <dbl>  <dbl>
+##  1 abyss21       4.4     3  
+##  2 abyss63       5.79    5  
+##  3 abyss99       8.65    7.5
+##  4 megahit       3.27    1  
+##  5 metaspades    2.60    1  
+##  6 metavelvet21  3.44    2  
+##  7 metavelvet63  5.59    4  
+##  8 metavelvet99  8.10    7  
+##  9 ray21         4.13    2  
+## 10 ray63         4.55    3  
+## 11 ray99         4.56    3  
+## 12 spades        4.20    3  
+## 13 trinity       4.39    2  
+## 14 velvet21      3.44    2  
+## 15 velvet63      5.78    4  
+## 16 velvet99      8.21    7
 ```
 
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-14.png)<!-- -->
@@ -126,10 +440,54 @@ make_boxplot("L75")
 make_boxplot("NA50")
 ```
 
+```
+## # A tibble: 16 x 3
+##    X2             mean median
+##    <fct>         <dbl>  <dbl>
+##  1 abyss21      12311.  8610 
+##  2 abyss63       9431.  4624.
+##  3 abyss99       4517.  1480 
+##  4 megahit      24052. 29576 
+##  5 metaspades   23844. 29815 
+##  6 metavelvet21   692.   657 
+##  7 metavelvet63   945.   629 
+##  8 metavelvet99   685.   641 
+##  9 ray21        13095. 11269 
+## 10 ray63        12850.  8323 
+## 11 ray99        12849.  8323 
+## 12 spades       16582. 15378 
+## 13 trinity      14977. 16192 
+## 14 velvet21       692.   657 
+## 15 velvet63       933.   628 
+## 16 velvet99       682.   644
+```
+
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-15.png)<!-- -->
 
 ```r
 make_boxplot("NA75")
+```
+
+```
+## # A tibble: 16 x 3
+##    X2             mean median
+##    <fct>         <dbl>  <dbl>
+##  1 abyss21       8901.  6368 
+##  2 abyss63       6416.  3052.
+##  3 abyss99       2379.   866.
+##  4 megahit      21131. 29576 
+##  5 metaspades   21652. 29819 
+##  6 metavelvet21   618.   579 
+##  7 metavelvet63   735.   560 
+##  8 metavelvet99   576.   560.
+##  9 ray21         9177.  6428 
+## 10 ray63         9688.  6361 
+## 11 ray99         9688.  6361 
+## 12 spades       12399.  7651 
+## 13 trinity      11455.  7424 
+## 14 velvet21       618.   579 
+## 15 velvet63       753.   564 
+## 16 velvet99       581.   570.
 ```
 
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-16.png)<!-- -->
@@ -138,10 +496,54 @@ make_boxplot("NA75")
 make_boxplot("LA50")
 ```
 
+```
+## # A tibble: 16 x 3
+##    X2            mean median
+##    <fct>        <dbl>  <dbl>
+##  1 abyss21       2.28    2  
+##  2 abyss63       3.14    3  
+##  3 abyss99       4.82    4  
+##  4 megahit       1.17    1  
+##  5 metaspades    1.25    1  
+##  6 metavelvet21  1.65    1  
+##  7 metavelvet63  3.08    2  
+##  8 metavelvet99  4.72    5  
+##  9 ray21         2.38    2  
+## 10 ray63         2.37    2  
+## 11 ray99         2.38    2  
+## 12 spades        1.95    1.5
+## 13 trinity       2.09    1  
+## 14 velvet21      1.65    1  
+## 15 velvet63      3.18    2  
+## 16 velvet99      4.84    5
+```
+
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-17.png)<!-- -->
 
 ```r
 make_boxplot("LA75")
+```
+
+```
+## # A tibble: 16 x 3
+##    X2            mean median
+##    <fct>        <dbl>  <dbl>
+##  1 abyss21       3.93    2  
+##  2 abyss63       5.37    4.5
+##  3 abyss99       8.58    8.5
+##  4 megahit       1.59    1  
+##  5 metaspades    1.59    1  
+##  6 metavelvet21  2.47    2  
+##  7 metavelvet63  5.10    4  
+##  8 metavelvet99  7.48    7  
+##  9 ray21         3.90    3  
+## 10 ray63         4.04    3  
+## 11 ray99         4.05    3  
+## 12 spades        3.30    2  
+## 13 trinity       3.04    2  
+## 14 velvet21      2.47    2  
+## 15 velvet63      5.28    4  
+## 16 velvet99      7.61    7
 ```
 
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-18.png)<!-- -->
@@ -175,26 +577,6 @@ ggsave("percent features mapped.pdf", width = 15, height = 10, units = "cm")
 
 ```r
 library(tidyverse)
-```
-
-```
-## ── Attaching packages ───────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
-```
-
-```
-## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
-## ✓ tibble  3.0.3     ✓ dplyr   1.0.1
-## ✓ tidyr   1.1.1     ✓ stringr 1.4.0
-## ✓ readr   1.3.1     ✓ forcats 0.5.0
-```
-
-```
-## ── Conflicts ──────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
-```
-
-```r
 #90%=29903*.9
 contig = x3 %>% filter(Assembly == "Largest contig") %>% filter(value >=26912.7)
 ggplot(contig, aes(X2)) +
@@ -261,6 +643,38 @@ cor(rx3$value, rx3$read, method = "spearman")
 
 ```r
 #read dist; not needed
+```
+
+
+### sample to assembler
+
+
+```r
+library(tidyverse)
+rx2 %>% filter(Assembly == "Genome fraction (%)") %>% na.omit() %>%
+    ggplot(aes(fct_reorder(id, read), X2, color = X2)) +
+    geom_point(aes(size = value, alpha = .5)) +
+    ylab("") +
+    xlab("Samples are sorted by number of reads") + 
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 0, hjust = 1),
+        axis.text.x=element_blank()) 
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+
+```r
+ggsave("sampleVsassembler_color_bk.pdf", width = 30, height = 20, units = "cm")
+
+# select 4 samples with high and low mean frac to plot in mvista
+#high = SRR11578289 (97.4), SRR11597206 (94.4)
+#low = SRR11828432, SRR11828424
+#ref: MN908947.3
+
+mvista = x3 %>% filter(Assembly == "Genome fraction (%)") %>% na.omit() %>%
+    group_by(X1) %>%
+    summarise(mean = mean(value)) %>% arrange(mean)
 ```
 
 
