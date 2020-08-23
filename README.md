@@ -34,6 +34,7 @@ conda install -c bioconda spades
 conda install -c bioconda velvet
 conda install -c bioconda ray
 conda install -c bioconda soapdenovo2
+conda install -c bioconda minia
 ```
 
 ```

@@ -105,16 +105,25 @@ for sra in "${sra_list[@]}"; do
   # soapdenovo
   # $3 -> configSoapDenovo.txt
   for kmer in 21 63; do
-    mkdir -p "soapdenovo/${sra}${kmer}"
-    cd "soapdenovo/${sra}${kmer}/"
+    mkdir -p "soapdenovo/${sra}-${kmer}"
+    cd "soapdenovo/${sra}-${kmer}/"
     cat "../../${3}" > temp.txt
     echo "q1=../../trimmomatic/${sra}_1P.fastq" >> temp.txt
     echo "q2=../../trimmomatic/${sra}_2P.fastq" >> temp.txt
     SOAPdenovo-63mer all -s temp.txt -o "${sra}" -K "${kmer}"
     rm -f temp.txt
-    quast_cp_zip_rm "soapdenovo" "${sra}" "soapdenovo/${sra}${kmer}/${sra}.contig"
     cd ../..
+    quast_cp_zip_rm "soapdenovo" "${sra}-${kmer}" "soapdenovo/${sra}-${kmer}/${sra}.scafSeq"
   done
+
+  # minia
+  mkdir -p "minia/${sra}/"
+  cd "minia/${sra}/"
+  cat "../../trimmomatic/${sra}_1P.fastq" "../../trimmomatic/${sra}_2P.fastq" > "${sra}_M.fastq"
+  minia -in "${sra}_M.fastq" -kmer-size 31 -abundance-min 3
+  rm -f "${sra}_M.fastq"
+  cd ../..
+  quast_cp_zip_rm "minia" "${sra}" "minia/${sra}/${sra}_M.contigs.fa"
 
 
   rm -f "data/*"
