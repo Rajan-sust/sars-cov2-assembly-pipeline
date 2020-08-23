@@ -26,6 +26,12 @@ setwd("~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/plots/")
 make_boxplot = function(variableToPlot)
 {
   x4 = x3 %>% filter(Assembly == variableToPlot) 
+  stat = x4 %>%
+    group_by(X2) %>%
+    summarize(mean = mean(value, na.rm = TRUE),
+            median = median(value, na.rm = TRUE))
+  
+  print(stat)
   ggplot(x4, aes(X2, value)) +
     geom_boxplot() +
     geom_jitter(alpha = .5, width = .1) +
@@ -79,7 +85,7 @@ ggsave("percent features mapped.pdf", width = 15, height = 10, units = "cm")
 
 ### 90% of the genome is covered by single contig
 
-```{r}
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
 library(tidyverse)
 #90%=29903*.9
 contig = x3 %>% filter(Assembly == "Largest contig") %>% filter(value >=26912.7)
