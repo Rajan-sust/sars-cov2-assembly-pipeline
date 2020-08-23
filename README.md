@@ -33,6 +33,7 @@ conda install -c bioconda trinity
 conda install -c bioconda spades
 conda install -c bioconda velvet
 conda install -c bioconda ray
+conda install -c bioconda soapdenovo2
 ```
 
 ```
@@ -43,5 +44,5 @@ tar -zxvf quast-5.0.2.tar.gz
 ### Run the Script for PE
 
 ```
-bash paired_assembler.sh sample_paired_sra_list.txt adapter_pe.fa
+bash paired_assembler.sh sample_paired_sra_list.txt adapter_pe.fa configSoapDenovo.txt 
 ```

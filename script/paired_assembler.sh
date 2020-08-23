@@ -73,18 +73,6 @@ for sra in "${sra_list[@]}"; do
     cd ../..
     quast_cp_zip_rm "abyss${kmer}" "${sra}" "abyss${kmer}/${sra}/${sra}-scaffolds.fa"
   done 
-  
-# ray
-  for kmer in 21 63 99; do
-    mkdir -p "ray${kmer}"
-    cd "ray${kmer}"
-    gunzip ../"${pgz_1}" ../"${pgz_2}"
-    mpiexec -n 10 Ray -k $kmer -p  ../"trimmomatic/${sra}_1P.fastq" ../"trimmomatic/${sra}_2P.fastq" -o "${sra}"
-    rm -r "${sra}"/BiologicalAbundances/
-    cd ../
-    gzip "trimmomatic/${sra}_1P.fastq" "trimmomatic/${sra}_2P.fastq"
-    quast_cp_zip_rm "ray${kmer}" "${sra}" "ray${kmer}/${sra}/Scaffolds.fasta"
-  done
 
 # velvet and metavelvet
   for kmer in 21 63 99; do
@@ -100,6 +88,32 @@ for sra in "${sra_list[@]}"; do
     meta-velvetg "metavelvet${kmer}/${sra}"
     rm -f metavelvet${kmer}/${sra}/*Graph*
     quast_cp_zip_rm "metavelvet${kmer}" "${sra}" "metavelvet${kmer}/${sra}/contigs.fa"
+  done
+
+# ray
+  for kmer in 21 63 99; do
+    mkdir -p "ray${kmer}"
+    cd "ray${kmer}"
+    gunzip ../"${pgz_1}" ../"${pgz_2}"
+    mpiexec -n 10 Ray -k $kmer -p  ../"trimmomatic/${sra}_1P.fastq" ../"trimmomatic/${sra}_2P.fastq" -o "${sra}"
+    rm -r "${sra}"/BiologicalAbundances/
+    cd ../
+    # gzip "trimmomatic/${sra}_1P.fastq" "trimmomatic/${sra}_2P.fastq"
+    quast_cp_zip_rm "ray${kmer}" "${sra}" "ray${kmer}/${sra}/Scaffolds.fasta"
+  done
+
+  # soapdenovo
+  # $3 -> configSoapDenovo.txt
+  for kmer in 21 63; do
+    mkdir -p "soapdenovo/${sra}${kmer}"
+    cd "soapdenovo/${sra}${kmer}/"
+    cat "../../${3}" > temp.txt
+    echo "q1=../../trimmomatic/${sra}_1P.fastq" >> temp.txt
+    echo "q2=../../trimmomatic/${sra}_2P.fastq" >> temp.txt
+    SOAPdenovo-63mer all -s temp.txt -o "${sra}" -K "${kmer}"
+    rm -f temp.txt
+    quast_cp_zip_rm "soapdenovo" "${sra}" "soapdenovo/${sra}${kmer}/${sra}.contig"
+    cd ../..
   done
 
 
