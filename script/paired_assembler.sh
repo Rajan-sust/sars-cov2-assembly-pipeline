@@ -111,13 +111,7 @@ for sra in "${sra_list[@]}"; do
     cat "../../${3}" > temp.txt
     echo "q1=../../trimmomatic/${sra}_1P.fastq" >> temp.txt
     echo "q2=../../trimmomatic/${sra}_2P.fastq" >> temp.txt
-    
-    if [[ "${kmer}" -eq "99" ]]; then
-      SOAPdenovo-127mer all -s temp.txt -o "${sra}" -K "${kmer}"
-    else
-      SOAPdenovo-63mer all -s temp.txt -o "${sra}" -K "${kmer}"
-    fi
-    
+    SOAPdenovo-63mer all -s temp.txt -o "${sra}" -K "${kmer}"
     rm -f temp.txt
     cd ../..
     quast_cp_zip_rm "soapdenovo${kmer}" "${sra}" "soapdenovo${kmer}/${sra}/${sra}.scafSeq"
