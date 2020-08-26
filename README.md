@@ -42,8 +42,17 @@ wget https://sourceforge.net/projects/quast/files/quast-5.0.2.tar.gz
 tar -zxvf quast-5.0.2.tar.gz
 ```
 
+### Required files for running the PE script
+- [PE_561samples_final_561runs.txt](https://github.com/Rajan-sust/covid19-Assembly/blob/master/files/PE_561samples_final_561runs.txt)
+
+- [adapter_pe.fa](https://github.com/Rajan-sust/covid19-Assembly/blob/master/files/adapter_pe.fa)
+
+- [configSoapDenovo.txt](https://github.com/Rajan-sust/covid19-Assembly/blob/master/files/configSoapDenovo.txt)
+
+- [MN908947.3.fasta](https://github.com/Rajan-sust/covid19-Assembly/blob/master/files/MN908947.3.fasta)
+
 ### Run the Script for PE
 
 ```
-bash paired_assembler.sh sample_paired_sra_list.txt adapter_pe.fa configSoapDenovo.txt 
+bash paired_assembler.sh PE_561samples_final_561runs.txt adapter_pe.fa configSoapDenovo.txt 
 ```
