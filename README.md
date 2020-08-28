@@ -56,3 +56,10 @@ tar -zxvf quast-5.0.2.tar.gz
 ```
 bash paired_assembler.sh PE_561samples_final_561runs.txt adapter_pe.fa configSoapDenovo.txt 
 ```
+
+### SE
+
+
+```
+bash se_assembler.sh sra_sample.txt adapter_SE.fa
+```
