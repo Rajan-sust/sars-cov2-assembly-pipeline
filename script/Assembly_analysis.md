@@ -32,16 +32,17 @@ make_boxplot = function(variableToPlot)
   
   print(stat)
   ggplot(x4, aes(X2, value)) +
-    geom_boxplot() +
-    geom_jitter(alpha = .5, width = .1) +
+    geom_boxplot(aes(color = X2)) +
+    geom_jitter(aes(color = X2), alpha = .5, width = .1) +
     xlab("") +
     ylab(variableToPlot) +
     theme(panel.background = element_rect(fill = "white"),
         panel.border = element_rect(fill = NA, colour = "black", size = .5),
-        axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
+        axis.text = element_text(color = "black", angle = 90, hjust = 1),
+        legend.position = "none")
   
   #filename = str_replace_all(variableToPlot, "[[:punct:]]", "")
-  #ggsave(filename=paste(filename,".pdf", sep="_"), width = 15, height = 10, units = "cm", device = 'pdf')
+  #ggsave(filename=paste(filename,"color.pdf", sep="_"), width = 15, height = 10, units = "cm", device = 'pdf')
 }
 
 make_boxplot("Genome fraction (%)")
@@ -557,19 +558,20 @@ x6 = data.frame(assembly = x5$X2, match = as.numeric(as.character(x5$X1.1)), mis
 
 # 
   ggplot(x6, aes(assembly, 100*(match/49))) +
-    geom_boxplot() +
-    geom_jitter(alpha = .5, width = .1) +
+    geom_boxplot(aes(color = assembly)) +
+    geom_jitter(aes(color = assembly), alpha = .5, width = .1) +
     xlab("") +
     ylab("% features mapped") +
     theme(panel.background = element_rect(fill = "white"),
         panel.border = element_rect(fill = NA, colour = "black", size = .5),
-        axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
+        axis.text = element_text(color = "black", angle = 90, hjust = 1),
+        legend.position = "none") 
 ```
 
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-19.png)<!-- -->
 
 ```r
-ggsave("percent features mapped.pdf", width = 15, height = 10, units = "cm")
+ggsave("percent_features_mapped_color.pdf", width = 15, height = 10, units = "cm")
 ```
 
 ### 90% of the genome is covered by single contig
@@ -585,11 +587,8 @@ ggplot(contig, aes(X2)) +
     ylab("Count") +
     theme(panel.background = element_rect(fill = "white"),
         panel.border = element_rect(fill = NA, colour = "black", size = .5),
-        axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
-```
-
-```
-## Warning: Ignoring unknown parameters: binwidth, bins, pad
+        axis.text = element_text(color = "black", angle = 90, hjust = 1),
+        legend.position = "none") 
 ```
 
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
@@ -639,6 +638,14 @@ cor(rx3$value, rx3$read, method = "spearman")
 
 ```
 ## [1] 0.1937081
+```
+
+```r
+cor(rx3$value, rx3$read, method = "pearson")
+```
+
+```
+## [1] 0.07455972
 ```
 
 ```r
