@@ -36,4 +36,12 @@ for sra in "${sra_list[@]}"; do
   Trinity --seqType fq --max_memory 10G --single "${fsgz}" --no_bowtie --CPU 40 --full_cleanup
   mv trinity_out_dir.Trinity.fasta "trinity/${sra}/${sra}.fasta"
   
+  # velvet
+  # output file: velvet${kmer}/${sra}/contigs.fa
+  for kmer in 21 63 99; do
+    mkdir -p "velvet${kmer}"
+    velveth "velvet${kmer}/${sra}/" "${kmer}" -short -fastq "${fsgz}"
+    velvetg "velvet${kmer}/${sra}/" -read_trkg yes
+  done
+
 done
