@@ -98,7 +98,7 @@ for sra in "${sra_list[@]}"; do
     mpiexec -n 10 Ray -k $kmer -p  ../"trimmomatic/${sra}_1P.fastq" ../"trimmomatic/${sra}_2P.fastq" -o "${sra}"
     rm -r "${sra}"/BiologicalAbundances/
     cd ../
-    # gzip "trimmomatic/${sra}_1P.fastq" "trimmomatic/${sra}_2P.fastq"
+    gzip "trimmomatic/${sra}_1P.fastq" "trimmomatic/${sra}_2P.fastq"
     quast_cp_zip_rm "ray${kmer}" "${sra}" "ray${kmer}/${sra}/Scaffolds.fasta"
   done
 

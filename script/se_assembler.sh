@@ -53,5 +53,16 @@ for sra in "${sra_list[@]}"; do
     rm *dot*
     cd ../..
   done
-  
+
+  # ray
+  gunzip "${fsgz}"
+  for kmer in 21 63 99; do
+    mkdir -p "ray${kmer}"
+    cd "ray${kmer}"
+    mpiexec -n 10 Ray -k $kmer -s "../trimmomatic/${sra}_1S.fastq" -o "${sra}"
+    rm -r "${sra}/BiologicalAbundances/"
+    cd ../
+  done
+  gzip "trimmomatic/${sra}_1S.fastq"
+
 done
