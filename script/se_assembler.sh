@@ -65,4 +65,13 @@ for sra in "${sra_list[@]}"; do
   done
   gzip "trimmomatic/${sra}_1S.fastq"
 
+  # minia
+  # output filename: minia${kmer}/${sra}/${sra}_1S.fastq.contigs.fa
+  for kmer in 21 63 99; do
+    mkdir -p "minia${kmer}/${sra}/"
+    cd "minia${kmer}/${sra}/"
+    minia -in "../../${fsgz}" -kmer-size "${kmer}" -abundance-min 3
+    cd ../..
+  done
+
 done
