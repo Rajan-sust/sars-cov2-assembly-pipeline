@@ -44,4 +44,14 @@ for sra in "${sra_list[@]}"; do
     velvetg "velvet${kmer}/${sra}/" -read_trkg yes
   done
 
+  # abyss
+  # output file: abyss${kmer}/${sra}/${sra}-unitigs.fa
+  for kmer in 21 63 99; do
+    mkdir -p "abyss${kmer}/${sra}/"
+    cd "abyss${kmer}/${sra}/"
+    abyss-pe name="${sra}" k=$kmer j=40 se="../../${fsgz}"
+    rm *dot*
+    cd ../..
+  done
+  
 done
