@@ -96,7 +96,7 @@ for sra in "${sra_list[@]}"; do
     cd "minia${kmer}/${sra}/"
     minia -in "../../${fsgz}" -kmer-size "${kmer}" -abundance-min 3
     cd ../..
-    quast_cp_zip_rm "minia${kmer}" "${sra}" "minia${kmer}/${sra}_1S.fastq.contigs.fa"
+    quast_cp_zip_rm "minia${kmer}" "${sra}" "minia${kmer}/${sra}/${sra}_1S.fastq.contigs.fa"
   done
 
   # ray
