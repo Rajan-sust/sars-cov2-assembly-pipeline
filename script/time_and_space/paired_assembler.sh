@@ -13,7 +13,7 @@ function keep_time_and_space() {
   end=$(date +%s.%N)
   runtime=$( echo "${end} - ${3}" | bc -l )
   echo "${1},${2},${runtime}" >> time.csv
-  echo -e "---end---" >> space.txt
+  echo "---end---" >> space.txt
 }
 
 for sra in "${sra_list[@]}"; do
