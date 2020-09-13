@@ -18,9 +18,13 @@ function keep_time_and_space() {
 
 for sra in "${sra_list[@]}"; do
   echo "started running analysis for "${sra}""
-  fastq-dump --split-files --outdir data --gzip "${sra}"
+
   fastq_1="data/${sra}_1.fastq.gz"
   fastq_2="data/${sra}_2.fastq.gz"
+
+  if [ ! -f "${fastq_1}" ] || [ ! -f "${fastq_2}" ]; then
+    fastq-dump --split-files --outdir data --gzip "${sra}"
+  fi
   
   fastqc -o fastqc "${fastq_1}" "${fastq_2}"
   
@@ -29,8 +33,10 @@ for sra in "${sra_list[@]}"; do
   pgz_2="trimmomatic/${sra}_2P.fastq.gz"
   ugz_2="trimmomatic/${sra}_2U.fastq.gz"
 
-  trimmomatic PE "${fastq_1}" "${fastq_2}" "${pgz_1}" "${ugz_1}" "${pgz_2}" "${ugz_2}" \
-  SLIDINGWINDOW:4:20 MINLEN:25 ILLUMINACLIP:"${2}":2:40:15
+  if [ ! -f "${pgz_1}" ] || [ ! -f "${ugz_1}" ] || [ ! -f "${pgz_2}" ] || [ ! -f "${ugz_2}" ]; then
+    trimmomatic PE "${fastq_1}" "${fastq_2}" "${pgz_1}" "${ugz_1}" "${pgz_2}" "${ugz_2}" \
+    SLIDINGWINDOW:4:20 MINLEN:25 ILLUMINACLIP:"${2}":2:40:15
+  fi
 
   fastqc -o trimmed_fastqc "${pgz_1}" "${pgz_2}"
 
