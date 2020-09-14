@@ -1,0 +1,280 @@
+---
+title: "COV_assembly"
+author: "Rashedul"
+date: "7/14/2020"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### alaysis
+
+```{r , cache=TRUE, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(reshape2)
+x = read_tsv("~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/bioRxiv_1074_assembly_report_PE_amplicon_viralRNA.tsv")
+x2 = melt(x, id.vars = "Assembly")
+x2$Assembly = gsub("# ", "", x2$Assembly)
+x3 = data.frame(str_split_fixed(x2$variable, "_", 3), value = as.numeric(x2$value), x2)
+
+#
+setwd("~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/plots/")
+make_boxplot = function(variableToPlot)
+{
+  x4 = x3 %>% filter(Assembly == variableToPlot) 
+  stat = x4 %>%
+    group_by(X2) %>%
+    summarize(mean = mean(value, na.rm = TRUE),
+            median = median(value, na.rm = TRUE))
+  
+  print(stat)
+  ggplot(x4, aes(X2, value)) +
+    geom_boxplot() +
+    geom_jitter(alpha = .5, width = .1) +
+    xlab("") +
+    ylab(variableToPlot) +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
+  
+  #filename = str_replace_all(variableToPlot, "[[:punct:]]", "")
+  #ggsave(filename=paste(filename,".pdf", sep="_"), width = 15, height = 10, units = "cm", device = 'pdf')
+}
+
+make_boxplot("Genome fraction (%)")
+make_boxplot("Largest contig")
+make_boxplot("Total length")
+make_boxplot("contigs")
+make_boxplot("contigs (>= 1000 bp)")
+make_boxplot("Largest alignment")
+make_boxplot("mismatches per 100 kbp")
+make_boxplot("indels per 100 kbp")
+make_boxplot("Total aligned length")
+make_boxplot("misassemblies")
+#make_boxplot("unaligned contigs")
+make_boxplot("N50")
+make_boxplot("N75")
+make_boxplot("L50")
+make_boxplot("L75")
+make_boxplot("NA50")
+make_boxplot("NA75")
+make_boxplot("LA50")
+make_boxplot("LA75")
+
+# genomic feature
+x4 = x3 %>% filter(Assembly == "genomic features") 
+x4$value.1 = gsub("part", "", x4$value.1)
+x5 = data.frame(str_split_fixed(x4$value.1,"\\+", 2), x4) 
+x6 = data.frame(assembly = x5$X2, match = as.numeric(as.character(x5$X1.1)), mismatch = as.numeric(as.character(x5$X2.1)))
+
+# 
+  ggplot(x6, aes(assembly, 100*(match/49))) +
+    geom_boxplot() +
+    geom_jitter(alpha = .5, width = .1) +
+    xlab("") +
+    ylab("% features mapped") +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
+ggsave("percent features mapped.pdf", width = 15, height = 10, units = "cm")
+```
+
+### 90% of the genome is covered by single contig
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+library(tidyverse)
+#90%=29903*.9
+contig = x3 %>% filter(Assembly == "Largest contig") %>% filter(value >=26912.7)
+ggplot(contig, aes(X2)) +
+    geom_histogram(stat = "count") +
+    xlab("") +
+    ylab("Count") +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
+ggsave("90_percent_genome_single_contig.pdf", width = 15, height = 10, units = "cm")
+```
+
+### correlation read vs genome
+
+```{r , cache=TRUE, warning=FALSE, message=FALSE}
+library(tidyverse)
+r = read.table("~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/read_QC_matrix.txt")[,c(1,4)]
+r2 = data.frame(id = str_split_fixed(r$V1, "_", 2), read = r$V4)
+head(r2$id[,1])
+
+#sum every two rows of PE data
+r3 = data.frame(id = unique(r2$id.1), read = (rowsum(r2[,3], as.integer(gl(nrow(r2), 2, nrow(r2))))))
+rx = x3 %>% filter(Assembly == "Genome fraction (%)")
+rx2 = inner_join(r3, rx, by = c("id" = "X1"))
+
+ggplot(rx2, aes(value, read/1e6)) +
+    geom_point(aes(color = X2)) +
+    geom_smooth(method='lm', formula= y~x) +
+    xlab("Genome fraction (%)") +
+    ylab("Number of reads (million)") +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 0, hjust = 1)) 
+ggsave("readVsGenome.pdf", width = 20, height = 15, units = "cm")
+
+rx3 = na.omit(rx2)
+cor(rx3$value, rx3$read, method = "spearman")
+
+#read dist; not needed
+
+
+```
+
+
+### sample to assembler
+
+```{r, message = FALSE}
+library(tidyverse)
+rx2 %>% filter(Assembly == "Genome fraction (%)") %>% na.omit() %>%
+    ggplot(aes(fct_reorder(id, read), X2, color = X2)) +
+    geom_point(aes(size = value, alpha = .5)) +
+    ylab("") +
+    xlab("Samples are sorted by number of reads") + 
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 0, hjust = 1),
+        axis.text.x=element_blank()) 
+
+ggsave("sampleVsassembler_color_bk.pdf", width = 30, height = 20, units = "cm")
+
+# select 4 samples with high and low mean frac to plot in mvista
+#high = SRR11578289 (97.4), SRR11597206 (94.4)
+#low = SRR11828432, SRR11828424
+#ref: MN908947.3
+
+mvista = x3 %>% filter(Assembly == "Genome fraction (%)") %>% na.omit() %>%
+    group_by(X1) %>%
+    summarise(mean = mean(value)) %>% arrange(mean)
+
+```
+
+
+### align fasta to reference
+
+```{r, eval=FALSE}
+#https://www.biostars.org/p/110213/
+# Build reference genome database
+cd /projects/epigenomics3/temp/rislam/assembly/rajan/asm_pe/output_bioRxiv_100samples/ref/
+
+gmap_build -D dir/ -d refgenome MN908947.3.fasta
+# Alignment
+gmap -D dir/refgenome/ -d refgenome -f samse -t 8 ../*fasta | samtools view -Shb - | samtools sort - alignment
+
+samtools index aligment.bam
+```
+
+
+### dataset 
+
+```{r, cache=T, message=F, warning=FALSE}
+library(tidyverse)
+library(knitr)
+
+c = read_tsv("~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/SraRunTable_COVID19_14.06.20.txt")
+
+c2 = tibble(c$Platform, c$Run, c$SRA_Sample, c$Instrument, c$LibraryLayout, c$Assay_Type, c$LibrarySelection, c$LibrarySource, c$Organism, c$geo_loc_name, c$host, c$host_disease, c$Consent)
+
+names(c2) <- gsub("c\\$", "", names(c2))
+colSums(!is.na(c2))
+
+#
+#write_csv(c2, "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/COVID19_14.06.20_metadata_final.csv")
+
+# summarise metadata
+#colnames(c2)
+
+#good code example: https://uc-r.github.io/descriptives_categorical
+table3 <- table(c2$Instrument, c2$Assay_Type)
+table3 <- table( c2$Assay_Type, c2$LibrarySource)
+table3 <- table(c2$Assay_Type, c2$LibrarySource, c2$LibraryLayout)
+ftable(table3)
+
+# will add table paper
+df = c2 %>% 
+    group_by(Assay_Type, LibrarySource, LibraryLayout) %>%
+    tally() 
+
+kable(df, caption = "Summary of all data. This table will add table paper")
+#write_tsv(df, "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/summary_data.tsv")
+
+df2 = df %>% filter(LibrarySource == "VIRAL RNA")
+kable(df2, caption = "Summary of VIRAL RNA data")
+##subsample main paper
+#PE
+set.seed(2020)
+a1 = c2 %>% filter(LibraryLayout == "PAIRED" & Assay_Type == "AMPLICON" & LibrarySource == "VIRAL RNA") %>%
+    mutate(LibType = "PE: AMPLICON of VIRAL RNA") %>% sample_n(100)
+
+set.seed(2020)
+a2 = c2 %>% filter(LibraryLayout == "PAIRED" & Assay_Type == "OTHER" & LibrarySource == "VIRAL RNA") %>%
+    mutate(LibType = "PE: OTHER of VIRAL RNA")
+
+set.seed(2020)
+a3 = c2 %>% filter(LibraryLayout == "PAIRED" & Assay_Type == "RNA-Seq" & LibrarySource == "VIRAL RNA") %>%
+    mutate(LibType = "PE: RNA-Seq of VIRAL RNA") %>% sample_n(100)
+
+set.seed(2020)
+a4 = c2 %>% filter(LibraryLayout == "PAIRED" & Assay_Type == "Targeted-Capture" & LibrarySource == "VIRAL RNA") %>%
+    mutate(LibType = "PE: Targeted-Capture of VIRAL RNA") %>% sample_n(100)
+
+set.seed(2020)
+a5 = c2 %>% filter(LibraryLayout == "PAIRED" & Assay_Type == "WGA" & LibrarySource == "VIRAL RNA") %>%
+    mutate(LibType = "PE: WGA of VIRAL RNA") %>% sample_n(100)
+
+set.seed(2020)
+a6 = c2 %>% filter(LibraryLayout == "PAIRED" & Assay_Type == "WGS" & LibrarySource == "VIRAL RNA") %>%
+    mutate(LibType = "PE: WGS of VIRAL RNA")
+
+#SE
+set.seed(2020)
+b1 = c2 %>% filter(LibraryLayout == "SINGLE" & Assay_Type == "AMPLICON" & LibrarySource == "VIRAL RNA") %>%
+    mutate(LibType = "SE: AMPLICON of VIRAL RNA") %>% sample_n(100)
+
+set.seed(2020)
+b2 = c2 %>% filter(LibraryLayout == "SINGLE" & Assay_Type == "RNA-Seq" & LibrarySource == "VIRAL RNA") %>%
+    mutate(LibType = "SE: RNA-Seq of VIRAL RNA") %>% sample_n(100)
+
+set.seed(2020)
+b3 = c2 %>% filter(LibraryLayout == "SINGLE" & Assay_Type == "Targeted-Capture" & LibrarySource == "VIRAL RNA") %>%
+    mutate(LibType = "SE: Targeted-Capture of VIRAL RNA") %>% sample_n(100)
+
+#dataset
+ab_pe = rbind(a1, a2, a3, a4, a5, a6)
+ab_se = rbind(b1, b2, b3)
+#write_csv(ab_pe, "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/PE_561samples_final.csv")
+#write_csv(ab_se, "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/SE_300samples_final.csv")
+#write.table(ab_pe$Run, "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/PE_561samples_final_561runs.txt", col.names = F, row.names = F, quote = F)
+#write.table(ab_se$Run, "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/SE_300samples_final_300runs.txt", col.names = F, row.names = F, quote = F)
+#write_csv(a1, "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/PE_100samples_amplicon_bioRxiv.csv")
+#write.table(a1[,2], "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/PE_100samples_amplicon_bioRxiv_100runs.txt", col.names = F, row.names = F, quote = F)
+
+# test ram and cpu
+set.seed(2020)
+#20 samples will be selected from amplicon with similar depth
+#ram = a1 %>% sample_n(20)
+
+ab = rbind(ab_pe, ab_se)
+ab2 = ab %>% group_by(LibType) %>% tally()
+kable(ab2, caption = "List of total 9 different categories. Maximum 100 samples are randomly selected")
+    
+```
+
+### check read quality
+
+```{r, eval=F}
+#unzip files
+cd /projects/epigenomics3/temp/rislam/assembly/rajan/asm_pe/output_bioRxiv_100samples/trimmed_fastqc
+for f in *RR*/fastqc_data.txt; do echo $f; grep "Total Sequences\|Sequences flagged as poor quality\|Sequence length\|%GC" $f; done | paste - - - - -  | awk '{gsub("/fastqc_data.txt", ""); print }' >read_QC_matrix.txt
+```
+
+

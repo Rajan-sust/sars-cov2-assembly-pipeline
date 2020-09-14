@@ -1,9 +1,9 @@
 # make window of 50bp
-cd ~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/
+cd /Volumes/rony/drive/asm/covid19-Assembly/files/
 bedtools makewindows -g MN908947.3.sizes.txt -w 50 >MN908947.3.50bpWindows.bed
 
 # make bed file of alignment from paf file
-cd ~/Downloads/x-genomics-alignment-tester-master/tsv_excluded/metaspades/VAR/
+cd /Volumes/rony/x-genomics-alignment-tester-master/asm_fasta_6k/VAR/
 for f in *.srt.paf; do less $f | awk '{print $6 "\t" $8 "\t" $9}' >$f.bed;done
 
 #make matrix 
@@ -23,4 +23,4 @@ tar -zcvf quast_results.tar.gz quast_results
 #uncompress
 tar xvzf myfolder.tar.gz
 
-# 
+# path 
