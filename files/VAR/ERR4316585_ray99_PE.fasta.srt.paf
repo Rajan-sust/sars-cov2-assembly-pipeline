@@ -1,0 +1,12 @@
+scaffold-315	27096	0	12039	+	MN908947.3	29903	36	12074	12036	12039	60	NM:i:3	ms:i:12020	AS:i:12020	nn:i:0	tp:A:P	cm:i:2178	s1:i:12007	s2:i:0	de:f:0.0002	rl:i:0	cg:Z:10350M1I1688M	cs:Z::8745*ct:694*ta:909+t:1688
+scaffold-315	27096	12038	12714	+	MN908947.3	29903	11398	12074	676	676	60	NM:i:0	ms:i:676	AS:i:676	nn:i:0	tp:A:P	cm:i:118	s1:i:668	s2:i:0	de:f:0	rl:i:0	cg:Z:676M	cs:Z::676
+scaffold-315	27096	12713	13389	+	MN908947.3	29903	11398	12074	676	676	60	NM:i:0	ms:i:676	AS:i:676	nn:i:0	tp:A:P	cm:i:118	s1:i:668	s2:i:0	de:f:0	rl:i:0	cg:Z:676M	cs:Z::676
+scaffold-315	27096	13388	14064	+	MN908947.3	29903	11398	12074	676	676	60	NM:i:0	ms:i:676	AS:i:676	nn:i:0	tp:A:P	cm:i:118	s1:i:668	s2:i:0	de:f:0	rl:i:0	cg:Z:676M	cs:Z::676
+scaffold-315	27096	14063	14739	+	MN908947.3	29903	11398	12074	676	676	60	NM:i:0	ms:i:676	AS:i:676	nn:i:0	tp:A:P	cm:i:118	s1:i:668	s2:i:0	de:f:0	rl:i:0	cg:Z:676M	cs:Z::676
+scaffold-315	27096	14738	15414	+	MN908947.3	29903	11398	12074	676	676	60	NM:i:0	ms:i:676	AS:i:676	nn:i:0	tp:A:P	cm:i:118	s1:i:668	s2:i:0	de:f:0	rl:i:0	cg:Z:676M	cs:Z::676
+scaffold-315	27096	15413	16089	+	MN908947.3	29903	11398	12074	676	676	60	NM:i:0	ms:i:676	AS:i:676	nn:i:0	tp:A:P	cm:i:118	s1:i:668	s2:i:0	de:f:0	rl:i:0	cg:Z:676M	cs:Z::676
+scaffold-315	27096	16088	27096	+	MN908947.3	29903	11398	22406	11007	11008	60	NM:i:1	ms:i:11003	AS:i:11003	nn:i:0	tp:A:P	cm:i:1998	s1:i:10991	s2:i:0	de:f:0.0001	rl:i:0	cg:Z:11008M	cs:Z::3406*ct:7601
+scaffold-281	3218	0	3218	-	MN908947.3	29903	22522	25740	3218	3218	60	NM:i:0	ms:i:3218	AS:i:3218	nn:i:0	tp:A:P	cm:i:587	s1:i:3208	s2:i:0	de:f:0	rl:i:0	cg:Z:3218M	cs:Z::3218
+scaffold-249	298	0	298	-	MN908947.3	29903	25638	25936	298	298	60	NM:i:0	ms:i:298	AS:i:298	nn:i:0	tp:A:P	cm:i:56	s1:i:297	s2:i:0	de:f:0	rl:i:0	cg:Z:298M	cs:Z::298
+scaffold-248	3255	0	3255	+	MN908947.3	29903	25760	29015	3251	3255	60	NM:i:4	ms:i:3235	AS:i:3235	nn:i:0	tp:A:P	cm:i:592	s1:i:3214	s2:i:0	de:f:0.0012	rl:i:0	cg:Z:3255M	cs:Z::218*gt:2164*tc:512*ct:205*ct:152
+scaffold-167	1107	0	1107	+	MN908947.3	29903	28747	29854	1106	1107	60	NM:i:1	ms:i:1102	AS:i:1102	nn:i:0	tp:A:P	cm:i:197	s1:i:1097	s2:i:0	de:f:0.0009	rl:i:0	cg:Z:1107M	cs:Z::115*ct:991

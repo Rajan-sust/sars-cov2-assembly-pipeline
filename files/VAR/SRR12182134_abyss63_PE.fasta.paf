@@ -1,0 +1,8 @@
+0	866	0	866	-	MN908947.3	29903	26236	27102	866	866	60	NM:i:0	ms:i:866	AS:i:866	nn:i:0	tp:A:P	cm:i:155	s1:i:860	s2:i:0	de:f:0	rl:i:0	cg:Z:866M	cs:Z::866
+1	285	0	285	-	MN908947.3	29903	15	300	284	285	60	NM:i:1	ms:i:280	AS:i:280	nn:i:0	tp:A:P	cm:i:44	s1:i:263	s2:i:0	de:f:0.0035	rl:i:0	cg:Z:285M	cs:Z::225*ct:59
+5	661	0	661	-	MN908947.3	29903	29211	29872	661	661	60	NM:i:0	ms:i:661	AS:i:661	nn:i:0	tp:A:P	cm:i:119	s1:i:651	s2:i:0	de:f:0	rl:i:0	cg:Z:661M	cs:Z::661
+17	561	0	561	-	MN908947.3	29903	27384	27945	561	561	60	NM:i:0	ms:i:561	AS:i:561	nn:i:0	tp:A:P	cm:i:92	s1:i:550	s2:i:0	de:f:0	rl:i:0	cg:Z:561M	cs:Z::561
+21	354	0	354	-	MN908947.3	29903	28883	29237	354	354	60	NM:i:0	ms:i:354	AS:i:354	nn:i:0	tp:A:P	cm:i:61	s1:i:342	s2:i:0	de:f:0	rl:i:0	cg:Z:354M	cs:Z::354
+23	987	0	987	-	MN908947.3	29903	27883	28870	987	987	60	NM:i:0	ms:i:987	AS:i:987	nn:i:0	tp:A:P	cm:i:192	s1:i:981	s2:i:0	de:f:0	rl:i:0	cg:Z:987M	cs:Z::987
+24	406	0	406	-	MN908947.3	29903	27040	27446	406	406	60	NM:i:0	ms:i:406	AS:i:406	nn:i:0	tp:A:P	cm:i:70	s1:i:404	s2:i:0	de:f:0	rl:i:0	cg:Z:406M	cs:Z::406
+35	25983	0	25983	+	MN908947.3	29903	373	26298	25917	25933	60	NM:i:66	ms:i:25763	AS:i:25801	nn:i:50	tp:A:P	cm:i:4703	s1:i:25845	s2:i:0	de:f:0.0003	rl:i:0	cg:Z:10702M58I15223M	cs:Z::167*ct:517*ct:1977*ct:721*gt:7316+ttttttttnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn:7*gt:3324*ct:8994*ag:2159*gt:735

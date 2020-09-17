@@ -1,0 +1,11 @@
+NODE_51_length_452_cov_2620.788413	452	55	429	+	MN908947.3	29903	649	1023	374	374	60	NM:i:0	ms:i:374	AS:i:374	nn:i:0	tp:A:P	cm:i:68	s1:i:371	s2:i:0	de:f:0	rl:i:0	cg:Z:374M	cs:Z::374
+NODE_187_length_271_cov_1.486111	271	0	271	-	MN908947.3	29903	1058	1329	271	271	60	NM:i:0	ms:i:271	AS:i:271	nn:i:0	tp:A:P	cm:i:48	s1:i:264	s2:i:0	de:f:0	rl:i:0	cg:Z:271M	cs:Z::271
+NODE_48_length_471_cov_2063.769231	471	29	399	-	MN908947.3	29903	1582	1952	370	370	60	NM:i:0	ms:i:370	AS:i:370	nn:i:0	tp:A:P	cm:i:64	s1:i:367	s2:i:0	de:f:0	rl:i:0	cg:Z:370M	cs:Z::370
+NODE_50_length_463_cov_1844.776961	463	72	462	-	MN908947.3	29903	2187	2577	390	390	60	NM:i:0	ms:i:390	AS:i:390	nn:i:0	tp:A:P	cm:i:65	s1:i:380	s2:i:0	de:f:0	rl:i:0	cg:Z:390M	cs:Z::390
+NODE_52_length_436_cov_2738.524934	436	0	381	-	MN908947.3	29903	7953	8335	380	382	60	NM:i:2	ms:i:368	AS:i:368	nn:i:0	tp:A:P	cm:i:61	s1:i:367	s2:i:0	de:f:0.0052	rl:i:0	cg:Z:212M1D169M	cs:Z::128*tg:83-t:169
+NODE_74_length_360_cov_11.265574	360	0	360	+	MN908947.3	29903	10090	10450	360	360	60	NM:i:0	ms:i:360	AS:i:360	nn:i:0	tp:A:P	cm:i:56	s1:i:344	s2:i:0	de:f:0	rl:i:0	cg:Z:360M	cs:Z::360
+NODE_57_length_410_cov_519.214085	410	43	409	-	MN908947.3	29903	13312	13678	365	367	60	NM:i:2	ms:i:349	AS:i:349	nn:i:0	tp:A:P	cm:i:57	s1:i:346	s2:i:0	de:f:0.0054	rl:i:0	cg:Z:128M1D30M1I207M	cs:Z::128-g:30+t:207
+NODE_79_length_349_cov_1.663265	349	0	349	-	MN908947.3	29903	14560	14909	349	349	60	NM:i:0	ms:i:349	AS:i:349	nn:i:0	tp:A:P	cm:i:59	s1:i:333	s2:i:0	de:f:0	rl:i:0	cg:Z:349M	cs:Z::349
+NODE_38_length_512_cov_1.398249	512	0	512	+	MN908947.3	29903	17101	17613	511	512	60	NM:i:1	ms:i:507	AS:i:507	nn:i:0	tp:A:P	cm:i:84	s1:i:491	s2:i:0	de:f:0.0020	rl:i:0	cg:Z:512M	cs:Z::33*ca:478
+NODE_110_length_319_cov_2.674242	319	78	319	-	MN908947.3	29903	26538	26779	241	241	60	NM:i:0	ms:i:241	AS:i:241	nn:i:0	tp:A:P	cm:i:39	s1:i:235	s2:i:0	de:f:0	rl:i:0	cg:Z:241M	cs:Z::241
+NODE_97_length_331_cov_1.778986	331	0	330	+	MN908947.3	29903	26844	27174	330	330	60	NM:i:0	ms:i:330	AS:i:330	nn:i:0	tp:A:P	cm:i:57	s1:i:316	s2:i:0	de:f:0	rl:i:0	cg:Z:330M	cs:Z::330

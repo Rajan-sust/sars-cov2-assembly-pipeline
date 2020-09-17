@@ -1,0 +1,12 @@
+NODE_107_length_208_cov_68.461540	228	0	228	-	MN908947.3	29903	21149	21377	228	228	60	NM:i:0	ms:i:228	AS:i:228	nn:i:0	tp:A:P	cm:i:35	s1:i:221	s2:i:0	de:f:0	rl:i:0	cg:Z:228M	cs:Z::228
+NODE_559_length_213_cov_341.896729	233	0	233	-	MN908947.3	29903	7364	7597	233	233	60	NM:i:0	ms:i:233	AS:i:233	nn:i:0	tp:A:P	cm:i:43	s1:i:223	s2:i:0	de:f:0	rl:i:0	cg:Z:233M	cs:Z::233
+NODE_1551_length_230_cov_344.895660	250	0	250	-	MN908947.3	29903	27494	27744	250	250	60	NM:i:0	ms:i:250	AS:i:250	nn:i:0	tp:A:P	cm:i:41	s1:i:249	s2:i:0	de:f:0	rl:i:0	cg:Z:250M	cs:Z::250
+NODE_1675_length_395_cov_45.405064	415	0	415	-	MN908947.3	29903	22121	22536	415	415	60	NM:i:0	ms:i:415	AS:i:415	nn:i:0	tp:A:P	cm:i:73	s1:i:404	s2:i:0	de:f:0	rl:i:0	cg:Z:415M	cs:Z::415
+NODE_2631_length_203_cov_196.630539	223	0	223	-	MN908947.3	29903	13351	13574	223	223	60	NM:i:0	ms:i:223	AS:i:223	nn:i:0	tp:A:P	cm:i:36	s1:i:209	s2:i:0	de:f:0	rl:i:0	cg:Z:223M	cs:Z::223
+NODE_2941_length_256_cov_162.488281	276	0	276	+	MN908947.3	29903	8668	8944	276	276	60	NM:i:0	ms:i:276	AS:i:276	nn:i:0	tp:A:P	cm:i:51	s1:i:269	s2:i:0	de:f:0	rl:i:0	cg:Z:276M	cs:Z::276
+NODE_3425_length_257_cov_164.937744	277	0	277	+	MN908947.3	29903	29104	29381	277	277	60	NM:i:0	ms:i:277	AS:i:277	nn:i:0	tp:A:P	cm:i:43	s1:i:263	s2:i:0	de:f:0	rl:i:0	cg:Z:277M	cs:Z::277
+NODE_3736_length_238_cov_348.016815	258	0	258	+	MN908947.3	29903	25710	25968	258	258	60	NM:i:0	ms:i:258	AS:i:258	nn:i:0	tp:A:P	cm:i:49	s1:i:245	s2:i:0	de:f:0	rl:i:0	cg:Z:258M	cs:Z::258
+NODE_4074_length_232_cov_273.331909	252	0	252	-	MN908947.3	29903	28732	28984	252	252	60	NM:i:0	ms:i:252	AS:i:252	nn:i:0	tp:A:P	cm:i:44	s1:i:236	s2:i:0	de:f:0	rl:i:0	cg:Z:252M	cs:Z::252
+NODE_4749_length_221_cov_234.714935	241	0	241	-	MN908947.3	29903	5624	5865	241	241	60	NM:i:0	ms:i:241	AS:i:241	nn:i:0	tp:A:P	cm:i:44	s1:i:228	s2:i:0	de:f:0	rl:i:0	cg:Z:241M	cs:Z::241
+NODE_6656_length_203_cov_342.108368	223	3	223	+	MN908947.3	29903	2035	2255	220	220	60	NM:i:0	ms:i:220	AS:i:220	nn:i:0	tp:A:P	cm:i:38	s1:i:210	s2:i:0	de:f:0	rl:i:0	cg:Z:220M	cs:Z::220
+NODE_7740_length_258_cov_70.856590	278	0	278	-	MN908947.3	29903	19291	19569	278	278	60	NM:i:0	ms:i:278	AS:i:278	nn:i:0	tp:A:P	cm:i:42	s1:i:276	s2:i:0	de:f:0	rl:i:0	cg:Z:278M	cs:Z::278

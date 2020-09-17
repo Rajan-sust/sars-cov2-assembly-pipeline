@@ -1,0 +1,11 @@
+NODE_44_length_211_cov_1052.616089	231	0	231	-	MN908947.3	29903	8313	8544	231	231	60	NM:i:0	ms:i:231	AS:i:231	nn:i:0	tp:A:P	cm:i:37	s1:i:220	s2:i:0	de:f:0	rl:i:0	cg:Z:231M	cs:Z::231
+NODE_164_length_211_cov_246.635071	231	0	231	-	MN908947.3	29903	9819	10050	231	231	60	NM:i:0	ms:i:231	AS:i:231	nn:i:0	tp:A:P	cm:i:37	s1:i:217	s2:i:0	de:f:0	rl:i:0	cg:Z:231M	cs:Z::231
+NODE_286_length_230_cov_301.713043	250	0	250	+	MN908947.3	29903	6931	7181	250	250	60	NM:i:0	ms:i:250	AS:i:250	nn:i:0	tp:A:P	cm:i:37	s1:i:243	s2:i:0	de:f:0	rl:i:0	cg:Z:250M	cs:Z::250
+NODE_301_length_279_cov_143.050186	299	0	299	-	MN908947.3	29903	22236	22535	299	299	60	NM:i:0	ms:i:299	AS:i:299	nn:i:0	tp:A:P	cm:i:49	s1:i:284	s2:i:0	de:f:0	rl:i:0	cg:Z:299M	cs:Z::299
+NODE_1112_length_236_cov_790.516968	256	0	256	-	MN908947.3	29903	8611	8867	255	256	60	NM:i:1	ms:i:251	AS:i:251	nn:i:0	tp:A:P	cm:i:41	s1:i:245	s2:i:0	de:f:0.0039	rl:i:0	cg:Z:256M	cs:Z::170*ct:85
+NODE_1853_length_227_cov_777.070496	247	0	247	+	MN908947.3	29903	19468	19715	247	247	60	NM:i:0	ms:i:247	AS:i:247	nn:i:0	tp:A:P	cm:i:40	s1:i:236	s2:i:0	de:f:0	rl:i:0	cg:Z:247M	cs:Z::247
+NODE_2473_length_307_cov_773.967407	327	0	327	+	MN908947.3	29903	22842	23169	327	327	60	NM:i:0	ms:i:327	AS:i:327	nn:i:0	tp:A:P	cm:i:55	s1:i:327	s2:i:0	de:f:0	rl:i:0	cg:Z:327M	cs:Z::327
+NODE_2877_length_196_cov_2060.392822	216	0	216	+	MN908947.3	29903	20580	20796	216	216	60	NM:i:0	ms:i:216	AS:i:216	nn:i:0	tp:A:P	cm:i:38	s1:i:206	s2:i:0	de:f:0	rl:i:0	cg:Z:216M	cs:Z::216
+NODE_3178_length_450_cov_671.902222	470	0	470	-	MN908947.3	29903	1922	2392	470	470	60	NM:i:0	ms:i:470	AS:i:470	nn:i:0	tp:A:P	cm:i:80	s1:i:460	s2:i:0	de:f:0	rl:i:0	cg:Z:470M	cs:Z::470
+NODE_3794_length_262_cov_1414.958008	282	0	282	-	MN908947.3	29903	16500	16782	282	282	60	NM:i:0	ms:i:282	AS:i:282	nn:i:0	tp:A:P	cm:i:45	s1:i:275	s2:i:0	de:f:0	rl:i:0	cg:Z:282M	cs:Z::282
+NODE_3934_length_196_cov_975.540833	216	0	216	+	MN908947.3	29903	5271	5487	216	216	60	NM:i:0	ms:i:216	AS:i:216	nn:i:0	tp:A:P	cm:i:35	s1:i:207	s2:i:0	de:f:0	rl:i:0	cg:Z:216M	cs:Z::216

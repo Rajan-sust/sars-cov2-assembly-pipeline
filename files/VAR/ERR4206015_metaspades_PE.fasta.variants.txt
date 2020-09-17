@@ -1,0 +1,9 @@
+R	MN908947.3	6769	27439
+V	MN908947.3	7106	7194	1	60	actgtactggttctataccttgtagtgtttgtcttagtggtttagattctttagacacctatccttctttagaaactatacaaattac	-	NODE_1_length_20528_cov_306.294730	20191	20191	-
+V	MN908947.3	14407	14408	1	60	c	t	NODE_1_length_20528_cov_306.294730	12977	12978	-
+V	MN908947.3	14417	14417	1	60	-	tggnnnnnnnnnn	NODE_1_length_20528_cov_306.294730	12955	12968	-
+V	MN908947.3	17125	17126	1	60	t	c	NODE_1_length_20528_cov_306.294730	10246	10247	-
+V	MN908947.3	20267	20268	1	60	a	g	NODE_1_length_20528_cov_306.294730	7104	7105	-
+V	MN908947.3	21341	21408	1	60	catattttggaggaatacaaatccaattcagttgtcttcctattctttatttgacatgagtaaattt	-	NODE_1_length_20528_cov_306.294730	6031	6031	-
+V	MN908947.3	23402	23403	1	60	a	g	NODE_1_length_20528_cov_306.294730	4036	4037	-
+V	MN908947.3	25129	25130	1	60	g	t	NODE_1_length_20528_cov_306.294730	2309	2310	-

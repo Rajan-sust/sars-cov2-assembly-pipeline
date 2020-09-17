@@ -1,0 +1,10 @@
+NODE_1_length_7566_cov_261.599571_g0_i0	7566	0	7566	-	MN908947.3	29903	22288	29854	7565	7566	60	NM:i:1	ms:i:7561	AS:i:7561	nn:i:0	tp:A:P	cm:i:1393	s1:i:7547	s2:i:0	de:f:0.0001	rl:i:0	cg:Z:7566M	cs:Z::1114*ag:6451
+NODE_2_length_4783_cov_339.226729_g1_i0	4783	17	4783	+	MN908947.3	29903	9212	13978	4763	4766	60	NM:i:3	ms:i:4751	AS:i:4751	nn:i:0	tp:A:P	cm:i:858	s1:i:4732	s2:i:0	de:f:0.0006	rl:i:0	cg:Z:4766M	cs:Z::1870*gt:2615*tc:21*ct:257
+NODE_3_length_4737_cov_384.366753_g2_i0	4737	0	4737	+	MN908947.3	29903	14870	19607	4737	4737	60	NM:i:0	ms:i:4737	AS:i:4737	nn:i:0	tp:A:P	cm:i:855	s1:i:4723	s2:i:0	de:f:0	rl:i:0	cg:Z:4737M	cs:Z::4737
+NODE_4_length_4649_cov_251.379341_g3_i0	4649	0	4649	+	MN908947.3	29903	35	4684	4647	4649	60	NM:i:2	ms:i:4639	AS:i:4639	nn:i:0	tp:A:P	cm:i:836	s1:i:4623	s2:i:0	de:f:0.0004	rl:i:0	cg:Z:4649M	cs:Z::205*ct:2795*ct:1647
+NODE_5_length_3407_cov_162.944982_g4_i0	3407	16	3407	-	MN908947.3	29903	5263	8654	3391	3391	60	NM:i:0	ms:i:3391	AS:i:3391	nn:i:0	tp:A:P	cm:i:616	s1:i:3377	s2:i:0	de:f:0	rl:i:0	cg:Z:3391M	cs:Z::3391
+NODE_6_length_2786_cov_265.603647_g5_i0	2786	3	2786	+	MN908947.3	29903	19558	22341	2782	2783	60	NM:i:1	ms:i:2778	AS:i:2778	nn:i:0	tp:A:P	cm:i:502	s1:i:2765	s2:i:0	de:f:0.0004	rl:i:0	cg:Z:2783M	cs:Z::709*ag:2073
+NODE_7_length_2743_cov_240.655446_g5_i1	2743	0	2740	-	MN908947.3	29903	19558	22341	2739	2783	60	NM:i:44	ms:i:2637	AS:i:2659	nn:i:0	tp:A:P	cm:i:487	s1:i:2712	s2:i:0	de:f:0.0011	rl:i:0	cg:Z:425M1D69M42D2246M	cs:Z::425-t:69-aaggtagtgttaaaggtttacaaccatctgtaggtcccaaac:172*ag:2073
+NODE_19_length_1002_cov_416.502769_g17_i0	1002	3	999	-	MN908947.3	29903	13924	14920	993	996	60	NM:i:3	ms:i:981	AS:i:981	nn:i:0	tp:A:P	cm:i:161	s1:i:947	s2:i:0	de:f:0.0030	rl:i:0	cg:Z:996M	cs:Z::259*ca:24*ga:198*ct:512
+NODE_39_length_669_cov_144.138596_g37_i0	669	0	669	+	MN908947.3	29903	4645	5314	669	669	60	NM:i:0	ms:i:669	AS:i:669	nn:i:0	tp:A:P	cm:i:122	s1:i:659	s2:i:0	de:f:0	rl:i:0	cg:Z:669M	cs:Z::669
+NODE_40_length_662_cov_166.156306_g38_i0	662	0	660	+	MN908947.3	29903	8604	9264	660	660	60	NM:i:0	ms:i:660	AS:i:660	nn:i:0	tp:A:P	cm:i:112	s1:i:653	s2:i:0	de:f:0	rl:i:0	cg:Z:660M	cs:Z::660

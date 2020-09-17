@@ -1,0 +1,11 @@
+NODE_1_length_424_cov_100.801888	522	0	522	-	MN908947.3	29903	1046	1568	522	522	60	NM:i:0	ms:i:522	AS:i:522	nn:i:0	tp:A:P	cm:i:96	s1:i:520	s2:i:0	de:f:0	rl:i:0	cg:Z:522M	cs:Z::522
+NODE_2_length_211_cov_111.786728	309	0	309	-	MN908947.3	29903	2851	3160	308	309	60	NM:i:1	ms:i:304	AS:i:304	nn:i:0	tp:A:P	cm:i:49	s1:i:289	s2:i:0	de:f:0.0032	rl:i:0	cg:Z:309M	cs:Z::185*ct:123
+NODE_3_length_215_cov_120.809303	313	0	313	-	MN908947.3	29903	6319	6632	313	313	60	NM:i:0	ms:i:313	AS:i:313	nn:i:0	tp:A:P	cm:i:45	s1:i:304	s2:i:0	de:f:0	rl:i:0	cg:Z:313M	cs:Z::313
+NODE_4_length_242_cov_147.818176	340	0	340	-	MN908947.3	29903	9786	10126	340	340	60	NM:i:0	ms:i:340	AS:i:340	nn:i:0	tp:A:P	cm:i:55	s1:i:330	s2:i:0	de:f:0	rl:i:0	cg:Z:340M	cs:Z::340
+NODE_5_length_327_cov_127.455658	425	0	425	-	MN908947.3	29903	12563	12988	424	425	60	NM:i:1	ms:i:420	AS:i:420	nn:i:0	tp:A:P	cm:i:75	s1:i:411	s2:i:0	de:f:0.0024	rl:i:0	cg:Z:425M	cs:Z::98*ga:326
+NODE_6_length_437_cov_198.757431	535	0	535	-	MN908947.3	29903	15140	15675	535	535	60	NM:i:0	ms:i:535	AS:i:535	nn:i:0	tp:A:P	cm:i:99	s1:i:535	s2:i:0	de:f:0	rl:i:0	cg:Z:535M	cs:Z::535
+NODE_7_length_213_cov_314.333344	311	0	311	-	MN908947.3	29903	15597	15908	310	311	60	NM:i:1	ms:i:306	AS:i:306	nn:i:0	tp:A:P	cm:i:55	s1:i:293	s2:i:0	de:f:0.0032	rl:i:0	cg:Z:311M	cs:Z::301*tc:9
+NODE_8_length_702_cov_128.169510	800	0	800	-	MN908947.3	29903	18018	18818	799	800	60	NM:i:1	ms:i:795	AS:i:795	nn:i:0	tp:A:P	cm:i:135	s1:i:779	s2:i:0	de:f:0.0012	rl:i:0	cg:Z:800M	cs:Z::701*ga:98
+NODE_9_length_478_cov_301.573212	576	0	576	-	MN908947.3	29903	25123	25699	576	576	60	NM:i:0	ms:i:576	AS:i:576	nn:i:0	tp:A:P	cm:i:97	s1:i:566	s2:i:0	de:f:0	rl:i:0	cg:Z:576M	cs:Z::576
+NODE_10_length_253_cov_122.837944	351	0	351	-	MN908947.3	29903	28428	28779	351	351	60	NM:i:0	ms:i:351	AS:i:351	nn:i:0	tp:A:P	cm:i:67	s1:i:345	s2:i:0	de:f:0	rl:i:0	cg:Z:351M	cs:Z::351
+NODE_11_length_356_cov_237.550568	454	0	454	-	MN908947.3	29903	28839	29294	454	455	60	NM:i:1	ms:i:446	AS:i:446	nn:i:0	tp:A:P	cm:i:76	s1:i:444	s2:i:0	de:f:0.0022	rl:i:0	cg:Z:356M1D98M	cs:Z::356-c:98

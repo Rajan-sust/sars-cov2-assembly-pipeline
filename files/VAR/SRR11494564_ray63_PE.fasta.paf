@@ -1,0 +1,13 @@
+scaffold-0	239	0	239	-	MN908947.3	29903	5322	5561	239	239	60	NM:i:0	ms:i:239	AS:i:239	nn:i:0	tp:A:P	cm:i:40	s1:i:231	s2:i:0	de:f:0	rl:i:0	cg:Z:239M	cs:Z::239
+scaffold-1	973	0	973	+	MN908947.3	29903	18612	19585	973	973	60	NM:i:0	ms:i:973	AS:i:973	nn:i:0	tp:A:P	cm:i:158	s1:i:960	s2:i:0	de:f:0	rl:i:0	cg:Z:973M	cs:Z::973
+scaffold-2	468	0	468	+	MN908947.3	29903	4646	5114	468	468	60	NM:i:0	ms:i:468	AS:i:468	nn:i:0	tp:A:P	cm:i:84	s1:i:459	s2:i:0	de:f:0	rl:i:0	cg:Z:468M	cs:Z::468
+scaffold-3	1416	0	1416	+	MN908947.3	29903	5569	6985	1416	1416	60	NM:i:0	ms:i:1416	AS:i:1416	nn:i:0	tp:A:P	cm:i:262	s1:i:1413	s2:i:0	de:f:0	rl:i:0	cg:Z:1416M	cs:Z::1416
+scaffold-4	402	0	402	+	MN908947.3	29903	22493	22895	402	402	60	NM:i:0	ms:i:402	AS:i:402	nn:i:0	tp:A:P	cm:i:72	s1:i:396	s2:i:0	de:f:0	rl:i:0	cg:Z:402M	cs:Z::402
+scaffold-5	1871	0	1871	-	MN908947.3	29903	19567	21438	1871	1871	60	NM:i:0	ms:i:1871	AS:i:1871	nn:i:0	tp:A:P	cm:i:337	s1:i:1860	s2:i:0	de:f:0	rl:i:0	cg:Z:1871M	cs:Z::1871
+scaffold-6	1007	0	1007	+	MN908947.3	29903	25588	26595	1007	1007	60	NM:i:0	ms:i:1007	AS:i:1007	nn:i:0	tp:A:P	cm:i:189	s1:i:1001	s2:i:0	de:f:0	rl:i:0	cg:Z:1007M	cs:Z::1007
+scaffold-7	1303	0	1303	-	MN908947.3	29903	26840	28143	1303	1303	60	NM:i:0	ms:i:1303	AS:i:1303	nn:i:0	tp:A:P	cm:i:231	s1:i:1295	s2:i:0	de:f:0	rl:i:0	cg:Z:1303M	cs:Z::1303
+scaffold-8	532	0	532	-	MN908947.3	29903	21665	22197	532	532	60	NM:i:0	ms:i:532	AS:i:532	nn:i:0	tp:A:P	cm:i:90	s1:i:515	s2:i:0	de:f:0	rl:i:0	cg:Z:532M	cs:Z::532
+scaffold-10	2391	0	2391	+	MN908947.3	29903	23129	25520	2390	2391	60	NM:i:1	ms:i:2386	AS:i:2386	nn:i:0	tp:A:P	cm:i:433	s1:i:2373	s2:i:0	de:f:0.0004	rl:i:0	cg:Z:2391M	cs:Z::2287*at:103
+scaffold-11	4504	0	4504	-	MN908947.3	29903	38	4542	4504	4504	60	NM:i:0	ms:i:4504	AS:i:4504	nn:i:0	tp:A:P	cm:i:820	s1:i:4497	s2:i:0	de:f:0	rl:i:0	cg:Z:4504M	cs:Z::4504
+scaffold-12	11521	0	11521	-	MN908947.3	29903	6962	18483	11520	11521	60	NM:i:1	ms:i:11516	AS:i:11516	nn:i:0	tp:A:P	cm:i:2099	s1:i:11511	s2:i:0	de:f:0.0001	rl:i:0	cg:Z:11521M	cs:Z::4120*gt:7400
+scaffold-13	1783	0	1766	-	MN908947.3	29903	28087	29853	1766	1766	60	NM:i:0	ms:i:1766	AS:i:1766	nn:i:0	tp:A:P	cm:i:330	s1:i:1755	s2:i:0	de:f:0	rl:i:0	cg:Z:1766M	cs:Z::1766

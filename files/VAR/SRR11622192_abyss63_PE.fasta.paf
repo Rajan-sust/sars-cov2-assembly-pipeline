@@ -1,0 +1,5 @@
+16	3382	0	3382	-	MN908947.3	29903	5268	8650	3381	3382	60	NM:i:1	ms:i:3377	AS:i:3377	nn:i:0	tp:A:P	cm:i:610	s1:i:3365	s2:i:0	de:f:0.0003	rl:i:0	cg:Z:3382M	cs:Z::2169*tc:1212
+17	2776	0	2776	-	MN908947.3	29903	19557	22333	2775	2776	60	NM:i:1	ms:i:2771	AS:i:2771	nn:i:0	tp:A:P	cm:i:497	s1:i:2749	s2:i:0	de:f:0.0004	rl:i:0	cg:Z:2776M	cs:Z::1579*ag:1196
+18	5276	0	5276	+	MN908947.3	29903	38	5314	5274	5276	60	NM:i:2	ms:i:5266	AS:i:5266	nn:i:0	tp:A:P	cm:i:955	s1:i:5248	s2:i:0	de:f:0.0004	rl:i:0	cg:Z:5276M	cs:Z::202*ct:2795*ct:2277
+19	7323	0	7323	-	MN908947.3	29903	22523	29846	7319	7323	60	NM:i:4	ms:i:7303	AS:i:7303	nn:i:0	tp:A:P	cm:i:1341	s1:i:7271	s2:i:0	de:f:0.0005	rl:i:0	cg:Z:7323M	cs:Z::879*ag:3460*ag:1394*ag:1093*ct:493
+20	11069	0	11069	-	MN908947.3	29903	8617	19594	10975	11019	60	NM:i:94	ms:i:10777	AS:i:10849	nn:i:50	tp:A:P	cm:i:1978	s1:i:10929	s2:i:0	de:f:0.0003	rl:i:0	cg:Z:7217M92I3760M	cs:Z::5790*ct:757*tc:668+tgttggactgagactgaccttactaaaggacctcatgaatttnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn:3760

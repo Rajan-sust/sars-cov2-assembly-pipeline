@@ -1,0 +1,12 @@
+NODE_57_length_120_cov_1.300000	218	0	218	+	MN908947.3	29903	1266	1484	216	218	60	NM:i:2	ms:i:208	AS:i:208	nn:i:0	tp:A:P	cm:i:28	s1:i:179	s2:i:0	de:f:0.0092	rl:i:0	cg:Z:218M	cs:Z::98*ac:20*ac:98
+NODE_152_length_209_cov_4210.464355	307	92	307	-	MN908947.3	29903	3249	3464	215	215	60	NM:i:0	ms:i:215	AS:i:215	nn:i:0	tp:A:P	cm:i:34	s1:i:209	s2:i:0	de:f:0	rl:i:0	cg:Z:215M	cs:Z::215
+NODE_789_length_210_cov_7381.252441	308	0	308	+	MN908947.3	29903	8311	8617	305	308	60	NM:i:3	ms:i:291	AS:i:291	nn:i:0	tp:A:P	cm:i:40	s1:i:269	s2:i:0	de:f:0.0065	rl:i:0	cg:Z:242M2I64M	cs:Z::46*at:195+ta:64
+NODE_798_length_187_cov_3.256685	285	0	285	-	MN908947.3	29903	8935	9221	284	286	60	NM:i:2	ms:i:272	AS:i:272	nn:i:0	tp:A:P	cm:i:39	s1:i:272	s2:i:0	de:f:0.0070	rl:i:0	cg:Z:96M1D189M	cs:Z::96-a:90*ga:98
+NODE_1380_length_112_cov_1.428571	210	0	210	-	MN908947.3	29903	12057	12267	208	210	60	NM:i:2	ms:i:200	AS:i:200	nn:i:0	tp:A:P	cm:i:31	s1:i:183	s2:i:0	de:f:0.0095	rl:i:0	cg:Z:210M	cs:Z::98*ac:12*ta:98
+NODE_2029_length_126_cov_2.500000	224	0	224	-	MN908947.3	29903	14910	15134	222	224	60	NM:i:2	ms:i:214	AS:i:214	nn:i:0	tp:A:P	cm:i:34	s1:i:208	s2:i:0	de:f:0.0089	rl:i:0	cg:Z:224M	cs:Z::98*ta:26*ac:98
+NODE_2388_length_175_cov_2462.508545	273	0	273	-	MN908947.3	29903	18078	18352	272	274	60	NM:i:2	ms:i:260	AS:i:260	nn:i:0	tp:A:P	cm:i:37	s1:i:251	s2:i:0	de:f:0.0073	rl:i:0	cg:Z:60M1D213M	cs:Z::60-a:112*ct:100
+NODE_2430_length_252_cov_8424.297852	350	91	350	-	MN908947.3	29903	18998	19254	256	259	60	NM:i:3	ms:i:244	AS:i:244	nn:i:0	tp:A:P	cm:i:34	s1:i:234	s2:i:0	de:f:0.0039	rl:i:0	cg:Z:83M3I173M	cs:Z::83+tgg:173
+NODE_4973_length_345_cov_348.863770	443	0	443	-	MN908947.3	29903	19204	19647	443	443	60	NM:i:0	ms:i:443	AS:i:443	nn:i:0	tp:A:P	cm:i:67	s1:i:431	s2:i:0	de:f:0	rl:i:0	cg:Z:443M	cs:Z::443
+NODE_2623_length_302_cov_1850.533081	400	0	400	-	MN908947.3	29903	22804	23204	400	400	60	NM:i:0	ms:i:400	AS:i:400	nn:i:0	tp:A:P	cm:i:66	s1:i:394	s2:i:0	de:f:0	rl:i:0	cg:Z:400M	cs:Z::400
+NODE_2758_length_160_cov_4.337500	258	0	258	-	MN908947.3	29903	24194	24452	256	258	60	NM:i:2	ms:i:248	AS:i:248	nn:i:0	tp:A:P	cm:i:39	s1:i:233	s2:i:0	de:f:0.0078	rl:i:0	cg:Z:258M	cs:Z::70*ac:88*tg:98
+NODE_2806_length_186_cov_2197.935547	284	53	284	-	MN908947.3	29903	25101	25332	231	231	60	NM:i:0	ms:i:231	AS:i:231	nn:i:0	tp:A:P	cm:i:36	s1:i:226	s2:i:0	de:f:0	rl:i:0	cg:Z:231M	cs:Z::231
