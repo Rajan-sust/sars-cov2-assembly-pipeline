@@ -1,0 +1,2 @@
+NODE_29087_length_217_cov_2.368664	237	0	237	+	MN908947.3	29903	18724	18961	237	237	60	NM:i:0	ms:i:237	AS:i:237	nn:i:0	tp:A:P	cm:i:37	s1:i:224	s2:i:0	de:f:0	rl:i:0	cg:Z:237M	cs:Z::237
+NODE_42459_length_247_cov_1.226721	267	0	267	-	MN908947.3	29903	28721	28988	264	267	60	NM:i:3	ms:i:252	AS:i:252	nn:i:0	tp:A:P	cm:i:44	s1:i:252	s2:i:0	de:f:0.0112	rl:i:0	cg:Z:267M	cs:Z::159*ga*ga*gc:105

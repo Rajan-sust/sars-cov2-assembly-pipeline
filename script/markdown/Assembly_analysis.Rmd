@@ -11,38 +11,98 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### alaysis
+### variant heatmap
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+library(pheatmap)
+library(tidyverse)
+
+meta = read_csv("/Volumes/rony/drive/asm/covid19-Assembly/files/PE_561samples_final.csv")
+mh = read.table("/Volumes/rony/drive/asm/covid19-Assembly/files/megahit_alignment_matrix_50bp.tsv", head = F)
+ms = read.table("/Volumes/rony/drive/asm/covid19-Assembly/files/metaspade_alignment_matrix_50bp.tsv", head = F)
+hs = cbind(mh, ms)
+hst = data.frame(t(hs))
+hst2 = hst %>% filter(X1 != "A.ID.megahit.50bp_overlap") %>% filter(X1 != "A.ID.metaspade.50bp_overlap")
+
+hst3 = data.frame(str_split_fixed(hst2$X1, "_", 3), hst2)
+
+megahit = hst3 %>% filter(hst3$X2.1 == "megahit") %>% select(-X2.1) %>% select(-X3.1) %>% select(-X1)
+metaspades = hst3 %>% filter(hst3$X2.1 == "metaspades") %>% select(-X2.1) %>% select(-X3.1) %>% select(-X1)
+
+both = merge(megahit, metaspades, by.x = "X1.1", by.y = "X1.1") 
+both2 = inner_join(meta, both, by = c( "Run" = "X1.1"))
+both3 = both2[, c(2,6, 15:ncol(both2))] 
+
+#write.table(both3, "/Volumes/rony/drive/asm/covid19-Assembly/files/megahit_metaspades_heatmap_matrix.tsv", sep = "\t", quote = F, row.names = F, col.names = F)
+
+both4 = data.frame(both3[,3:ncol(both3)]) 
+
+#conver factor to numeric
+both5 = both4 %>% 
+  mutate_all(~as.numeric(as.character(.)))
+rownames(both5) = both3$Run
+
+#pheatmap(both5, cluster_cols = F, cluster_rows = F, show_rownames = F, show_colnames = F, color = colorRampPalette(c("red", "white", "gray"))(1000), border_color = NA, gaps_col = 599)
+
+#add annotation
+anno = data.frame(Assay = both3$Assay_Type)
+rownames(anno) = rownames(both5)
+
+#plot.new()
+#pdf("/Volumes/rony/drive/asm/covid19-Assembly/plots/heatmap.pdf", width = 10, height = 10)
+pheatmap(both5, annotation_row = anno, cluster_cols = F, cluster_rows = F, show_rownames = F, show_colnames = F, color = colorRampPalette(c("red", "white", "gray"))(1000), border_color = NA, gaps_col = 599, gaps_row = c(82, 82+65, 82+65+58, 82+65+58+88))
+#dev.off()
+
+```
+
+### assembly quality
 
 ```{r , cache=TRUE, warning=FALSE, message=FALSE}
 library(tidyverse)
 library(reshape2)
-x = read_tsv("~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/bioRxiv_1074_assembly_report_PE_amplicon_viralRNA.tsv")
+library(viridis)
+library(ggsci)
+
+x = read_tsv("/Volumes/rony/drive/asm/covid19-Assembly/files/backup/bioRxiv_1074_assembly_report_PE_amplicon_viralRNA.tsv")
+x = read_tsv("/Volumes/rony/drive/asm/covid19-Assembly/files/report_metaquast_PE_all.tsv")
+
 x2 = melt(x, id.vars = "Assembly")
 x2$Assembly = gsub("# ", "", x2$Assembly)
 x3 = data.frame(str_split_fixed(x2$variable, "_", 3), value = as.numeric(x2$value), x2)
 
+meta = read_csv("/Volumes/rony/drive/asm/covid19-Assembly/files/PE_561samples_final.csv")
+meta2 = meta %>% select(Run, Assay_Type)
+    
+xm = left_join(x3, meta2, by = c("X1" = "Run"))
+
 #
-setwd("~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/plots/")
+setwd("/Volumes/rony/drive/asm/covid19-Assembly/plots/")
 make_boxplot = function(variableToPlot)
 {
-  x4 = x3 %>% filter(Assembly == variableToPlot) 
+  x4 = xm %>% filter(Assembly == variableToPlot) 
   stat = x4 %>%
     group_by(X2) %>%
     summarize(mean = mean(value, na.rm = TRUE),
             median = median(value, na.rm = TRUE))
   
   print(stat)
-  ggplot(x4, aes(X2, value)) +
-    geom_boxplot() +
-    geom_jitter(alpha = .5, width = .1) +
+  plot = ggplot(x4, aes(X2, value)) +
+    geom_boxplot(aes(color = X2)) +
+    geom_jitter(alpha = .5, width = .1, aes(color = X2)) +
+    #scale_color_viridis(discrete=TRUE) +
+    #scale_fill_material("red") +
     xlab("") +
     ylab(variableToPlot) +
+    facet_grid(Assay_Type~.) +
     theme(panel.background = element_rect(fill = "white"),
         panel.border = element_rect(fill = NA, colour = "black", size = .5),
-        axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
+        axis.text = element_text(color = "black", angle = 90, hjust = 1),
+        strip.background =element_rect(fill="white"),
+        legend.position = "none") 
+  print(plot)
   
-  #filename = str_replace_all(variableToPlot, "[[:punct:]]", "")
-  #ggsave(filename=paste(filename,".pdf", sep="_"), width = 15, height = 10, units = "cm", device = 'pdf')
+  filename = str_replace_all(variableToPlot, "[[:punct:]]", "")
+  ggsave(filename=paste(filename,".pdf", sep="_"), width = 20, height = 30, units = "cm", device = 'pdf')
 }
 
 make_boxplot("Genome fraction (%)")
@@ -66,15 +126,15 @@ make_boxplot("LA50")
 make_boxplot("LA75")
 
 # genomic feature
-x4 = x3 %>% filter(Assembly == "genomic features") 
+x4 = xm %>% filter(Assembly == "genomic features") 
 x4$value.1 = gsub("part", "", x4$value.1)
 x5 = data.frame(str_split_fixed(x4$value.1,"\\+", 2), x4) 
 x6 = data.frame(assembly = x5$X2, match = as.numeric(as.character(x5$X1.1)), mismatch = as.numeric(as.character(x5$X2.1)))
 
-# 
+# need to add assay_type
   ggplot(x6, aes(assembly, 100*(match/49))) +
-    geom_boxplot() +
-    geom_jitter(alpha = .5, width = .1) +
+    geom_boxplot(aes(color = assembly)) +
+    geom_jitter(alpha = .5, width = .1, aes(color = assembly)) +
     xlab("") +
     ylab("% features mapped") +
     theme(panel.background = element_rect(fill = "white"),
@@ -87,6 +147,8 @@ ggsave("percent features mapped.pdf", width = 15, height = 10, units = "cm")
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
 library(tidyverse)
+setwd("/Volumes/rony/drive/asm/covid19-Assembly/plots/")
+
 #90%=29903*.9
 contig = x3 %>% filter(Assembly == "Largest contig") %>% filter(value >=26912.7)
 ggplot(contig, aes(X2)) +
@@ -103,13 +165,16 @@ ggsave("90_percent_genome_single_contig.pdf", width = 15, height = 10, units = "
 
 ```{r , cache=TRUE, warning=FALSE, message=FALSE}
 library(tidyverse)
+setwd("/Volumes/rony/drive/asm/covid19-Assembly/plots/")
 r = read.table("~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/read_QC_matrix.txt")[,c(1,4)]
+r = read.table("/Volumes/rony/drive/asm/covid19-Assembly/files/read_QC_matrix.txt")[,c(1,4)]
+
 r2 = data.frame(id = str_split_fixed(r$V1, "_", 2), read = r$V4)
 head(r2$id[,1])
 
 #sum every two rows of PE data
 r3 = data.frame(id = unique(r2$id.1), read = (rowsum(r2[,3], as.integer(gl(nrow(r2), 2, nrow(r2))))))
-rx = x3 %>% filter(Assembly == "Genome fraction (%)")
+rx = xm %>% filter(Assembly == "Genome fraction (%)")
 rx2 = inner_join(r3, rx, by = c("id" = "X1"))
 
 ggplot(rx2, aes(value, read/1e6)) +
@@ -135,6 +200,8 @@ cor(rx3$value, rx3$read, method = "spearman")
 
 ```{r, message = FALSE}
 library(tidyverse)
+setwd("/Volumes/rony/drive/asm/covid19-Assembly/plots/")
+
 rx2 %>% filter(Assembly == "Genome fraction (%)") %>% na.omit() %>%
     ggplot(aes(fct_reorder(id, read), X2, color = X2)) +
     geom_point(aes(size = value, alpha = .5)) +
@@ -275,6 +342,13 @@ kable(ab2, caption = "List of total 9 different categories. Maximum 100 samples 
 #unzip files
 cd /projects/epigenomics3/temp/rislam/assembly/rajan/asm_pe/output_bioRxiv_100samples/trimmed_fastqc
 for f in *RR*/fastqc_data.txt; do echo $f; grep "Total Sequences\|Sequences flagged as poor quality\|Sequence length\|%GC" $f; done | paste - - - - -  | awk '{gsub("/fastqc_data.txt", ""); print }' >read_QC_matrix.txt
+
+# 
+cd /projects/epigenomics3/temp/rislam/assembly/rajan/asm_pe/fastqc
+for f in *zip; do unzip $f;done
+
+for f in *RR*/fastqc_data.txt; do echo $f; grep "Total Sequences\|Sequences flagged as poor quality\|Sequence length\|%GC" $f; done | paste - - - - -  | awk '{gsub("/fastqc_data.txt", ""); print }' >read_QC_matrix.txt
+
 ```
 
 

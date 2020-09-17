@@ -1,0 +1,11 @@
+13	2219	0	2219	-	MN908947.3	29903	39	2258	2219	2219	60	NM:i:0	ms:i:2219	AS:i:2219	nn:i:0	tp:A:P	cm:i:404	s1:i:2208	s2:i:0	de:f:0	rl:i:0	cg:Z:2219M	cs:Z::2219
+10	384	0	384	-	MN908947.3	29903	2195	2579	382	384	60	NM:i:2	ms:i:374	AS:i:374	nn:i:0	tp:A:P	cm:i:57	s1:i:366	s2:i:0	de:f:0.0052	rl:i:0	cg:Z:384M	cs:Z::284*ag:77*ct:21
+8	3711	0	3711	+	MN908947.3	29903	2832	6543	3711	3711	60	NM:i:0	ms:i:3711	AS:i:3711	nn:i:0	tp:A:P	cm:i:670	s1:i:3703	s2:i:0	de:f:0	rl:i:0	cg:Z:3711M	cs:Z::3711
+34	1535	0	1535	-	MN908947.3	29903	6478	8013	1535	1535	60	NM:i:0	ms:i:1535	AS:i:1535	nn:i:0	tp:A:P	cm:i:279	s1:i:1525	s2:i:0	de:f:0	rl:i:0	cg:Z:1535M	cs:Z::1535
+37	2667	0	2667	+	MN908947.3	29903	7951	10618	2667	2667	60	NM:i:0	ms:i:2667	AS:i:2667	nn:i:0	tp:A:P	cm:i:467	s1:i:2665	s2:i:0	de:f:0	rl:i:0	cg:Z:2667M	cs:Z::2667
+18	448	0	448	-	MN908947.3	29903	10619	11067	448	448	60	NM:i:0	ms:i:448	AS:i:448	nn:i:0	tp:A:P	cm:i:84	s1:i:440	s2:i:0	de:f:0	rl:i:0	cg:Z:448M	cs:Z::448
+31	2320	0	2320	-	MN908947.3	29903	11074	13394	2319	2320	60	NM:i:1	ms:i:2315	AS:i:2315	nn:i:0	tp:A:P	cm:i:426	s1:i:2306	s2:i:0	de:f:0.0004	rl:i:0	cg:Z:2320M	cs:Z::8*gt:2311
+42	5677	0	5677	+	MN908947.3	29903	13606	19234	5626	5627	60	NM:i:51	ms:i:5517	AS:i:5546	nn:i:50	tp:A:P	cm:i:1016	s1:i:5581	s2:i:0	de:f:0.0005	rl:i:0	cg:Z:2358M49I3270M	cs:Z::1198*ct:1159+nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn*gn:3269
+3	2753	0	2753	-	MN908947.3	29903	19558	22311	2752	2753	60	NM:i:1	ms:i:2748	AS:i:2748	nn:i:0	tp:A:P	cm:i:493	s1:i:2737	s2:i:0	de:f:0.0004	rl:i:0	cg:Z:2753M	cs:Z::424*ct:2328
+25	5254	0	5254	-	MN908947.3	29903	22272	27526	5252	5254	60	NM:i:2	ms:i:5244	AS:i:5244	nn:i:0	tp:A:P	cm:i:958	s1:i:5228	s2:i:0	de:f:0.0004	rl:i:0	cg:Z:5254M	cs:Z::1476*gt:2394*gt:1382
+41	1922	0	1922	+	MN908947.3	29903	27791	29841	1921	2049	60	NM:i:129	ms:i:1658	AS:i:1766	nn:i:1	tp:A:P	cm:i:355	s1:i:1871	s2:i:0	de:f:0.0010	rl:i:0	cg:Z:1575M128D347M	cs:Z::1575-caacagagcctaaaaaggacaaaaagaagaaggctgatgaaactcaagccttaccgcagagacagaagaaacagcaaactgtgactcttcttcctgctgcagatttggatgatttctccaaacaattg:4*an:342

@@ -1,0 +1,11 @@
+NODE_4996_length_251_cov_2.067729	271	0	271	-	MN908947.3	29903	1058	1329	271	271	60	NM:i:0	ms:i:271	AS:i:271	nn:i:0	tp:A:P	cm:i:48	s1:i:264	s2:i:0	de:f:0	rl:i:0	cg:Z:271M	cs:Z::271
+NODE_4670_length_207_cov_1.748792	227	0	227	-	MN908947.3	29903	6641	6868	227	227	60	NM:i:0	ms:i:227	AS:i:227	nn:i:0	tp:A:P	cm:i:42	s1:i:226	s2:i:0	de:f:0	rl:i:0	cg:Z:227M	cs:Z::227
+NODE_5179_length_241_cov_15.506224	261	0	261	+	MN908947.3	29903	10090	10351	261	261	60	NM:i:0	ms:i:261	AS:i:261	nn:i:0	tp:A:P	cm:i:41	s1:i:247	s2:i:0	de:f:0	rl:i:0	cg:Z:261M	cs:Z::261
+NODE_6061_length_223_cov_2.457399	243	0	243	-	MN908947.3	29903	12453	12697	242	244	60	NM:i:2	ms:i:230	AS:i:230	nn:i:0	tp:A:P	cm:i:37	s1:i:214	s2:i:0	de:f:0.0082	rl:i:0	cg:Z:42M1D201M	cs:Z::42-t*ac:200
+NODE_2487_length_313_cov_1.958466	333	0	333	-	MN908947.3	29903	14560	14893	333	333	60	NM:i:0	ms:i:333	AS:i:333	nn:i:0	tp:A:P	cm:i:55	s1:i:323	s2:i:0	de:f:0	rl:i:0	cg:Z:333M	cs:Z::333
+NODE_265_length_233_cov_2.944206	253	1	253	-	MN908947.3	29903	15906	16158	252	252	60	NM:i:0	ms:i:252	AS:i:252	nn:i:0	tp:A:P	cm:i:43	s1:i:245	s2:i:0	de:f:0	rl:i:0	cg:Z:252M	cs:Z::252
+NODE_6489_length_211_cov_1.706161	231	1	231	+	MN908947.3	29903	16151	16381	230	230	60	NM:i:0	ms:i:230	AS:i:230	nn:i:0	tp:A:P	cm:i:40	s1:i:221	s2:i:0	de:f:0	rl:i:0	cg:Z:230M	cs:Z::230
+NODE_3507_length_192_cov_1.885417	212	0	212	-	MN908947.3	29903	23920	24132	212	212	60	NM:i:0	ms:i:212	AS:i:212	nn:i:0	tp:A:P	cm:i:36	s1:i:205	s2:i:0	de:f:0	rl:i:0	cg:Z:212M	cs:Z::212
+NODE_3940_length_215_cov_1.265116	235	0	221	+	MN908947.3	29903	25768	25989	221	221	60	NM:i:0	ms:i:221	AS:i:221	nn:i:0	tp:A:P	cm:i:42	s1:i:211	s2:i:0	de:f:0	rl:i:0	cg:Z:221M	cs:Z::221
+NODE_3667_length_299_cov_3.063545	319	0	241	+	MN908947.3	29903	26538	26779	241	241	60	NM:i:0	ms:i:241	AS:i:241	nn:i:0	tp:A:P	cm:i:39	s1:i:235	s2:i:0	de:f:0	rl:i:0	cg:Z:241M	cs:Z::241
+NODE_4918_length_311_cov_2.028939	331	0	330	+	MN908947.3	29903	26844	27174	330	330	60	NM:i:0	ms:i:330	AS:i:330	nn:i:0	tp:A:P	cm:i:57	s1:i:316	s2:i:0	de:f:0	rl:i:0	cg:Z:330M	cs:Z::330

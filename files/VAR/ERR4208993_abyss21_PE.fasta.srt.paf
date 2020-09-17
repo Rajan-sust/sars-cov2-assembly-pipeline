@@ -1,0 +1,12 @@
+14	1044	0	1044	-	MN908947.3	29903	200	1244	1043	1044	60	NM:i:1	ms:i:1039	AS:i:1039	nn:i:0	tp:A:P	cm:i:185	s1:i:1029	s2:i:0	de:f:0.0010	rl:i:0	cg:Z:1044M	cs:Z::40*ct:1003
+25	713	0	713	-	MN908947.3	29903	1249	1962	713	713	60	NM:i:0	ms:i:713	AS:i:713	nn:i:0	tp:A:P	cm:i:126	s1:i:703	s2:i:0	de:f:0	rl:i:0	cg:Z:713M	cs:Z::713
+28	3246	0	3246	-	MN908947.3	29903	1981	5197	3195	3196	60	NM:i:51	ms:i:3105	AS:i:3115	nn:i:50	tp:A:P	cm:i:569	s1:i:3147	s2:i:0	de:f:0.0068	rl:i:0	cg:Z:1803M30I1413M	cs:Z::1055*ct:747+nnnnnnnnnnnnnnnnnnnnnnnnnnnnnn*tn*an*cn*tn*tn*an*gn*cn*tn*gn*tn*cn*tn*tn*tn*gn*an*tn*an*an:1393
+16	378	0	378	+	MN908947.3	29903	5386	5764	378	378	60	NM:i:0	ms:i:378	AS:i:378	nn:i:0	tp:A:P	cm:i:64	s1:i:366	s2:i:0	de:f:0	rl:i:0	cg:Z:378M	cs:Z::378
+4	1023	0	1023	-	MN908947.3	29903	5744	6767	1023	1023	60	NM:i:0	ms:i:1023	AS:i:1023	nn:i:0	tp:A:P	cm:i:181	s1:i:1009	s2:i:0	de:f:0	rl:i:0	cg:Z:1023M	cs:Z::1023
+9	478	0	478	-	MN908947.3	29903	7204	7682	478	478	60	NM:i:0	ms:i:478	AS:i:478	nn:i:0	tp:A:P	cm:i:86	s1:i:469	s2:i:0	de:f:0	rl:i:0	cg:Z:478M	cs:Z::478
+30	6538	0	6538	-	MN908947.3	29903	7737	14294	6488	6507	60	NM:i:69	ms:i:6394	AS:i:6394	nn:i:50	tp:A:P	cm:i:1161	s1:i:6461	s2:i:0	de:f:0.0078	rl:i:0	cg:Z:1175M19D5363M	cs:Z::1175-atttcttacctagagtttt*tn*an*gn*tn*gn*cn*an*gn*tn*tn*gn*gn*tn*an*an*cn*an*tn*cn*tn*gn*tn*tn*an*cn*an*cn*an*cn*cn*an*tn*cn*an*an*an*an*cn*tn*tn*an*tn*an*gn*an*gn*tn*an*cn*an:5313
+29	11069	0	11069	-	MN908947.3	29903	14466	25504	11017	11019	60	NM:i:52	ms:i:10922	AS:i:10933	nn:i:50	tp:A:P	cm:i:1996	s1:i:10979	s2:i:0	de:f:0.0020	rl:i:0	cg:Z:8217M31I2821M	cs:Z::8217+nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn*tn*tn*cn*cn*an*cn*tn*tn*tn*tn*an*an*gn*tn*gn*tn*tn*an*tn:383*ct:316*ag:2101
+11	368	0	368	-	MN908947.3	29903	25529	25897	368	368	60	NM:i:0	ms:i:368	AS:i:368	nn:i:0	tp:A:P	cm:i:63	s1:i:363	s2:i:0	de:f:0	rl:i:0	cg:Z:368M	cs:Z::368
+18	2234	0	2234	-	MN908947.3	29903	26044	28278	2233	2234	60	NM:i:1	ms:i:2229	AS:i:2229	nn:i:0	tp:A:P	cm:i:401	s1:i:2217	s2:i:0	de:f:0.0004	rl:i:0	cg:Z:2234M	cs:Z::1192*ag:1041
+5	637	15	637	-	MN908947.3	29903	28258	28880	622	622	60	NM:i:0	ms:i:622	AS:i:622	nn:i:0	tp:A:P	cm:i:120	s1:i:615	s2:i:0	de:f:0	rl:i:0	cg:Z:622M	cs:Z::622
+3	934	0	926	-	MN908947.3	29903	28883	29809	926	926	60	NM:i:0	ms:i:926	AS:i:926	nn:i:0	tp:A:P	cm:i:164	s1:i:919	s2:i:0	de:f:0	rl:i:0	cg:Z:926M	cs:Z::926

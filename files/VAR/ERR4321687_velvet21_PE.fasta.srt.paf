@@ -1,0 +1,11 @@
+NODE_2185_length_271_cov_508.372681	291	0	291	-	MN908947.3	29903	2115	2406	291	291	60	NM:i:0	ms:i:291	AS:i:291	nn:i:0	tp:A:P	cm:i:48	s1:i:280	s2:i:0	de:f:0	rl:i:0	cg:Z:291M	cs:Z::291
+NODE_1298_length_180_cov_650.705566	200	0	200	+	MN908947.3	29903	2539	2739	200	200	60	NM:i:0	ms:i:200	AS:i:200	nn:i:0	tp:A:P	cm:i:35	s1:i:188	s2:i:0	de:f:0	rl:i:0	cg:Z:200M	cs:Z::200
+NODE_2522_length_227_cov_760.405273	247	0	247	-	MN908947.3	29903	2892	3139	246	247	60	NM:i:1	ms:i:242	AS:i:242	nn:i:0	tp:A:P	cm:i:39	s1:i:225	s2:i:0	de:f:0.0040	rl:i:0	cg:Z:247M	cs:Z::144*ct:102
+NODE_2123_length_180_cov_1484.083374	200	0	200	-	MN908947.3	29903	3190	3390	200	200	60	NM:i:0	ms:i:200	AS:i:200	nn:i:0	tp:A:P	cm:i:35	s1:i:189	s2:i:0	de:f:0	rl:i:0	cg:Z:200M	cs:Z::200
+NODE_1317_length_221_cov_1159.389160	241	0	241	+	MN908947.3	29903	3833	4074	241	241	60	NM:i:0	ms:i:241	AS:i:241	nn:i:0	tp:A:P	cm:i:35	s1:i:231	s2:i:0	de:f:0	rl:i:0	cg:Z:241M	cs:Z::241
+NODE_926_length_250_cov_1109.036011	270	0	270	-	MN908947.3	29903	4587	4857	270	270	60	NM:i:0	ms:i:270	AS:i:270	nn:i:0	tp:A:P	cm:i:43	s1:i:256	s2:i:0	de:f:0	rl:i:0	cg:Z:270M	cs:Z::270
+NODE_220_length_284_cov_846.503540	304	0	304	+	MN908947.3	29903	17659	17963	304	304	60	NM:i:0	ms:i:304	AS:i:304	nn:i:0	tp:A:P	cm:i:50	s1:i:287	s2:i:0	de:f:0	rl:i:0	cg:Z:304M	cs:Z::304
+NODE_2674_length_218_cov_528.931213	238	0	238	-	MN908947.3	29903	19454	19692	238	238	60	NM:i:0	ms:i:238	AS:i:238	nn:i:0	tp:A:P	cm:i:37	s1:i:223	s2:i:0	de:f:0	rl:i:0	cg:Z:238M	cs:Z::238
+NODE_2511_length_258_cov_457.116272	278	0	278	+	MN908947.3	29903	20061	20339	277	278	60	NM:i:1	ms:i:273	AS:i:273	nn:i:0	tp:A:P	cm:i:45	s1:i:259	s2:i:0	de:f:0.0036	rl:i:0	cg:Z:278M	cs:Z::206*ag:71
+NODE_479_length_203_cov_420.679810	223	0	223	-	MN908947.3	29903	21102	21325	222	223	60	NM:i:1	ms:i:218	AS:i:218	nn:i:0	tp:A:P	cm:i:29	s1:i:198	s2:i:0	de:f:0.0045	rl:i:0	cg:Z:223M	cs:Z::34*ag:188
+NODE_508_length_246_cov_468.357727	266	0	266	-	MN908947.3	29903	21305	21571	266	266	60	NM:i:0	ms:i:266	AS:i:266	nn:i:0	tp:A:P	cm:i:42	s1:i:253	s2:i:0	de:f:0	rl:i:0	cg:Z:266M	cs:Z::266

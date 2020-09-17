@@ -1,0 +1,2 @@
+NODE_4304_length_236_cov_2020.699097	256	0	256	+	MN908947.3	29903	1036	1292	256	256	60	NM:i:0	ms:i:256	AS:i:256	nn:i:0	tp:A:P	cm:i:45	s1:i:251	s2:i:0	de:f:0	rl:i:0	cg:Z:256M	cs:Z::256
+NODE_6435_length_183_cov_379.508209	203	0	203	+	MN908947.3	29903	21225	21428	203	203	60	NM:i:0	ms:i:203	AS:i:203	nn:i:0	tp:A:P	cm:i:28	s1:i:188	s2:i:0	de:f:0	rl:i:0	cg:Z:203M	cs:Z::203

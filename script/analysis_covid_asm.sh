@@ -1,26 +1,49 @@
+#path
+
+
 # make window of 50bp
 cd /Volumes/rony/drive/asm/covid19-Assembly/files/
 bedtools makewindows -g MN908947.3.sizes.txt -w 50 >MN908947.3.50bpWindows.bed
 
 # make bed file of alignment from paf file
-cd /Volumes/rony/x-genomics-alignment-tester-master/asm_fasta_6k/VAR/
-for f in *.srt.paf; do less $f | awk '{print $6 "\t" $8 "\t" $9}' >$f.bed;done
+cd /Volumes/rony/drive/asm/covid19-Assembly/files/VAR/
+for f in *.srt.paf; do less $f | awk '{print $6 "\t" $8 "\t" $9}' | sort -k1,1 -k2,2n >$f.bed;done
 
 #make matrix 
-for f in *paf.bed; do echo $f; bedtools intersect -a ~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/MN908947.3.50bpWindows.bed -b $f -wao | awk '{print $1"_"$2"_"$3 "\t" $0}' | awk '!seen[$1]++' | awk '{print $8}' >$f.50bp_overlap;done
+for f in *paf.bed; do echo $f; intersectBed -a /Volumes/rony/drive/asm/covid19-Assembly/files/MN908947.3.50bpWindows.bed -b $f -wao | awk '{print $1"_"$2"_"$3 "\t" $0}' | awk '!seen[$1]++' | awk '{print $8}' >$f.50bp_overlap;done
 
-less ~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/MN908947.3.50bpWindows.bed | awk '{print $1"_"$2"_"$3}' >A.ID.50bp_overlap
+#print zero out file names
+for f in *paf.bed.50bp_overlap; do wc -l $f;done | awk '$1 == 0 {print "rm" "\t" $2}' >zero_out_remove.sh
 
-((echo *.50bp_overlap |tr ' ' '\t') && (paste *.50bp_overlap)) >alignment_matrix_50bp.tsv
+sh zero_out_remove.sh
+
+#megahit
+less /Volumes/rony/drive/asm/covid19-Assembly/files/MN908947.3.50bpWindows.bed | awk '{print $1"_"$2"_"$3}' >A.ID.megahit.50bp_overlap
+
+((echo *megahit*.50bp_overlap |tr ' ' '\t') && (paste *megahit*.50bp_overlap)) >../megahit_alignment_matrix_50bp.tsv
+
+#metaspades
+less /Volumes/rony/drive/asm/covid19-Assembly/files/MN908947.3.50bpWindows.bed | awk '{print $1"_"$2"_"$3}' >A.ID.metaspade.50bp_overlap
+
+((echo *metaspade*.50bp_overlap |tr ' ' '\t') && (paste *metaspade*.50bp_overlap)) >../metaspade_alignment_matrix_50bp.tsv
+
+#remove tmp files
+for f in *.50bp_overlap; do rm $f;done 
+
 
 # run metaquast
 cd /projects/epigenomics3/temp/rislam/assembly/rajan/asm_pe/
 
-metaquast.py output/*_PE.fasta -o output/meta_quast_out/ -r MN908947.3.fasta -g Sars_cov_2.ASM985889v3.100.gff3 -t 40
+metaquast.py output/*_PE.fasta -o ./meta_quast_out_PE_all/ -r MN908947.3.fasta -g Sars_cov_2.ASM985889v3.100.gff3 -t 40 --fast --silent
 
 #compress dir
 tar -zcvf quast_results.tar.gz quast_results
 #uncompress
 tar xvzf myfolder.tar.gz
 
-# path 
+# bam files
+for f in *bam; do samtools sort -o $f.sorted.bam $f;done
+for f in *sorted.bam; do samtools index $f;done
+
+
+

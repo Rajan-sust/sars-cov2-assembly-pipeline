@@ -1,0 +1,12 @@
+NODE_1922_length_243_cov_453.884766	263	0	263	-	MN908947.3	29903	3037	3300	263	263	60	NM:i:0	ms:i:263	AS:i:263	nn:i:0	tp:A:P	cm:i:50	s1:i:249	s2:i:0	de:f:0	rl:i:0	cg:Z:263M	cs:Z::263
+NODE_14052_length_305_cov_691.095093	325	0	325	+	MN908947.3	29903	6609	6934	325	325	60	NM:i:0	ms:i:325	AS:i:325	nn:i:0	tp:A:P	cm:i:62	s1:i:310	s2:i:0	de:f:0	rl:i:0	cg:Z:325M	cs:Z::325
+NODE_14582_length_231_cov_750.476196	251	0	251	+	MN908947.3	29903	7720	7971	251	251	60	NM:i:0	ms:i:251	AS:i:251	nn:i:0	tp:A:P	cm:i:39	s1:i:245	s2:i:0	de:f:0	rl:i:0	cg:Z:251M	cs:Z::251
+NODE_13494_length_188_cov_998.191467	208	0	208	+	MN908947.3	29903	11787	11995	208	208	60	NM:i:0	ms:i:208	AS:i:208	nn:i:0	tp:A:P	cm:i:35	s1:i:198	s2:i:0	de:f:0	rl:i:0	cg:Z:208M	cs:Z::208
+NODE_14860_length_191_cov_582.413635	211	0	211	+	MN908947.3	29903	14184	14395	211	211	60	NM:i:0	ms:i:211	AS:i:211	nn:i:0	tp:A:P	cm:i:36	s1:i:203	s2:i:0	de:f:0	rl:i:0	cg:Z:211M	cs:Z::211
+NODE_6757_length_268_cov_641.332092	288	0	288	-	MN908947.3	29903	14396	14684	288	288	60	NM:i:0	ms:i:288	AS:i:288	nn:i:0	tp:A:P	cm:i:48	s1:i:280	s2:i:0	de:f:0	rl:i:0	cg:Z:288M	cs:Z::288
+NODE_2524_length_299_cov_353.214050	319	0	319	-	MN908947.3	29903	14681	15000	319	319	60	NM:i:0	ms:i:319	AS:i:319	nn:i:0	tp:A:P	cm:i:57	s1:i:314	s2:i:0	de:f:0	rl:i:0	cg:Z:319M	cs:Z::319
+NODE_6960_length_187_cov_954.732605	207	0	207	-	MN908947.3	29903	16198	16405	207	207	60	NM:i:0	ms:i:207	AS:i:207	nn:i:0	tp:A:P	cm:i:37	s1:i:203	s2:i:0	de:f:0	rl:i:0	cg:Z:207M	cs:Z::207
+NODE_15675_length_279_cov_706.562744	299	0	299	+	MN908947.3	29903	18688	18987	299	299	60	NM:i:0	ms:i:299	AS:i:299	nn:i:0	tp:A:P	cm:i:50	s1:i:287	s2:i:0	de:f:0	rl:i:0	cg:Z:299M	cs:Z::299
+NODE_10157_length_324_cov_695.478394	344	0	344	-	MN908947.3	29903	19065	19409	344	344	60	NM:i:0	ms:i:344	AS:i:344	nn:i:0	tp:A:P	cm:i:53	s1:i:336	s2:i:0	de:f:0	rl:i:0	cg:Z:344M	cs:Z::344
+NODE_5098_length_204_cov_841.544128	224	0	224	-	MN908947.3	29903	23570	23794	224	224	60	NM:i:0	ms:i:224	AS:i:224	nn:i:0	tp:A:P	cm:i:35	s1:i:215	s2:i:0	de:f:0	rl:i:0	cg:Z:224M	cs:Z::224
+NODE_17630_length_245_cov_714.906128	265	0	265	+	MN908947.3	29903	25868	26133	265	265	60	NM:i:0	ms:i:265	AS:i:265	nn:i:0	tp:A:P	cm:i:50	s1:i:259	s2:i:0	de:f:0	rl:i:0	cg:Z:265M	cs:Z::265

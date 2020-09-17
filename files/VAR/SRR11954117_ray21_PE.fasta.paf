@@ -1,0 +1,3 @@
+scaffold-5336	30632	2	29788	-	MN908947.3	29903	28	29862	29779	29834	60	NM:i:55	ms:i:29665	AS:i:29677	nn:i:0	tp:A:P	cm:i:5417	s1:i:29720	s2:i:0	de:f:0.0003	rl:i:0	cg:Z:29700M48D86M	cs:Z::76*gt:135*ct:2795*ct:11370*ct:4468*ct:4525*ag:2159*gt:4165-tcaccgaggccacgcggagtacgatcgagtgtacagtgaacaatgcta:86
+scaffold-5336	30632	29783	30432	+	MN908947.3	29903	6	655	647	649	60	NM:i:2	ms:i:639	AS:i:639	nn:i:0	tp:A:P	cm:i:106	s1:i:634	s2:i:0	de:f:0.0031	rl:i:0	cg:Z:649M	cs:Z::98*gt:135*ct:414
+scaffold-5336	30632	30427	30632	-	MN908947.3	29903	520	725	205	205	60	NM:i:0	ms:i:205	AS:i:205	nn:i:0	tp:A:P	cm:i:36	s1:i:204	s2:i:0	de:f:0	rl:i:0	cg:Z:205M	cs:Z::205

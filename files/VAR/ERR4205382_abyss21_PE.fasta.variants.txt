@@ -1,0 +1,10 @@
+R	MN908947.3	523	25401
+V	MN908947.3	1814	1814	1	60	-	aaaannnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn	156	23672	23726	-
+V	MN908947.3	3036	3037	1	60	c	t	156	22449	22450	-
+V	MN908947.3	6772	6835	1	60	ccttatttctttactttattgctacaattgtgtacttttactagaagtacaaattctagaatt	-	156	18714	18714	-
+V	MN908947.3	9177	9177	1	60	-	nnnnnnnnnnnnnnnnnnnnnnnnnnnn	156	16344	16372	-
+V	MN908947.3	11073	11073	1	60	-	nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn	156	14400	14448	-
+V	MN908947.3	14100	14100	1	60	-	nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn	156	11341	11373	-
+V	MN908947.3	14407	14408	1	60	c	t	156	11033	11034	-
+V	MN908947.3	18678	18678	1	60	-	nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn	156	6723	6763	-
+V	MN908947.3	23402	23403	1	60	a	g	156	1998	1999	-

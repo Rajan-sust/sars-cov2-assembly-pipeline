@@ -1,0 +1,3 @@
+2	2781	0	2781	+	MN908947.3	29903	19557	22338	2781	2781	60	NM:i:0	ms:i:2781	AS:i:2781	nn:i:0	tp:A:P	cm:i:506	s1:i:2777	s2:i:0	de:f:0	rl:i:0	cg:Z:2781M	cs:Z::2781
+11	7592	0	7592	+	MN908947.3	29903	22272	29864	7590	7592	60	NM:i:2	ms:i:7582	AS:i:7582	nn:i:0	tp:A:P	cm:i:1396	s1:i:7563	s2:i:0	de:f:0.0003	rl:i:0	cg:Z:7592M	cs:Z::2421*at:3449*tc:1720
+14	19329	0	19240	-	MN908947.3	29903	98	19290	19186	19190	60	NM:i:54	ms:i:19066	AS:i:19094	nn:i:50	tp:A:P	cm:i:3481	s1:i:19153	s2:i:0	de:f:0.0004	rl:i:0	cg:Z:10983M48I8209M	cs:Z::8683*ct:2299+nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn*tn*gn:6663*ct:110*ag:201*ct:1230

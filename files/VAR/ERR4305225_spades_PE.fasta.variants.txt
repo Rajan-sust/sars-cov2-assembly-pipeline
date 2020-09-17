@@ -1,0 +1,21 @@
+R	MN908947.3	30	8471
+V	MN908947.3	240	241	1	60	c	t	NODE_1_length_29773_cov_1545.390067_g0_i0	238	239	+
+V	MN908947.3	3036	3037	1	60	c	t	NODE_1_length_29773_cov_1545.390067_g0_i0	3034	3035	+
+R	MN908947.3	29594	29647
+V	MN908947.3	14407	14408	2	60	c	t	NODE_1_length_29773_cov_1545.390067_g0_i0	14405	14406	+
+V	MN908947.3	19169	19170	2	60	c	t	NODE_1_length_29773_cov_1545.390067_g0_i0	19167	19168	+
+V	MN908947.3	19508	19509	2	60	g	a	NODE_1_length_29773_cov_1545.390067_g0_i0	19506	19507	+
+V	MN908947.3	23402	23403	2	60	a	g	NODE_1_length_29773_cov_1545.390067_g0_i0	23400	23401	+
+V	MN908947.3	28880	28881	2	60	g	a	NODE_1_length_29773_cov_1545.390067_g0_i0	28878	28879	+
+V	MN908947.3	28881	28882	2	60	g	a	NODE_1_length_29773_cov_1545.390067_g0_i0	28879	28880	+
+V	MN908947.3	28882	28883	2	60	g	c	NODE_1_length_29773_cov_1545.390067_g0_i0	28880	28881	+
+V	MN908947.3	12490	12758	2	60	gactataacacatataaaaatacgtgtgatggtacaacatttacttatgcatcagcattgtgggaaatccaacaggttgtagatgcagatagtaaaattgttcaacttagtgaaattagtatggacaattcacctaatttagcatggcctcttattgtaacagctttaagggccaattctgctgtcaaattacagaataatgagcttagtcctgttgcactacgacagatgtcttgtgctgccggtactacacaaactgcttgcactg	-	NODE_2_length_21997_cov_1617.833926_g0_i1	4130	4130	+
+V	MN908947.3	12795	12796	2	60	a	g	NODE_2_length_21997_cov_1617.833926_g0_i1	4167	4168	+
+V	MN908947.3	14407	14408	2	60	c	t	NODE_2_length_21997_cov_1617.833926_g0_i1	5779	5780	+
+V	MN908947.3	19169	19170	2	60	c	t	NODE_2_length_21997_cov_1617.833926_g0_i1	10541	10542	+
+V	MN908947.3	19508	19509	2	60	g	a	NODE_2_length_21997_cov_1617.833926_g0_i1	10880	10881	+
+V	MN908947.3	23402	23403	2	60	a	g	NODE_2_length_21997_cov_1617.833926_g0_i1	14774	14775	+
+V	MN908947.3	24067	24067	2	60	-	caatatggtgattgccttggtgatattgctgctagagacctcatttgtgcacaaaagtttaacggccttactgttttgccacctttgctcacagatgaaatgattgctcaatacacttctgcactgttagcgggtacaatcacttctggttggacctttggtgcaggtgctgcattacaaataccatttgctatgcaaatggcttataggtttaatggtattggagttacacagaatgttctctatgagaaccaaaaattgattgccaaccaatttaatagtgctattggcaaaattcaagactcactttcttccacagcaagtgcacttggaaaacttcaagatgtggtcaaccaaaatgcacaagctttaaacacgcttttcaacaaagtgacacttgcagatgctggcttcatcaac	NODE_2_length_21997_cov_1617.833926_g0_i1	15439	15859	+
+V	MN908947.3	28880	28881	2	60	g	a	NODE_2_length_21997_cov_1617.833926_g0_i1	20672	20673	+
+V	MN908947.3	28881	28882	2	60	g	a	NODE_2_length_21997_cov_1617.833926_g0_i1	20673	20674	+
+V	MN908947.3	28882	28883	2	60	g	c	NODE_2_length_21997_cov_1617.833926_g0_i1	20674	20675	+

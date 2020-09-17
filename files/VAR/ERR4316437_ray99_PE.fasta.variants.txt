@@ -1,0 +1,19 @@
+R	MN908947.3	12	29861
+V	MN908947.3	6218	6219	1	60	t	c	scaffold-23	6206	6207	+
+V	MN908947.3	8391	8392	1	60	t	c	scaffold-23	8379	8380	+
+V	MN908947.3	8781	8782	1	60	c	t	scaffold-23	8769	8770	+
+V	MN908947.3	9476	9477	1	60	t	a	scaffold-23	9464	9465	+
+V	MN908947.3	10619	10619	1	60	-	a	scaffold-23	10607	10608	+
+V	MN908947.3	11635	11636	1	60	a	t	scaffold-23	11624	11625	+
+V	MN908947.3	11673	11674	1	60	c	t	scaffold-23	11662	11663	+
+V	MN908947.3	13073	13074	1	60	g	a	scaffold-23	13062	13063	+
+V	MN908947.3	14804	14805	1	60	c	t	scaffold-23	14793	14794	+
+V	MN908947.3	15398	15399	1	60	t	c	scaffold-23	15387	15388	+
+V	MN908947.3	22386	23627	1	60	tctattaaaatataatgaaaatggaaccattacagatgctgtagactgtgcacttgaccctctctcagaaacaaagtgtacgttgaaatccttcactgtagaaaaaggaatctatcaaacttctaactttagagtccaaccaacagaatctattgttagatttcctaatattacaaacttgtgcccttttggtgaagtttttaacgccaccagatttgcatctgtttatgcttggaacaggaagagaatcagcaactgtgttgctgattattctgtcctatataattccgcatcattttccacttttaagtgttatggagtgtctcctactaaattaaatgatctctgctttactaatgtctatgcagattcatttgtaattagaggtgatgaagtcagacaaatcgctccagggcaaactggaaagattgctgattataattataaattaccagatgattttacaggctgcgttatagcttggaattctaacaatcttgattctaaggttggtggtaattataattacctgtatagattgtttaggaagtctaatctcaaaccttttgagagagatatttcaactgaaatctatcaggccggtagcacaccttgtaatggtgttgaaggttttaattgttactttcctttacaatcatatggtttccaacccactaatggtgttggttaccaaccatacagagtagtagtactttcttttgaacttctacatgcaccagcaactgtttgtggacctaaaaagtctactaatttggttaaaaacaaatgtgtcaatttcaacttcaatggtttaacaggcacaggtgttcttactgagtctaacaaaaagtttctgcctttccaacaatttggcagagacattgctgacactactgatgctgtccgtgatccacagacacttgagattcttgacattacaccatgttcttttggtggtgtcagtgttataacaccaggaacaaatacttctaaccaggttgctgttctttatcaggatgttaactgcacagaagtccctgttgctattcatgcagatcaacttactcctacttggcgtgtttattctacaggttctaatgtttttcaaacacgtgcaggctgtttaataggggctgaacatgtcaacaactcatatgagtgtgacatacccattggtgcaggtatatgcgctagttatcagactcagactaattctcctcggcgggcacgtagtgtagcta	-	scaffold-23	22375	22375	+
+V	MN908947.3	25978	25979	1	60	g	t	scaffold-23	24726	24727	+
+V	MN908947.3	27111	27112	1	60	g	a	scaffold-23	25859	25860	+
+V	MN908947.3	28143	28144	1	60	t	c	scaffold-23	26891	26892	+
+V	MN908947.3	28214	28214	1	60	-	t	scaffold-23	26962	26963	+
+V	MN908947.3	28656	28657	1	60	c	t	scaffold-23	27405	27406	+
+V	MN908947.3	28862	28863	1	60	c	t	scaffold-23	27611	27612	+
+V	MN908947.3	29401	29402	1	60	g	t	scaffold-23	28150	28151	+

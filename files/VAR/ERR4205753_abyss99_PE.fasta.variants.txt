@@ -1,0 +1,14 @@
+R	MN908947.3	21	29859
+V	MN908947.3	240	241	1	60	c	t	13	219	220	+
+V	MN908947.3	3036	3037	1	60	c	t	13	3015	3016	+
+V	MN908947.3	4284	4285	1	60	g	t	13	4263	4264	+
+V	MN908947.3	6750	6750	1	60	-	ccgtgtttgtactaattatatgccttatttctttactttattgctacaattgtgtacttttactagaagtacaaattctnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn	13	6729	6858	+
+V	MN908947.3	10947	10948	1	60	a	g	13	11055	11056	+
+V	MN908947.3	11075	11075	1	60	-	ttttttnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn	13	11183	11239	+
+V	MN908947.3	14407	14408	1	60	c	t	13	14571	14572	+
+V	MN908947.3	20427	20427	1	60	-	cctatggacagtacagttaaaaactatttcataacagatgcgcaannnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn	13	20591	20686	+
+V	MN908947.3	23402	23403	1	60	a	g	13	23661	23662	+
+V	MN908947.3	27541	27542	1	60	c	t	13	27800	27801	+
+V	MN908947.3	28880	28881	1	60	g	a	13	29139	29140	+
+V	MN908947.3	28881	28882	1	60	g	a	13	29140	29141	+
+V	MN908947.3	28882	28883	1	60	g	c	13	29141	29142	+

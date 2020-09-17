@@ -1,0 +1,4 @@
+scaffold-100	204	0	204	+	MN908947.3	29903	9647	9851	204	204	60	NM:i:0	ms:i:204	AS:i:204	nn:i:0	tp:A:P	cm:i:30	s1:i:192	s2:i:0	de:f:0	rl:i:0	cg:Z:204M	cs:Z::204
+scaffold-1	277	0	277	-	MN908947.3	29903	10272	10549	277	277	60	NM:i:0	ms:i:277	AS:i:277	nn:i:0	tp:A:P	cm:i:45	s1:i:269	s2:i:0	de:f:0	rl:i:0	cg:Z:277M	cs:Z::277
+scaffold-0	255	0	255	+	MN908947.3	29903	19294	19549	255	255	60	NM:i:0	ms:i:255	AS:i:255	nn:i:0	tp:A:P	cm:i:37	s1:i:247	s2:i:0	de:f:0	rl:i:0	cg:Z:255M	cs:Z::255
+scaffold-25	284	0	284	+	MN908947.3	29903	23387	23671	283	284	60	NM:i:1	ms:i:279	AS:i:279	nn:i:0	tp:A:P	cm:i:48	s1:i:266	s2:i:0	de:f:0.0035	rl:i:0	cg:Z:284M	cs:Z::15*ag:268

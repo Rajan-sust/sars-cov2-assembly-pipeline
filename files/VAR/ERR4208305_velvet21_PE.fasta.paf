@@ -1,0 +1,11 @@
+NODE_60_length_278_cov_762.143860	298	0	298	-	MN908947.3	29903	1292	1590	298	298	60	NM:i:0	ms:i:298	AS:i:298	nn:i:0	tp:A:P	cm:i:52	s1:i:292	s2:i:0	de:f:0	rl:i:0	cg:Z:298M	cs:Z::298
+NODE_85_length_199_cov_794.859314	219	0	219	+	MN908947.3	29903	1923	2142	219	219	60	NM:i:0	ms:i:219	AS:i:219	nn:i:0	tp:A:P	cm:i:35	s1:i:209	s2:i:0	de:f:0	rl:i:0	cg:Z:219M	cs:Z::219
+NODE_89_length_229_cov_847.633179	249	0	249	-	MN908947.3	29903	2345	2594	249	249	60	NM:i:0	ms:i:249	AS:i:249	nn:i:0	tp:A:P	cm:i:40	s1:i:237	s2:i:0	de:f:0	rl:i:0	cg:Z:249M	cs:Z::249
+NODE_199_length_194_cov_638.902039	214	0	214	-	MN908947.3	29903	4748	4962	214	214	60	NM:i:0	ms:i:214	AS:i:214	nn:i:0	tp:A:P	cm:i:34	s1:i:207	s2:i:0	de:f:0	rl:i:0	cg:Z:214M	cs:Z::214
+NODE_286_length_234_cov_550.811951	254	0	254	-	MN908947.3	29903	7565	7818	253	254	60	NM:i:1	ms:i:245	AS:i:245	nn:i:0	tp:A:P	cm:i:39	s1:i:238	s2:i:0	de:f:0.0039	rl:i:0	cg:Z:61M1I192M	cs:Z::61+t:192
+NODE_380_length_206_cov_688.000000	226	0	226	-	MN908947.3	29903	10709	10935	226	226	60	NM:i:0	ms:i:226	AS:i:226	nn:i:0	tp:A:P	cm:i:40	s1:i:217	s2:i:0	de:f:0	rl:i:0	cg:Z:226M	cs:Z::226
+NODE_1154_length_279_cov_608.186401	299	0	299	-	MN908947.3	29903	24956	25255	299	299	60	NM:i:0	ms:i:299	AS:i:299	nn:i:0	tp:A:P	cm:i:46	s1:i:285	s2:i:0	de:f:0	rl:i:0	cg:Z:299M	cs:Z::299
+NODE_1891_length_250_cov_638.000000	270	0	270	+	MN908947.3	29903	1002	1272	270	270	60	NM:i:0	ms:i:270	AS:i:270	nn:i:0	tp:A:P	cm:i:46	s1:i:266	s2:i:0	de:f:0	rl:i:0	cg:Z:270M	cs:Z::270
+NODE_2257_length_289_cov_426.685120	309	0	309	+	MN908947.3	29903	9323	9632	309	309	60	NM:i:0	ms:i:309	AS:i:309	nn:i:0	tp:A:P	cm:i:50	s1:i:309	s2:i:0	de:f:0	rl:i:0	cg:Z:309M	cs:Z::309
+NODE_2379_length_206_cov_539.766968	226	0	226	+	MN908947.3	29903	11568	11794	226	226	60	NM:i:0	ms:i:226	AS:i:226	nn:i:0	tp:A:P	cm:i:38	s1:i:216	s2:i:0	de:f:0	rl:i:0	cg:Z:226M	cs:Z::226
+NODE_2435_length_202_cov_975.331665	222	0	222	+	MN908947.3	29903	12858	13080	222	222	60	NM:i:0	ms:i:222	AS:i:222	nn:i:0	tp:A:P	cm:i:38	s1:i:215	s2:i:0	de:f:0	rl:i:0	cg:Z:222M	cs:Z::222

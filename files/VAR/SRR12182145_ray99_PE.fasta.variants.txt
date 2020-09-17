@@ -1,0 +1,12 @@
+R	MN908947.3	4	29870
+V	MN908947.3	159	160	1	60	g	a	scaffold-0	155	156	+
+V	MN908947.3	240	241	1	60	c	t	scaffold-0	236	237	+
+V	MN908947.3	3036	3037	1	60	c	t	scaffold-0	3032	3033	+
+V	MN908947.3	7437	7438	1	60	t	c	scaffold-0	7433	7434	+
+V	MN908947.3	14407	14408	1	60	c	t	scaffold-0	14403	14404	+
+V	MN908947.3	22154	22154	1	60	-	nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn	scaffold-0	22150	22655	+
+V	MN908947.3	23402	23403	1	60	a	g	scaffold-0	23903	23904	+
+V	MN908947.3	28254	28254	1	60	-	tctaaacgaacaaactaaaatgtctgataatggaccccnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn	scaffold-0	28755	29175	+
+V	MN908947.3	28880	28881	1	60	g	a	scaffold-0	29801	29802	+
+V	MN908947.3	28881	28882	1	60	g	a	scaffold-0	29802	29803	+
+V	MN908947.3	28882	28883	1	60	g	c	scaffold-0	29803	29804	+

@@ -1,0 +1,13 @@
+scaffold-3	211	0	211	-	MN908947.3	29903	4971	5182	211	211	60	NM:i:0	ms:i:211	AS:i:211	nn:i:0	tp:A:P	cm:i:38	s1:i:204	s2:i:0	de:f:0	rl:i:0	cg:Z:211M	cs:Z::211
+scaffold-7	303	0	303	-	MN908947.3	29903	26763	27066	303	303	60	NM:i:0	ms:i:303	AS:i:303	nn:i:0	tp:A:P	cm:i:51	s1:i:296	s2:i:0	de:f:0	rl:i:0	cg:Z:303M	cs:Z::303
+scaffold-12	302	0	302	-	MN908947.3	29903	17027	17329	302	302	60	NM:i:0	ms:i:302	AS:i:302	nn:i:0	tp:A:P	cm:i:50	s1:i:295	s2:i:0	de:f:0	rl:i:0	cg:Z:302M	cs:Z::302
+scaffold-20	243	0	243	+	MN908947.3	29903	9708	9951	243	243	60	NM:i:0	ms:i:243	AS:i:243	nn:i:0	tp:A:P	cm:i:38	s1:i:242	s2:i:0	de:f:0	rl:i:0	cg:Z:243M	cs:Z::243
+scaffold-22	211	0	211	-	MN908947.3	29903	17474	17685	211	211	60	NM:i:0	ms:i:211	AS:i:211	nn:i:0	tp:A:P	cm:i:37	s1:i:209	s2:i:0	de:f:0	rl:i:0	cg:Z:211M	cs:Z::211
+scaffold-28	608	0	608	-	MN908947.3	29903	23118	23726	607	608	60	NM:i:1	ms:i:603	AS:i:603	nn:i:0	tp:A:P	cm:i:98	s1:i:592	s2:i:0	de:f:0.0016	rl:i:0	cg:Z:608M	cs:Z::284*ag:323
+scaffold-43	292	0	292	+	MN908947.3	29903	11692	11984	292	292	60	NM:i:0	ms:i:292	AS:i:292	nn:i:0	tp:A:P	cm:i:50	s1:i:282	s2:i:0	de:f:0	rl:i:0	cg:Z:292M	cs:Z::292
+scaffold-44	319	0	319	-	MN908947.3	29903	19618	19937	319	319	60	NM:i:0	ms:i:319	AS:i:319	nn:i:0	tp:A:P	cm:i:54	s1:i:313	s2:i:0	de:f:0	rl:i:0	cg:Z:319M	cs:Z::319
+scaffold-46	287	0	287	-	MN908947.3	29903	13442	13729	287	287	60	NM:i:0	ms:i:287	AS:i:287	nn:i:0	tp:A:P	cm:i:44	s1:i:277	s2:i:0	de:f:0	rl:i:0	cg:Z:287M	cs:Z::287
+scaffold-53	288	0	288	+	MN908947.3	29903	29315	29603	288	288	60	NM:i:0	ms:i:288	AS:i:288	nn:i:0	tp:A:P	cm:i:49	s1:i:288	s2:i:0	de:f:0	rl:i:0	cg:Z:288M	cs:Z::288
+scaffold-57	1087	0	1087	+	MN908947.3	29903	28159	29246	1087	1087	60	NM:i:0	ms:i:1087	AS:i:1087	nn:i:0	tp:A:P	cm:i:206	s1:i:1078	s2:i:0	de:f:0	rl:i:0	cg:Z:1087M	cs:Z::1087
+scaffold-63	380	0	380	+	MN908947.3	29903	16790	17170	380	380	60	NM:i:0	ms:i:380	AS:i:380	nn:i:0	tp:A:P	cm:i:65	s1:i:374	s2:i:0	de:f:0	rl:i:0	cg:Z:380M	cs:Z::380
+scaffold-83	231	0	231	+	MN908947.3	29903	21466	21697	231	231	60	NM:i:0	ms:i:231	AS:i:231	nn:i:0	tp:A:P	cm:i:38	s1:i:221	s2:i:0	de:f:0	rl:i:0	cg:Z:231M	cs:Z::231

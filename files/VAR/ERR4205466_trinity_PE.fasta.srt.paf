@@ -1,0 +1,2 @@
+TRINITY_DN0_c1_g1_i1	8090	0	8090	-	MN908947.3	29903	14	8104	8088	8090	60	NM:i:2	ms:i:8080	AS:i:8080	nn:i:0	tp:A:P	cm:i:1471	s1:i:8067	s2:i:0	de:f:0.0002	rl:i:0	cg:Z:8090M	cs:Z::2465*ag:77*ct:5546
+TRINITY_DN0_c0_g1_i1	21753	0	21753	+	MN908947.3	29903	8082	29871	21748	21789	60	NM:i:41	ms:i:21650	AS:i:21666	nn:i:0	tp:A:P	cm:i:3960	s1:i:21715	s2:i:0	de:f:0.0003	rl:i:0	cg:Z:18702M36D3051M	cs:Z::2745*ac:254*gt:3721*ct:10290*ct:1047*gt:640-taggcttgatgtggctcagctacttcattgcttctt:3051

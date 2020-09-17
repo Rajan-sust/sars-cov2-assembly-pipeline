@@ -1,0 +1,14 @@
+R	MN908947.3	7692	29864
+V	MN908947.3	9230	9230	1	60	-	gtgaaagatcagaagctggtgtttgtgtatctactagtggtagatgggtacttaacaatgattattacnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn	17	21044	21162	-
+V	MN908947.3	11063	11063	1	60	-	ggtctttgttcttttttttgtatgaaaatgcctttttaccttttgctnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn	17	19114	19211	-
+V	MN908947.3	14407	14408	1	60	c	t	17	15769	15770	-
+V	MN908947.3	15767	15768	1	60	g	t	17	14409	14410	-
+V	MN908947.3	20394	20394	1	60	-	aaggaatcaccttttgaattagaagattttattccnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn	17	9698	9783	-
+V	MN908947.3	21442	21442	1	60	-	nnnnnnnnnnnnnnnnnnnnnnnnnnnnnn	17	8620	8650	-
+V	MN908947.3	22935	22935	1	60	-	gtctaatctcaaaccttttgagagagatatttcaactgaaatctatcaggccggnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn	17	7023	7127	-
+V	MN908947.3	23402	23403	1	60	a	g	17	6555	6556	-
+V	MN908947.3	24132	24132	1	60	-	ccttactgttttgccacctttgctcacagatgaaatgattgnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn	17	5735	5826	-
+V	MN908947.3	25032	25032	1	60	-	gan	17	4832	4835	-
+V	MN908947.3	28880	28881	1	60	g	a	17	983	984	-
+V	MN908947.3	28881	28882	1	60	g	a	17	982	983	-
+V	MN908947.3	28882	28883	1	60	g	c	17	981	982	-

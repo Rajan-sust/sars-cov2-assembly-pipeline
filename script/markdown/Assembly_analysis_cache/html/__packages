@@ -1,0 +1,16 @@
+base
+tidyverse
+ggplot2
+tibble
+tidyr
+readr
+purrr
+dplyr
+stringr
+forcats
+reshape2
+viridisLite
+viridis
+ggsci
+knitr
+pheatmap
