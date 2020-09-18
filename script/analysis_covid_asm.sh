@@ -30,6 +30,19 @@ less /Volumes/rony/drive/asm/covid19-Assembly/files/MN908947.3.50bpWindows.bed |
 #remove tmp files
 for f in *.50bp_overlap; do rm $f;done 
 
+# move fastq data of libs without R2 file
+cd /projects/epigenomics3/temp/rislam/assembly/rajan/asm_pe/fastqc/without_R2_SRR/
+ls *zip | paste - | tr '_' '\t' |awk '{print $1}' | sort | uniq -c | awk '$1 == 2{print $2}' >list_SRR_wit_R1_R2.txt
+#
+while read line; do echo $line; 
+mv $line* ../;
+done <list_SRR_wit_R1_R2.txt
+
+# make read qc matrix
+cd /projects/epigenomics3/temp/rislam/assembly/rajan/asm_pe/fastqc
+for f in *zip; do unzip $f;done
+
+for f in *RR*/fastqc_data.txt; do echo $f; grep "Total Sequences\|Sequences flagged as poor quality\|Sequence length\|%GC" $f; done | paste - - - - -  | awk '{gsub("/fastqc_data.txt", ""); print }' >read_QC_matrix.txt
 
 # run metaquast
 cd /projects/epigenomics3/temp/rislam/assembly/rajan/asm_pe/
