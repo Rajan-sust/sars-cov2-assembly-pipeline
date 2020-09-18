@@ -47,15 +47,26 @@ rownames(both5) = both3$Run
 anno = data.frame(Assay = both3$Assay_Type)
 rownames(anno) = rownames(both5)
 
-#plot.new()
-#pdf("/Volumes/rony/drive/asm/covid19-Assembly/plots/heatmap.pdf", width = 10, height = 10)
 pheatmap(both5, annotation_row = anno, cluster_cols = F, cluster_rows = F, show_rownames = F, show_colnames = F, color = colorRampPalette(c("red", "white", "gray"))(1000), border_color = NA, gaps_col = 599, gaps_row = c(82, 82+65, 82+65+58, 82+65+58+88))
 ```
 
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
 
 ```r
-#dev.off()
+plot.new()
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-2.png)<!-- -->
+
+```r
+pdf("/Volumes/rony/drive/asm/covid19-Assembly/plots/heatmap.pdf")
+pheatmap(both5, annotation_row = anno, cluster_cols = F, cluster_rows = F, show_rownames = F, show_colnames = F, color = colorRampPalette(c("red", "white", "gray"))(1000), border_color = NA, gaps_col = 599, gaps_row = c(82, 82+65, 82+65+58, 82+65+58+88))
+dev.off()
+```
+
+```
+## pdf 
+##   3
 ```
 
 ### assembly quality
@@ -668,6 +679,8 @@ ggsave("90_percent_genome_single_contig.pdf", width = 15, height = 10, units = "
 library(tidyverse)
 setwd("/Volumes/rony/drive/asm/covid19-Assembly/plots/")
 r = read.table("~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/read_QC_matrix.txt")[,c(1,4)]
+r = read.table("/Volumes/rony/drive/asm/covid19-Assembly/files/read_QC_matrix.txt")[,c(1,4)]
+
 r2 = data.frame(id = str_split_fixed(r$V1, "_", 2), read = r$V4)
 head(r2$id[,1])
 ```
@@ -679,30 +692,48 @@ head(r2$id[,1])
 ```r
 #sum every two rows of PE data
 r3 = data.frame(id = unique(r2$id.1), read = (rowsum(r2[,3], as.integer(gl(nrow(r2), 2, nrow(r2))))))
-rx = x3 %>% filter(Assembly == "Genome fraction (%)")
+rx = xm %>% filter(Assembly == "Genome fraction (%)")
 rx2 = inner_join(r3, rx, by = c("id" = "X1"))
+#rxm = left_join(rx2, meta2, by = c("id" = "Run"))
+rx2 %>% subset(is.na(rx2)) %>% dim()
+```
 
+```
+## [1] 1115    9
+```
+
+```r
+rx2 %>% subset(!is.na(rx2)) %>% dim()
+```
+
+```
+## [1] 53128     9
+```
+
+```r
 ggplot(rx2, aes(value, read/1e6)) +
     geom_point(aes(color = X2)) +
     geom_smooth(method='lm', formula= y~x) +
     xlab("Genome fraction (%)") +
-    ylab("Number of reads (million)") +
+    ylab("Number of reads (million)") + 
+    facet_grid(Assay_Type~., scales = "free") +
     theme(panel.background = element_rect(fill = "white"),
         panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        strip.background =element_rect(fill="white"),
         axis.text = element_text(color = "black", angle = 0, hjust = 1)) 
 ```
 
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
 ```r
-ggsave("readVsGenome.pdf", width = 20, height = 15, units = "cm")
+ggsave("readVsGenome.pdf", width = 12, height = 30, units = "cm")
 
 rx3 = na.omit(rx2)
 cor(rx3$value, rx3$read, method = "spearman")
 ```
 
 ```
-## [1] 0.1937081
+## [1] 0.09714612
 ```
 
 ```r
@@ -977,14 +1008,4 @@ Table: List of total 9 different categories. Maximum 100 samples are randomly se
 |SE: AMPLICON of VIRAL RNA         | 100|
 |SE: RNA-Seq of VIRAL RNA          | 100|
 |SE: Targeted-Capture of VIRAL RNA | 100|
-
-### check read quality
-
-
-```r
-#unzip files
-cd /projects/epigenomics3/temp/rislam/assembly/rajan/asm_pe/output_bioRxiv_100samples/trimmed_fastqc
-for f in *RR*/fastqc_data.txt; do echo $f; grep "Total Sequences\|Sequences flagged as poor quality\|Sequence length\|%GC" $f; done | paste - - - - -  | awk '{gsub("/fastqc_data.txt", ""); print }' >read_QC_matrix.txt
-```
-
 
