@@ -656,20 +656,22 @@ library(tidyverse)
 setwd("/Volumes/rony/drive/asm/covid19-Assembly/plots/")
 
 #90%=29903*.9
-contig = x3 %>% filter(Assembly == "Largest contig") %>% filter(value >=26912.7)
+contig = xm %>% filter(Assembly == "Largest contig") %>% filter(value >=26912.7)
 ggplot(contig, aes(X2)) +
     geom_histogram(stat = "count") +
     xlab("") +
     ylab("Count") +
+    facet_grid(~Assay_Type) +
     theme(panel.background = element_rect(fill = "white"),
         panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        strip.background =element_rect(fill="white"),
         axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
 ```
 
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
 
 ```r
-ggsave("90_percent_genome_single_contig.pdf", width = 15, height = 10, units = "cm")
+ggsave("90_percent_genome_single_contig.pdf", width = 16, height = 8, units = "cm")
 ```
 
 ### correlation read vs genome
@@ -695,22 +697,24 @@ r3 = data.frame(id = unique(r2$id.1), read = (rowsum(r2[,3], as.integer(gl(nrow(
 rx = xm %>% filter(Assembly == "Genome fraction (%)")
 rx2 = inner_join(r3, rx, by = c("id" = "X1"))
 #rxm = left_join(rx2, meta2, by = c("id" = "Run"))
-rx2 %>% subset(is.na(rx2)) %>% dim()
+subset(is.na(rx2)) %>% dim()
 ```
 
 ```
-## [1] 1115    9
-```
-
-```r
-rx2 %>% subset(!is.na(rx2)) %>% dim()
-```
-
-```
-## [1] 53128     9
+## [1] 6027    9
 ```
 
 ```r
+subset(!is.na(rx2)) %>% dim()
+```
+
+```
+## [1] 6027    9
+```
+
+```r
+# metavelve and ray have lots of NA genome frac values
+
 ggplot(rx2, aes(value, read/1e6)) +
     geom_point(aes(color = X2)) +
     geom_smooth(method='lm', formula= y~x) +
@@ -774,24 +778,7 @@ mvista = x3 %>% filter(Assembly == "Genome fraction (%)") %>% na.omit() %>%
     summarise(mean = mean(value)) %>% arrange(mean)
 ```
 
-
-### align fasta to reference
-
-
-```r
-#https://www.biostars.org/p/110213/
-# Build reference genome database
-cd /projects/epigenomics3/temp/rislam/assembly/rajan/asm_pe/output_bioRxiv_100samples/ref/
-
-gmap_build -D dir/ -d refgenome MN908947.3.fasta
-# Alignment
-gmap -D dir/refgenome/ -d refgenome -f samse -t 8 ../*fasta | samtools view -Shb - | samtools sort - alignment
-
-samtools index aligment.bam
-```
-
-
-### dataset 
+### dataset preparation
 
 
 ```r
