@@ -4,6 +4,7 @@
 # make window of 50bp
 cd /Volumes/rony/drive/asm/covid19-Assembly/files/
 bedtools makewindows -g MN908947.3.sizes.txt -w 50 >MN908947.3.50bpWindows.bed
+bedtools makewindows -g MN908947.3.sizes.txt -w 100 >MN908947.3.100bpWindows.bed
 
 # make bed file of alignment from paf file
 cd /Volumes/rony/drive/asm/covid19-Assembly/files/VAR/
@@ -17,6 +18,11 @@ for f in *paf.bed.50bp_overlap; do wc -l $f;done | awk '$1 == 0 {print "rm" "\t"
 
 sh zero_out_remove.sh
 
+#all assemblers
+less /Volumes/rony/drive/asm/covid19-Assembly/files/MN908947.3.50bpWindows.bed | awk '{print $1"_"$2"_"$3}' >A.ID.all.50bp_overlap
+
+((echo *megahit*.50bp_overlap |tr ' ' '\t') && (paste *megahit*.50bp_overlap)) >../megahit_alignment_matrix_50bp.tsv
+
 #megahit
 less /Volumes/rony/drive/asm/covid19-Assembly/files/MN908947.3.50bpWindows.bed | awk '{print $1"_"$2"_"$3}' >A.ID.megahit.50bp_overlap
 
@@ -26,6 +32,21 @@ less /Volumes/rony/drive/asm/covid19-Assembly/files/MN908947.3.50bpWindows.bed |
 less /Volumes/rony/drive/asm/covid19-Assembly/files/MN908947.3.50bpWindows.bed | awk '{print $1"_"$2"_"$3}' >A.ID.metaspade.50bp_overlap
 
 ((echo *metaspade*.50bp_overlap |tr ' ' '\t') && (paste *metaspade*.50bp_overlap)) >../metaspade_alignment_matrix_50bp.tsv
+
+#trinity
+less /Volumes/rony/drive/asm/covid19-Assembly/files/MN908947.3.50bpWindows.bed | awk '{print $1"_"$2"_"$3}' >A.ID.trinity.50bp_overlap
+
+((echo *trinity*.50bp_overlap |tr ' ' '\t') && (paste *trinity*.50bp_overlap)) >../trinity_alignment_matrix_50bp.tsv
+
+#abyss99
+less /Volumes/rony/drive/asm/covid19-Assembly/files/MN908947.3.50bpWindows.bed | awk '{print $1"_"$2"_"$3}' >A.ID.abyss99.50bp_overlap
+
+((echo *abyss99*.50bp_overlap |tr ' ' '\t') && (paste *abyss99*.50bp_overlap)) >../abyss99_alignment_matrix_50bp.tsv
+
+#
+less /Volumes/rony/drive/asm/covid19-Assembly/files/MN908947.3.50bpWindows.bed | awk '{print $1"_"$2"_"$3}' >A.ID.abyss63.50bp_overlap
+
+((echo *abyss63*.50bp_overlap |tr ' ' '\t') && (paste *abyss63*.50bp_overlap)) >../abyss63_alignment_matrix_50bp.tsv
 
 #remove tmp files
 for f in *.50bp_overlap; do rm $f;done 

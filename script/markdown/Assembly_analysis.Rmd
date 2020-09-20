@@ -20,18 +20,32 @@ library(tidyverse)
 meta = read_csv("/Volumes/rony/drive/asm/covid19-Assembly/files/PE_561samples_final.csv")
 mh = read.table("/Volumes/rony/drive/asm/covid19-Assembly/files/megahit_alignment_matrix_50bp.tsv", head = F)
 ms = read.table("/Volumes/rony/drive/asm/covid19-Assembly/files/metaspade_alignment_matrix_50bp.tsv", head = F)
-hs = cbind(mh, ms)
+ab = read.table("/Volumes/rony/drive/asm/covid19-Assembly/files/abyss63_alignment_matrix_50bp.tsv", head = F)
+tr = read.table("/Volumes/rony/drive/asm/covid19-Assembly/files/trinity_alignment_matrix_50bp.tsv", head = F)
+
+hs = cbind(mh, ms, ab, tr)
 hst = data.frame(t(hs))
-hst2 = hst %>% filter(X1 != "A.ID.megahit.50bp_overlap") %>% filter(X1 != "A.ID.metaspade.50bp_overlap")
+hst2 = hst %>% filter(X1 != "A.ID.megahit.50bp_overlap") %>% 
+    filter(X1 != "A.ID.metaspade.50bp_overlap") %>% 
+    filter(X1 != "A.ID.abyss63.50bp_overlap") %>% 
+    filter(X1 != "A.ID.trinity.50bp_overlap")
 
 hst3 = data.frame(str_split_fixed(hst2$X1, "_", 3), hst2)
 
 megahit = hst3 %>% filter(hst3$X2.1 == "megahit") %>% select(-X2.1) %>% select(-X3.1) %>% select(-X1)
 metaspades = hst3 %>% filter(hst3$X2.1 == "metaspades") %>% select(-X2.1) %>% select(-X3.1) %>% select(-X1)
+abyss = hst3 %>% filter(hst3$X2.1 == "abyss63") %>% select(-X2.1) %>% select(-X3.1) %>% select(-X1)
+trinity = hst3 %>% filter(hst3$X2.1 == "trinity") %>% select(-X2.1) %>% select(-X3.1) %>% select(-X1)
 
 both = merge(megahit, metaspades, by.x = "X1.1", by.y = "X1.1") 
+both = inner_join(megahit, metaspades, by = c("X1.1" = "X1.1")) %>% 
+    inner_join(abyss, by = c("X1.1" = "X1.1")) %>%
+    inner_join(trinity, by = c("X1.1" = "X1.1"))
+
 both2 = inner_join(meta, both, by = c( "Run" = "X1.1"))
 both3 = both2[, c(2,6, 15:ncol(both2))] 
+both3 %>% group_by(Assay_Type) %>%
+    summarise(n = n())
 
 #write.table(both3, "/Volumes/rony/drive/asm/covid19-Assembly/files/megahit_metaspades_heatmap_matrix.tsv", sep = "\t", quote = F, row.names = F, col.names = F)
 
@@ -48,13 +62,15 @@ rownames(both5) = both3$Run
 anno = data.frame(Assay = both3$Assay_Type)
 rownames(anno) = rownames(both5)
 
-pheatmap(both5, annotation_row = anno, cluster_cols = F, cluster_rows = F, show_rownames = F, show_colnames = F, color = colorRampPalette(c("red", "white", "gray"))(1000), border_color = NA, gaps_col = 599, gaps_row = c(82, 82+65, 82+65+58, 82+65+58+88))
+pheatmap(both5, annotation_row = anno, cluster_cols = F, cluster_rows = F, show_rownames = F, show_colnames = F, color = colorRampPalette(c("red", "white", "gray"))(1000), border_color = NA, gaps_col = c(599, 599+599, 599+599+599), gaps_row = c(82, 82+65, 82+65+58, 82+65+58+88))
 
 plot.new()
-pdf("/Volumes/rony/drive/asm/covid19-Assembly/plots/heatmap.pdf")
-pheatmap(both5, annotation_row = anno, cluster_cols = F, cluster_rows = F, show_rownames = F, show_colnames = F, color = colorRampPalette(c("red", "white", "gray"))(1000), border_color = NA, gaps_col = 599, gaps_row = c(82, 82+65, 82+65+58, 82+65+58+88))
+jpeg("/Volumes/rony/drive/asm/covid19-Assembly/plots/heatmap_v2.jpg", width = 1800, height = 1000)
+pheatmap(both5, annotation_row = anno, cluster_cols = F, cluster_rows = F, show_rownames = F, show_colnames = F, color = colorRampPalette(c("red", "white", "gray"))(1000), border_color = NA, gaps_col = c(599, 599+599, 599+599+599), gaps_row = c(81, 81+60, 81+60+41, 81+60+41+83))
 dev.off()
 
+#make genome
+g = read.table("/Volumes/rony/drive/asm/covid19-Assembly/files/GeneBank_Genes.bed")
 ```
 
 ### assembly quality
@@ -83,14 +99,15 @@ make_boxplot = function(variableToPlot)
 {
   x4 = xm %>% filter(Assembly == variableToPlot) 
   stat = x4 %>%
-    group_by(X2) %>%
+    group_by(Assay_Type, X2) %>%
     summarize(mean = mean(value, na.rm = TRUE),
             median = median(value, na.rm = TRUE))
+  #kable(stat)
   
-  print(stat)
+  print(stat, n = Inf)
   plot = ggplot(x4, aes(X2, value)) +
-    geom_boxplot(aes(color = X2)) +
     geom_jitter(alpha = .5, width = .1, aes(color = X2)) +
+    geom_boxplot(alpha = 0.1) +
     #scale_color_viridis(discrete=TRUE) +
     #scale_fill_material("red") +
     xlab("") +
@@ -104,7 +121,7 @@ make_boxplot = function(variableToPlot)
   print(plot)
   
   filename = str_replace_all(variableToPlot, "[[:punct:]]", "")
-  ggsave(filename=paste(filename,".pdf", sep="_"), width = 20, height = 30, units = "cm", device = 'pdf')
+  ggsave(filename=paste(filename,".pdf", sep="_"), width = 12, height = 18, units = "cm", device = 'pdf')
 }
 
 make_boxplot("Genome fraction (%)")
@@ -126,6 +143,38 @@ make_boxplot("NA50")
 make_boxplot("NA75")
 make_boxplot("LA50")
 make_boxplot("LA75")
+
+#n50
+make_boxplot = function(variableToPlot)
+{
+  x4 = xm %>% filter(Assembly == variableToPlot) 
+  stat = x4 %>%
+    group_by(X2, Assay_Type) %>%
+    summarize(mean = mean(value, na.rm = TRUE),
+            median = median(value, na.rm = TRUE))
+  
+  print(stat)
+  plot = ggplot(x4, aes(X2, value)) +
+    geom_jitter(alpha = .5, width = .1, aes(color = X2)) +
+    geom_boxplot(alpha = 0.1) +
+    #scale_color_viridis(discrete=TRUE) +
+    #scale_fill_material("red") +
+    xlab("") +
+    ylab(variableToPlot) +
+    facet_grid(Assay_Type~., scales = "free") +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1),
+        strip.background =element_rect(fill="white"),
+        legend.position = "none") 
+  print(plot)
+  
+  filename = str_replace_all(variableToPlot, "[[:punct:]]", "")
+  ggsave(filename=paste(filename,".pdf", sep="_"), width = 12, height = 18, units = "cm", device = 'pdf')
+}
+
+make_boxplot("L50")
+
 
 # genomic feature
 x4 = xm %>% filter(Assembly == "genomic features") 
@@ -162,7 +211,7 @@ ggplot(contig, aes(X2)) +
         panel.border = element_rect(fill = NA, colour = "black", size = .5),
         strip.background =element_rect(fill="white"),
         axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
-ggsave("90_percent_genome_single_contig.pdf", width = 16, height = 8, units = "cm")
+ggsave("90_percent_genome_single_contig.pdf", width = 20, height = 6, units = "cm")
 ```
 
 ### correlation read vs genome
@@ -170,7 +219,7 @@ ggsave("90_percent_genome_single_contig.pdf", width = 16, height = 8, units = "c
 ```{r , cache=TRUE, warning=FALSE, message=FALSE}
 library(tidyverse)
 setwd("/Volumes/rony/drive/asm/covid19-Assembly/plots/")
-r = read.table("~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/read_QC_matrix.txt")[,c(1,4)]
+#r = read.table("~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/read_QC_matrix.txt")[,c(1,4)]
 r = read.table("/Volumes/rony/drive/asm/covid19-Assembly/files/read_QC_matrix.txt")[,c(1,4)]
 
 r2 = data.frame(id = str_split_fixed(r$V1, "_", 2), read = r$V4)
@@ -186,21 +235,34 @@ subset(!is.na(rx2)) %>% dim()
 # metavelve and ray have lots of NA genome frac values
 
 ggplot(rx2, aes(value, read/1e6)) +
-    geom_point(aes(color = X2)) +
+    geom_point(aes(color = X2), shape = 18) +
     geom_smooth(method='lm', formula= y~x) +
     xlab("Genome fraction (%)") +
     ylab("Number of reads (million)") + 
-    facet_grid(Assay_Type~., scales = "free") +
+    facet_grid(~Assay_Type, scales = "free") +
     theme(panel.background = element_rect(fill = "white"),
         panel.border = element_rect(fill = NA, colour = "black", size = .5),
         strip.background =element_rect(fill="white"),
-        axis.text = element_text(color = "black", angle = 0, hjust = 1)) 
-ggsave("readVsGenome.pdf", width = 12, height = 30, units = "cm")
+        axis.text = element_text(color = "black", angle = 0, hjust = 1),
+        legend.position = "none") 
+ggsave("readVsGenome.pdf", width = 20, height = 6, units = "cm")
 
 rx3 = na.omit(rx2)
 cor(rx3$value, rx3$read, method = "spearman")
 
-#read dist; not needed
+#read dist
+dist = rx2 %>% distinct(id, .keep_all = T)
+ggplot(dist, aes(Assay_Type, log10(read))) +
+    geom_boxplot(notch = T, width = .5) +
+    geom_jitter(alpha = .5, width = .1) +
+    xlab("") +
+    ylab("log10(Number of reads)") + 
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        strip.background =element_rect(fill="white"),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
+ggsave("readDist.pdf", width = 7, height = 10, units = "cm")
+
 
 ```
 
