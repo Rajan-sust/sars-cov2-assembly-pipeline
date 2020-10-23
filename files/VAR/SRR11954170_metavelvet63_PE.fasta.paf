@@ -1,0 +1,2 @@
+NODE_17192_length_158_cov_556.462036	220	0	220	-	MN908947.3	29903	27172	27392	220	220	60	NM:i:0	ms:i:220	AS:i:220	nn:i:0	tp:A:P	cm:i:35	s1:i:215	s2:i:0	de:f:0	rl:i:0	cg:Z:220M	cs:Z::220
+NODE_17784_length_279_cov_88.734764	341	0	341	+	MN908947.3	29903	6694	7035	341	341	60	NM:i:0	ms:i:341	AS:i:341	nn:i:0	tp:A:P	cm:i:62	s1:i:329	s2:i:0	de:f:0	rl:i:0	cg:Z:341M	cs:Z::341

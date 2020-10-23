@@ -1,0 +1,6 @@
+NODE_2_length_7636_cov_1595.265005	7636	0	7631	+	MN908947.3	29903	21	7700	7619	7669	60	NM:i:60	ms:i:7499	AS:i:7527	nn:i:10	tp:A:P	cm:i:1383	s1:i:7567	s2:i:0	de:f:0.0017	rl:i:0	cg:Z:6931M48D700M	cs:Z::219*ct:2795*ct:3915-ataatttggtttttactattaagtgtttgcctaggttctttaatctac*tn*cn*an*an*cn*cn*gn*cn*tn*gn:690
+NODE_246_length_724_cov_330.621824	724	2	657	+	MN908947.3	29903	7678	8333	655	655	60	NM:i:0	ms:i:655	AS:i:655	nn:i:0	tp:A:P	cm:i:116	s1:i:653	s2:i:0	de:f:0	rl:i:0	cg:Z:655M	cs:Z::655
+NODE_3_length_6686_cov_1459.767154	6686	1	6686	+	MN908947.3	29903	8348	15043	6683	6695	60	NM:i:12	ms:i:6649	AS:i:6649	nn:i:0	tp:A:P	cm:i:1194	s1:i:6647	s2:i:0	de:f:0.0004	rl:i:0	cg:Z:6251M10D434M	cs:Z::6059*ct:191-tattactaga:330*at:103
+NODE_20_length_2072_cov_1148.505206	2072	5	2068	-	MN908947.3	29903	15062	17125	2062	2063	60	NM:i:1	ms:i:2058	AS:i:2058	nn:i:0	tp:A:P	cm:i:372	s1:i:2049	s2:i:0	de:f:0.0005	rl:i:0	cg:Z:2063M	cs:Z::261*ct:1801
+NODE_478_length_573_cov_794.471042	573	3	573	+	MN908947.3	29903	17134	17704	570	570	60	NM:i:0	ms:i:570	AS:i:570	nn:i:0	tp:A:P	cm:i:100	s1:i:561	s2:i:0	de:f:0	rl:i:0	cg:Z:570M	cs:Z::570
+NODE_1_length_12222_cov_1453.853620	12222	0	12216	+	MN908947.3	29903	17649	29865	12212	12216	60	NM:i:4	ms:i:12196	AS:i:12196	nn:i:0	tp:A:P	cm:i:2221	s1:i:12184	s2:i:0	de:f:0.0003	rl:i:0	cg:Z:12216M	cs:Z::3971*ct:1781*ag:4682*gt:603*gt:1175

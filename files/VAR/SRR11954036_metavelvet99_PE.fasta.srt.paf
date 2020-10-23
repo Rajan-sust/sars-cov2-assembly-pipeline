@@ -1,0 +1,13 @@
+NODE_14_length_207_cov_20.198067	305	0	305	+	MN908947.3	29903	2315	2620	304	305	60	NM:i:1	ms:i:300	AS:i:300	nn:i:0	tp:A:P	cm:i:47	s1:i:291	s2:i:0	de:f:0.0033	rl:i:0	cg:Z:305M	cs:Z::100*ct:204
+NODE_21_length_241_cov_28.622406	339	0	339	+	MN908947.3	29903	7796	8135	339	339	60	NM:i:0	ms:i:339	AS:i:339	nn:i:0	tp:A:P	cm:i:57	s1:i:335	s2:i:0	de:f:0	rl:i:0	cg:Z:339M	cs:Z::339
+NODE_16_length_232_cov_27.905172	330	0	330	-	MN908947.3	29903	8442	8772	330	330	60	NM:i:0	ms:i:330	AS:i:330	nn:i:0	tp:A:P	cm:i:51	s1:i:313	s2:i:0	de:f:0	rl:i:0	cg:Z:330M	cs:Z::330
+NODE_6_length_220_cov_22.445454	318	0	318	-	MN908947.3	29903	11040	11358	318	318	60	NM:i:0	ms:i:318	AS:i:318	nn:i:0	tp:A:P	cm:i:54	s1:i:305	s2:i:0	de:f:0	rl:i:0	cg:Z:318M	cs:Z::318
+NODE_15_length_271_cov_23.623617	369	0	369	-	MN908947.3	29903	12344	12713	369	369	60	NM:i:0	ms:i:369	AS:i:369	nn:i:0	tp:A:P	cm:i:67	s1:i:360	s2:i:0	de:f:0	rl:i:0	cg:Z:369M	cs:Z::369
+NODE_12_length_282_cov_27.354610	380	0	380	+	MN908947.3	29903	13628	14008	380	380	60	NM:i:0	ms:i:380	AS:i:380	nn:i:0	tp:A:P	cm:i:60	s1:i:369	s2:i:0	de:f:0	rl:i:0	cg:Z:380M	cs:Z::380
+NODE_19_length_207_cov_35.956520	305	0	305	+	MN908947.3	29903	14672	14977	305	305	60	NM:i:0	ms:i:305	AS:i:305	nn:i:0	tp:A:P	cm:i:55	s1:i:302	s2:i:0	de:f:0	rl:i:0	cg:Z:305M	cs:Z::305
+NODE_22_length_198_cov_40.924244	296	0	296	+	MN908947.3	29903	15009	15305	296	296	60	NM:i:0	ms:i:296	AS:i:296	nn:i:0	tp:A:P	cm:i:51	s1:i:288	s2:i:0	de:f:0	rl:i:0	cg:Z:296M	cs:Z::296
+NODE_5_length_691_cov_44.578873	789	0	789	-	MN908947.3	29903	15862	16651	789	789	60	NM:i:0	ms:i:789	AS:i:789	nn:i:0	tp:A:P	cm:i:143	s1:i:776	s2:i:0	de:f:0	rl:i:0	cg:Z:789M	cs:Z::789
+NODE_20_length_218_cov_30.426605	316	0	316	-	MN908947.3	29903	17045	17361	316	316	60	NM:i:0	ms:i:316	AS:i:316	nn:i:0	tp:A:P	cm:i:51	s1:i:303	s2:i:0	de:f:0	rl:i:0	cg:Z:316M	cs:Z::316
+NODE_9_length_242_cov_27.173553	340	0	340	+	MN908947.3	29903	21015	21355	340	340	60	NM:i:0	ms:i:340	AS:i:340	nn:i:0	tp:A:P	cm:i:55	s1:i:332	s2:i:0	de:f:0	rl:i:0	cg:Z:340M	cs:Z::340
+NODE_7_length_349_cov_34.730659	447	0	447	-	MN908947.3	29903	25908	26355	447	447	60	NM:i:0	ms:i:447	AS:i:447	nn:i:0	tp:A:P	cm:i:76	s1:i:435	s2:i:0	de:f:0	rl:i:0	cg:Z:447M	cs:Z::447
+NODE_8_length_270_cov_32.048149	368	0	368	+	MN908947.3	29903	28771	29139	368	368	60	NM:i:0	ms:i:368	AS:i:368	nn:i:0	tp:A:P	cm:i:65	s1:i:358	s2:i:0	de:f:0	rl:i:0	cg:Z:368M	cs:Z::368

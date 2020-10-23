@@ -1,0 +1,14 @@
+R	MN908947.3	55	29853
+V	MN908947.3	240	241	1	60	c	t	28	29184	29185	-
+V	MN908947.3	3036	3037	1	60	c	t	28	26388	26389	-
+V	MN908947.3	8849	8850	1	60	t	a	28	20575	20576	-
+V	MN908947.3	9437	9438	1	60	c	t	28	19987	19988	-
+V	MN908947.3	11074	11074	1	60	-	t	28	18350	18351	-
+V	MN908947.3	14407	14408	1	60	c	t	28	15016	15017	-
+V	MN908947.3	23402	23403	1	60	a	g	28	6021	6022	-
+V	MN908947.3	27824	28253	1	60	atgcttattatcttttggttctcacttgaactgcaagatcataatgaaacttgtcacgcctaaacgaacatgaaatttcttgttttcttaggaatcatcacaactgtagctgcatttcaccaagaatgtagtttacagtcatgtactcaacatcaaccatatgtagttgatgacccgtgtcctattcacttctattctaaatggtatattagagtaggagctagaaaatcagcacctttaattgaattgtgcgtggatgaggctggttctaaatcacccattcagtacatcgatatcggtaattatacagtttcctgtttaccttttacaattaattgccaggaacctaaattgggtagtcttgtagtgcgttgttcgttctatgaagactttttagagtatcatgacgttcgtgttgttttagatttc	-	28	1600	1600	-
+V	MN908947.3	28876	28877	1	60	a	t	28	976	977	-
+V	MN908947.3	28877	28878	1	60	g	c	28	975	976	-
+V	MN908947.3	28880	28881	1	60	g	a	28	972	973	-
+V	MN908947.3	28881	28882	1	60	g	a	28	971	972	-
+V	MN908947.3	28882	28883	1	60	g	c	28	970	971	-

@@ -1,0 +1,11 @@
+scaffold-13	378	0	378	+	MN908947.3	29903	4946	5324	378	378	60	NM:i:0	ms:i:378	AS:i:378	nn:i:0	tp:A:P	cm:i:70	s1:i:369	s2:i:0	de:f:0	rl:i:0	cg:Z:378M	cs:Z::378
+scaffold-18	2734	0	1381	+	MN908947.3	29903	27777	29157	1379	1381	60	NM:i:2	ms:i:1367	AS:i:1367	nn:i:0	tp:A:P	cm:i:255	s1:i:1360	s2:i:0	de:f:0.0014	rl:i:0	cg:Z:1274M1I106M	cs:Z::186*ct:1087+a:106
+scaffold-18	2734	1374	2734	+	MN908947.3	29903	28478	29861	1359	1384	60	NM:i:25	ms:i:1297	AS:i:1301	nn:i:0	tp:A:P	cm:i:241	s1:i:1341	s2:i:0	de:f:0.0015	rl:i:0	cg:Z:573M1I684M24D102M	cs:Z::573+a:684-ggccacgcggagtacgatcgagtg:102
+scaffold-19	4308	0	4308	-	MN908947.3	29903	448	4756	4305	4308	60	NM:i:3	ms:i:4293	AS:i:4293	nn:i:0	tp:A:P	cm:i:774	s1:i:4268	s2:i:0	de:f:0.0007	rl:i:0	cg:Z:4308M	cs:Z::402*tg:207*ct:1977*ct:1719
+scaffold-23	6283	0	6283	-	MN908947.3	29903	21374	27656	6280	6283	60	NM:i:3	ms:i:6264	AS:i:6264	nn:i:0	tp:A:P	cm:i:1140	s1:i:6263	s2:i:0	de:f:0.0005	rl:i:0	cg:Z:626M1I5656M	cs:Z::626+a:1402*ag:2159*gt:2093
+scaffold-27	2474	456	2075	-	MN908947.3	29903	19550	21169	1619	1619	60	NM:i:0	ms:i:1619	AS:i:1619	nn:i:0	tp:A:P	cm:i:298	s1:i:1619	s2:i:0	de:f:0	rl:i:0	cg:Z:1619M	cs:Z::1619
+scaffold-27	2474	0	456	+	MN908947.3	29903	20703	21159	456	456	60	NM:i:0	ms:i:456	AS:i:456	nn:i:0	tp:A:P	cm:i:78	s1:i:438	s2:i:0	de:f:0	rl:i:0	cg:Z:456M	cs:Z::456
+scaffold-27	2474	2073	2474	+	MN908947.3	29903	19802	20203	401	401	60	NM:i:0	ms:i:401	AS:i:401	nn:i:0	tp:A:P	cm:i:68	s1:i:389	s2:i:0	de:f:0	rl:i:0	cg:Z:401M	cs:Z::401
+scaffold-31	6505	0	6505	-	MN908947.3	29903	5513	12018	6505	6505	60	NM:i:0	ms:i:6505	AS:i:6505	nn:i:0	tp:A:P	cm:i:1177	s1:i:6491	s2:i:0	de:f:0	rl:i:0	cg:Z:6505M	cs:Z::6505
+scaffold-35	2190	0	2101	+	MN908947.3	29903	11287	13388	2101	2101	60	NM:i:0	ms:i:2101	AS:i:2101	nn:i:0	tp:A:P	cm:i:384	s1:i:2085	s2:i:0	de:f:0	rl:i:0	cg:Z:2101M	cs:Z::2101
+scaffold-41	5164	0	5164	+	MN908947.3	29903	14128	19292	5159	5165	60	NM:i:6	ms:i:5127	AS:i:5127	nn:i:0	tp:A:P	cm:i:919	s1:i:5132	s2:i:0	de:f:0.0012	rl:i:0	cg:Z:4604M1D278M1I281M	cs:Z::186*ag:92*ct:32*tc:3477*tc:813-g:278+a:281

@@ -1,0 +1,12 @@
+TRINITY_DN149_c0_g1_i1	308	50	307	-	MN908947.3	29903	20088	20345	256	257	60	NM:i:1	ms:i:252	AS:i:252	nn:i:0	tp:A:P	cm:i:42	s1:i:237	s2:i:0	de:f:0.0039	rl:i:0	cg:Z:257M	cs:Z::250*ta:6
+TRINITY_DN165_c0_g1_i1	456	0	456	+	MN908947.3	29903	27332	27788	456	456	60	NM:i:0	ms:i:456	AS:i:456	nn:i:0	tp:A:P	cm:i:76	s1:i:445	s2:i:0	de:f:0	rl:i:0	cg:Z:456M	cs:Z::456
+TRINITY_DN313_c0_g1_i1	256	0	256	-	MN908947.3	29903	19291	19547	256	256	60	NM:i:0	ms:i:256	AS:i:256	nn:i:0	tp:A:P	cm:i:37	s1:i:246	s2:i:0	de:f:0	rl:i:0	cg:Z:256M	cs:Z::256
+TRINITY_DN318_c0_g1_i1	246	33	246	+	MN908947.3	29903	15791	16004	213	213	60	NM:i:0	ms:i:213	AS:i:213	nn:i:0	tp:A:P	cm:i:37	s1:i:225	s2:i:0	de:f:0	rl:i:0	cg:Z:213M	cs:Z::213
+TRINITY_DN332_c0_g1_i1	213	0	213	+	MN908947.3	29903	28564	28777	213	213	60	NM:i:0	ms:i:213	AS:i:213	nn:i:0	tp:A:P	cm:i:38	s1:i:204	s2:i:0	de:f:0	rl:i:0	cg:Z:213M	cs:Z::213
+TRINITY_DN64_c0_g1_i1	262	0	262	-	MN908947.3	29903	27853	28115	262	262	60	NM:i:0	ms:i:262	AS:i:262	nn:i:0	tp:A:P	cm:i:48	s1:i:260	s2:i:0	de:f:0	rl:i:0	cg:Z:262M	cs:Z::262
+TRINITY_DN16_c0_g1_i1	203	0	203	-	MN908947.3	29903	17736	17939	203	203	60	NM:i:0	ms:i:203	AS:i:203	nn:i:0	tp:A:P	cm:i:36	s1:i:197	s2:i:0	de:f:0	rl:i:0	cg:Z:203M	cs:Z::203
+TRINITY_DN246_c0_g1_i1	267	0	267	-	MN908947.3	29903	18823	19090	267	267	60	NM:i:0	ms:i:267	AS:i:267	nn:i:0	tp:A:P	cm:i:41	s1:i:263	s2:i:0	de:f:0	rl:i:0	cg:Z:267M	cs:Z::267
+TRINITY_DN295_c0_g1_i1	210	0	210	+	MN908947.3	29903	331	541	210	210	60	NM:i:0	ms:i:210	AS:i:210	nn:i:0	tp:A:P	cm:i:34	s1:i:201	s2:i:0	de:f:0	rl:i:0	cg:Z:210M	cs:Z::210
+TRINITY_DN240_c0_g1_i1	236	0	236	-	MN908947.3	29903	8446	8682	236	236	60	NM:i:0	ms:i:236	AS:i:236	nn:i:0	tp:A:P	cm:i:36	s1:i:228	s2:i:0	de:f:0	rl:i:0	cg:Z:236M	cs:Z::236
+TRINITY_DN294_c0_g1_i1	210	0	210	-	MN908947.3	29903	24522	24732	210	210	60	NM:i:0	ms:i:210	AS:i:210	nn:i:0	tp:A:P	cm:i:37	s1:i:205	s2:i:0	de:f:0	rl:i:0	cg:Z:210M	cs:Z::210
+TRINITY_DN283_c0_g1_i1	257	1	255	+	MN908947.3	29903	6376	6630	254	254	60	NM:i:0	ms:i:254	AS:i:254	nn:i:0	tp:A:P	cm:i:36	s1:i:248	s2:i:0	de:f:0	rl:i:0	cg:Z:254M	cs:Z::254

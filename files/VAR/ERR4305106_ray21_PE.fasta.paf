@@ -1,0 +1,11 @@
+scaffold-0	2514	0	1996	+	MN908947.3	29903	27693	29691	1993	1998	60	NM:i:5	ms:i:1971	AS:i:1971	nn:i:0	tp:A:P	cm:i:396	s1:i:2072	s2:i:0	de:f:0.0020	rl:i:0	cg:Z:335M2D1661M	cs:Z::335-ta:850*ga*ga*gc:808
+scaffold-1	5882	0	3567	-	MN908947.3	29903	15840	19406	3565	3567	60	NM:i:2	ms:i:3553	AS:i:3553	nn:i:0	tp:A:P	cm:i:632	s1:i:3534	s2:i:316	de:f:0.0006	zd:i:2	rl:i:0	cg:Z:1179M1I2387M	cs:Z::234*gt:944+t:2387
+scaffold-1	5882	3914	5882	-	MN908947.3	29903	13606	15574	1967	1968	60	NM:i:1	ms:i:1963	AS:i:1963	nn:i:0	tp:A:P	cm:i:349	s1:i:1952	s2:i:316	de:f:0.0005	zd:i:1	rl:i:0	cg:Z:1968M	cs:Z::801*ct:1166
+scaffold-3	738	0	731	+	MN908947.3	29903	3778	4509	731	731	60	NM:i:0	ms:i:731	AS:i:731	nn:i:0	tp:A:P	cm:i:123	s1:i:721	s2:i:0	de:f:0	rl:i:0	cg:Z:731M	cs:Z::731
+scaffold-4	1043	0	1043	-	MN908947.3	29903	6186	7228	1042	1043	60	NM:i:1	ms:i:1034	AS:i:1034	nn:i:0	tp:A:P	cm:i:180	s1:i:1035	s2:i:0	de:f:0.0010	rl:i:0	cg:Z:88M1I954M	cs:Z::88+a:954
+scaffold-6	1816	0	1816	-	MN908947.3	29903	19443	21259	1816	1816	60	NM:i:0	ms:i:1816	AS:i:1816	nn:i:0	tp:A:P	cm:i:329	s1:i:1804	s2:i:0	de:f:0	rl:i:0	cg:Z:1816M	cs:Z::1816
+scaffold-8	2548	0	2548	+	MN908947.3	29903	37	2585	2547	2548	60	NM:i:1	ms:i:2543	AS:i:2543	nn:i:0	tp:A:P	cm:i:459	s1:i:2533	s2:i:0	de:f:0.0004	rl:i:0	cg:Z:2548M	cs:Z::203*ct:2344
+scaffold-9	5370	0	5370	-	MN908947.3	29903	21258	26630	5367	5372	60	NM:i:5	ms:i:5339	AS:i:5339	nn:i:0	tp:A:P	cm:i:967	s1:i:5316	s2:i:0	de:f:0.0009	rl:i:0	cg:Z:5051M1D41M1D278M	cs:Z::2144*ag:2906-t:41-g:1*tc:61*gt:214
+scaffold-10	1631	0	1631	-	MN908947.3	29903	4925	6556	1630	1631	60	NM:i:1	ms:i:1626	AS:i:1626	nn:i:0	tp:A:P	cm:i:292	s1:i:1606	s2:i:0	de:f:0.0006	rl:i:0	cg:Z:1631M	cs:Z::749*tc:881
+scaffold-11	4950	0	4950	-	MN908947.3	29903	8571	13523	4949	4952	60	NM:i:3	ms:i:4929	AS:i:4929	nn:i:0	tp:A:P	cm:i:884	s1:i:4905	s2:i:0	de:f:0.0006	rl:i:0	cg:Z:2038M1D535M1D2377M	cs:Z::2038-g:482*gc:52-g:2377
+scaffold-12	693	0	693	+	MN908947.3	29903	2832	3525	692	693	60	NM:i:1	ms:i:688	AS:i:688	nn:i:0	tp:A:P	cm:i:125	s1:i:674	s2:i:0	de:f:0.0014	rl:i:0	cg:Z:693M	cs:Z::204*ct:488

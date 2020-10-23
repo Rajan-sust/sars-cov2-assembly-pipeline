@@ -1,0 +1,4 @@
+TRINITY_DN0_c0_g1_i1	4591	0	4591	-	MN908947.3	29903	7387	11978	4591	4591	60	NM:i:0	ms:i:4591	AS:i:4591	nn:i:0	tp:A:P	cm:i:826	s1:i:4584	s2:i:0	de:f:0	rl:i:0	cg:Z:4591M	cs:Z::4591
+TRINITY_DN0_c0_g2_i1	280	0	280	-	MN908947.3	29903	5341	5621	280	280	60	NM:i:0	ms:i:280	AS:i:280	nn:i:0	tp:A:P	cm:i:48	s1:i:271	s2:i:0	de:f:0	rl:i:0	cg:Z:280M	cs:Z::280
+TRINITY_DN0_c0_g3_i1	255	0	255	-	MN908947.3	29903	5981	6236	255	255	60	NM:i:0	ms:i:255	AS:i:255	nn:i:0	tp:A:P	cm:i:45	s1:i:249	s2:i:0	de:f:0	rl:i:0	cg:Z:255M	cs:Z::255
+TRINITY_DN0_c0_g4_i1	1501	5	1440	-	MN908947.3	29903	4	1439	1435	1435	60	NM:i:0	ms:i:1435	AS:i:1435	nn:i:0	tp:A:P	cm:i:262	s1:i:1428	s2:i:0	de:f:0	rl:i:0	cg:Z:1435M	cs:Z::1435

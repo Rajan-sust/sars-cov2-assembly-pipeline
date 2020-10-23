@@ -1,0 +1,11 @@
+scaffold-5	1467	0	1451	-	MN908947.3	29903	7	1458	1450	1451	60	NM:i:1	ms:i:1446	AS:i:1446	nn:i:0	tp:A:P	cm:i:261	s1:i:1437	s2:i:0	de:f:0.0007	rl:i:0	cg:Z:1451M	cs:Z::233*ct:1217
+scaffold-10	8780	0	8780	+	MN908947.3	29903	1407	10187	8779	8780	60	NM:i:1	ms:i:8775	AS:i:8775	nn:i:0	tp:A:P	cm:i:1584	s1:i:8762	s2:i:0	de:f:0.0001	rl:i:0	cg:Z:8780M	cs:Z::1629*ct:7150
+scaffold-9	7392	0	7378	-	MN908947.3	29903	9707	17085	7377	7378	60	NM:i:1	ms:i:7373	AS:i:7373	nn:i:0	tp:A:P	cm:i:1346	s1:i:7367	s2:i:0	de:f:0.0001	rl:i:0	cg:Z:7378M	cs:Z::4700*ct:2677
+scaffold-4	1176	0	1176	+	MN908947.3	29903	17421	18597	1176	1176	60	NM:i:0	ms:i:1176	AS:i:1176	nn:i:0	tp:A:P	cm:i:216	s1:i:1169	s2:i:0	de:f:0	rl:i:0	cg:Z:1176M	cs:Z::1176
+scaffold-6	2019	0	2019	-	MN908947.3	29903	18611	20630	2019	2019	60	NM:i:0	ms:i:2019	AS:i:2019	nn:i:0	tp:A:P	cm:i:351	s1:i:2001	s2:i:0	de:f:0	rl:i:0	cg:Z:2019M	cs:Z::2019
+scaffold-2	1108	0	1108	-	MN908947.3	29903	20071	21179	1108	1108	60	NM:i:0	ms:i:1108	AS:i:1108	nn:i:0	tp:A:P	cm:i:204	s1:i:1102	s2:i:0	de:f:0	rl:i:0	cg:Z:1108M	cs:Z::1108
+scaffold-1	636	0	636	+	MN908947.3	29903	21031	21667	636	636	60	NM:i:0	ms:i:636	AS:i:636	nn:i:0	tp:A:P	cm:i:108	s1:i:621	s2:i:0	de:f:0	rl:i:0	cg:Z:636M	cs:Z::636
+scaffold-8	6551	0	6551	+	MN908947.3	29903	21551	28102	6550	6551	60	NM:i:1	ms:i:6546	AS:i:6546	nn:i:0	tp:A:P	cm:i:1197	s1:i:6531	s2:i:0	de:f:0.0002	rl:i:0	cg:Z:6551M	cs:Z::1851*ag:4699
+scaffold-0	1458	0	1458	-	MN908947.3	29903	27883	29174	1291	1397	60	NM:i:167	ms:i:951	AS:i:1098	nn:i:61	tp:A:P	cm:i:249	s1:i:1248	s2:i:0	de:f:0.0008	rl:i:0	cg:Z:371M167I920M	cs:Z::371+tctaaacgaacaaactaaaatgtctgataatggaccccaaaatcagcgaaatgcaccccgcattacgtttggtggaccctcagattcaactggcagtaaccagaatnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn:920
+scaffold-3	543	22	519	-	MN908947.3	29903	29106	29603	497	497	60	NM:i:0	ms:i:497	AS:i:497	nn:i:0	tp:A:P	cm:i:84	s1:i:490	s2:i:0	de:f:0	rl:i:0	cg:Z:497M	cs:Z::497
+scaffold-7	322	0	322	+	MN908947.3	29903	29553	29875	322	322	60	NM:i:0	ms:i:322	AS:i:322	nn:i:0	tp:A:P	cm:i:59	s1:i:315	s2:i:0	de:f:0	rl:i:0	cg:Z:322M	cs:Z::322

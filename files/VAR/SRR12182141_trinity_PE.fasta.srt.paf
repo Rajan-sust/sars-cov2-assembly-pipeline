@@ -1,0 +1,2 @@
+TRINITY_DN952_c0_g1_i1	335	0	335	-	MN908947.3	29903	7183	7518	335	335	60	NM:i:0	ms:i:335	AS:i:335	nn:i:0	tp:A:P	cm:i:65	s1:i:329	s2:i:0	de:f:0	rl:i:0	cg:Z:335M	cs:Z::335
+TRINITY_DN2315_c0_g1_i1	281	0	281	+	MN908947.3	29903	19375	19656	280	281	60	NM:i:1	ms:i:276	AS:i:276	nn:i:0	tp:A:P	cm:i:40	s1:i:266	s2:i:0	de:f:0.0036	rl:i:0	cg:Z:281M	cs:Z::155*tg:125
