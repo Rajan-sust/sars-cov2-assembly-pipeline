@@ -1,4 +1,4 @@
-### Analysis can be found [HERE](https://github.com/Rajan-sust/covid19-Assembly/blob/dev/script/markdown/Assembly_analysis.md).
+### Analysis can be found [HERE](https://github.com/Rajan-sust/covid19-Assembly/blob/master/script/markdown/Assembly_analysis.md).
 
 ### Scripts for assembly
 
