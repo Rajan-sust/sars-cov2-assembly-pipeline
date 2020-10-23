@@ -79,5 +79,53 @@ tar xvzf myfolder.tar.gz
 for f in *bam; do samtools sort -o $f.sorted.bam $f;done
 for f in *sorted.bam; do samtools index $f;done
 
+## minimar2 data process
+# sam to bam
+cd /Users/rashedulislam/Documents/research/asm/bam/minimap2_alignment/sam_contigs/
+for f in *sam; do echo $f; 
+less $f | samtools view -bS | samtools sort -o $f.sorted.bam;
+samtools index $f.sorted.bam;
+done
+
+mv *.sorted.bam* ../bam_contigs/
+
+#picard dups marking
+bam=/Users/rashedulislam/Documents/research/asm/bam/bwa_alignment/disagreement_MetaSpades_Megahit
+cd /Users/rashedulislam/Documents/Tools/
+for f in /Users/rashedulislam/Documents/research/asm/bam/bwa_alignment/best_worst_12bams/*.sorted.bam;
+do ls $f;
+#java -jar picard.jar MarkDuplicates I=$bam/$f O=$bam/$f.dupsMarked M=$bam/$f.marked_dup_metrics.txt
+java -jar picard.jar MarkDuplicates I=$f O=$f.dupsMarked.bam M=$f.marked_dup_metrics.txt
+done
+
+#
+for f in /projects/epigenomics3/temp/rislam/temp/bwa_alignment/*/*.sorted.bam;
+do ll $f;
+picard MarkDuplicates I=$f O=$f.sorted_dupsMarked.bam M=$f.marked_dup_metrics.txt;
+done
+
+
+
+java -jar picard.jar MarkDuplicates I=SRR12182136.bam.sorted.bam O=SRR12182136.bam.sorted.bam.sorted_dupsMarked.bam M=SRR12182136.bam.sorted.bam.marked_dup_metrics.txt
+
+
+
+#mutation summary:
+MEGA_META: https://github.com/istiakshihab/x-genomics-alignment-tester/blob/master/6k_MegaMeta_Assembler_FASTA_AND_PROCESSED/Final_Match_Missmatch.csv
+
+META_TRINITY: https://github.com/istiakshihab/x-genomics-alignment-tester/blob/master/6k_TrinMegaMeta_Assembler_All_Miismatch/meta-trinity-match-mismatch-summary.csv
+
+MEGA_TRINITY: https://github.com/istiakshihab/x-genomics-alignment-tester/blob/master/6k_TrinMegaMeta_Assembler_All_Miismatch/mega_trinity_filtered_call_summary.csv
+
+## vcfs
+
+MEGA_META_MERGED_VCF: https://github.com/istiakshihab/x-genomics-alignment-tester/tree/master/6k_MegaMeta_Assembler_FASTA_AND_PROCESSED/MERGED_VCF
+
+META_TRINITY_MERGED_VCF: https://github.com/istiakshihab/x-genomics-alignment-tester/tree/master/6k_TrinMegaMeta_Assembler_All_Miismatch/TRINITY_BAM/META_TRINITY_MERGED_VCF
+
+MEGA_TRINITY_MERGED_VCF: https://github.com/istiakshihab/x-genomics-alignment-tester/tree/master/6k_TrinMegaMeta_Assembler_All_Miismatch/TRINITY_BAM/MEGA_TRINITY_MERGED_VCF
+
+
+
 
 

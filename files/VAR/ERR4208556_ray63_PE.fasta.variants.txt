@@ -1,8 +1,0 @@
-R	MN908947.3	3497	29867
-V	MN908947.3	8024	8025	1	60	c	t	scaffold-0	21907	21908	-
-V	MN908947.3	12183	12184	1	60	t	a	scaffold-0	17748	17749	-
-V	MN908947.3	14407	14408	1	60	c	t	scaffold-0	15524	15525	-
-V	MN908947.3	20267	20268	1	60	a	g	scaffold-0	9664	9665	-
-V	MN908947.3	20379	20379	1	60	-	ctagctaaacgttttannnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn	scaffold-0	9488	9553	-
-V	MN908947.3	23402	23403	1	60	a	g	scaffold-0	6464	6465	-
-V	MN908947.3	29733	29734	1	60	g	c	scaffold-0	133	134	-

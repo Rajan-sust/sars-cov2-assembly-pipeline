@@ -1,9 +1,0 @@
-R	MN908947.3	5569	27845
-V	MN908947.3	7635	7635	1	60	-	attctgtgctggtagtacatttattagtgatgaagttgcgagagacttgtcnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn	20	2066	2167	+
-V	MN908947.3	8604	8604	1	60	-	cctttttgttgctgctattttctatttaataacacctgttcatgtctgtttagacatgacatgaacnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn	20	3136	3252	+
-V	MN908947.3	8781	8782	1	60	c	t	20	3429	3430	+
-V	MN908947.3	14873	14873	1	60	-	gtactttgattgttacgatggtggctgtattaatgctaaccaannnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn	20	9521	9614	+
-V	MN908947.3	17746	17747	1	60	c	t	20	12487	12488	+
-V	MN908947.3	17857	17858	1	60	a	g	20	12598	12599	+
-V	MN908947.3	18059	18060	1	60	c	t	20	12800	12801	+
-V	MN908947.3	24693	24694	1	60	a	t	20	19434	19435	+

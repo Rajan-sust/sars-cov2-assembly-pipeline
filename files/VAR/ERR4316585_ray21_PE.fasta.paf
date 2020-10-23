@@ -1,7 +1,0 @@
-scaffold-3	269	0	269	+	MN908947.3	29903	25653	25922	269	269	60	NM:i:0	ms:i:269	AS:i:269	nn:i:0	tp:A:P	cm:i:49	s1:i:262	s2:i:0	de:f:0	rl:i:0	cg:Z:269M	cs:Z::269
-scaffold-62	423	0	423	-	MN908947.3	29903	27466	27889	423	423	60	NM:i:0	ms:i:423	AS:i:423	nn:i:0	tp:A:P	cm:i:70	s1:i:418	s2:i:0	de:f:0	rl:i:0	cg:Z:423M	cs:Z::423
-scaffold-201	1107	0	1107	+	MN908947.3	29903	28747	29854	1106	1107	60	NM:i:1	ms:i:1102	AS:i:1102	nn:i:0	tp:A:P	cm:i:197	s1:i:1097	s2:i:0	de:f:0.0009	rl:i:0	cg:Z:1107M	cs:Z::115*ct:991
-scaffold-410	3356	0	3356	-	MN908947.3	29903	22423	25779	3356	3356	60	NM:i:0	ms:i:3356	AS:i:3356	nn:i:0	tp:A:P	cm:i:614	s1:i:3350	s2:i:0	de:f:0	rl:i:0	cg:Z:3356M	cs:Z::3356
-scaffold-456	11241	0	11010	-	MN908947.3	29903	11398	22406	11007	11010	60	NM:i:3	ms:i:10987	AS:i:10987	nn:i:0	tp:A:P	cm:i:1992	s1:i:10978	s2:i:0	de:f:0.0003	rl:i:0	cg:Z:9305M1I1078M1I625M	cs:Z::3406*ct:5898+a:1078+a:625
-scaffold-456	11241	11009	11241	-	MN908947.3	29903	11842	12074	232	232	60	NM:i:0	ms:i:232	AS:i:232	nn:i:0	tp:A:P	cm:i:40	s1:i:226	s2:i:0	de:f:0	rl:i:0	cg:Z:232M	cs:Z::232
-scaffold-457	12103	0	12103	+	MN908947.3	29903	36	12138	12100	12103	60	NM:i:3	ms:i:12084	AS:i:12084	nn:i:0	tp:A:P	cm:i:2189	s1:i:12074	s2:i:0	de:f:0.0002	rl:i:0	cg:Z:6660M1I5442M	cs:Z::6660+t:2085*ct:694*ta:2661

@@ -1,9 +1,0 @@
-TRINITY_DN0_c0_g1_i1	221	0	221	-	MN908947.3	29903	7238	7459	221	221	60	NM:i:0	ms:i:221	AS:i:221	nn:i:0	tp:A:P	cm:i:41	s1:i:208	s2:i:0	de:f:0	rl:i:0	cg:Z:221M	cs:Z::221
-TRINITY_DN0_c0_g2_i1	697	0	696	-	MN908947.3	29903	2	698	695	696	60	NM:i:1	ms:i:691	AS:i:691	nn:i:0	tp:A:P	cm:i:119	s1:i:681	s2:i:0	de:f:0.0014	rl:i:0	cg:Z:696M	cs:Z::238*ct:457
-TRINITY_DN0_c0_g3_i1	207	0	207	-	MN908947.3	29903	7047	7254	207	207	60	NM:i:0	ms:i:207	AS:i:207	nn:i:0	tp:A:P	cm:i:30	s1:i:192	s2:i:0	de:f:0	rl:i:0	cg:Z:207M	cs:Z::207
-TRINITY_DN0_c0_g4_i1	309	0	309	-	MN908947.3	29903	7459	7768	309	309	60	NM:i:0	ms:i:309	AS:i:309	nn:i:0	tp:A:P	cm:i:53	s1:i:301	s2:i:0	de:f:0	rl:i:0	cg:Z:309M	cs:Z::309
-TRINITY_DN0_c0_g5_i1	6758	0	6758	-	MN908947.3	29903	8646	15404	6757	6758	60	NM:i:1	ms:i:6753	AS:i:6753	nn:i:0	tp:A:P	cm:i:1222	s1:i:6743	s2:i:0	de:f:0.0001	rl:i:0	cg:Z:6758M	cs:Z::5761*ct:996
-TRINITY_DN0_c0_g6_i1	2308	0	2308	-	MN908947.3	29903	803	3111	2307	2308	60	NM:i:1	ms:i:2303	AS:i:2303	nn:i:0	tp:A:P	cm:i:420	s1:i:2286	s2:i:0	de:f:0.0004	rl:i:0	cg:Z:2308M	cs:Z::2233*ct:74
-TRINITY_DN0_c0_g7_i1	325	0	325	-	MN908947.3	29903	7795	8120	325	325	60	NM:i:0	ms:i:325	AS:i:325	nn:i:0	tp:A:P	cm:i:54	s1:i:317	s2:i:0	de:f:0	rl:i:0	cg:Z:325M	cs:Z::325
-TRINITY_DN0_c0_g8_i1	896	0	896	-	MN908947.3	29903	5739	6635	896	896	60	NM:i:0	ms:i:896	AS:i:896	nn:i:0	tp:A:P	cm:i:157	s1:i:896	s2:i:0	de:f:0	rl:i:0	cg:Z:896M	cs:Z::896
-TRINITY_DN0_c0_g9_i1	369	0	369	-	MN908947.3	29903	8291	8660	369	369	60	NM:i:0	ms:i:369	AS:i:369	nn:i:0	tp:A:P	cm:i:60	s1:i:366	s2:i:0	de:f:0	rl:i:0	cg:Z:369M	cs:Z::369

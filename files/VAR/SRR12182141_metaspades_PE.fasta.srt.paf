@@ -1,2 +1,0 @@
-NODE_605_length_384_cov_1.170213	384	1	384	-	MN908947.3	29903	9757	10140	383	383	60	NM:i:0	ms:i:383	AS:i:383	nn:i:0	tp:A:P	cm:i:64	s1:i:373	s2:i:0	de:f:0	rl:i:0	cg:Z:383M	cs:Z::383
-NODE_393_length_443_cov_1.033505	443	0	443	-	MN908947.3	29903	19974	20417	443	443	60	NM:i:0	ms:i:443	AS:i:443	nn:i:0	tp:A:P	cm:i:75	s1:i:428	s2:i:0	de:f:0	rl:i:0	cg:Z:443M	cs:Z::443

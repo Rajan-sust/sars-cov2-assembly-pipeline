@@ -1,2 +1,0 @@
-NODE_1_length_29892_cov_949.740870_g0_i0	29892	6	29874	-	MN908947.3	29903	0	29868	29859	29868	60	NM:i:9	ms:i:29823	AS:i:29823	nn:i:0	tp:A:P	cm:i:5435	s1:i:29808	s2:i:0	de:f:0.0003	rl:i:0	cg:Z:29868M	cs:Z::240*ct:2795*ct:7588*ct:3781*ct:8994*ag:4673*gt:803*ga*ga*gc:985
-NODE_2_length_4656_cov_629.509055_g0_i1	4656	18	4656	+	MN908947.3	29903	0	4664	4635	4664	60	NM:i:29	ms:i:4565	AS:i:4571	nn:i:0	tp:A:P	cm:i:829	s1:i:4590	s2:i:0	de:f:0.0009	rl:i:0	cg:Z:4530M26D108M	cs:Z::240*ct:2795*ct:1493-ttacttttacaccagtaaaacaactg:34*tc:73

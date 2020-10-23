@@ -1,3 +1,0 @@
-NODE_250_length_398_cov_164.743713	418	0	418	+	MN908947.3	29903	19277	19695	418	418	60	NM:i:0	ms:i:418	AS:i:418	nn:i:0	tp:A:P	cm:i:67	s1:i:414	s2:i:0	de:f:0	rl:i:0	cg:Z:418M	cs:Z::418
-NODE_1444_length_232_cov_123.241379	252	0	252	-	MN908947.3	29903	20156	20408	252	252	60	NM:i:0	ms:i:252	AS:i:252	nn:i:0	tp:A:P	cm:i:41	s1:i:241	s2:i:0	de:f:0	rl:i:0	cg:Z:252M	cs:Z::252
-NODE_8642_length_207_cov_11.908213	227	0	227	+	MN908947.3	29903	27513	27740	227	227	60	NM:i:0	ms:i:227	AS:i:227	nn:i:0	tp:A:P	cm:i:36	s1:i:217	s2:i:0	de:f:0	rl:i:0	cg:Z:227M	cs:Z::227

@@ -1,0 +1,65 @@
+##SNVcount For Spike protein 
+abyss21
+      3 Indels
+    245 NonSynonymous
+     38 Synonymous
+abyss63
+      1 Indels
+    258 NonSynonymous
+     38 Synonymous
+abyss99
+      2 Indels
+    283 NonSynonymous
+     42 Synonymous
+megahit
+      4 Indels
+    326 NonSynonymous
+     50 Synonymous
+metaspades
+     11 Indels
+    325 NonSynonymous
+     56 Synonymous
+metavelvet21
+      2 Indels
+     56 NonSynonymous
+     10 Synonymous
+metavelvet63
+      5 Indels
+    131 NonSynonymous
+     26 Synonymous
+metavelvet99
+     12 Indels
+    348 NonSynonymous
+     70 Synonymous
+ray21
+      9 Indels
+    326 NonSynonymous
+     61 Synonymous
+ray63
+      6 Indels
+    320 NonSynonymous
+     59 Synonymous
+ray99
+      6 Indels
+    319 NonSynonymous
+     59 Synonymous
+spades
+     15 Indels
+    390 NonSynonymous
+     83 Synonymous
+trinity
+      4 Indels
+    312 NonSynonymous
+     49 Synonymous
+velvet21
+      2 Indels
+     56 NonSynonymous
+     12 Synonymous
+velvet63
+      5 Indels
+    132 NonSynonymous
+     25 Synonymous
+velvet99
+     15 Indels
+    346 NonSynonymous
+     73 Synonymous

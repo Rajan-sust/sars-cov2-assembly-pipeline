@@ -1,0 +1,16 @@
+abyss21 2251
+abyss63 2304
+abyss99 2556
+megahit 3040
+metaspades  3111
+metavelvet21    571
+metavelvet63    1376
+metavelvet99    3360
+ray21   3119
+ray63   3163
+ray99   3162
+spades  3776
+trinity 2865
+velvet21    583
+velvet63    1397
+velvet99    3373

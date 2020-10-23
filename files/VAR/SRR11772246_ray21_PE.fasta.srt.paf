@@ -1,5 +1,0 @@
-scaffold-2	16070	14466	16070	+	MN908947.3	29903	9477	11081	1604	1604	60	NM:i:0	ms:i:1604	AS:i:1604	nn:i:0	tp:A:P	cm:i:289	s1:i:1595	s2:i:0	de:f:0	rl:i:0	cg:Z:1604M	cs:Z::1604
-scaffold-2	16070	750	14468	-	MN908947.3	29903	9486	23204	13717	13718	60	NM:i:1	ms:i:13713	AS:i:13713	nn:i:0	tp:A:P	cm:i:2490	s1:i:13714	s2:i:0	de:f:0.0001	rl:i:0	cg:Z:13718M	cs:Z::4921*ct:8796
-scaffold-1	7391	0	7389	-	MN908947.3	29903	21667	29056	7387	7389	60	NM:i:2	ms:i:7379	AS:i:7379	nn:i:0	tp:A:P	cm:i:1360	s1:i:7369	s2:i:0	de:f:0.0003	rl:i:0	cg:Z:7389M	cs:Z::1735*ag:2159*gt:3493
-scaffold-2	16070	0	750	+	MN908947.3	29903	22464	23214	750	750	60	NM:i:0	ms:i:750	AS:i:750	nn:i:0	tp:A:P	cm:i:132	s1:i:739	s2:i:0	de:f:0	rl:i:0	cg:Z:750M	cs:Z::750
-scaffold-0	557	0	557	+	MN908947.3	29903	29304	29861	557	557	60	NM:i:0	ms:i:557	AS:i:557	nn:i:0	tp:A:P	cm:i:99	s1:i:548	s2:i:0	de:f:0	rl:i:0	cg:Z:557M	cs:Z::557

@@ -1,0 +1,37 @@
+Total Variant Calls:
+Assay_Type
+AMPLICON            640
+OTHER               600
+RNA-Seq             409
+Targeted-Capture    718
+WGA                 765
+Name: TOTAL, dtype: int64
+
+
+Total Mismatches :
+Assay_Type
+AMPLICON             20
+OTHER                59
+RNA-Seq              26
+Targeted-Capture    133
+WGA                  21
+Name: MISSM, dtype: int64
+
+Total Mismatches in Megahit:
+Assay_Type
+AMPLICON            15
+OTHER               30
+RNA-Seq              9
+Targeted-Capture    64
+WGA                 16
+Name: MEGA, dtype: int64
+
+
+Total Mismatches in Metaspades:
+Assay_Type
+AMPLICON             5
+OTHER               29
+RNA-Seq             17
+Targeted-Capture    69
+WGA                  5
+Name: META, dtype: int64
