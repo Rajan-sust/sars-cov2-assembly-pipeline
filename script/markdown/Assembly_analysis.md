@@ -9,6 +9,136 @@ output:
 
 
 
+### Spike variants
+
+
+```r
+library(tidyverse)
+setwd("~/Documents/research/asm/covid19-Assembly/plots/")
+
+s = read.table("~/Documents/research/asm/covid19-Assembly/files/SpikeSNVsDetails.txt")
+s2 = data.frame(str_split_fixed(s$V1, "_", 3), s)
+
+#number of samples used for variant calling
+length(unique(s2$X1))
+```
+
+```
+## [1] 347
+```
+
+```r
+s3 = s2 %>% group_by(X2, V5) %>%
+  summarise(n = n())
+
+ggplot(s3, aes(X2, n, fill = V5)) +
+  geom_bar(position="stack", stat="identity") + 
+    xlab("") +
+    ylab("Total variants in 347 samples at Spike locus") +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1),
+        strip.background =element_rect(fill="white"),
+        legend.position = "right")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+
+```r
+ggsave("Variant_count_spike.pdf", width = 18, height = 13, units = "cm", device = 'pdf')
+
+## total count of variants
+v = read.table("~/Documents/research/asm/covid19-Assembly/files/Variant_count_all_assembler.txt")
+
+ggplot(v, aes(V1, V2, fill = V1)) +
+  geom_bar(position="stack", stat="identity") + 
+    xlab("") +
+    ylab("Total variants in 416 samples") +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1),
+        strip.background =element_rect(fill="white"),
+        legend.position = "none")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-2.png)<!-- -->
+
+```r
+ggsave("Variant_count_all.pdf", width = 18, height = 13, units = "cm", device = 'pdf')
+
+# correlation
+x = read_tsv("~/Documents/research/asm/covid19-Assembly/files/report_metaquast_PE_all.tsv")
+
+x2 = melt(x, id.vars = "Assembly")
+x2$Assembly = gsub("# ", "", x2$Assembly)
+x3 = data.frame(str_split_fixed(x2$variable, "_", 3), value = as.numeric(x2$value), x2)
+
+x4 = x3 %>% filter(Assembly == "Genome fraction (%)") %>% na.omit() %>%
+  group_by(X2) %>%
+  summarise(mean = mean(value))
+
+cor(v$V2, x4$mean)
+```
+
+```
+## [1] 0.734553
+```
+
+```r
+#0.734553
+```
+
+### CPU and RAM
+
+
+```r
+library(tidyverse)
+setwd("~/Documents/research/asm/covid19-Assembly/plots/")
+
+c = read_csv("~/Documents/research/asm/covid19-Assembly/files/CPU_time.csv")
+ggplot(c, aes(Assembler, `Time(s)`)) +
+    geom_jitter(alpha = .5, width = .1, aes(color = Assembler)) +
+    geom_boxplot(alpha = 0.3) +
+    #scale_color_viridis(discrete=TRUE) +
+    #scale_fill_material("red") +
+    xlab("") +
+    #ylab(variableToPlot) +
+    #facet_grid(Assay_Type~.) +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1),
+        strip.background =element_rect(fill="white"),
+        legend.position = "none")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+
+```r
+ggsave("CPU_times.pdf", width = 18, height = 13, units = "cm", device = 'pdf')
+
+#ram
+c = read_csv("~/Documents/research/asm/covid19-Assembly/files/RAM.csv")
+ggplot(c, aes(Assembler, Ram_percentage)) +
+    geom_jitter(alpha = .5, width = .1, aes(color = Assembler)) +
+    geom_boxplot(alpha = 0.3) +
+    #scale_color_viridis(discrete=TRUE) +
+    #scale_fill_material("red") +
+    xlab("") +
+    #ylab(variableToPlot) +
+    #facet_grid(Assay_Type~.) +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1),
+        strip.background =element_rect(fill="white"),
+        legend.position = "none")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-2-2.png)<!-- -->
+
+```r
+ggsave("RAM_usage.pdf", width = 18, height = 13, units = "cm", device = 'pdf')
+```
+
 ### variant heatmap
 
 
@@ -16,11 +146,11 @@ output:
 library(pheatmap)
 library(tidyverse)
 
-meta = read_csv("/Volumes/rony/drive/asm/covid19-Assembly/files/PE_561samples_final.csv")
-mh = read.table("/Volumes/rony/drive/asm/covid19-Assembly/files/megahit_alignment_matrix_50bp.tsv", head = F)
-ms = read.table("/Volumes/rony/drive/asm/covid19-Assembly/files/metaspade_alignment_matrix_50bp.tsv", head = F)
-ab = read.table("/Volumes/rony/drive/asm/covid19-Assembly/files/abyss63_alignment_matrix_50bp.tsv", head = F)
-tr = read.table("/Volumes/rony/drive/asm/covid19-Assembly/files/trinity_alignment_matrix_50bp.tsv", head = F)
+meta = read_csv("~/Documents/research/asm/covid19-Assembly/files/PE_561samples_final.csv")
+mh = read.table("~/Documents/research/asm/covid19-Assembly/files/megahit_alignment_matrix_50bp.tsv", head = F)
+ms = read.table("~/Documents/research/asm/covid19-Assembly/files/metaspade_alignment_matrix_50bp.tsv", head = F)
+ab = read.table("~/Documents/research/asm/covid19-Assembly/files/abyss63_alignment_matrix_50bp.tsv", head = F)
+tr = read.table("~/Documents/research/asm/covid19-Assembly/files/trinity_alignment_matrix_50bp.tsv", head = F)
 
 hs = cbind(mh, ms, ab, tr)
 hst = data.frame(t(hs))
@@ -59,7 +189,7 @@ both3 %>% group_by(Assay_Type) %>%
 ```
 
 ```r
-#write.table(both3, "/Volumes/rony/drive/asm/covid19-Assembly/files/megahit_metaspades_heatmap_matrix.tsv", sep = "\t", quote = F, row.names = F, col.names = F)
+#write.table(both3, "~/Documents/research/asm/covid19-Assembly/files/megahit_metaspades_heatmap_matrix.tsv", sep = "\t", quote = F, row.names = F, col.names = F)
 
 both4 = data.frame(both3[,3:ncol(both3)]) 
 
@@ -77,16 +207,16 @@ rownames(anno) = rownames(both5)
 pheatmap(both5, annotation_row = anno, cluster_cols = F, cluster_rows = F, show_rownames = F, show_colnames = F, color = colorRampPalette(c("red", "white", "gray"))(1000), border_color = NA, gaps_col = c(599, 599+599, 599+599+599), gaps_row = c(82, 82+65, 82+65+58, 82+65+58+88))
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
 
 ```r
 plot.new()
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-1-2.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-3-2.png)<!-- -->
 
 ```r
-jpeg("/Volumes/rony/drive/asm/covid19-Assembly/plots/heatmap_v2.jpg", width = 1800, height = 1000)
+jpeg("~/Documents/research/asm/covid19-Assembly/plots/heatmap_v2.jpg", width = 1800, height = 1000)
 pheatmap(both5, annotation_row = anno, cluster_cols = F, cluster_rows = F, show_rownames = F, show_colnames = F, color = colorRampPalette(c("red", "white", "gray"))(1000), border_color = NA, gaps_col = c(599, 599+599, 599+599+599), gaps_row = c(81, 81+60, 81+60+41, 81+60+41+83))
 dev.off()
 ```
@@ -97,8 +227,100 @@ dev.off()
 ```
 
 ```r
-#make genome
-g = read.table("/Volumes/rony/drive/asm/covid19-Assembly/files/GeneBank_Genes.bed")
+#get best and worst asm
+worst = data.frame(asm = rowSums(both5)) %>% arrange(asm) %>% head() 
+best = data.frame(asm = rowSums(both5)) %>% arrange(asm) %>% tail()
+write.table(rbind(worst, best), "~/Documents/research/asm/covid19-Assembly/files/wrostAndBest_asm.tsv", col.names = F, quote = F)
+
+#heatmap of worst and best
+make_heatmap = function(SRR) {
+  SRR12182155 = hst3 %>% filter(hst3$X1.1 == SRR)  %>% select(-X3.1) %>% select(-X1)
+  SRR12182155_v2 = SRR12182155 %>% select(-X1.1) %>% select(-X2.1)
+  #conver factor to numeric
+  SRR12182155_v3 = SRR12182155_v2 %>% 
+  mutate_all(~as.numeric(as.character(.)))
+  rownames(SRR12182155_v3) = SRR12182155$X2.1
+
+#
+pheatmap(SRR12182155_v3, cluster_cols = F, cluster_rows = F, show_rownames = T, show_colnames = F, color = colorRampPalette(c("red", "white", "gray"))(1000), border_color = "black", gaps_row = c(1:3))
+}
+
+#worst 3
+plot.new()
+pdf("SRR11783612.pdf", width = 18, height = 2)
+make_heatmap("SRR11783612") #Targeted-Capture
+dev.off()
+```
+
+```
+## quartz_off_screen 
+##                 3
+```
+
+```r
+plot.new()
+pdf("SRR11954291.pdf", width = 18, height = 2)
+make_heatmap("SRR11954291") #RNA-seq; 4th
+dev.off()
+```
+
+```
+## quartz_off_screen 
+##                 3
+```
+
+```r
+make_heatmap("SRR11783580") #Targeted-Capture
+make_heatmap("ERR4321689") #WGA
+
+
+#best 3
+plot.new()
+pdf("SRR12182155.pdf", width = 18, height = 2)
+make_heatmap("SRR12182155") #OTHER
+dev.off()
+```
+
+```
+## quartz_off_screen 
+##                 3
+```
+
+```r
+plot.new()
+pdf("SRR11903415.pdf", width = 18, height = 2)
+make_heatmap("SRR11903415") #Targeted-Capture; 6th and rest of them are Other
+dev.off()
+```
+
+```
+## quartz_off_screen 
+##                 3
+```
+
+```r
+make_heatmap("SRR12182119") #OTHER
+make_heatmap("SRR12182157") #OTHER
+make_heatmap("SRR11903415") #Targeted-Capture; 6th and rest of them are Other
+
+
+SRR12182155 = hst3 %>% filter(hst3$X1.1 == "SRR12182155")  %>% select(-X3.1) %>% select(-X1)
+SRR12182155_v2 = SRR12182155 %>% select(-X1.1) %>% select(-X2.1)
+#conver factor to numeric
+SRR12182155_v3 = SRR12182155_v2 %>% 
+  mutate_all(~as.numeric(as.character(.)))
+rownames(SRR12182155_v3) = SRR12182155$X2.1
+
+pheatmap(SRR12182155_v3, cluster_cols = F, cluster_rows = F, show_rownames = T, show_colnames = F, color = colorRampPalette(c("red", "white", "gray"))(1000), border_color = "black", gaps_row = c(1:3))
+
+
+#make genome. hand draw
+g = read.table("~/Documents/research/asm/covid19-Assembly/files/GeneBank_Genes.bed")
+g2 = data.frame(gene = g$V4, len = g$V3-g$V2, sp = g$V1)
+
+ggplot(g2, aes(sp, len, fill = gene)) + 
+  geom_bar(stat = "identity", aes(alpha = .0), color = "black") +
+  coord_flip()
 ```
 
 ### assembly quality
@@ -110,20 +332,42 @@ library(reshape2)
 library(viridis)
 library(ggsci)
 
-x = read_tsv("/Volumes/rony/drive/asm/covid19-Assembly/files/backup/bioRxiv_1074_assembly_report_PE_amplicon_viralRNA.tsv")
-x = read_tsv("/Volumes/rony/drive/asm/covid19-Assembly/files/report_metaquast_PE_all.tsv")
+#x = read_tsv("~/Documents/research/asm/covid19-Assembly/files/backup/bioRxiv_1074_assembly_report_PE_amplicon_viralRNA.tsv")
+x = read_tsv("~/Documents/research/asm/covid19-Assembly/files/report_metaquast_PE_all.tsv")
 
 x2 = melt(x, id.vars = "Assembly")
 x2$Assembly = gsub("# ", "", x2$Assembly)
 x3 = data.frame(str_split_fixed(x2$variable, "_", 3), value = as.numeric(x2$value), x2)
 
-meta = read_csv("/Volumes/rony/drive/asm/covid19-Assembly/files/PE_561samples_final.csv")
+meta = read_csv("~/Documents/research/asm/covid19-Assembly/files/PE_561samples_final.csv")
 meta2 = meta %>% select(Run, Assay_Type)
     
 xm = left_join(x3, meta2, by = c("X1" = "Run"))
 
+#number of samples in each category
+xm %>% distinct(variable, .keep_all = T) %>% 
+    filter(Assembly == "contigs (>= 0 bp)") %>%
+    group_by(Assay_Type, X2) %>% 
+    summarise(n = n()) %>% 
+    filter(n == max(n)) %>%
+    distinct(Assay_Type, .keep_all = T)
+```
+
+```
+## # A tibble: 5 x 3
+## # Groups:   Assay_Type [5]
+##   Assay_Type       X2          n
+##   <chr>            <fct>   <int>
+## 1 AMPLICON         megahit    82
+## 2 OTHER            abyss63    66
+## 3 RNA-Seq          abyss21    75
+## 4 Targeted-Capture abyss63    93
+## 5 WGA              abyss21   100
+```
+
+```r
 #
-setwd("/Volumes/rony/drive/asm/covid19-Assembly/plots/")
+setwd("~/Documents/research/asm/covid19-Assembly/plots/")
 make_boxplot = function(variableToPlot)
 {
   x4 = xm %>% filter(Assembly == variableToPlot) 
@@ -243,7 +487,7 @@ make_boxplot("Genome fraction (%)")
 ## 80 WGA              velvet99     21.3   20.5
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
 ```r
 make_boxplot("Largest contig")
@@ -336,7 +580,7 @@ make_boxplot("Largest contig")
 ## 80 WGA              velvet99      1154.  1072.
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-2.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-2.png)<!-- -->
 
 ```r
 make_boxplot("Total length")
@@ -429,7 +673,7 @@ make_boxplot("Total length")
 ## 80 WGA              velvet99       17133.   9277
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-3.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-3.png)<!-- -->
 
 ```r
 make_boxplot("contigs")
@@ -522,7 +766,7 @@ make_boxplot("contigs")
 ## 80 WGA              velvet99      24.9    13.5
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-4.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-4.png)<!-- -->
 
 ```r
 make_boxplot("contigs (>= 1000 bp)")
@@ -615,7 +859,7 @@ make_boxplot("contigs (>= 1000 bp)")
 ## 80 WGA              velvet99       2.32    1
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-5.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-5.png)<!-- -->
 
 ```r
 make_boxplot("Largest alignment")
@@ -708,7 +952,7 @@ make_boxplot("Largest alignment")
 ## 80 WGA              velvet99       934.   863
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-6.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-6.png)<!-- -->
 
 ```r
 make_boxplot("mismatches per 100 kbp")
@@ -801,7 +1045,7 @@ make_boxplot("mismatches per 100 kbp")
 ## 80 WGA              velvet99      43.0  35.4
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-7.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-7.png)<!-- -->
 
 ```r
 make_boxplot("indels per 100 kbp")
@@ -894,7 +1138,7 @@ make_boxplot("indels per 100 kbp")
 ## 80 WGA              velvet99     19.9    16.8
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-8.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-8.png)<!-- -->
 
 ```r
 make_boxplot("Total aligned length")
@@ -987,100 +1231,7 @@ make_boxplot("Total aligned length")
 ## 80 WGA              velvet99       6403.  6214
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-9.png)<!-- -->
-
-```r
-make_boxplot("misassemblies")
-```
-
-```
-## # A tibble: 80 x 4
-## # Groups:   Assay_Type [5]
-##    Assay_Type       X2              mean median
-##    <chr>            <fct>          <dbl>  <dbl>
-##  1 AMPLICON         abyss21       0.0128      0
-##  2 AMPLICON         abyss63       0.0270      0
-##  3 AMPLICON         abyss99       0.0938      0
-##  4 AMPLICON         megahit       0.111       0
-##  5 AMPLICON         metaspades    0           0
-##  6 AMPLICON         metavelvet21  0           0
-##  7 AMPLICON         metavelvet63  0           0
-##  8 AMPLICON         metavelvet99  0.258       0
-##  9 AMPLICON         ray21         0.617       0
-## 10 AMPLICON         ray63         0.235       0
-## 11 AMPLICON         ray99         0.235       0
-## 12 AMPLICON         spades        0.370       0
-## 13 AMPLICON         trinity       0.0494      0
-## 14 AMPLICON         velvet21      0           0
-## 15 AMPLICON         velvet63      0           0
-## 16 AMPLICON         velvet99      0.226       0
-## 17 OTHER            abyss21       0.0169      0
-## 18 OTHER            abyss63       0           0
-## 19 OTHER            abyss99       0.0339      0
-## 20 OTHER            megahit       0.0625      0
-## 21 OTHER            metaspades    0.0312      0
-## 22 OTHER            metavelvet21  0           0
-## 23 OTHER            metavelvet63  0           0
-## 24 OTHER            metavelvet99  0.0566      0
-## 25 OTHER            ray21         0.0781      0
-## 26 OTHER            ray63         0.0484      0
-## 27 OTHER            ray99         0.0323      0
-## 28 OTHER            spades        0.156       0
-## 29 OTHER            trinity       0.109       0
-## 30 OTHER            velvet21      0           0
-## 31 OTHER            velvet63      0           0
-## 32 OTHER            velvet99      0.0755      0
-## 33 RNA-Seq          abyss21       0.0312      0
-## 34 RNA-Seq          abyss63       0           0
-## 35 RNA-Seq          abyss99       0.0769      0
-## 36 RNA-Seq          megahit       0.0357      0
-## 37 RNA-Seq          metaspades    0.0357      0
-## 38 RNA-Seq          metavelvet21  0.0714      0
-## 39 RNA-Seq          metavelvet63  0           0
-## 40 RNA-Seq          metavelvet99  0           0
-## 41 RNA-Seq          ray21         1.23        1
-## 42 RNA-Seq          ray63         1.11        1
-## 43 RNA-Seq          ray99         1.11        1
-## 44 RNA-Seq          spades       13.7         0
-## 45 RNA-Seq          trinity       2.72        0
-## 46 RNA-Seq          velvet21      0.0714      0
-## 47 RNA-Seq          velvet63      0           0
-## 48 RNA-Seq          velvet99      0           0
-## 49 Targeted-Capture abyss21       0           0
-## 50 Targeted-Capture abyss63       0.0128      0
-## 51 Targeted-Capture abyss99       0           0
-## 52 Targeted-Capture megahit       0.580       0
-## 53 Targeted-Capture metaspades    1.46        0
-## 54 Targeted-Capture metavelvet21  0           0
-## 55 Targeted-Capture metavelvet63  0           0
-## 56 Targeted-Capture metavelvet99  0           0
-## 57 Targeted-Capture ray21         0.576       0
-## 58 Targeted-Capture ray63         0.729       0
-## 59 Targeted-Capture ray99         0.706       0
-## 60 Targeted-Capture spades       11.6         0
-## 61 Targeted-Capture trinity       3.06        0
-## 62 Targeted-Capture velvet21      0           0
-## 63 Targeted-Capture velvet63      0           0
-## 64 Targeted-Capture velvet99      0           0
-## 65 WGA              abyss21       0           0
-## 66 WGA              abyss63       0           0
-## 67 WGA              abyss99       0.221       0
-## 68 WGA              megahit       0.0612      0
-## 69 WGA              metaspades    0.0103      0
-## 70 WGA              metavelvet21  0           0
-## 71 WGA              metavelvet63  0           0
-## 72 WGA              metavelvet99  0.298       0
-## 73 WGA              ray21         0.724       0
-## 74 WGA              ray63         0.433       0
-## 75 WGA              ray99         0.433       0
-## 76 WGA              spades        0.0619      0
-## 77 WGA              trinity       0.104       0
-## 78 WGA              velvet21      0           0
-## 79 WGA              velvet63      0           0
-## 80 WGA              velvet99      0.344       0
-```
-
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-10.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-9.png)<!-- -->
 
 ```r
 #make_boxplot("unaligned contigs")
@@ -1174,7 +1325,7 @@ make_boxplot("N50")
 ## 80 WGA              velvet99       648.   628
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-11.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-10.png)<!-- -->
 
 ```r
 make_boxplot("N75")
@@ -1267,102 +1418,10 @@ make_boxplot("N75")
 ## 80 WGA              velvet99       564.   553
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-12.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-11.png)<!-- -->
 
 ```r
-make_boxplot("L50")
-```
-
-```
-## # A tibble: 80 x 4
-## # Groups:   Assay_Type [5]
-##    Assay_Type       X2             mean median
-##    <chr>            <fct>         <dbl>  <dbl>
-##  1 AMPLICON         abyss21        2.56    2  
-##  2 AMPLICON         abyss63        3.22    3  
-##  3 AMPLICON         abyss99        4.88    4  
-##  4 AMPLICON         megahit        1.85    1  
-##  5 AMPLICON         metaspades     1.59    1  
-##  6 AMPLICON         metavelvet21   2.28    1  
-##  7 AMPLICON         metavelvet63   3.39    2  
-##  8 AMPLICON         metavelvet99   4.98    5  
-##  9 AMPLICON         ray21          2.41    2  
-## 10 AMPLICON         ray63          2.60    2  
-## 11 AMPLICON         ray99          2.61    2  
-## 12 AMPLICON         spades         2.37    2  
-## 13 AMPLICON         trinity        2.39    1  
-## 14 AMPLICON         velvet21       2.28    1  
-## 15 AMPLICON         velvet63       3.51    3  
-## 16 AMPLICON         velvet99       5.08    5  
-## 17 OTHER            abyss21       10.6     2  
-## 18 OTHER            abyss63        9.18    1  
-## 19 OTHER            abyss99        7.41    1  
-## 20 OTHER            megahit       17.3     1  
-## 21 OTHER            metaspades    14.5     1  
-## 22 OTHER            metavelvet21  16.6     4  
-## 23 OTHER            metavelvet63  13.7     5  
-## 24 OTHER            metavelvet99  13.0     6  
-## 25 OTHER            ray21          5.77    1  
-## 26 OTHER            ray63          5.2     1  
-## 27 OTHER            ray99          5.17    1  
-## 28 OTHER            spades        11.6     1  
-## 29 OTHER            trinity       18.8     2  
-## 30 OTHER            velvet21      16.6     4  
-## 31 OTHER            velvet63      14.4     5  
-## 32 OTHER            velvet99      12.9     6  
-## 33 RNA-Seq          abyss21      155.     24  
-## 34 RNA-Seq          abyss63       62.4     9  
-## 35 RNA-Seq          abyss99        3.70    2  
-## 36 RNA-Seq          megahit      185.     45  
-## 37 RNA-Seq          metaspades   232.     61  
-## 38 RNA-Seq          metavelvet21  75.6    15  
-## 39 RNA-Seq          metavelvet63  64.4    10  
-## 40 RNA-Seq          metavelvet99   4.05    2  
-## 41 RNA-Seq          ray21         87.1     9  
-## 42 RNA-Seq          ray63         71.5     9  
-## 43 RNA-Seq          ray99         71.5     9  
-## 44 RNA-Seq          spades       186.     51  
-## 45 RNA-Seq          trinity      268.     58  
-## 46 RNA-Seq          velvet21      76.6    19  
-## 47 RNA-Seq          velvet63      64.5    10  
-## 48 RNA-Seq          velvet99       4.05    2  
-## 49 Targeted-Capture abyss21        3.33    1  
-## 50 Targeted-Capture abyss63        3.80    2  
-## 51 Targeted-Capture abyss99        3.97    2  
-## 52 Targeted-Capture megahit       36.1     1  
-## 53 Targeted-Capture metaspades    33.9     1  
-## 54 Targeted-Capture metavelvet21  30.3     3  
-## 55 Targeted-Capture metavelvet63  18.8     4  
-## 56 Targeted-Capture metavelvet99  12.9     4  
-## 57 Targeted-Capture ray21         11.7     2  
-## 58 Targeted-Capture ray63         11.0     3  
-## 59 Targeted-Capture ray99         10.9     3  
-## 60 Targeted-Capture spades        38.1     1  
-## 61 Targeted-Capture trinity       24.4     3  
-## 62 Targeted-Capture velvet21      30.4     3  
-## 63 Targeted-Capture velvet63      18.7     4  
-## 64 Targeted-Capture velvet99      13.0     4  
-## 65 WGA              abyss21        5.08    1  
-## 66 WGA              abyss63        7.51    2  
-## 67 WGA              abyss99       10.3     7  
-## 68 WGA              megahit       10.9     1  
-## 69 WGA              metaspades     8.97    1  
-## 70 WGA              metavelvet21   7.74    2.5
-## 71 WGA              metavelvet63  10.1     5  
-## 72 WGA              metavelvet99  10.4     7  
-## 73 WGA              ray21          4.65    1  
-## 74 WGA              ray63          5.04    1  
-## 75 WGA              ray99          5.03    1  
-## 76 WGA              spades         8.94    2  
-## 77 WGA              trinity       12.1     1  
-## 78 WGA              velvet21       7.85    3  
-## 79 WGA              velvet63      10       4  
-## 80 WGA              velvet99      10.3     6
-```
-
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-13.png)<!-- -->
-
-```r
+#make_boxplot("L50")
 make_boxplot("L75")
 ```
 
@@ -1453,7 +1512,7 @@ make_boxplot("L75")
 ## 80 WGA              velvet99      17.4    10
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-14.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-12.png)<!-- -->
 
 ```r
 make_boxplot("NA50")
@@ -1546,7 +1605,7 @@ make_boxplot("NA50")
 ## 80 WGA              velvet99       597.   584.
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-15.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-13.png)<!-- -->
 
 ```r
 make_boxplot("NA75")
@@ -1639,102 +1698,10 @@ make_boxplot("NA75")
 ## 80 WGA              velvet99       527.   528.
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-16.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-14.png)<!-- -->
 
 ```r
-make_boxplot("LA50")
-```
-
-```
-## # A tibble: 80 x 4
-## # Groups:   Assay_Type [5]
-##    Assay_Type       X2            mean median
-##    <chr>            <fct>        <dbl>  <dbl>
-##  1 AMPLICON         abyss21       2.28    2  
-##  2 AMPLICON         abyss63       3.14    3  
-##  3 AMPLICON         abyss99       4.82    4  
-##  4 AMPLICON         megahit       1.17    1  
-##  5 AMPLICON         metaspades    1.25    1  
-##  6 AMPLICON         metavelvet21  1.65    1  
-##  7 AMPLICON         metavelvet63  3.08    2  
-##  8 AMPLICON         metavelvet99  4.72    5  
-##  9 AMPLICON         ray21         2.38    2  
-## 10 AMPLICON         ray63         2.37    2  
-## 11 AMPLICON         ray99         2.38    2  
-## 12 AMPLICON         spades        1.95    1.5
-## 13 AMPLICON         trinity       2.09    1  
-## 14 AMPLICON         velvet21      1.65    1  
-## 15 AMPLICON         velvet63      3.18    2  
-## 16 AMPLICON         velvet99      4.84    5  
-## 17 OTHER            abyss21       2.54    1.5
-## 18 OTHER            abyss63       1.84    1  
-## 19 OTHER            abyss99       1.68    1  
-## 20 OTHER            megahit       1.84    1  
-## 21 OTHER            metaspades    1.83    1  
-## 22 OTHER            metavelvet21  5.6     5  
-## 23 OTHER            metavelvet63  5.27    5  
-## 24 OTHER            metavelvet99  6.1     6  
-## 25 OTHER            ray21         2.46    1  
-## 26 OTHER            ray63         1.85    1  
-## 27 OTHER            ray99         1.84    1  
-## 28 OTHER            spades        2.04    1  
-## 29 OTHER            trinity       3.21    1  
-## 30 OTHER            velvet21      5.47    5  
-## 31 OTHER            velvet63      5.5     6  
-## 32 OTHER            velvet99      6.17    6  
-## 33 RNA-Seq          abyss21       6.43    8  
-## 34 RNA-Seq          abyss63       7.3     5.5
-## 35 RNA-Seq          abyss99       3.81    3  
-## 36 RNA-Seq          megahit       1       1  
-## 37 RNA-Seq          metaspades    1.17    1  
-## 38 RNA-Seq          metavelvet21  4.5     4.5
-## 39 RNA-Seq          metavelvet63  8.25    8.5
-## 40 RNA-Seq          metavelvet99  6.93    6  
-## 41 RNA-Seq          ray21         2.88    2  
-## 42 RNA-Seq          ray63         3.59    1  
-## 43 RNA-Seq          ray99         3.59    1  
-## 44 RNA-Seq          spades       45.2    29.5
-## 45 RNA-Seq          trinity      13.3     8  
-## 46 RNA-Seq          velvet21      6       6  
-## 47 RNA-Seq          velvet63      8.38    8.5
-## 48 RNA-Seq          velvet99      7       7  
-## 49 Targeted-Capture abyss21       1.71    1  
-## 50 Targeted-Capture abyss63       2.46    1  
-## 51 Targeted-Capture abyss99       2.38    1  
-## 52 Targeted-Capture megahit       1.48    1  
-## 53 Targeted-Capture metaspades    1.85    1  
-## 54 Targeted-Capture metavelvet21  3.85    3  
-## 55 Targeted-Capture metavelvet63  4.21    5  
-## 56 Targeted-Capture metavelvet99  4.34    4  
-## 57 Targeted-Capture ray21         2.27    1  
-## 58 Targeted-Capture ray63         2.63    1  
-## 59 Targeted-Capture ray99         2.62    1  
-## 60 Targeted-Capture spades        9.82    1  
-## 61 Targeted-Capture trinity       4.46    2  
-## 62 Targeted-Capture velvet21      3.77    3  
-## 63 Targeted-Capture velvet63      4.23    5  
-## 64 Targeted-Capture velvet99      4.47    4  
-## 65 WGA              abyss21       1.38    1  
-## 66 WGA              abyss63       2.38    2  
-## 67 WGA              abyss99       6.79    7  
-## 68 WGA              megahit       1.03    1  
-## 69 WGA              metaspades    1.03    1  
-## 70 WGA              metavelvet21  1.67    1  
-## 71 WGA              metavelvet63  3.82    3  
-## 72 WGA              metavelvet99  5.54    5.5
-## 73 WGA              ray21         1.37    1  
-## 74 WGA              ray63         1.29    1  
-## 75 WGA              ray99         1.29    1  
-## 76 WGA              spades        1.72    1.5
-## 77 WGA              trinity       1.16    1  
-## 78 WGA              velvet21      2       2  
-## 79 WGA              velvet63      4.12    3  
-## 80 WGA              velvet99      5.53    5.5
-```
-
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-17.png)<!-- -->
-
-```r
+#make_boxplot("LA50")
 make_boxplot("LA75")
 ```
 
@@ -1825,11 +1792,11 @@ make_boxplot("LA75")
 ## 80 WGA              velvet99       8.65    8.5
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-18.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-15.png)<!-- -->
 
 ```r
 #n50
-make_boxplot = function(variableToPlot)
+make_boxplot_v2 = function(variableToPlot)
 {
   x4 = xm %>% filter(Assembly == variableToPlot) 
   stat = x4 %>%
@@ -1857,7 +1824,8 @@ make_boxplot = function(variableToPlot)
   ggsave(filename=paste(filename,".pdf", sep="_"), width = 12, height = 18, units = "cm", device = 'pdf')
 }
 
-make_boxplot("L50")
+#la50
+make_boxplot_v2("L50")
 ```
 
 ```
@@ -1878,7 +1846,79 @@ make_boxplot("L50")
 ## # … with 70 more rows
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-19.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-16.png)<!-- -->
+
+```r
+make_boxplot_v2("LA50")
+```
+
+```
+## # A tibble: 80 x 4
+## # Groups:   X2 [16]
+##    X2      Assay_Type        mean median
+##    <fct>   <chr>            <dbl>  <dbl>
+##  1 abyss21 AMPLICON          2.28    2  
+##  2 abyss21 OTHER             2.54    1.5
+##  3 abyss21 RNA-Seq           6.43    8  
+##  4 abyss21 Targeted-Capture  1.71    1  
+##  5 abyss21 WGA               1.38    1  
+##  6 abyss63 AMPLICON          3.14    3  
+##  7 abyss63 OTHER             1.84    1  
+##  8 abyss63 RNA-Seq           7.3     5.5
+##  9 abyss63 Targeted-Capture  2.46    1  
+## 10 abyss63 WGA               2.38    2  
+## # … with 70 more rows
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-17.png)<!-- -->
+
+```r
+make_boxplot_v2("Duplication ratio")
+```
+
+```
+## # A tibble: 80 x 4
+## # Groups:   X2 [16]
+##    X2      Assay_Type        mean median
+##    <fct>   <chr>            <dbl>  <dbl>
+##  1 abyss21 AMPLICON          1.02   1.00
+##  2 abyss21 OTHER             1.00   1.00
+##  3 abyss21 RNA-Seq           1.02   1   
+##  4 abyss21 Targeted-Capture  1.02   1.00
+##  5 abyss21 WGA               1.01   1.00
+##  6 abyss63 AMPLICON          1.02   1.01
+##  7 abyss63 OTHER             1.00   1.00
+##  8 abyss63 RNA-Seq           1.01   1.01
+##  9 abyss63 Targeted-Capture  1.01   1.00
+## 10 abyss63 WGA               1.01   1.01
+## # … with 70 more rows
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-18.png)<!-- -->
+
+```r
+make_boxplot_v2("misassemblies")
+```
+
+```
+## # A tibble: 80 x 4
+## # Groups:   X2 [16]
+##    X2      Assay_Type         mean median
+##    <fct>   <chr>             <dbl>  <dbl>
+##  1 abyss21 AMPLICON         0.0128      0
+##  2 abyss21 OTHER            0.0169      0
+##  3 abyss21 RNA-Seq          0.0312      0
+##  4 abyss21 Targeted-Capture 0           0
+##  5 abyss21 WGA              0           0
+##  6 abyss63 AMPLICON         0.0270      0
+##  7 abyss63 OTHER            0           0
+##  8 abyss63 RNA-Seq          0           0
+##  9 abyss63 Targeted-Capture 0.0128      0
+## 10 abyss63 WGA              0           0
+## # … with 70 more rows
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-19.png)<!-- -->
 
 ```r
 # genomic feature
@@ -1898,7 +1938,7 @@ x6 = data.frame(assembly = x5$X2, match = as.numeric(as.character(x5$X1.1)), mis
         axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-20.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-20.png)<!-- -->
 
 ```r
 ggsave("percent features mapped.pdf", width = 15, height = 10, units = "cm")
@@ -1909,7 +1949,7 @@ ggsave("percent features mapped.pdf", width = 15, height = 10, units = "cm")
 
 ```r
 library(tidyverse)
-setwd("/Volumes/rony/drive/asm/covid19-Assembly/plots/")
+setwd("~/Documents/research/asm/covid19-Assembly/plots/")
 
 #90%=29903*.9
 contig = xm %>% filter(Assembly == "Largest contig") %>% filter(value >=26912.7)
@@ -1924,7 +1964,7 @@ ggplot(contig, aes(X2)) +
         axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
 
 ```r
 ggsave("90_percent_genome_single_contig.pdf", width = 20, height = 6, units = "cm")
@@ -1935,9 +1975,9 @@ ggsave("90_percent_genome_single_contig.pdf", width = 20, height = 6, units = "c
 
 ```r
 library(tidyverse)
-setwd("/Volumes/rony/drive/asm/covid19-Assembly/plots/")
-#r = read.table("~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/read_QC_matrix.txt")[,c(1,4)]
-r = read.table("/Volumes/rony/drive/asm/covid19-Assembly/files/read_QC_matrix.txt")[,c(1,4)]
+setwd("~/Documents/research/asm/covid19-Assembly/plots/")
+#r = read.table("~/Documents/research/asm/covid19-Assembly/files//read_QC_matrix.txt")[,c(1,4)]
+r = read.table("~/Documents/research/asm/covid19-Assembly/files/read_QC_matrix.txt")[,c(1,4)]
 
 r2 = data.frame(id = str_split_fixed(r$V1, "_", 2), read = r$V4)
 head(r2$id[,1])
@@ -1984,7 +2024,7 @@ ggplot(rx2, aes(value, read/1e6)) +
         legend.position = "none") 
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
 
 ```r
 ggsave("readVsGenome.pdf", width = 20, height = 6, units = "cm")
@@ -2011,7 +2051,7 @@ ggplot(dist, aes(Assay_Type, log10(read))) +
         axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-2.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-6-2.png)<!-- -->
 
 ```r
 ggsave("readDist.pdf", width = 7, height = 10, units = "cm")
@@ -2023,7 +2063,7 @@ ggsave("readDist.pdf", width = 7, height = 10, units = "cm")
 
 ```r
 library(tidyverse)
-setwd("/Volumes/rony/drive/asm/covid19-Assembly/plots/")
+setwd("~/Documents/research/asm/covid19-Assembly/plots/")
 
 rx2 %>% filter(Assembly == "Genome fraction (%)") %>% na.omit() %>%
     ggplot(aes(fct_reorder(id, read), X2, color = X2)) +
@@ -2036,7 +2076,7 @@ rx2 %>% filter(Assembly == "Genome fraction (%)") %>% na.omit() %>%
         axis.text.x=element_blank()) 
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
 ```r
 ggsave("sampleVsassembler_color_bk.pdf", width = 30, height = 20, units = "cm")
@@ -2058,7 +2098,7 @@ mvista = x3 %>% filter(Assembly == "Genome fraction (%)") %>% na.omit() %>%
 library(tidyverse)
 library(knitr)
 
-c = read_tsv("~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/SraRunTable_COVID19_14.06.20.txt")
+c = read_tsv("~/Documents/research/asm/covid19-Assembly/files/SraRunTable_COVID19_14.06.20.txt")
 
 c2 = tibble(c$Platform, c$Run, c$SRA_Sample, c$Instrument, c$LibraryLayout, c$Assay_Type, c$LibrarySelection, c$LibrarySource, c$Organism, c$geo_loc_name, c$host, c$host_disease, c$Consent)
 
@@ -2079,7 +2119,7 @@ colSums(!is.na(c2))
 
 ```r
 #
-#write_csv(c2, "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/COVID19_14.06.20_metadata_final.csv")
+#write_csv(c2, "~/Documents/research/asm/covid19-Assembly/files//COVID19_14.06.20_metadata_final.csv")
 
 # summarise metadata
 #colnames(c2)
@@ -2145,33 +2185,33 @@ kable(df, caption = "Summary of all data. This table will add table paper")
 
 Table: Summary of all data. This table will add table paper
 
-|Assay_Type       |LibrarySource      |LibraryLayout |    n|
-|:----------------|:------------------|:-------------|----:|
-|AMPLICON         |METAGENOMIC        |SINGLE        |   41|
-|AMPLICON         |SYNTHETIC          |SINGLE        |  136|
-|AMPLICON         |VIRAL RNA          |PAIRED        | 5254|
-|AMPLICON         |VIRAL RNA          |SINGLE        | 6507|
-|OTHER            |METAGENOMIC        |PAIRED        |    1|
-|OTHER            |VIRAL RNA          |PAIRED        |   68|
-|RNA-Seq          |GENOMIC            |PAIRED        |    1|
-|RNA-Seq          |METAGENOMIC        |PAIRED        |    9|
-|RNA-Seq          |METAGENOMIC        |SINGLE        |    9|
-|RNA-Seq          |METATRANSCRIPTOMIC |PAIRED        |    9|
-|RNA-Seq          |TRANSCRIPTOMIC     |PAIRED        |   16|
-|RNA-Seq          |TRANSCRIPTOMIC     |SINGLE        |    3|
-|RNA-Seq          |VIRAL RNA          |PAIRED        |  682|
-|RNA-Seq          |VIRAL RNA          |SINGLE        |  654|
-|Targeted-Capture |VIRAL RNA          |PAIRED        |  194|
-|Targeted-Capture |VIRAL RNA          |SINGLE        |  241|
-|WGA              |GENOMIC            |PAIRED        |    6|
-|WGA              |METAGENOMIC        |PAIRED        |    5|
-|WGA              |VIRAL RNA          |PAIRED        | 1061|
-|WGS              |GENOMIC            |PAIRED        |   11|
-|WGS              |METAGENOMIC        |PAIRED        |    6|
-|WGS              |VIRAL RNA          |PAIRED        |   93|
+Assay_Type         LibrarySource        LibraryLayout       n
+-----------------  -------------------  --------------  -----
+AMPLICON           METAGENOMIC          SINGLE             41
+AMPLICON           SYNTHETIC            SINGLE            136
+AMPLICON           VIRAL RNA            PAIRED           5254
+AMPLICON           VIRAL RNA            SINGLE           6507
+OTHER              METAGENOMIC          PAIRED              1
+OTHER              VIRAL RNA            PAIRED             68
+RNA-Seq            GENOMIC              PAIRED              1
+RNA-Seq            METAGENOMIC          PAIRED              9
+RNA-Seq            METAGENOMIC          SINGLE              9
+RNA-Seq            METATRANSCRIPTOMIC   PAIRED              9
+RNA-Seq            TRANSCRIPTOMIC       PAIRED             16
+RNA-Seq            TRANSCRIPTOMIC       SINGLE              3
+RNA-Seq            VIRAL RNA            PAIRED            682
+RNA-Seq            VIRAL RNA            SINGLE            654
+Targeted-Capture   VIRAL RNA            PAIRED            194
+Targeted-Capture   VIRAL RNA            SINGLE            241
+WGA                GENOMIC              PAIRED              6
+WGA                METAGENOMIC          PAIRED              5
+WGA                VIRAL RNA            PAIRED           1061
+WGS                GENOMIC              PAIRED             11
+WGS                METAGENOMIC          PAIRED              6
+WGS                VIRAL RNA            PAIRED             93
 
 ```r
-#write_tsv(df, "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/summary_data.tsv")
+#write_tsv(df, "~/Documents/research/asm/covid19-Assembly/files//summary_data.tsv")
 
 df2 = df %>% filter(LibrarySource == "VIRAL RNA")
 kable(df2, caption = "Summary of VIRAL RNA data")
@@ -2181,17 +2221,17 @@ kable(df2, caption = "Summary of VIRAL RNA data")
 
 Table: Summary of VIRAL RNA data
 
-|Assay_Type       |LibrarySource |LibraryLayout |    n|
-|:----------------|:-------------|:-------------|----:|
-|AMPLICON         |VIRAL RNA     |PAIRED        | 5254|
-|AMPLICON         |VIRAL RNA     |SINGLE        | 6507|
-|OTHER            |VIRAL RNA     |PAIRED        |   68|
-|RNA-Seq          |VIRAL RNA     |PAIRED        |  682|
-|RNA-Seq          |VIRAL RNA     |SINGLE        |  654|
-|Targeted-Capture |VIRAL RNA     |PAIRED        |  194|
-|Targeted-Capture |VIRAL RNA     |SINGLE        |  241|
-|WGA              |VIRAL RNA     |PAIRED        | 1061|
-|WGS              |VIRAL RNA     |PAIRED        |   93|
+Assay_Type         LibrarySource   LibraryLayout       n
+-----------------  --------------  --------------  -----
+AMPLICON           VIRAL RNA       PAIRED           5254
+AMPLICON           VIRAL RNA       SINGLE           6507
+OTHER              VIRAL RNA       PAIRED             68
+RNA-Seq            VIRAL RNA       PAIRED            682
+RNA-Seq            VIRAL RNA       SINGLE            654
+Targeted-Capture   VIRAL RNA       PAIRED            194
+Targeted-Capture   VIRAL RNA       SINGLE            241
+WGA                VIRAL RNA       PAIRED           1061
+WGS                VIRAL RNA       PAIRED             93
 
 ```r
 ##subsample main paper
@@ -2236,12 +2276,12 @@ b3 = c2 %>% filter(LibraryLayout == "SINGLE" & Assay_Type == "Targeted-Capture" 
 #dataset
 ab_pe = rbind(a1, a2, a3, a4, a5, a6)
 ab_se = rbind(b1, b2, b3)
-#write_csv(ab_pe, "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/PE_561samples_final.csv")
-#write_csv(ab_se, "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/SE_300samples_final.csv")
-#write.table(ab_pe$Run, "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/PE_561samples_final_561runs.txt", col.names = F, row.names = F, quote = F)
-#write.table(ab_se$Run, "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/SE_300samples_final_300runs.txt", col.names = F, row.names = F, quote = F)
-#write_csv(a1, "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/PE_100samples_amplicon_bioRxiv.csv")
-#write.table(a1[,2], "~/Gdrive_tutorial_edits/Assembly_COVID19/covid19-Assembly/files/PE_100samples_amplicon_bioRxiv_100runs.txt", col.names = F, row.names = F, quote = F)
+#write_csv(ab_pe, "~/Documents/research/asm/covid19-Assembly/files//PE_561samples_final.csv")
+#write_csv(ab_se, "~/Documents/research/asm/covid19-Assembly/files//SE_300samples_final.csv")
+#write.table(ab_pe$Run, "~/Documents/research/asm/covid19-Assembly/files//PE_561samples_final_561runs.txt", col.names = F, row.names = F, quote = F)
+#write.table(ab_se$Run, "~/Documents/research/asm/covid19-Assembly/files//SE_300samples_final_300runs.txt", col.names = F, row.names = F, quote = F)
+#write_csv(a1, "~/Documents/research/asm/covid19-Assembly/files//PE_100samples_amplicon_bioRxiv.csv")
+#write.table(a1[,2], "~/Documents/research/asm/covid19-Assembly/files//PE_100samples_amplicon_bioRxiv_100runs.txt", col.names = F, row.names = F, quote = F)
 
 # test ram and cpu
 set.seed(2020)
@@ -2257,15 +2297,15 @@ kable(ab2, caption = "List of total 9 different categories. Maximum 100 samples 
 
 Table: List of total 9 different categories. Maximum 100 samples are randomly selected
 
-|LibType                           |   n|
-|:---------------------------------|---:|
-|PE: AMPLICON of VIRAL RNA         | 100|
-|PE: OTHER of VIRAL RNA            |  68|
-|PE: RNA-Seq of VIRAL RNA          | 100|
-|PE: Targeted-Capture of VIRAL RNA | 100|
-|PE: WGA of VIRAL RNA              | 100|
-|PE: WGS of VIRAL RNA              |  93|
-|SE: AMPLICON of VIRAL RNA         | 100|
-|SE: RNA-Seq of VIRAL RNA          | 100|
-|SE: Targeted-Capture of VIRAL RNA | 100|
+LibType                                n
+----------------------------------  ----
+PE: AMPLICON of VIRAL RNA            100
+PE: OTHER of VIRAL RNA                68
+PE: RNA-Seq of VIRAL RNA             100
+PE: Targeted-Capture of VIRAL RNA    100
+PE: WGA of VIRAL RNA                 100
+PE: WGS of VIRAL RNA                  93
+SE: AMPLICON of VIRAL RNA            100
+SE: RNA-Seq of VIRAL RNA             100
+SE: Targeted-Capture of VIRAL RNA    100
 
