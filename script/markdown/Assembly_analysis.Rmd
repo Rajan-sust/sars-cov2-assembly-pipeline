@@ -251,10 +251,11 @@ x = read_tsv("~/Documents/research/asm/covid19-Assembly/files/report_metaquast_P
 x2 = melt(x, id.vars = "Assembly")
 x2$Assembly = gsub("# ", "", x2$Assembly)
 x3 = data.frame(str_split_fixed(x2$variable, "_", 3), value = as.numeric(x2$value), x2)
+temp = x3 %>% filter(Assembly == "Genome fraction (%)")  %>% arrange(-value)
 
 meta = read_csv("~/Documents/research/asm/covid19-Assembly/files/PE_561samples_final.csv")
 meta2 = meta %>% select(Run, Assay_Type)
-    
+
 xm = left_join(x3, meta2, by = c("X1" = "Run"))
 
 #number of samples in each category
@@ -379,6 +380,11 @@ setwd("~/Documents/research/asm/covid19-Assembly/plots/")
 
 #90%=29903*.9
 contig = xm %>% filter(Assembly == "Largest contig") %>% filter(value >=26912.7)
+#
+contig2 = contig %>% group_by(X2, Assay_Type) %>% summarise(count = n())
+print(contig2, n = Inf)
+
+
 ggplot(contig, aes(X2)) +
     geom_histogram(stat = "count") +
     xlab("") +
