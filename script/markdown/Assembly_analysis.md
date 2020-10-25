@@ -338,10 +338,11 @@ x = read_tsv("~/Documents/research/asm/covid19-Assembly/files/report_metaquast_P
 x2 = melt(x, id.vars = "Assembly")
 x2$Assembly = gsub("# ", "", x2$Assembly)
 x3 = data.frame(str_split_fixed(x2$variable, "_", 3), value = as.numeric(x2$value), x2)
+temp = x3 %>% filter(Assembly == "Genome fraction (%)")  %>% arrange(-value)
 
 meta = read_csv("~/Documents/research/asm/covid19-Assembly/files/PE_561samples_final.csv")
 meta2 = meta %>% select(Run, Assay_Type)
-    
+
 xm = left_join(x3, meta2, by = c("X1" = "Run"))
 
 #number of samples in each category
@@ -1953,6 +1954,65 @@ setwd("~/Documents/research/asm/covid19-Assembly/plots/")
 
 #90%=29903*.9
 contig = xm %>% filter(Assembly == "Largest contig") %>% filter(value >=26912.7)
+#
+contig2 = contig %>% group_by(X2, Assay_Type) %>% summarise(count = n())
+print(contig2, n = Inf)
+```
+
+```
+## # A tibble: 46 x 3
+## # Groups:   X2 [10]
+##    X2         Assay_Type       count
+##    <fct>      <chr>            <int>
+##  1 abyss21    AMPLICON             6
+##  2 abyss21    Targeted-Capture     3
+##  3 abyss21    WGA                 11
+##  4 abyss63    AMPLICON             5
+##  5 abyss63    OTHER               15
+##  6 abyss63    RNA-Seq              1
+##  7 abyss63    Targeted-Capture    35
+##  8 abyss63    WGA                  6
+##  9 abyss99    OTHER               30
+## 10 abyss99    RNA-Seq              3
+## 11 abyss99    Targeted-Capture    34
+## 12 megahit    AMPLICON            43
+## 13 megahit    OTHER               43
+## 14 megahit    RNA-Seq             38
+## 15 megahit    Targeted-Capture    53
+## 16 megahit    WGA                 78
+## 17 metaspades AMPLICON            47
+## 18 metaspades OTHER               27
+## 19 metaspades RNA-Seq             34
+## 20 metaspades Targeted-Capture    26
+## 21 metaspades WGA                 77
+## 22 ray21      AMPLICON            10
+## 23 ray21      OTHER               28
+## 24 ray21      RNA-Seq             29
+## 25 ray21      Targeted-Capture    42
+## 26 ray21      WGA                 52
+## 27 ray63      AMPLICON            11
+## 28 ray63      OTHER               34
+## 29 ray63      RNA-Seq             26
+## 30 ray63      Targeted-Capture    42
+## 31 ray63      WGA                 54
+## 32 ray99      AMPLICON            11
+## 33 ray99      OTHER               34
+## 34 ray99      RNA-Seq             26
+## 35 ray99      Targeted-Capture    42
+## 36 ray99      WGA                 54
+## 37 spades     AMPLICON            23
+## 38 spades     OTHER               41
+## 39 spades     RNA-Seq             38
+## 40 spades     Targeted-Capture    53
+## 41 spades     WGA                 13
+## 42 trinity    AMPLICON            15
+## 43 trinity    OTHER               33
+## 44 trinity    RNA-Seq              8
+## 45 trinity    Targeted-Capture    18
+## 46 trinity    WGA                 60
+```
+
+```r
 ggplot(contig, aes(X2)) +
     geom_histogram(stat = "count") +
     xlab("") +
