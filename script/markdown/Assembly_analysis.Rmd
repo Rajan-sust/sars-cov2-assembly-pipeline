@@ -326,7 +326,7 @@ make_boxplot_v2 = function(variableToPlot)
     summarize(mean = mean(value, na.rm = TRUE),
             median = median(value, na.rm = TRUE))
   
-  print(stat)
+  print(stat, n = Inf)
   plot = ggplot(x4, aes(X2, value)) +
     geom_jitter(alpha = .5, width = .1, aes(color = X2)) +
     geom_boxplot(alpha = 0.1) +
