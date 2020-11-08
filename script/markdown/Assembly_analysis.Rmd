@@ -38,6 +38,39 @@ ggplot(s3, aes(X2, n, fill = V5)) +
 
 ggsave("Variant_count_spike.pdf", width = 18, height = 13, units = "cm", device = 'pdf')
 
+# mega and meta had 100% spike
+t = read.table("~/Documents/research/asm/covid19-Assembly/files/intersected_samples_list.txt")
+
+mgs = read.table("~/Documents/research/asm/covid19-Assembly/files/spike_intersected_megahit_SRR.txt")
+table(duplicated(mgs))
+mts = read.table("~/Documents/research/asm/covid19-Assembly/files/spike_intersected_metaspades_SRR.txt")
+table(duplicated(mts))
+mts2 = data.frame(V1 = mts[!duplicated(mts$V1), ])
+length(unique(intersect(mgs$V1, mts2$V1)))
+
+se_temp = s2 %>% select(X1, X2, V5)
+mg = left_join(mgs, se_temp, by = c("V1" = "X1")) %>% filter(X2 %in% c("megahit"))
+mt = left_join(mts2, se_temp, by = c("V1" = "X1")) %>% filter(X2 %in% c( "metaspades"))
+
+length(unique(intersect(mg$V1, mt$V1)))
+
+ms_common = inner_join(mg, mt, by = c("V1" = "V1")) 
+
+s3 %>% filter(X2 %in% c("megahit", "metaspades")) %>%
+ggplot(aes(X2, n, fill = V5)) +
+  geom_bar(position="stack", stat="identity") + 
+    xlab("") +
+    ylab("Total variants at Spike locus") +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1),
+        strip.background =element_rect(fill="white"),
+        legend.position = "right")
+
+ggsave("Variant_count_spike_mega_meta.pdf", width = 10, height = 13, units = "cm", device = 'pdf')
+
+
+
 ## total count of variants
 v = read.table("~/Documents/research/asm/covid19-Assembly/files/Variant_count_all_assembler.txt")
 
@@ -53,7 +86,7 @@ ggplot(v, aes(V1, V2, fill = V1)) +
 
 ggsave("Variant_count_all.pdf", width = 18, height = 13, units = "cm", device = 'pdf')
 
-# correlation
+# correlation variant_count and %GF
 x = read_tsv("~/Documents/research/asm/covid19-Assembly/files/report_metaquast_PE_all.tsv")
 
 x2 = melt(x, id.vars = "Assembly")
@@ -66,6 +99,44 @@ x4 = x3 %>% filter(Assembly == "Genome fraction (%)") %>% na.omit() %>%
 
 cor(v$V2, x4$mean)
 #0.734553
+
+# variants per sample
+df = read_csv("~/Documents/research/asm/covid19-Assembly/files/sample_variants_count.csv")
+# replace -32 with NA
+df[df == -32] <- NA
+df2 = melt(df)
+
+ggplot(df2, aes(variable, value)) +
+  geom_boxplot() + 
+    xlab("") +
+    ylab("Variants per sample") +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1),
+        strip.background =element_rect(fill="white"),
+        legend.position = "none")
+
+ggsave("Variant_count_per_sample.pdf", width = 18, height = 13, units = "cm", device = 'pdf')
+
+
+df3 = df2 %>% 
+  group_by(variable) %>%
+  summarise(mean = mean(value, na.rm = T),
+            median = median(value, na.rm = T),
+            sd = sd(value, na.rm = T))
+
+ggplot(df3, aes(variable, mean)) + 
+    geom_col() +  
+    geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width=0.2) +
+    xlab("") +
+    ylab("Variants per sample") +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1),
+        strip.background =element_rect(fill="white"),
+        legend.position = "none")
+
+print(df3, n = Inf)
 ```
 
 ### CPU and RAM
@@ -251,7 +322,20 @@ x = read_tsv("~/Documents/research/asm/covid19-Assembly/files/report_metaquast_P
 x2 = melt(x, id.vars = "Assembly")
 x2$Assembly = gsub("# ", "", x2$Assembly)
 x3 = data.frame(str_split_fixed(x2$variable, "_", 3), value = as.numeric(x2$value), x2)
+
+# temp: query samples by %GF
 temp = x3 %>% filter(Assembly == "Genome fraction (%)")  %>% arrange(-value)
+
+#mega and mega
+temp %>% filter(X2 == "megahit") %>% head(n=10)
+temp %>% filter(X2 == "metaspades") %>% head(n=10)
+
+temp %>% filter(value >= 70) %>% 
+  group_by(X1) %>%
+  summarise(n = n()) %>%
+  arrange(-n)
+
+# end temp
 
 meta = read_csv("~/Documents/research/asm/covid19-Assembly/files/PE_561samples_final.csv")
 meta2 = meta %>% select(Run, Assay_Type)
@@ -315,6 +399,8 @@ make_boxplot("NA50")
 make_boxplot("NA75")
 #make_boxplot("LA50")
 make_boxplot("LA75")
+make_boxplot("unaligned mis. contigs")
+make_boxplot("N's per 100 kbp")
 
 
 #n50
@@ -324,9 +410,18 @@ make_boxplot_v2 = function(variableToPlot)
   stat = x4 %>%
     group_by(X2, Assay_Type) %>%
     summarize(mean = mean(value, na.rm = TRUE),
-            median = median(value, na.rm = TRUE))
-  
-  print(stat, n = Inf)
+            median = median(value, na.rm = TRUE),
+            maximum = max(value, na.rm = TRUE))
+            
+print(stat, n = Inf)
+    
+stat2 = x4 %>%
+    group_by(X2, Assay_Type) %>%
+    tally(value)
+
+  print("print sum of all i.e., total")
+  print(stat2, n = Inf)
+
   plot = ggplot(x4, aes(X2, value)) +
     geom_jitter(alpha = .5, width = .1, aes(color = X2)) +
     geom_boxplot(alpha = 0.1) +
@@ -352,13 +447,44 @@ make_boxplot_v2("LA50")
 make_boxplot_v2("Duplication ratio")
 make_boxplot_v2("misassemblies")
 
+#num of mis asm
+xm %>% filter(Assembly == "misassemblies") %>% na.omit() %>%  dim()
+xm %>% filter(Assembly == "misassemblies") %>% na.omit() %>% filter(value == 0) %>% dim()
 
+#num of dup ratio
+xm %>% filter(Assembly == "Duplication ratio") %>% na.omit() %>% dim()
+xm %>% filter(Assembly == "Duplication ratio") %>% na.omit() %>% filter(value == 1) %>% dim()
+
+# scatter plot
+dr = xm %>% filter(Assembly == "Duplication ratio") 
+mis = xm %>% filter(Assembly == "misassemblies") 
+s3 = inner_join(mis, dr, by = c("variable" = "variable")) %>% 
+  select(X1.x, X2.x, value.x, value.y, Assay_Type.y) %>% na.omit()
+colnames(s3) = c("SRR", "asm", "mis", "dupliR", "assay")
+
+
+ggplot(s3, aes(mis, dupliR)) +
+  geom_jitter(aes(color = asm), shape = 18, size = 2.5) +
+    xlab("Misassemblies") +
+    ylab("Duplication ratio") +
+    facet_grid(~assay, scales = "free") +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", hjust = 1),
+        strip.background =element_rect(fill="white"),
+        legend.position = "bottom") +
+  guides(color = guide_legend(override.aes = list(size = 3)))
+
+ggsave("Scatter_misasm_dupliR.pdf", width = 24, height = 10, units = "cm")
+
+s3 %>% group_by(asm, assay) %>%
+  summarise(count = n())
 
 # genomic feature
 x4 = xm %>% filter(Assembly == "genomic features") 
 x4$value.1 = gsub("part", "", x4$value.1)
 x5 = data.frame(str_split_fixed(x4$value.1,"\\+", 2), x4) 
-x6 = data.frame(assembly = x5$X2, match = as.numeric(as.character(x5$X1.1)), mismatch = as.numeric(as.character(x5$X2.1)))
+x6 = data.frame(assembly = x5$X2, match = as.numeric(as.character(x5$X1.1)), mismatch = as.numeric(as.character(x5$X2.1))) 
 
 # need to add assay_type
   ggplot(x6, aes(assembly, 100*(match/49))) +
@@ -369,7 +495,60 @@ x6 = data.frame(assembly = x5$X2, match = as.numeric(as.character(x5$X1.1)), mis
     theme(panel.background = element_rect(fill = "white"),
         panel.border = element_rect(fill = NA, colour = "black", size = .5),
         axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
+  
 ggsave("percent features mapped.pdf", width = 15, height = 10, units = "cm")
+
+
+# average qualily across all samples
+avg = xm %>% filter(Assembly %in% c("Genome fraction (%)", "Largest alignment", "Duplication ratio", "misassemblies", "N50", "NA50",  "L50", "LA50")) %>%
+  group_by(Assembly, X2) %>%
+  summarise(mean = mean(value, na.rm = T),
+            median = median(value, na.rm = T),
+            max = max(value, na.rm = T),
+            min = min(value, na.rm = T),
+            sd = sd(value, na.rm = T),
+            count = n())
+
+print(avg, n = Inf)
+
+# supplementary file 1
+med = xm %>% 
+  group_by(Assembly, X2) %>%
+  summarise(median = median(value, na.rm = T)) %>%
+  spread(key = "X2", value = median, fill = NA)
+
+print(med, n = Inf)
+
+write.table(med, "~/Documents/research/asm/covid19-Assembly/Supplementary_files/Median_Assembly_Quality_assemblers.tsv", quote = F, row.names = F, sep = ",")
+
+# k-mer quality across all samples
+kmer = c("abyss21", "abyss63", "abyss99", "metavelvet21", "metavelvet63", "metavelvet99", "ray21", "ray63", "ray99", "velvet21", "velvet63", "velvet99")
+xmk = xm %>% filter(X2 %in% kmer) 
+
+#global averge
+kmer_stats = xmk %>% 
+  group_by(Assembly, X2) %>%
+  summarise(mean = mean(value, na.rm = T),
+            median = median(value, na.rm = T),
+            max = max(value, na.rm = T),
+            min = min(value, na.rm = T),
+            sd = sd(value, na.rm = T),
+            count = n())
+
+print(kmer_stats, n = Inf)
+
+kmer_stats %>% filter(Assembly %in% c("Genome fraction (%)", "Largest alignment", "Duplication ratio", "misassemblies", "N50", "NA50",  "L50", "LA50")) %>%
+  ggplot( aes(X2, mean)) +
+  geom_col() +
+  facet_grid(Assembly~., scales = "free") +
+  xlab("") +
+  ylab("Mean") +
+  theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
+  
+ggsave("k-mer_stats.pdf", width = 25, height = 40, units = "cm")
+
 ```
 
 ### 90% of the genome is covered by single contig
@@ -406,7 +585,6 @@ setwd("~/Documents/research/asm/covid19-Assembly/plots/")
 r = read.table("~/Documents/research/asm/covid19-Assembly/files/read_QC_matrix.txt")[,c(1,4)]
 
 r2 = data.frame(id = str_split_fixed(r$V1, "_", 2), read = r$V4)
-head(r2$id[,1])
 
 #sum every two rows of PE data
 r3 = data.frame(id = unique(r2$id.1), read = (rowsum(r2[,3], as.integer(gl(nrow(r2), 2, nrow(r2))))))
@@ -430,8 +608,30 @@ ggplot(rx2, aes(value, read/1e6)) +
         legend.position = "none") 
 ggsave("readVsGenome.pdf", width = 20, height = 6, units = "cm")
 
+#global cor
 rx3 = na.omit(rx2)
 cor(rx3$value, rx3$read, method = "spearman")
+
+correlation = rx2 %>% filter(Assay_Type == "AMPLICON") %>% na.omit()
+cor(correlation$value, correlation$read)
+cor(correlation$value, correlation$read, method = "spearman")
+
+correlation = rx2 %>% filter(Assay_Type == "Targeted-Capture") %>% na.omit()
+cor(correlation$value, correlation$read)
+cor(correlation$value, correlation$read, method = "spearman")
+
+correlation = rx2 %>% filter(Assay_Type == "WGA") %>% na.omit()
+cor(correlation$value, correlation$read)
+cor(correlation$value, correlation$read, method = "spearman")
+
+correlation = rx2 %>% filter(Assay_Type == "RNA-Seq") %>% na.omit()
+cor(correlation$value, correlation$read)
+cor(correlation$value, correlation$read, method = "spearman")
+
+correlation = rx2 %>% filter(Assay_Type == "OTHER") %>% na.omit()
+cor(correlation$value, correlation$read)
+cor(correlation$value, correlation$read, method = "spearman")
+
 
 #read dist
 dist = rx2 %>% distinct(id, .keep_all = T)
