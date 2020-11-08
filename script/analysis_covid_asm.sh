@@ -108,6 +108,19 @@ done
 
 java -jar picard.jar MarkDuplicates I=SRR12182136.bam.sorted.bam O=SRR12182136.bam.sorted.bam.sorted_dupsMarked.bam M=SRR12182136.bam.sorted.bam.marked_dup_metrics.txt
 
+#test
+intersectBED -a spike.bed -b ./Megahit_BED/SRR11915884_megahit_PE
+
+# 100% overlap with spike region
+cd /Users/rashedulislam/Downloads/BED_files
+for f in ./*_BED/*.bed; do 
+intersectBED -a spike.bed -b $f -f 1 | awk -v var=$f '{print $0 "\t" var}'; 
+done >intersected_samples_list.txt
+
+# separate mega and meta
+less intersected_samples_list.txt | grep "Mega" | awk '{gsub("./Megahit_BED/|_megahit_PE.bed", "", $4); print $4}' >spike_intersected_megahit_SRR.txt
+less intersected_samples_list.txt | grep "Meta" | awk '{gsub("./Metaspades_BED/|_metaspades_PE.bed", "", $4); print $4}' >spike_intersected_metaspades_SRR.txt
+
 
 
 #mutation summary:

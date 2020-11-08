@@ -66,7 +66,7 @@ ggplot(v, aes(V1, V2, fill = V1)) +
 ```r
 ggsave("Variant_count_all.pdf", width = 18, height = 13, units = "cm", device = 'pdf')
 
-# correlation
+# correlation variant_count and %GF
 x = read_tsv("~/Documents/research/asm/covid19-Assembly/files/report_metaquast_PE_all.tsv")
 
 x2 = melt(x, id.vars = "Assembly")
@@ -86,6 +86,74 @@ cor(v$V2, x4$mean)
 
 ```r
 #0.734553
+
+# variants per sample
+df = read_csv("~/Documents/research/asm/covid19-Assembly/files/sample_variants_count.csv")
+# replace -32 with NA
+df[df == -32] <- NA
+df2 = melt(df)
+
+ggplot(df2, aes(variable, value)) +
+  geom_boxplot() + 
+    xlab("") +
+    ylab("Variants per sample") +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1),
+        strip.background =element_rect(fill="white"),
+        legend.position = "none")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-3.png)<!-- -->
+
+```r
+ggsave("Variant_count_per_sample.pdf", width = 18, height = 13, units = "cm", device = 'pdf')
+
+
+df3 = df2 %>% 
+  group_by(variable) %>%
+  summarise(mean = mean(value, na.rm = T),
+            median = median(value, na.rm = T),
+            sd = sd(value, na.rm = T))
+
+ggplot(df3, aes(variable, mean)) + 
+    geom_col() +  
+    geom_errorbar(aes(ymin = mean - sd, ymax = mean + sd), width=0.2) +
+    xlab("") +
+    ylab("Variants per sample") +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1),
+        strip.background =element_rect(fill="white"),
+        legend.position = "none")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-1-4.png)<!-- -->
+
+```r
+print(df3, n = Inf)
+```
+
+```
+## # A tibble: 16 x 4
+##    variable      mean median    sd
+##    <fct>        <dbl>  <dbl> <dbl>
+##  1 abyss21       5.41    6    3.72
+##  2 abyss63       5.54    6    3.76
+##  3 abyss99       6.26    7    5.32
+##  4 megahit       7.31    7    3.61
+##  5 metaspades    7.48    8    3.62
+##  6 metavelvet21  1.37    0    2.84
+##  7 metavelvet63  3.31    2.5  3.62
+##  8 metavelvet99  8.08    6   12.6 
+##  9 ray21         7.50    8    4.37
+## 10 ray63         7.60    8    4.41
+## 11 ray99         7.60    8    4.41
+## 12 spades        9.08    8    5.76
+## 13 trinity       6.89    7    3.65
+## 14 velvet21      1.40    0    2.92
+## 15 velvet63      3.36    2.5  3.65
+## 16 velvet99      8.11    6   12.4
 ```
 
 ### CPU and RAM
@@ -338,7 +406,94 @@ x = read_tsv("~/Documents/research/asm/covid19-Assembly/files/report_metaquast_P
 x2 = melt(x, id.vars = "Assembly")
 x2$Assembly = gsub("# ", "", x2$Assembly)
 x3 = data.frame(str_split_fixed(x2$variable, "_", 3), value = as.numeric(x2$value), x2)
+
+# temp: query samples by %GF
 temp = x3 %>% filter(Assembly == "Genome fraction (%)")  %>% arrange(-value)
+
+#mega and mega
+temp %>% filter(X2 == "megahit") %>% head(n=10)
+```
+
+```
+##             X1      X2 X3   value            Assembly
+## 1  SRR11783601 megahit PE 100.000 Genome fraction (%)
+## 2   ERR4206143 megahit PE  99.957 Genome fraction (%)
+## 3  SRR11783610 megahit PE  99.957 Genome fraction (%)
+## 4  SRR12182126 megahit PE  99.950 Genome fraction (%)
+## 5   ERR4204166 megahit PE  99.920 Genome fraction (%)
+## 6  SRR11409417 megahit PE  99.920 Genome fraction (%)
+## 7   ERR4204410 megahit PE  99.913 Genome fraction (%)
+## 8   ERR4205160 megahit PE  99.910 Genome fraction (%)
+## 9  SRR11953751 megahit PE  99.910 Genome fraction (%)
+## 10 SRR12182120 megahit PE  99.910 Genome fraction (%)
+##                  variable value.1
+## 1  SRR11783601_megahit_PE 100.000
+## 2   ERR4206143_megahit_PE  99.957
+## 3  SRR11783610_megahit_PE  99.957
+## 4  SRR12182126_megahit_PE  99.950
+## 5   ERR4204166_megahit_PE  99.920
+## 6  SRR11409417_megahit_PE  99.920
+## 7   ERR4204410_megahit_PE  99.913
+## 8   ERR4205160_megahit_PE  99.910
+## 9  SRR11953751_megahit_PE  99.910
+## 10 SRR12182120_megahit_PE  99.910
+```
+
+```r
+temp %>% filter(X2 == "metaspades") %>% head(n=10)
+```
+
+```
+##             X1         X2 X3  value            Assembly
+## 1  SRR11783620 metaspades PE 99.953 Genome fraction (%)
+## 2   ERR4204410 metaspades PE 99.923 Genome fraction (%)
+## 3   ERR4204166 metaspades PE 99.920 Genome fraction (%)
+## 4  SRR12182126 metaspades PE 99.916 Genome fraction (%)
+## 5  SRR12182120 metaspades PE 99.910 Genome fraction (%)
+## 6  SRR12182140 metaspades PE 99.910 Genome fraction (%)
+## 7  SRR11783571 metaspades PE 99.900 Genome fraction (%)
+## 8  SRR12182149 metaspades PE 99.896 Genome fraction (%)
+## 9   ERR4305225 metaspades PE 99.893 Genome fraction (%)
+## 10 SRR11783573 metaspades PE 99.893 Genome fraction (%)
+##                     variable value.1
+## 1  SRR11783620_metaspades_PE  99.953
+## 2   ERR4204410_metaspades_PE  99.923
+## 3   ERR4204166_metaspades_PE  99.920
+## 4  SRR12182126_metaspades_PE  99.916
+## 5  SRR12182120_metaspades_PE  99.910
+## 6  SRR12182140_metaspades_PE  99.910
+## 7  SRR11783571_metaspades_PE  99.900
+## 8  SRR12182149_metaspades_PE  99.896
+## 9   ERR4305225_metaspades_PE  99.893
+## 10 SRR11783573_metaspades_PE  99.893
+```
+
+```r
+temp %>% filter(value >= 70) %>% 
+  group_by(X1) %>%
+  summarise(n = n()) %>%
+  arrange(-n)
+```
+
+```
+## # A tibble: 355 x 2
+##    X1              n
+##    <fct>       <int>
+##  1 SRR12182137    16
+##  2 SRR12182146    16
+##  3 SRR12182151    16
+##  4 SRR12182152    16
+##  5 ERR4204337     14
+##  6 ERR4204912     14
+##  7 ERR4206040     14
+##  8 ERR4207355     14
+##  9 ERR4208822     14
+## 10 SRR12182120    14
+## # … with 345 more rows
+```
+
+```r
+# end temp
 
 meta = read_csv("~/Documents/research/asm/covid19-Assembly/files/PE_561samples_final.csv")
 meta2 = meta %>% select(Run, Assay_Type)
@@ -1796,6 +1951,192 @@ make_boxplot("LA75")
 ![](Assembly_analysis_files/figure-html/unnamed-chunk-4-15.png)<!-- -->
 
 ```r
+make_boxplot("unaligned mis. contigs")
+```
+
+```
+## # A tibble: 80 x 4
+## # Groups:   Assay_Type [5]
+##    Assay_Type       X2             mean median
+##    <chr>            <fct>         <dbl>  <dbl>
+##  1 AMPLICON         abyss21      0.0256      0
+##  2 AMPLICON         abyss63      0           0
+##  3 AMPLICON         abyss99      0           0
+##  4 AMPLICON         megahit      0           0
+##  5 AMPLICON         metaspades   0           0
+##  6 AMPLICON         metavelvet21 0           0
+##  7 AMPLICON         metavelvet63 0           0
+##  8 AMPLICON         metavelvet99 0           0
+##  9 AMPLICON         ray21        0           0
+## 10 AMPLICON         ray63        0           0
+## 11 AMPLICON         ray99        0           0
+## 12 AMPLICON         spades       0           0
+## 13 AMPLICON         trinity      0           0
+## 14 AMPLICON         velvet21     0           0
+## 15 AMPLICON         velvet63     0           0
+## 16 AMPLICON         velvet99     0           0
+## 17 OTHER            abyss21      0           0
+## 18 OTHER            abyss63      0           0
+## 19 OTHER            abyss99      0           0
+## 20 OTHER            megahit      0.0781      0
+## 21 OTHER            metaspades   0           0
+## 22 OTHER            metavelvet21 0           0
+## 23 OTHER            metavelvet63 0           0
+## 24 OTHER            metavelvet99 0           0
+## 25 OTHER            ray21        0           0
+## 26 OTHER            ray63        0.0161      0
+## 27 OTHER            ray99        0.0161      0
+## 28 OTHER            spades       0.0156      0
+## 29 OTHER            trinity      0           0
+## 30 OTHER            velvet21     0           0
+## 31 OTHER            velvet63     0           0
+## 32 OTHER            velvet99     0           0
+## 33 RNA-Seq          abyss21      0           0
+## 34 RNA-Seq          abyss63      0           0
+## 35 RNA-Seq          abyss99      0           0
+## 36 RNA-Seq          megahit      0           0
+## 37 RNA-Seq          metaspades   0           0
+## 38 RNA-Seq          metavelvet21 0           0
+## 39 RNA-Seq          metavelvet63 0           0
+## 40 RNA-Seq          metavelvet99 0           0
+## 41 RNA-Seq          ray21        0           0
+## 42 RNA-Seq          ray63        0           0
+## 43 RNA-Seq          ray99        0           0
+## 44 RNA-Seq          spades       0           0
+## 45 RNA-Seq          trinity      0           0
+## 46 RNA-Seq          velvet21     0           0
+## 47 RNA-Seq          velvet63     0           0
+## 48 RNA-Seq          velvet99     0           0
+## 49 Targeted-Capture abyss21      0           0
+## 50 Targeted-Capture abyss63      0           0
+## 51 Targeted-Capture abyss99      0           0
+## 52 Targeted-Capture megahit      0.0341      0
+## 53 Targeted-Capture metaspades   0           0
+## 54 Targeted-Capture metavelvet21 0           0
+## 55 Targeted-Capture metavelvet63 0           0
+## 56 Targeted-Capture metavelvet99 0           0
+## 57 Targeted-Capture ray21        0           0
+## 58 Targeted-Capture ray63        0           0
+## 59 Targeted-Capture ray99        0           0
+## 60 Targeted-Capture spades       0.0112      0
+## 61 Targeted-Capture trinity      0           0
+## 62 Targeted-Capture velvet21     0           0
+## 63 Targeted-Capture velvet63     0           0
+## 64 Targeted-Capture velvet99     0           0
+## 65 WGA              abyss21      0           0
+## 66 WGA              abyss63      0           0
+## 67 WGA              abyss99      0           0
+## 68 WGA              megahit      0           0
+## 69 WGA              metaspades   0           0
+## 70 WGA              metavelvet21 0           0
+## 71 WGA              metavelvet63 0           0
+## 72 WGA              metavelvet99 0           0
+## 73 WGA              ray21        0           0
+## 74 WGA              ray63        0           0
+## 75 WGA              ray99        0           0
+## 76 WGA              spades       0           0
+## 77 WGA              trinity      0           0
+## 78 WGA              velvet21     0           0
+## 79 WGA              velvet63     0           0
+## 80 WGA              velvet99     0           0
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-16.png)<!-- -->
+
+```r
+make_boxplot("N's per 100 kbp")
+```
+
+```
+## # A tibble: 80 x 4
+## # Groups:   Assay_Type [5]
+##    Assay_Type       X2              mean median
+##    <chr>            <fct>          <dbl>  <dbl>
+##  1 AMPLICON         abyss21       813.    132. 
+##  2 AMPLICON         abyss63       919.    166. 
+##  3 AMPLICON         abyss99      1209.      0  
+##  4 AMPLICON         megahit         0       0  
+##  5 AMPLICON         metaspades      8.54    0  
+##  6 AMPLICON         metavelvet21    0       0  
+##  7 AMPLICON         metavelvet63    0       0  
+##  8 AMPLICON         metavelvet99    0       0  
+##  9 AMPLICON         ray21         311.      0  
+## 10 AMPLICON         ray63         357.      0  
+## 11 AMPLICON         ray99         357.      0  
+## 12 AMPLICON         spades         16.4     0  
+## 13 AMPLICON         trinity         0       0  
+## 14 AMPLICON         velvet21        0       0  
+## 15 AMPLICON         velvet63        0       0  
+## 16 AMPLICON         velvet99        0       0  
+## 17 OTHER            abyss21       126.      0  
+## 18 OTHER            abyss63       118.      0  
+## 19 OTHER            abyss99       141.      0  
+## 20 OTHER            megahit         0       0  
+## 21 OTHER            metaspades     12.1     0  
+## 22 OTHER            metavelvet21    0       0  
+## 23 OTHER            metavelvet63    0       0  
+## 24 OTHER            metavelvet99    0       0  
+## 25 OTHER            ray21         234.      0  
+## 26 OTHER            ray63         177.      0  
+## 27 OTHER            ray99         177.      0  
+## 28 OTHER            spades          1.25    0  
+## 29 OTHER            trinity         0       0  
+## 30 OTHER            velvet21        0       0  
+## 31 OTHER            velvet63        0       0  
+## 32 OTHER            velvet99        0       0  
+## 33 RNA-Seq          abyss21       243.      0  
+## 34 RNA-Seq          abyss63       342.      0  
+## 35 RNA-Seq          abyss99        77.0     0  
+## 36 RNA-Seq          megahit         0       0  
+## 37 RNA-Seq          metaspades    211.    116. 
+## 38 RNA-Seq          metavelvet21    0       0  
+## 39 RNA-Seq          metavelvet63    0       0  
+## 40 RNA-Seq          metavelvet99    0       0  
+## 41 RNA-Seq          ray21         399.    255. 
+## 42 RNA-Seq          ray63         413.    187. 
+## 43 RNA-Seq          ray99         417.    205. 
+## 44 RNA-Seq          spades        104.     29.5
+## 45 RNA-Seq          trinity         0       0  
+## 46 RNA-Seq          velvet21        0       0  
+## 47 RNA-Seq          velvet63        0       0  
+## 48 RNA-Seq          velvet99        0       0  
+## 49 Targeted-Capture abyss21      2561.    174. 
+## 50 Targeted-Capture abyss63      1281.    167. 
+## 51 Targeted-Capture abyss99       357.    149. 
+## 52 Targeted-Capture megahit         0       0  
+## 53 Targeted-Capture metaspades    114.     32.2
+## 54 Targeted-Capture metavelvet21    0       0  
+## 55 Targeted-Capture metavelvet63    0       0  
+## 56 Targeted-Capture metavelvet99    0       0  
+## 57 Targeted-Capture ray21         413.      0  
+## 58 Targeted-Capture ray63         415.      0  
+## 59 Targeted-Capture ray99         417.      0  
+## 60 Targeted-Capture spades        516.     33.8
+## 61 Targeted-Capture trinity         0       0  
+## 62 Targeted-Capture velvet21        0       0  
+## 63 Targeted-Capture velvet63        0       0  
+## 64 Targeted-Capture velvet99        0       0  
+## 65 WGA              abyss21       207.      0  
+## 66 WGA              abyss63        63.4     0  
+## 67 WGA              abyss99         1.36    0  
+## 68 WGA              megahit         0       0  
+## 69 WGA              metaspades      3.97    0  
+## 70 WGA              metavelvet21    0       0  
+## 71 WGA              metavelvet63    0       0  
+## 72 WGA              metavelvet99    0       0  
+## 73 WGA              ray21          83.4     0  
+## 74 WGA              ray63          58.5     0  
+## 75 WGA              ray99          58.5     0  
+## 76 WGA              spades          1.55    0  
+## 77 WGA              trinity         0       0  
+## 78 WGA              velvet21        0       0  
+## 79 WGA              velvet63        0       0  
+## 80 WGA              velvet99        0       0
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-17.png)<!-- -->
+
+```r
 #n50
 make_boxplot_v2 = function(variableToPlot)
 {
@@ -1803,9 +2144,18 @@ make_boxplot_v2 = function(variableToPlot)
   stat = x4 %>%
     group_by(X2, Assay_Type) %>%
     summarize(mean = mean(value, na.rm = TRUE),
-            median = median(value, na.rm = TRUE))
-  
-  print(stat, n = Inf)
+            median = median(value, na.rm = TRUE),
+            maximum = max(value, na.rm = TRUE))
+            
+print(stat, n = Inf)
+    
+stat2 = x4 %>%
+    group_by(X2, Assay_Type) %>%
+    tally(value)
+
+  print("print sum of all i.e., total")
+  print(stat2, n = Inf)
+
   plot = ggplot(x4, aes(X2, value)) +
     geom_jitter(alpha = .5, width = .1, aes(color = X2)) +
     geom_boxplot(alpha = 0.1) +
@@ -1830,379 +2180,802 @@ make_boxplot_v2("L50")
 ```
 
 ```
-## # A tibble: 80 x 4
+## # A tibble: 80 x 5
 ## # Groups:   X2 [16]
-##    X2           Assay_Type         mean median
-##    <fct>        <chr>             <dbl>  <dbl>
-##  1 abyss21      AMPLICON           2.56    2  
-##  2 abyss21      OTHER             10.6     2  
-##  3 abyss21      RNA-Seq          155.     24  
-##  4 abyss21      Targeted-Capture   3.33    1  
-##  5 abyss21      WGA                5.08    1  
-##  6 abyss63      AMPLICON           3.22    3  
-##  7 abyss63      OTHER              9.18    1  
-##  8 abyss63      RNA-Seq           62.4     9  
-##  9 abyss63      Targeted-Capture   3.80    2  
-## 10 abyss63      WGA                7.51    2  
-## 11 abyss99      AMPLICON           4.88    4  
-## 12 abyss99      OTHER              7.41    1  
-## 13 abyss99      RNA-Seq            3.70    2  
-## 14 abyss99      Targeted-Capture   3.97    2  
-## 15 abyss99      WGA               10.3     7  
-## 16 megahit      AMPLICON           1.85    1  
-## 17 megahit      OTHER             17.3     1  
-## 18 megahit      RNA-Seq          185.     45  
-## 19 megahit      Targeted-Capture  36.1     1  
-## 20 megahit      WGA               10.9     1  
-## 21 metaspades   AMPLICON           1.59    1  
-## 22 metaspades   OTHER             14.5     1  
-## 23 metaspades   RNA-Seq          232.     61  
-## 24 metaspades   Targeted-Capture  33.9     1  
-## 25 metaspades   WGA                8.97    1  
-## 26 metavelvet21 AMPLICON           2.28    1  
-## 27 metavelvet21 OTHER             16.6     4  
-## 28 metavelvet21 RNA-Seq           75.6    15  
-## 29 metavelvet21 Targeted-Capture  30.3     3  
-## 30 metavelvet21 WGA                7.74    2.5
-## 31 metavelvet63 AMPLICON           3.39    2  
-## 32 metavelvet63 OTHER             13.7     5  
-## 33 metavelvet63 RNA-Seq           64.4    10  
-## 34 metavelvet63 Targeted-Capture  18.8     4  
-## 35 metavelvet63 WGA               10.1     5  
-## 36 metavelvet99 AMPLICON           4.98    5  
-## 37 metavelvet99 OTHER             13.0     6  
-## 38 metavelvet99 RNA-Seq            4.05    2  
-## 39 metavelvet99 Targeted-Capture  12.9     4  
-## 40 metavelvet99 WGA               10.4     7  
-## 41 ray21        AMPLICON           2.41    2  
-## 42 ray21        OTHER              5.77    1  
-## 43 ray21        RNA-Seq           87.1     9  
-## 44 ray21        Targeted-Capture  11.7     2  
-## 45 ray21        WGA                4.65    1  
-## 46 ray63        AMPLICON           2.60    2  
-## 47 ray63        OTHER              5.2     1  
-## 48 ray63        RNA-Seq           71.5     9  
-## 49 ray63        Targeted-Capture  11.0     3  
-## 50 ray63        WGA                5.04    1  
-## 51 ray99        AMPLICON           2.61    2  
-## 52 ray99        OTHER              5.17    1  
-## 53 ray99        RNA-Seq           71.5     9  
-## 54 ray99        Targeted-Capture  10.9     3  
-## 55 ray99        WGA                5.03    1  
-## 56 spades       AMPLICON           2.37    2  
-## 57 spades       OTHER             11.6     1  
-## 58 spades       RNA-Seq          186.     51  
-## 59 spades       Targeted-Capture  38.1     1  
-## 60 spades       WGA                8.94    2  
-## 61 trinity      AMPLICON           2.39    1  
-## 62 trinity      OTHER             18.8     2  
-## 63 trinity      RNA-Seq          268.     58  
-## 64 trinity      Targeted-Capture  24.4     3  
-## 65 trinity      WGA               12.1     1  
-## 66 velvet21     AMPLICON           2.28    1  
-## 67 velvet21     OTHER             16.6     4  
-## 68 velvet21     RNA-Seq           76.6    19  
-## 69 velvet21     Targeted-Capture  30.4     3  
-## 70 velvet21     WGA                7.85    3  
-## 71 velvet63     AMPLICON           3.51    3  
-## 72 velvet63     OTHER             14.4     5  
-## 73 velvet63     RNA-Seq           64.5    10  
-## 74 velvet63     Targeted-Capture  18.7     4  
-## 75 velvet63     WGA               10       4  
-## 76 velvet99     AMPLICON           5.08    5  
-## 77 velvet99     OTHER             12.9     6  
-## 78 velvet99     RNA-Seq            4.05    2  
-## 79 velvet99     Targeted-Capture  13.0     4  
-## 80 velvet99     WGA               10.3     6
+##    X2           Assay_Type         mean median maximum
+##    <fct>        <chr>             <dbl>  <dbl>   <dbl>
+##  1 abyss21      AMPLICON           2.56    2        12
+##  2 abyss21      OTHER             10.6     2       220
+##  3 abyss21      RNA-Seq          155.     24      1478
+##  4 abyss21      Targeted-Capture   3.33    1       135
+##  5 abyss21      WGA                5.08    1       117
+##  6 abyss63      AMPLICON           3.22    3        17
+##  7 abyss63      OTHER              9.18    1       180
+##  8 abyss63      RNA-Seq           62.4     9       783
+##  9 abyss63      Targeted-Capture   3.80    2       109
+## 10 abyss63      WGA                7.51    2       104
+## 11 abyss99      AMPLICON           4.88    4        16
+## 12 abyss99      OTHER              7.41    1       130
+## 13 abyss99      RNA-Seq            3.70    2        80
+## 14 abyss99      Targeted-Capture   3.97    2       130
+## 15 abyss99      WGA               10.3     7        65
+## 16 megahit      AMPLICON           1.85    1        27
+## 17 megahit      OTHER             17.3     1       331
+## 18 megahit      RNA-Seq          185.     45      1872
+## 19 megahit      Targeted-Capture  36.1     1      1789
+## 20 megahit      WGA               10.9     1       216
+## 21 metaspades   AMPLICON           1.59    1        16
+## 22 metaspades   OTHER             14.5     1       273
+## 23 metaspades   RNA-Seq          232.     61      2215
+## 24 metaspades   Targeted-Capture  33.9     1      1454
+## 25 metaspades   WGA                8.97    1       196
+## 26 metavelvet21 AMPLICON           2.28    1         9
+## 27 metavelvet21 OTHER             16.6     4       219
+## 28 metavelvet21 RNA-Seq           75.6    15       558
+## 29 metavelvet21 Targeted-Capture  30.3     3       961
+## 30 metavelvet21 WGA                7.74    2.5     117
+## 31 metavelvet63 AMPLICON           3.39    2        15
+## 32 metavelvet63 OTHER             13.7     5       218
+## 33 metavelvet63 RNA-Seq           64.4    10       778
+## 34 metavelvet63 Targeted-Capture  18.8     4      1021
+## 35 metavelvet63 WGA               10.1     5       111
+## 36 metavelvet99 AMPLICON           4.98    5        19
+## 37 metavelvet99 OTHER             13.0     6       153
+## 38 metavelvet99 RNA-Seq            4.05    2        88
+## 39 metavelvet99 Targeted-Capture  12.9     4       719
+## 40 metavelvet99 WGA               10.4     7        65
+## 41 ray21        AMPLICON           2.41    2        11
+## 42 ray21        OTHER              5.77    1        92
+## 43 ray21        RNA-Seq           87.1     9       867
+## 44 ray21        Targeted-Capture  11.7     2       200
+## 45 ray21        WGA                4.65    1        61
+## 46 ray63        AMPLICON           2.60    2        14
+## 47 ray63        OTHER              5.2     1        90
+## 48 ray63        RNA-Seq           71.5     9       811
+## 49 ray63        Targeted-Capture  11.0     3       194
+## 50 ray63        WGA                5.04    1        63
+## 51 ray99        AMPLICON           2.61    2        14
+## 52 ray99        OTHER              5.17    1        89
+## 53 ray99        RNA-Seq           71.5     9       811
+## 54 ray99        Targeted-Capture  10.9     3       193
+## 55 ray99        WGA                5.03    1        63
+## 56 spades       AMPLICON           2.37    2        21
+## 57 spades       OTHER             11.6     1       212
+## 58 spades       RNA-Seq          186.     51      1926
+## 59 spades       Targeted-Capture  38.1     1       702
+## 60 spades       WGA                8.94    2       142
+## 61 trinity      AMPLICON           2.39    1        20
+## 62 trinity      OTHER             18.8     2       301
+## 63 trinity      RNA-Seq          268.     58      2570
+## 64 trinity      Targeted-Capture  24.4     3      1046
+## 65 trinity      WGA               12.1     1       208
+## 66 velvet21     AMPLICON           2.28    1         8
+## 67 velvet21     OTHER             16.6     4       220
+## 68 velvet21     RNA-Seq           76.6    19       555
+## 69 velvet21     Targeted-Capture  30.4     3       972
+## 70 velvet21     WGA                7.85    3       117
+## 71 velvet63     AMPLICON           3.51    3        16
+## 72 velvet63     OTHER             14.4     5       219
+## 73 velvet63     RNA-Seq           64.5    10       778
+## 74 velvet63     Targeted-Capture  18.7     4      1023
+## 75 velvet63     WGA               10       4       108
+## 76 velvet99     AMPLICON           5.08    5        19
+## 77 velvet99     OTHER             12.9     6       150
+## 78 velvet99     RNA-Seq            4.05    2        87
+## 79 velvet99     Targeted-Capture  13.0     4       714
+## 80 velvet99     WGA               10.3     6        65
+## [1] "print sum of all i.e., total"
+## # A tibble: 80 x 3
+## # Groups:   X2 [16]
+##    X2           Assay_Type           n
+##    <fct>        <chr>            <dbl>
+##  1 abyss21      AMPLICON           205
+##  2 abyss21      OTHER              692
+##  3 abyss21      RNA-Seq          11601
+##  4 abyss21      Targeted-Capture   300
+##  5 abyss21      WGA                508
+##  6 abyss63      AMPLICON           248
+##  7 abyss63      OTHER              606
+##  8 abyss63      RNA-Seq           4618
+##  9 abyss63      Targeted-Capture   353
+## 10 abyss63      WGA                751
+## 11 abyss99      AMPLICON           322
+## 12 abyss99      OTHER              474
+## 13 abyss99      RNA-Seq            226
+## 14 abyss99      Targeted-Capture   357
+## 15 abyss99      WGA               1028
+## 16 megahit      AMPLICON           152
+## 17 megahit      OTHER             1139
+## 18 megahit      RNA-Seq          13873
+## 19 megahit      Targeted-Capture  3361
+## 20 megahit      WGA               1090
+## 21 metaspades   AMPLICON           130
+## 22 metaspades   OTHER              959
+## 23 metaspades   RNA-Seq          17375
+## 24 metaspades   Targeted-Capture  3156
+## 25 metaspades   WGA                897
+## 26 metavelvet21 AMPLICON            57
+## 27 metavelvet21 OTHER              747
+## 28 metavelvet21 RNA-Seq           5368
+## 29 metavelvet21 Targeted-Capture  1092
+## 30 metavelvet21 WGA                480
+## 31 metavelvet63 AMPLICON           166
+## 32 metavelvet63 OTHER              891
+## 33 metavelvet63 RNA-Seq           4698
+## 34 metavelvet63 Targeted-Capture  1313
+## 35 metavelvet63 WGA                877
+## 36 metavelvet99 AMPLICON           314
+## 37 metavelvet99 OTHER              818
+## 38 metavelvet99 RNA-Seq            267
+## 39 metavelvet99 Targeted-Capture  1098
+## 40 metavelvet99 WGA               1036
+## 41 ray21        AMPLICON           198
+## 42 ray21        OTHER              381
+## 43 ray21        RNA-Seq           6533
+## 44 ray21        Targeted-Capture  1084
+## 45 ray21        WGA                465
+## 46 ray63        AMPLICON           213
+## 47 ray63        OTHER              338
+## 48 ray63        RNA-Seq           5365
+## 49 ray63        Targeted-Capture  1022
+## 50 ray63        WGA                504
+## 51 ray99        AMPLICON           214
+## 52 ray99        OTHER              336
+## 53 ray99        RNA-Seq           5365
+## 54 ray99        Targeted-Capture  1018
+## 55 ray99        WGA                503
+## 56 spades       AMPLICON           194
+## 57 spades       OTHER              767
+## 58 spades       RNA-Seq          13916
+## 59 spades       Targeted-Capture  3539
+## 60 spades       WGA                894
+## 61 trinity      AMPLICON           196
+## 62 trinity      OTHER             1239
+## 63 trinity      RNA-Seq          20101
+## 64 trinity      Targeted-Capture  2268
+## 65 trinity      WGA               1212
+## 66 velvet21     AMPLICON            57
+## 67 velvet21     OTHER              749
+## 68 velvet21     RNA-Seq           5359
+## 69 velvet21     Targeted-Capture  1096
+## 70 velvet21     WGA                487
+## 71 velvet63     AMPLICON           172
+## 72 velvet63     OTHER              891
+## 73 velvet63     RNA-Seq           4707
+## 74 velvet63     Targeted-Capture  1312
+## 75 velvet63     WGA                870
+## 76 velvet99     AMPLICON           320
+## 77 velvet99     OTHER              814
+## 78 velvet99     RNA-Seq            267
+## 79 velvet99     Targeted-Capture  1103
+## 80 velvet99     WGA               1032
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-16.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-18.png)<!-- -->
 
 ```r
 make_boxplot_v2("LA50")
 ```
 
 ```
-## # A tibble: 80 x 4
+## # A tibble: 80 x 5
 ## # Groups:   X2 [16]
-##    X2           Assay_Type        mean median
-##    <fct>        <chr>            <dbl>  <dbl>
-##  1 abyss21      AMPLICON          2.28    2  
-##  2 abyss21      OTHER             2.54    1.5
-##  3 abyss21      RNA-Seq           6.43    8  
-##  4 abyss21      Targeted-Capture  1.71    1  
-##  5 abyss21      WGA               1.38    1  
-##  6 abyss63      AMPLICON          3.14    3  
-##  7 abyss63      OTHER             1.84    1  
-##  8 abyss63      RNA-Seq           7.3     5.5
-##  9 abyss63      Targeted-Capture  2.46    1  
-## 10 abyss63      WGA               2.38    2  
-## 11 abyss99      AMPLICON          4.82    4  
-## 12 abyss99      OTHER             1.68    1  
-## 13 abyss99      RNA-Seq           3.81    3  
-## 14 abyss99      Targeted-Capture  2.38    1  
-## 15 abyss99      WGA               6.79    7  
-## 16 megahit      AMPLICON          1.17    1  
-## 17 megahit      OTHER             1.84    1  
-## 18 megahit      RNA-Seq           1       1  
-## 19 megahit      Targeted-Capture  1.48    1  
-## 20 megahit      WGA               1.03    1  
-## 21 metaspades   AMPLICON          1.25    1  
-## 22 metaspades   OTHER             1.83    1  
-## 23 metaspades   RNA-Seq           1.17    1  
-## 24 metaspades   Targeted-Capture  1.85    1  
-## 25 metaspades   WGA               1.03    1  
-## 26 metavelvet21 AMPLICON          1.65    1  
-## 27 metavelvet21 OTHER             5.6     5  
-## 28 metavelvet21 RNA-Seq           4.5     4.5
-## 29 metavelvet21 Targeted-Capture  3.85    3  
-## 30 metavelvet21 WGA               1.67    1  
-## 31 metavelvet63 AMPLICON          3.08    2  
-## 32 metavelvet63 OTHER             5.27    5  
-## 33 metavelvet63 RNA-Seq           8.25    8.5
-## 34 metavelvet63 Targeted-Capture  4.21    5  
-## 35 metavelvet63 WGA               3.82    3  
-## 36 metavelvet99 AMPLICON          4.72    5  
-## 37 metavelvet99 OTHER             6.1     6  
-## 38 metavelvet99 RNA-Seq           6.93    6  
-## 39 metavelvet99 Targeted-Capture  4.34    4  
-## 40 metavelvet99 WGA               5.54    5.5
-## 41 ray21        AMPLICON          2.38    2  
-## 42 ray21        OTHER             2.46    1  
-## 43 ray21        RNA-Seq           2.88    2  
-## 44 ray21        Targeted-Capture  2.27    1  
-## 45 ray21        WGA               1.37    1  
-## 46 ray63        AMPLICON          2.37    2  
-## 47 ray63        OTHER             1.85    1  
-## 48 ray63        RNA-Seq           3.59    1  
-## 49 ray63        Targeted-Capture  2.63    1  
-## 50 ray63        WGA               1.29    1  
-## 51 ray99        AMPLICON          2.38    2  
-## 52 ray99        OTHER             1.84    1  
-## 53 ray99        RNA-Seq           3.59    1  
-## 54 ray99        Targeted-Capture  2.62    1  
-## 55 ray99        WGA               1.29    1  
-## 56 spades       AMPLICON          1.95    1.5
-## 57 spades       OTHER             2.04    1  
-## 58 spades       RNA-Seq          45.2    29.5
-## 59 spades       Targeted-Capture  9.82    1  
-## 60 spades       WGA               1.72    1.5
-## 61 trinity      AMPLICON          2.09    1  
-## 62 trinity      OTHER             3.21    1  
-## 63 trinity      RNA-Seq          13.3     8  
-## 64 trinity      Targeted-Capture  4.46    2  
-## 65 trinity      WGA               1.16    1  
-## 66 velvet21     AMPLICON          1.65    1  
-## 67 velvet21     OTHER             5.47    5  
-## 68 velvet21     RNA-Seq           6       6  
-## 69 velvet21     Targeted-Capture  3.77    3  
-## 70 velvet21     WGA               2       2  
-## 71 velvet63     AMPLICON          3.18    2  
-## 72 velvet63     OTHER             5.5     6  
-## 73 velvet63     RNA-Seq           8.38    8.5
-## 74 velvet63     Targeted-Capture  4.23    5  
-## 75 velvet63     WGA               4.12    3  
-## 76 velvet99     AMPLICON          4.84    5  
-## 77 velvet99     OTHER             6.17    6  
-## 78 velvet99     RNA-Seq           7       7  
-## 79 velvet99     Targeted-Capture  4.47    4  
-## 80 velvet99     WGA               5.53    5.5
+##    X2           Assay_Type        mean median maximum
+##    <fct>        <chr>            <dbl>  <dbl>   <dbl>
+##  1 abyss21      AMPLICON          2.28    2         7
+##  2 abyss21      OTHER             2.54    1.5       9
+##  3 abyss21      RNA-Seq           6.43    8        12
+##  4 abyss21      Targeted-Capture  1.71    1         7
+##  5 abyss21      WGA               1.38    1         4
+##  6 abyss63      AMPLICON          3.14    3        13
+##  7 abyss63      OTHER             1.84    1        15
+##  8 abyss63      RNA-Seq           7.3     5.5      24
+##  9 abyss63      Targeted-Capture  2.46    1        13
+## 10 abyss63      WGA               2.38    2         7
+## 11 abyss99      AMPLICON          4.82    4        10
+## 12 abyss99      OTHER             1.68    1         6
+## 13 abyss99      RNA-Seq           3.81    3         9
+## 14 abyss99      Targeted-Capture  2.38    1        10
+## 15 abyss99      WGA               6.79    7        19
+## 16 megahit      AMPLICON          1.17    1         3
+## 17 megahit      OTHER             1.84    1         8
+## 18 megahit      RNA-Seq           1       1         1
+## 19 megahit      Targeted-Capture  1.48    1         6
+## 20 megahit      WGA               1.03    1         2
+## 21 metaspades   AMPLICON          1.25    1         6
+## 22 metaspades   OTHER             1.83    1         9
+## 23 metaspades   RNA-Seq           1.17    1         2
+## 24 metaspades   Targeted-Capture  1.85    1        24
+## 25 metaspades   WGA               1.03    1         2
+## 26 metavelvet21 AMPLICON          1.65    1         5
+## 27 metavelvet21 OTHER             5.6     5        12
+## 28 metavelvet21 RNA-Seq           4.5     4.5       7
+## 29 metavelvet21 Targeted-Capture  3.85    3         9
+## 30 metavelvet21 WGA               1.67    1         3
+## 31 metavelvet63 AMPLICON          3.08    2         8
+## 32 metavelvet63 OTHER             5.27    5        17
+## 33 metavelvet63 RNA-Seq           8.25    8.5      13
+## 34 metavelvet63 Targeted-Capture  4.21    5         8
+## 35 metavelvet63 WGA               3.82    3        15
+## 36 metavelvet99 AMPLICON          4.72    5        11
+## 37 metavelvet99 OTHER             6.1     6        21
+## 38 metavelvet99 RNA-Seq           6.93    6        12
+## 39 metavelvet99 Targeted-Capture  4.34    4        11
+## 40 metavelvet99 WGA               5.54    5.5       9
+## 41 ray21        AMPLICON          2.38    2         9
+## 42 ray21        OTHER             2.46    1        10
+## 43 ray21        RNA-Seq           2.88    2        11
+## 44 ray21        Targeted-Capture  2.27    1         9
+## 45 ray21        WGA               1.37    1         6
+## 46 ray63        AMPLICON          2.37    2         8
+## 47 ray63        OTHER             1.85    1        10
+## 48 ray63        RNA-Seq           3.59    1        19
+## 49 ray63        Targeted-Capture  2.63    1        10
+## 50 ray63        WGA               1.29    1         4
+## 51 ray99        AMPLICON          2.38    2         8
+## 52 ray99        OTHER             1.84    1        10
+## 53 ray99        RNA-Seq           3.59    1        19
+## 54 ray99        Targeted-Capture  2.62    1        10
+## 55 ray99        WGA               1.29    1         4
+## 56 spades       AMPLICON          1.95    1.5       6
+## 57 spades       OTHER             2.04    1        10
+## 58 spades       RNA-Seq          45.2    29.5     106
+## 59 spades       Targeted-Capture  9.82    1       181
+## 60 spades       WGA               1.72    1.5       7
+## 61 trinity      AMPLICON          2.09    1        20
+## 62 trinity      OTHER             3.21    1        17
+## 63 trinity      RNA-Seq          13.3     8        31
+## 64 trinity      Targeted-Capture  4.46    2        61
+## 65 trinity      WGA               1.16    1         5
+## 66 velvet21     AMPLICON          1.65    1         5
+## 67 velvet21     OTHER             5.47    5        11
+## 68 velvet21     RNA-Seq           6       6         6
+## 69 velvet21     Targeted-Capture  3.77    3         9
+## 70 velvet21     WGA               2       2         3
+## 71 velvet63     AMPLICON          3.18    2        10
+## 72 velvet63     OTHER             5.5     6        15
+## 73 velvet63     RNA-Seq           8.38    8.5      13
+## 74 velvet63     Targeted-Capture  4.23    5         8
+## 75 velvet63     WGA               4.12    3        15
+## 76 velvet99     AMPLICON          4.84    5        11
+## 77 velvet99     OTHER             6.17    6        19
+## 78 velvet99     RNA-Seq           7       7        12
+## 79 velvet99     Targeted-Capture  4.47    4        12
+## 80 velvet99     WGA               5.53    5.5      11
+## [1] "print sum of all i.e., total"
+## # A tibble: 80 x 3
+## # Groups:   X2 [16]
+##    X2           Assay_Type           n
+##    <fct>        <chr>            <dbl>
+##  1 abyss21      AMPLICON           171
+##  2 abyss21      OTHER              142
+##  3 abyss21      RNA-Seq             45
+##  4 abyss21      Targeted-Capture   111
+##  5 abyss21      WGA                112
+##  6 abyss63      AMPLICON           226
+##  7 abyss63      OTHER              101
+##  8 abyss63      RNA-Seq             73
+##  9 abyss63      Targeted-Capture   172
+## 10 abyss63      WGA                195
+## 11 abyss99      AMPLICON           294
+## 12 abyss99      OTHER               89
+## 13 abyss99      RNA-Seq             80
+## 14 abyss99      Targeted-Capture   171
+## 15 abyss99      WGA                557
+## 16 megahit      AMPLICON            91
+## 17 megahit      OTHER               94
+## 18 megahit      RNA-Seq              5
+## 19 megahit      Targeted-Capture    96
+## 20 megahit      WGA                 76
+## 21 metaspades   AMPLICON            99
+## 22 metaspades   OTHER               95
+## 23 metaspades   RNA-Seq              7
+## 24 metaspades   Targeted-Capture   124
+## 25 metaspades   WGA                 76
+## 26 metavelvet21 AMPLICON            28
+## 27 metavelvet21 OTHER               84
+## 28 metavelvet21 RNA-Seq              9
+## 29 metavelvet21 Targeted-Capture   100
+## 30 metavelvet21 WGA                  5
+## 31 metavelvet63 AMPLICON           120
+## 32 metavelvet63 OTHER              174
+## 33 metavelvet63 RNA-Seq             66
+## 34 metavelvet63 Targeted-Capture   223
+## 35 metavelvet63 WGA                126
+## 36 metavelvet99 AMPLICON           269
+## 37 metavelvet99 OTHER              244
+## 38 metavelvet99 RNA-Seq            104
+## 39 metavelvet99 Targeted-Capture   308
+## 40 metavelvet99 WGA                377
+## 41 ray21        AMPLICON           188
+## 42 ray21        OTHER              140
+## 43 ray21        RNA-Seq             46
+## 44 ray21        Targeted-Capture   150
+## 45 ray21        WGA                111
+## 46 ray63        AMPLICON           185
+## 47 ray63        OTHER              102
+## 48 ray63        RNA-Seq             61
+## 49 ray63        Targeted-Capture   179
+## 50 ray63        WGA                107
+## 51 ray99        AMPLICON           186
+## 52 ray99        OTHER              101
+## 53 ray99        RNA-Seq             61
+## 54 ray99        Targeted-Capture   178
+## 55 ray99        WGA                107
+## 56 spades       AMPLICON           152
+## 57 spades       OTHER              108
+## 58 spades       RNA-Seq            542
+## 59 spades       Targeted-Capture   707
+## 60 spades       WGA                131
+## 61 trinity      AMPLICON           165
+## 62 trinity      OTHER              167
+## 63 trinity      RNA-Seq            133
+## 64 trinity      Targeted-Capture   312
+## 65 trinity      WGA                 87
+## 66 velvet21     AMPLICON            28
+## 67 velvet21     OTHER               82
+## 68 velvet21     RNA-Seq              6
+## 69 velvet21     Targeted-Capture    98
+## 70 velvet21     WGA                  4
+## 71 velvet63     AMPLICON           124
+## 72 velvet63     OTHER              176
+## 73 velvet63     RNA-Seq             67
+## 74 velvet63     Targeted-Capture   224
+## 75 velvet63     WGA                136
+## 76 velvet99     AMPLICON           276
+## 77 velvet99     OTHER              253
+## 78 velvet99     RNA-Seq            105
+## 79 velvet99     Targeted-Capture   313
+## 80 velvet99     WGA                376
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-17.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-19.png)<!-- -->
 
 ```r
 make_boxplot_v2("Duplication ratio")
 ```
 
 ```
-## # A tibble: 80 x 4
+## # A tibble: 80 x 5
 ## # Groups:   X2 [16]
-##    X2           Assay_Type        mean median
-##    <fct>        <chr>            <dbl>  <dbl>
-##  1 abyss21      AMPLICON          1.02   1.00
-##  2 abyss21      OTHER             1.00   1.00
-##  3 abyss21      RNA-Seq           1.02   1   
-##  4 abyss21      Targeted-Capture  1.02   1.00
-##  5 abyss21      WGA               1.01   1.00
-##  6 abyss63      AMPLICON          1.02   1.01
-##  7 abyss63      OTHER             1.00   1.00
-##  8 abyss63      RNA-Seq           1.01   1.01
-##  9 abyss63      Targeted-Capture  1.01   1.00
-## 10 abyss63      WGA               1.01   1.01
-## 11 abyss99      AMPLICON          1.03   1.02
-## 12 abyss99      OTHER             1.01   1.00
-## 13 abyss99      RNA-Seq           1.01   1.01
-## 14 abyss99      Targeted-Capture  1.03   1.00
-## 15 abyss99      WGA               1.02   1.03
-## 16 megahit      AMPLICON          1.01   1.00
-## 17 megahit      OTHER             1.01   1.00
-## 18 megahit      RNA-Seq           1.00   1.00
-## 19 megahit      Targeted-Capture  1.01   1.00
-## 20 megahit      WGA               1.02   1.00
-## 21 metaspades   AMPLICON          1.01   1.00
-## 22 metaspades   OTHER             1.01   1.01
-## 23 metaspades   RNA-Seq           1.20   1.02
-## 24 metaspades   Targeted-Capture  1.24   1.01
-## 25 metaspades   WGA               1.00   1.00
-## 26 metavelvet21 AMPLICON          1.00   1   
-## 27 metavelvet21 OTHER             1.00   1.00
-## 28 metavelvet21 RNA-Seq           1.00   1   
-## 29 metavelvet21 Targeted-Capture  1.00   1   
-## 30 metavelvet21 WGA               1.00   1   
-## 31 metavelvet63 AMPLICON          1.01   1   
-## 32 metavelvet63 OTHER             1.00   1   
-## 33 metavelvet63 RNA-Seq           1.01   1.01
-## 34 metavelvet63 Targeted-Capture  1.00   1   
-## 35 metavelvet63 WGA               1.00   1   
-## 36 metavelvet99 AMPLICON          1.01   1.00
-## 37 metavelvet99 OTHER             1.15   1.01
-## 38 metavelvet99 RNA-Seq           1.02   1.01
-## 39 metavelvet99 Targeted-Capture  1.05   1.00
-## 40 metavelvet99 WGA               1.01   1.00
-## 41 ray21        AMPLICON          1.09   1.06
-## 42 ray21        OTHER             1.06   1.02
-## 43 ray21        RNA-Seq           1.43   1.10
-## 44 ray21        Targeted-Capture  1.08   1.03
-## 45 ray21        WGA               1.18   1.03
-## 46 ray63        AMPLICON          1.07   1.04
-## 47 ray63        OTHER             1.03   1.02
-## 48 ray63        RNA-Seq           1.32   1.06
-## 49 ray63        Targeted-Capture  1.07   1.03
-## 50 ray63        WGA               1.12   1.01
-## 51 ray99        AMPLICON          1.07   1.04
-## 52 ray99        OTHER             1.03   1.02
-## 53 ray99        RNA-Seq           1.32   1.06
-## 54 ray99        Targeted-Capture  1.07   1.03
-## 55 ray99        WGA               1.12   1.01
-## 56 spades       AMPLICON          1.26   1.01
-## 57 spades       OTHER             1.20   1.00
-## 58 spades       RNA-Seq          16.8    1.12
-## 59 spades       Targeted-Capture  6.44   1.16
-## 60 spades       WGA               1.03   1.01
-## 61 trinity      AMPLICON          1.21   1.00
-## 62 trinity      OTHER             1.53   1.16
-## 63 trinity      RNA-Seq           1.87   1.42
-## 64 trinity      Targeted-Capture  1.61   1.20
-## 65 trinity      WGA               1.18   1.00
-## 66 velvet21     AMPLICON          1.00   1   
-## 67 velvet21     OTHER             1.00   1.00
-## 68 velvet21     RNA-Seq           1.00   1   
-## 69 velvet21     Targeted-Capture  1.00   1   
-## 70 velvet21     WGA               1.00   1   
-## 71 velvet63     AMPLICON          1.01   1   
-## 72 velvet63     OTHER             1.00   1.00
-## 73 velvet63     RNA-Seq           1.01   1.01
-## 74 velvet63     Targeted-Capture  1.00   1.00
-## 75 velvet63     WGA               1.00   1   
-## 76 velvet99     AMPLICON          1.01   1.00
-## 77 velvet99     OTHER             1.16   1.01
-## 78 velvet99     RNA-Seq           1.02   1.01
-## 79 velvet99     Targeted-Capture  1.05   1.00
-## 80 velvet99     WGA               1.01   1.00
+##    X2           Assay_Type        mean median maximum
+##    <fct>        <chr>            <dbl>  <dbl>   <dbl>
+##  1 abyss21      AMPLICON          1.02   1.00    2.08
+##  2 abyss21      OTHER             1.00   1.00    1.01
+##  3 abyss21      RNA-Seq           1.02   1       1.33
+##  4 abyss21      Targeted-Capture  1.02   1.00    1.37
+##  5 abyss21      WGA               1.01   1.00    1.92
+##  6 abyss63      AMPLICON          1.02   1.01    1.99
+##  7 abyss63      OTHER             1.00   1.00    1.03
+##  8 abyss63      RNA-Seq           1.01   1.01    1.12
+##  9 abyss63      Targeted-Capture  1.01   1.00    1.36
+## 10 abyss63      WGA               1.01   1.01    1.18
+## 11 abyss99      AMPLICON          1.03   1.02    1.56
+## 12 abyss99      OTHER             1.01   1.00    1.18
+## 13 abyss99      RNA-Seq           1.01   1.01    1.04
+## 14 abyss99      Targeted-Capture  1.03   1.00    3.00
+## 15 abyss99      WGA               1.02   1.03    1.06
+## 16 megahit      AMPLICON          1.01   1.00    1.04
+## 17 megahit      OTHER             1.01   1.00    1.17
+## 18 megahit      RNA-Seq           1.00   1.00    1.03
+## 19 megahit      Targeted-Capture  1.01   1.00    1.30
+## 20 megahit      WGA               1.02   1.00    1.52
+## 21 metaspades   AMPLICON          1.01   1.00    1.10
+## 22 metaspades   OTHER             1.01   1.01    1.09
+## 23 metaspades   RNA-Seq           1.20   1.02    3.66
+## 24 metaspades   Targeted-Capture  1.24   1.01    4.57
+## 25 metaspades   WGA               1.00   1.00    1.08
+## 26 metavelvet21 AMPLICON          1.00   1       1.00
+## 27 metavelvet21 OTHER             1.00   1.00    1.00
+## 28 metavelvet21 RNA-Seq           1.00   1       1.01
+## 29 metavelvet21 Targeted-Capture  1.00   1       1.00
+## 30 metavelvet21 WGA               1.00   1       1.00
+## 31 metavelvet63 AMPLICON          1.01   1       1.14
+## 32 metavelvet63 OTHER             1.00   1       1.02
+## 33 metavelvet63 RNA-Seq           1.01   1.01    1.02
+## 34 metavelvet63 Targeted-Capture  1.00   1       1.02
+## 35 metavelvet63 WGA               1.00   1       1.03
+## 36 metavelvet99 AMPLICON          1.01   1.00    1.04
+## 37 metavelvet99 OTHER             1.15   1.01    7.21
+## 38 metavelvet99 RNA-Seq           1.02   1.01    1.04
+## 39 metavelvet99 Targeted-Capture  1.05   1.00    4.02
+## 40 metavelvet99 WGA               1.01   1.00    1.04
+## 41 ray21        AMPLICON          1.09   1.06    1.50
+## 42 ray21        OTHER             1.06   1.02    1.62
+## 43 ray21        RNA-Seq           1.43   1.10    4.04
+## 44 ray21        Targeted-Capture  1.08   1.03    1.82
+## 45 ray21        WGA               1.18   1.03    2.64
+## 46 ray63        AMPLICON          1.07   1.04    1.39
+## 47 ray63        OTHER             1.03   1.02    1.20
+## 48 ray63        RNA-Seq           1.32   1.06    4.62
+## 49 ray63        Targeted-Capture  1.07   1.03    1.78
+## 50 ray63        WGA               1.12   1.01    1.97
+## 51 ray99        AMPLICON          1.07   1.04    1.39
+## 52 ray99        OTHER             1.03   1.02    1.20
+## 53 ray99        RNA-Seq           1.32   1.06    4.62
+## 54 ray99        Targeted-Capture  1.07   1.03    1.78
+## 55 ray99        WGA               1.12   1.01    1.97
+## 56 spades       AMPLICON          1.26   1.01    4.90
+## 57 spades       OTHER             1.20   1.00    8.14
+## 58 spades       RNA-Seq          16.8    1.12  177.  
+## 59 spades       Targeted-Capture  6.44   1.16  128.  
+## 60 spades       WGA               1.03   1.01    1.91
+## 61 trinity      AMPLICON          1.21   1.00    3.23
+## 62 trinity      OTHER             1.53   1.16    9.81
+## 63 trinity      RNA-Seq           1.87   1.42    5.82
+## 64 trinity      Targeted-Capture  1.61   1.20    6.18
+## 65 trinity      WGA               1.18   1.00    5.26
+## 66 velvet21     AMPLICON          1.00   1       1.00
+## 67 velvet21     OTHER             1.00   1.00    1.01
+## 68 velvet21     RNA-Seq           1.00   1       1.00
+## 69 velvet21     Targeted-Capture  1.00   1       1.00
+## 70 velvet21     WGA               1.00   1       1.00
+## 71 velvet63     AMPLICON          1.01   1       1.14
+## 72 velvet63     OTHER             1.00   1.00    1.02
+## 73 velvet63     RNA-Seq           1.01   1.01    1.02
+## 74 velvet63     Targeted-Capture  1.00   1.00    1.02
+## 75 velvet63     WGA               1.00   1       1.03
+## 76 velvet99     AMPLICON          1.01   1.00    1.03
+## 77 velvet99     OTHER             1.16   1.01    7.21
+## 78 velvet99     RNA-Seq           1.02   1.01    1.04
+## 79 velvet99     Targeted-Capture  1.05   1.00    3.93
+## 80 velvet99     WGA               1.01   1.00    1.05
+## [1] "print sum of all i.e., total"
+## # A tibble: 80 x 3
+## # Groups:   X2 [16]
+##    X2           Assay_Type           n
+##    <fct>        <chr>            <dbl>
+##  1 abyss21      AMPLICON          79.7
+##  2 abyss21      OTHER             59.2
+##  3 abyss21      RNA-Seq           32.5
+##  4 abyss21      Targeted-Capture  69.1
+##  5 abyss21      WGA               93.2
+##  6 abyss63      AMPLICON          75.6
+##  7 abyss63      OTHER             58.3
+##  8 abyss63      RNA-Seq           28.3
+##  9 abyss63      Targeted-Capture  79.0
+## 10 abyss63      WGA               96.9
+## 11 abyss99      AMPLICON          66.2
+## 12 abyss99      OTHER             59.5
+## 13 abyss99      RNA-Seq           26.3
+## 14 abyss99      Targeted-Capture  79.6
+## 15 abyss99      WGA               97.4
+## 16 megahit      AMPLICON          81.6
+## 17 megahit      OTHER             64.9
+## 18 megahit      RNA-Seq           56.2
+## 19 megahit      Targeted-Capture  89.3
+## 20 megahit      WGA               99.6
+## 21 metaspades   AMPLICON          81.4
+## 22 metaspades   OTHER             64.7
+## 23 metaspades   RNA-Seq           67.2
+## 24 metaspades   Targeted-Capture 110. 
+## 25 metaspades   WGA               97.4
+## 26 metavelvet21 AMPLICON          19.0
+## 27 metavelvet21 OTHER             19.0
+## 28 metavelvet21 RNA-Seq           14.0
+## 29 metavelvet21 Targeted-Capture  26.0
+## 30 metavelvet21 WGA               22.0
+## 31 metavelvet63 AMPLICON          44.3
+## 32 metavelvet63 OTHER             41.2
+## 33 metavelvet63 RNA-Seq           26.2
+## 34 metavelvet63 Targeted-Capture  55.1
+## 35 metavelvet63 WGA               68.2
+## 36 metavelvet99 AMPLICON          62.4
+## 37 metavelvet99 OTHER             60.9
+## 38 metavelvet99 RNA-Seq           18.3
+## 39 metavelvet99 Targeted-Capture  80.5
+## 40 metavelvet99 WGA               94.6
+## 41 ray21        AMPLICON          88.2
+## 42 ray21        OTHER             67.6
+## 43 ray21        RNA-Seq           67.0
+## 44 ray21        Targeted-Capture  91.5
+## 45 ray21        WGA              116. 
+## 46 ray63        AMPLICON          86.4
+## 47 ray63        OTHER             63.9
+## 48 ray63        RNA-Seq           60.6
+## 49 ray63        Targeted-Capture  90.7
+## 50 ray63        WGA              108. 
+## 51 ray99        AMPLICON          86.4
+## 52 ray99        OTHER             63.9
+## 53 ray99        RNA-Seq           60.6
+## 54 ray99        Targeted-Capture  90.5
+## 55 ray99        WGA              108. 
+## 56 spades       AMPLICON         102. 
+## 57 spades       OTHER             76.8
+## 58 spades       RNA-Seq          908. 
+## 59 spades       Targeted-Capture 573. 
+## 60 spades       WGA              100. 
+## 61 trinity      AMPLICON          98.2
+## 62 trinity      OTHER             98.0
+## 63 trinity      RNA-Seq          101. 
+## 64 trinity      Targeted-Capture 137. 
+## 65 trinity      WGA              114. 
+## 66 velvet21     AMPLICON          19.0
+## 67 velvet21     OTHER             19.0
+## 68 velvet21     RNA-Seq           14.0
+## 69 velvet21     Targeted-Capture  26.0
+## 70 velvet21     WGA               22.0
+## 71 velvet63     AMPLICON          44.2
+## 72 velvet63     OTHER             40.2
+## 73 velvet63     RNA-Seq           26.2
+## 74 velvet63     Targeted-Capture  55.1
+## 75 velvet63     WGA               68.2
+## 76 velvet99     AMPLICON          62.4
+## 77 velvet99     OTHER             61.3
+## 78 velvet99     RNA-Seq           18.3
+## 79 velvet99     Targeted-Capture  78.5
+## 80 velvet99     WGA               93.6
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-18.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-20.png)<!-- -->
 
 ```r
 make_boxplot_v2("misassemblies")
 ```
 
 ```
-## # A tibble: 80 x 4
+## # A tibble: 80 x 5
 ## # Groups:   X2 [16]
-##    X2           Assay_Type          mean median
-##    <fct>        <chr>              <dbl>  <dbl>
-##  1 abyss21      AMPLICON          0.0128      0
-##  2 abyss21      OTHER             0.0169      0
-##  3 abyss21      RNA-Seq           0.0312      0
-##  4 abyss21      Targeted-Capture  0           0
-##  5 abyss21      WGA               0           0
-##  6 abyss63      AMPLICON          0.0270      0
-##  7 abyss63      OTHER             0           0
-##  8 abyss63      RNA-Seq           0           0
-##  9 abyss63      Targeted-Capture  0.0128      0
-## 10 abyss63      WGA               0           0
-## 11 abyss99      AMPLICON          0.0938      0
-## 12 abyss99      OTHER             0.0339      0
-## 13 abyss99      RNA-Seq           0.0769      0
-## 14 abyss99      Targeted-Capture  0           0
-## 15 abyss99      WGA               0.221       0
-## 16 megahit      AMPLICON          0.111       0
-## 17 megahit      OTHER             0.0625      0
-## 18 megahit      RNA-Seq           0.0357      0
-## 19 megahit      Targeted-Capture  0.580       0
-## 20 megahit      WGA               0.0612      0
-## 21 metaspades   AMPLICON          0           0
-## 22 metaspades   OTHER             0.0312      0
-## 23 metaspades   RNA-Seq           0.0357      0
-## 24 metaspades   Targeted-Capture  1.46        0
-## 25 metaspades   WGA               0.0103      0
-## 26 metavelvet21 AMPLICON          0           0
-## 27 metavelvet21 OTHER             0           0
-## 28 metavelvet21 RNA-Seq           0.0714      0
-## 29 metavelvet21 Targeted-Capture  0           0
-## 30 metavelvet21 WGA               0           0
-## 31 metavelvet63 AMPLICON          0           0
-## 32 metavelvet63 OTHER             0           0
-## 33 metavelvet63 RNA-Seq           0           0
-## 34 metavelvet63 Targeted-Capture  0           0
-## 35 metavelvet63 WGA               0           0
-## 36 metavelvet99 AMPLICON          0.258       0
-## 37 metavelvet99 OTHER             0.0566      0
-## 38 metavelvet99 RNA-Seq           0           0
-## 39 metavelvet99 Targeted-Capture  0           0
-## 40 metavelvet99 WGA               0.298       0
-## 41 ray21        AMPLICON          0.617       0
-## 42 ray21        OTHER             0.0781      0
-## 43 ray21        RNA-Seq           1.23        1
-## 44 ray21        Targeted-Capture  0.576       0
-## 45 ray21        WGA               0.724       0
-## 46 ray63        AMPLICON          0.235       0
-## 47 ray63        OTHER             0.0484      0
-## 48 ray63        RNA-Seq           1.11        1
-## 49 ray63        Targeted-Capture  0.729       0
-## 50 ray63        WGA               0.433       0
-## 51 ray99        AMPLICON          0.235       0
-## 52 ray99        OTHER             0.0323      0
-## 53 ray99        RNA-Seq           1.11        1
-## 54 ray99        Targeted-Capture  0.706       0
-## 55 ray99        WGA               0.433       0
-## 56 spades       AMPLICON          0.370       0
-## 57 spades       OTHER             0.156       0
-## 58 spades       RNA-Seq          13.7         0
-## 59 spades       Targeted-Capture 11.6         0
-## 60 spades       WGA               0.0619      0
-## 61 trinity      AMPLICON          0.0494      0
-## 62 trinity      OTHER             0.109       0
-## 63 trinity      RNA-Seq           2.72        0
-## 64 trinity      Targeted-Capture  3.06        0
-## 65 trinity      WGA               0.104       0
-## 66 velvet21     AMPLICON          0           0
-## 67 velvet21     OTHER             0           0
-## 68 velvet21     RNA-Seq           0.0714      0
-## 69 velvet21     Targeted-Capture  0           0
-## 70 velvet21     WGA               0           0
-## 71 velvet63     AMPLICON          0           0
-## 72 velvet63     OTHER             0           0
-## 73 velvet63     RNA-Seq           0           0
-## 74 velvet63     Targeted-Capture  0           0
-## 75 velvet63     WGA               0           0
-## 76 velvet99     AMPLICON          0.226       0
-## 77 velvet99     OTHER             0.0755      0
-## 78 velvet99     RNA-Seq           0           0
-## 79 velvet99     Targeted-Capture  0           0
-## 80 velvet99     WGA               0.344       0
+##    X2           Assay_Type          mean median maximum
+##    <fct>        <chr>              <dbl>  <dbl>   <dbl>
+##  1 abyss21      AMPLICON          0.0128      0       1
+##  2 abyss21      OTHER             0.0169      0       1
+##  3 abyss21      RNA-Seq           0.0312      0       1
+##  4 abyss21      Targeted-Capture  0           0       0
+##  5 abyss21      WGA               0           0       0
+##  6 abyss63      AMPLICON          0.0270      0       1
+##  7 abyss63      OTHER             0           0       0
+##  8 abyss63      RNA-Seq           0           0       0
+##  9 abyss63      Targeted-Capture  0.0128      0       1
+## 10 abyss63      WGA               0           0       0
+## 11 abyss99      AMPLICON          0.0938      0       2
+## 12 abyss99      OTHER             0.0339      0       1
+## 13 abyss99      RNA-Seq           0.0769      0       1
+## 14 abyss99      Targeted-Capture  0           0       0
+## 15 abyss99      WGA               0.221       0       2
+## 16 megahit      AMPLICON          0.111       0       2
+## 17 megahit      OTHER             0.0625      0       1
+## 18 megahit      RNA-Seq           0.0357      0       1
+## 19 megahit      Targeted-Capture  0.580       0      10
+## 20 megahit      WGA               0.0612      0       1
+## 21 metaspades   AMPLICON          0           0       0
+## 22 metaspades   OTHER             0.0312      0       1
+## 23 metaspades   RNA-Seq           0.0357      0       1
+## 24 metaspades   Targeted-Capture  1.46        0      33
+## 25 metaspades   WGA               0.0103      0       1
+## 26 metavelvet21 AMPLICON          0           0       0
+## 27 metavelvet21 OTHER             0           0       0
+## 28 metavelvet21 RNA-Seq           0.0714      0       1
+## 29 metavelvet21 Targeted-Capture  0           0       0
+## 30 metavelvet21 WGA               0           0       0
+## 31 metavelvet63 AMPLICON          0           0       0
+## 32 metavelvet63 OTHER             0           0       0
+## 33 metavelvet63 RNA-Seq           0           0       0
+## 34 metavelvet63 Targeted-Capture  0           0       0
+## 35 metavelvet63 WGA               0           0       0
+## 36 metavelvet99 AMPLICON          0.258       0       3
+## 37 metavelvet99 OTHER             0.0566      0       1
+## 38 metavelvet99 RNA-Seq           0           0       0
+## 39 metavelvet99 Targeted-Capture  0           0       0
+## 40 metavelvet99 WGA               0.298       0       2
+## 41 ray21        AMPLICON          0.617       0       4
+## 42 ray21        OTHER             0.0781      0       1
+## 43 ray21        RNA-Seq           1.23        1       6
+## 44 ray21        Targeted-Capture  0.576       0       7
+## 45 ray21        WGA               0.724       0       6
+## 46 ray63        AMPLICON          0.235       0       2
+## 47 ray63        OTHER             0.0484      0       2
+## 48 ray63        RNA-Seq           1.11        1       6
+## 49 ray63        Targeted-Capture  0.729       0      17
+## 50 ray63        WGA               0.433       0       3
+## 51 ray99        AMPLICON          0.235       0       2
+## 52 ray99        OTHER             0.0323      0       2
+## 53 ray99        RNA-Seq           1.11        1       6
+## 54 ray99        Targeted-Capture  0.706       0      17
+## 55 ray99        WGA               0.433       0       3
+## 56 spades       AMPLICON          0.370       0       4
+## 57 spades       OTHER             0.156       0       3
+## 58 spades       RNA-Seq          13.7         0     173
+## 59 spades       Targeted-Capture 11.6         0     206
+## 60 spades       WGA               0.0619      0       1
+## 61 trinity      AMPLICON          0.0494      0       2
+## 62 trinity      OTHER             0.109       0       4
+## 63 trinity      RNA-Seq           2.72        0      26
+## 64 trinity      Targeted-Capture  3.06        0      55
+## 65 trinity      WGA               0.104       0       4
+## 66 velvet21     AMPLICON          0           0       0
+## 67 velvet21     OTHER             0           0       0
+## 68 velvet21     RNA-Seq           0.0714      0       1
+## 69 velvet21     Targeted-Capture  0           0       0
+## 70 velvet21     WGA               0           0       0
+## 71 velvet63     AMPLICON          0           0       0
+## 72 velvet63     OTHER             0           0       0
+## 73 velvet63     RNA-Seq           0           0       0
+## 74 velvet63     Targeted-Capture  0           0       0
+## 75 velvet63     WGA               0           0       0
+## 76 velvet99     AMPLICON          0.226       0       3
+## 77 velvet99     OTHER             0.0755      0       1
+## 78 velvet99     RNA-Seq           0           0       0
+## 79 velvet99     Targeted-Capture  0           0       0
+## 80 velvet99     WGA               0.344       0       3
+## [1] "print sum of all i.e., total"
+## # A tibble: 80 x 3
+## # Groups:   X2 [16]
+##    X2           Assay_Type           n
+##    <fct>        <chr>            <dbl>
+##  1 abyss21      AMPLICON             1
+##  2 abyss21      OTHER                1
+##  3 abyss21      RNA-Seq              1
+##  4 abyss21      Targeted-Capture     0
+##  5 abyss21      WGA                  0
+##  6 abyss63      AMPLICON             2
+##  7 abyss63      OTHER                0
+##  8 abyss63      RNA-Seq              0
+##  9 abyss63      Targeted-Capture     1
+## 10 abyss63      WGA                  0
+## 11 abyss99      AMPLICON             6
+## 12 abyss99      OTHER                2
+## 13 abyss99      RNA-Seq              2
+## 14 abyss99      Targeted-Capture     0
+## 15 abyss99      WGA                 21
+## 16 megahit      AMPLICON             9
+## 17 megahit      OTHER                4
+## 18 megahit      RNA-Seq              2
+## 19 megahit      Targeted-Capture    51
+## 20 megahit      WGA                  6
+## 21 metaspades   AMPLICON             0
+## 22 metaspades   OTHER                2
+## 23 metaspades   RNA-Seq              2
+## 24 metaspades   Targeted-Capture   130
+## 25 metaspades   WGA                  1
+## 26 metavelvet21 AMPLICON             0
+## 27 metavelvet21 OTHER                0
+## 28 metavelvet21 RNA-Seq              1
+## 29 metavelvet21 Targeted-Capture     0
+## 30 metavelvet21 WGA                  0
+## 31 metavelvet63 AMPLICON             0
+## 32 metavelvet63 OTHER                0
+## 33 metavelvet63 RNA-Seq              0
+## 34 metavelvet63 Targeted-Capture     0
+## 35 metavelvet63 WGA                  0
+## 36 metavelvet99 AMPLICON            16
+## 37 metavelvet99 OTHER                3
+## 38 metavelvet99 RNA-Seq              0
+## 39 metavelvet99 Targeted-Capture     0
+## 40 metavelvet99 WGA                 28
+## 41 ray21        AMPLICON            50
+## 42 ray21        OTHER                5
+## 43 ray21        RNA-Seq             58
+## 44 ray21        Targeted-Capture    49
+## 45 ray21        WGA                 71
+## 46 ray63        AMPLICON            19
+## 47 ray63        OTHER                3
+## 48 ray63        RNA-Seq             51
+## 49 ray63        Targeted-Capture    62
+## 50 ray63        WGA                 42
+## 51 ray99        AMPLICON            19
+## 52 ray99        OTHER                2
+## 53 ray99        RNA-Seq             51
+## 54 ray99        Targeted-Capture    60
+## 55 ray99        WGA                 42
+## 56 spades       AMPLICON            30
+## 57 spades       OTHER               10
+## 58 spades       RNA-Seq            741
+## 59 spades       Targeted-Capture  1033
+## 60 spades       WGA                  6
+## 61 trinity      AMPLICON             4
+## 62 trinity      OTHER                7
+## 63 trinity      RNA-Seq            147
+## 64 trinity      Targeted-Capture   260
+## 65 trinity      WGA                 10
+## 66 velvet21     AMPLICON             0
+## 67 velvet21     OTHER                0
+## 68 velvet21     RNA-Seq              1
+## 69 velvet21     Targeted-Capture     0
+## 70 velvet21     WGA                  0
+## 71 velvet63     AMPLICON             0
+## 72 velvet63     OTHER                0
+## 73 velvet63     RNA-Seq              0
+## 74 velvet63     Targeted-Capture     0
+## 75 velvet63     WGA                  0
+## 76 velvet99     AMPLICON            14
+## 77 velvet99     OTHER                4
+## 78 velvet99     RNA-Seq              0
+## 79 velvet99     Targeted-Capture     0
+## 80 velvet99     WGA                 32
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-19.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-21.png)<!-- -->
+
+```r
+#num of mis asm
+xm %>% filter(Assembly == "misassemblies") %>% na.omit() %>%  dim()
+```
+
+```
+## [1] 4912    8
+```
+
+```r
+xm %>% filter(Assembly == "misassemblies") %>% na.omit() %>% filter(value == 0) %>% dim()
+```
+
+```
+## [1] 4291    8
+```
+
+```r
+#num of dup ratio
+xm %>% filter(Assembly == "Duplication ratio") %>% na.omit() %>% dim()
+```
+
+```
+## [1] 4912    8
+```
+
+```r
+xm %>% filter(Assembly == "Duplication ratio") %>% na.omit() %>% filter(value == 1) %>% dim()
+```
+
+```
+## [1] 1247    8
+```
+
+```r
+# scatter plot
+dr = xm %>% filter(Assembly == "Duplication ratio") 
+mis = xm %>% filter(Assembly == "misassemblies") 
+s3 = inner_join(mis, dr, by = c("variable" = "variable")) %>% 
+  select(X1.x, X2.x, value.x, value.y, Assay_Type.y) %>% na.omit()
+colnames(s3) = c("SRR", "asm", "mis", "dupliR", "assay")
+
+
+ggplot(s3, aes(mis, dupliR)) +
+  geom_jitter(aes(color = asm), shape = 18, size = 2.5) +
+    xlab("Misassemblies") +
+    ylab("Duplication ratio") +
+    facet_grid(~assay, scales = "free") +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", hjust = 1),
+        strip.background =element_rect(fill="white"),
+        legend.position = "bottom") +
+  guides(color = guide_legend(override.aes = list(size = 3)))
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-22.png)<!-- -->
+
+```r
+ggsave("Scatter_misasm_dupliR.pdf", width = 24, height = 10, units = "cm")
+
+s3 %>% group_by(asm, assay) %>%
+  summarise(count = n())
+```
+
+```
+## # A tibble: 80 x 3
+## # Groups:   asm [16]
+##    asm     assay            count
+##    <fct>   <chr>            <int>
+##  1 abyss21 AMPLICON            78
+##  2 abyss21 OTHER               59
+##  3 abyss21 RNA-Seq             32
+##  4 abyss21 Targeted-Capture    68
+##  5 abyss21 WGA                 92
+##  6 abyss63 AMPLICON            74
+##  7 abyss63 OTHER               58
+##  8 abyss63 RNA-Seq             28
+##  9 abyss63 Targeted-Capture    78
+## 10 abyss63 WGA                 96
+## # … with 70 more rows
+```
 
 ```r
 # genomic feature
 x4 = xm %>% filter(Assembly == "genomic features") 
 x4$value.1 = gsub("part", "", x4$value.1)
 x5 = data.frame(str_split_fixed(x4$value.1,"\\+", 2), x4) 
-x6 = data.frame(assembly = x5$X2, match = as.numeric(as.character(x5$X1.1)), mismatch = as.numeric(as.character(x5$X2.1)))
+x6 = data.frame(assembly = x5$X2, match = as.numeric(as.character(x5$X1.1)), mismatch = as.numeric(as.character(x5$X2.1))) 
 
 # need to add assay_type
   ggplot(x6, aes(assembly, 100*(match/49))) +
@@ -2215,11 +2988,534 @@ x6 = data.frame(assembly = x5$X2, match = as.numeric(as.character(x5$X1.1)), mis
         axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-20.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-23.png)<!-- -->
 
 ```r
 ggsave("percent features mapped.pdf", width = 15, height = 10, units = "cm")
+
+# k-mer quality
+kmer = c("abyss21", "abyss63", "abyss99", "metavelvet21", "metavelvet63", "metavelvet99", "ray21", "ray63", "ray99", "velvet21", "velvet63", "velvet99")
+xmk = xm %>% filter(X2 %in% kmer) 
+
+#global averge
+kmer_stats = xmk %>% 
+  group_by(Assembly, X2) %>%
+  summarise(mean = mean(value, na.rm = T),
+            median = median(value, na.rm = T),
+            sd = sd(value, na.rm = T),
+            count = n())
+
+print(kmer_stats, n = Inf)
 ```
+
+```
+## # A tibble: 492 x 6
+## # Groups:   Assembly [41]
+##     Assembly              X2                mean   median          sd count
+##     <chr>                 <fct>            <dbl>    <dbl>       <dbl> <int>
+##   1 contigs               abyss21        9.25e+1   6.00e0     3.91e+2   410
+##   2 contigs               abyss63        4.74e+1   9.00e0     2.14e+2   410
+##   3 contigs               abyss99        1.83e+1   1.00e1     4.01e+1   381
+##   4 contigs               metavelve…     7.61e+1   8.00e0     2.25e+2   239
+##   5 contigs               metavelve…     6.13e+1   1.10e1     2.62e+2   344
+##   6 contigs               metavelve…     2.41e+1   1.20e1     9.96e+1   377
+##   7 contigs               ray21          7.50e+1   9.00e0     3.16e+2   416
+##   8 contigs               ray63          6.36e+1   9.00e0     2.75e+2   415
+##   9 contigs               ray99          6.37e+1   9.00e0     2.75e+2   415
+##  10 contigs               velvet21       7.64e+1   8.00e0     2.26e+2   238
+##  11 contigs               velvet63       6.19e+1   1.20e1     2.63e+2   341
+##  12 contigs               velvet99       2.41e+1   1.20e1     9.92e+1   377
+##  13 contigs (>= 0 bp)     abyss21        1.71e+4   4.15e1     4.01e+4   410
+##  14 contigs (>= 0 bp)     abyss63        6.54e+3   2.80e1     1.93e+4   410
+##  15 contigs (>= 0 bp)     abyss99        1.66e+3   3.90e1     1.12e+4   381
+##  16 contigs (>= 0 bp)     metavelve…     1.68e+4   5.66e3     2.53e+4   239
+##  17 contigs (>= 0 bp)     metavelve…     1.80e+3   4.88e2     5.23e+3   344
+##  18 contigs (>= 0 bp)     metavelve…     3.91e+2   7.60e1     3.00e+3   377
+##  19 contigs (>= 0 bp)     ray21          3.00e+3   1.92e2     6.71e+3   416
+##  20 contigs (>= 0 bp)     ray63          2.36e+3   1.44e2     5.96e+3   415
+##  21 contigs (>= 0 bp)     ray99          2.36e+3   1.44e2     5.96e+3   415
+##  22 contigs (>= 0 bp)     velvet21       1.68e+4   5.77e3     2.54e+4   238
+##  23 contigs (>= 0 bp)     velvet63       1.80e+3   4.82e2     5.25e+3   341
+##  24 contigs (>= 0 bp)     velvet99       3.89e+2   7.40e1     2.99e+3   377
+##  25 contigs (>= 1000 bp)  abyss21        2.05e+1   3.00e0     1.25e+2   410
+##  26 contigs (>= 1000 bp)  abyss63        1.04e+1   4.00e0     4.15e+1   410
+##  27 contigs (>= 1000 bp)  abyss99        5.38e+0   3.00e0     9.37e+0   381
+##  28 contigs (>= 1000 bp)  metavelve…     2.99e+0   0.         1.05e+1   239
+##  29 contigs (>= 1000 bp)  metavelve…     8.42e+0   1.00e0     4.04e+1   344
+##  30 contigs (>= 1000 bp)  metavelve…     4.10e+0   1.00e0     8.93e+0   377
+##  31 contigs (>= 1000 bp)  ray21          2.29e+1   5.00e0     1.20e+2   416
+##  32 contigs (>= 1000 bp)  ray63          1.85e+1   5.00e0     8.91e+1   415
+##  33 contigs (>= 1000 bp)  ray99          1.85e+1   5.00e0     8.90e+1   415
+##  34 contigs (>= 1000 bp)  velvet21       2.97e+0   0.         1.07e+1   238
+##  35 contigs (>= 1000 bp)  velvet63       8.53e+0   1.00e0     4.06e+1   341
+##  36 contigs (>= 1000 bp)  velvet99       4.16e+0   1.00e0     9.44e+0   377
+##  37 contigs (>= 10000 bp) abyss21        5.44e-1   0.         6.17e-1   410
+##  38 contigs (>= 10000 bp) abyss63        4.46e-1   0.         5.67e-1   410
+##  39 contigs (>= 10000 bp) abyss99        3.33e-1   0.         5.30e-1   381
+##  40 contigs (>= 10000 bp) metavelve…     0.        0.         0.        239
+##  41 contigs (>= 10000 bp) metavelve…     8.72e-3   0.         9.31e-2   344
+##  42 contigs (>= 10000 bp) metavelve…     1.59e-2   0.         1.25e-1   377
+##  43 contigs (>= 10000 bp) ray21          7.69e-1   1.00e0     6.76e-1   416
+##  44 contigs (>= 10000 bp) ray63          7.47e-1   1.00e0     6.34e-1   415
+##  45 contigs (>= 10000 bp) ray99          7.47e-1   1.00e0     6.34e-1   415
+##  46 contigs (>= 10000 bp) velvet21       0.        0.         0.        238
+##  47 contigs (>= 10000 bp) velvet63       8.80e-3   0.         9.35e-2   341
+##  48 contigs (>= 10000 bp) velvet99       1.59e-2   0.         1.25e-1   377
+##  49 contigs (>= 25000 bp) abyss21        1.78e-1   0.         3.83e-1   410
+##  50 contigs (>= 25000 bp) abyss63        2.00e-1   0.         4.00e-1   410
+##  51 contigs (>= 25000 bp) abyss99        1.78e-1   0.         3.83e-1   381
+##  52 contigs (>= 25000 bp) metavelve…     0.        0.         0.        239
+##  53 contigs (>= 25000 bp) metavelve…     0.        0.         0.        344
+##  54 contigs (>= 25000 bp) metavelve…     0.        0.         0.        377
+##  55 contigs (>= 25000 bp) ray21          4.38e-1   0.         5.30e-1   416
+##  56 contigs (>= 25000 bp) ray63          4.19e-1   0.         4.94e-1   415
+##  57 contigs (>= 25000 bp) ray99          4.19e-1   0.         4.94e-1   415
+##  58 contigs (>= 25000 bp) velvet21       0.        0.         0.        238
+##  59 contigs (>= 25000 bp) velvet63       0.        0.         0.        341
+##  60 contigs (>= 25000 bp) velvet99       0.        0.         0.        377
+##  61 contigs (>= 5000 bp)  abyss21        1.14e+0   1.00e0     3.60e+0   410
+##  62 contigs (>= 5000 bp)  abyss63        9.20e-1   1.00e0     9.77e-1   410
+##  63 contigs (>= 5000 bp)  abyss99        5.85e-1   0.         8.22e-1   381
+##  64 contigs (>= 5000 bp)  metavelve…     0.        0.         0.        239
+##  65 contigs (>= 5000 bp)  metavelve…     3.78e-2   0.         2.32e-1   344
+##  66 contigs (>= 5000 bp)  metavelve…     1.56e-1   0.         5.64e-1   377
+##  67 contigs (>= 5000 bp)  ray21          1.45e+0   1.00e0     3.23e+0   416
+##  68 contigs (>= 5000 bp)  ray63          1.29e+0   1.00e0     1.63e+0   415
+##  69 contigs (>= 5000 bp)  ray99          1.29e+0   1.00e0     1.64e+0   415
+##  70 contigs (>= 5000 bp)  velvet21       0.        0.         0.        238
+##  71 contigs (>= 5000 bp)  velvet63       3.81e-2   0.         2.33e-1   341
+##  72 contigs (>= 5000 bp)  velvet99       1.49e-1   0.         5.45e-1   377
+##  73 contigs (>= 50000 bp) abyss21        0.        0.         0.        410
+##  74 contigs (>= 50000 bp) abyss63        0.        0.         0.        410
+##  75 contigs (>= 50000 bp) abyss99        0.        0.         0.        381
+##  76 contigs (>= 50000 bp) metavelve…     0.        0.         0.        239
+##  77 contigs (>= 50000 bp) metavelve…     0.        0.         0.        344
+##  78 contigs (>= 50000 bp) metavelve…     0.        0.         0.        377
+##  79 contigs (>= 50000 bp) ray21          9.62e-3   0.         9.77e-2   416
+##  80 contigs (>= 50000 bp) ray63          9.64e-3   0.         9.78e-2   415
+##  81 contigs (>= 50000 bp) ray99          9.64e-3   0.         9.78e-2   415
+##  82 contigs (>= 50000 bp) velvet21       0.        0.         0.        238
+##  83 contigs (>= 50000 bp) velvet63       0.        0.         0.        341
+##  84 contigs (>= 50000 bp) velvet99       0.        0.         0.        377
+##  85 Duplication ratio     abyss21        1.01e+0   1.00e0     8.56e-2   410
+##  86 Duplication ratio     abyss63        1.01e+0   1.00e0     6.01e-2   410
+##  87 Duplication ratio     abyss99        1.02e+0   1.01e0     1.16e-1   381
+##  88 Duplication ratio     metavelve…     1.00e+0   1.00e0     1.58e-3   239
+##  89 Duplication ratio     metavelve…     1.00e+0   1.00e0     1.04e-2   344
+##  90 Duplication ratio     metavelve…     1.04e+0   1.00e0     4.01e-1   377
+##  91 Duplication ratio     ray21          1.15e+0   1.04e0     3.15e-1   416
+##  92 Duplication ratio     ray63          1.10e+0   1.03e0     2.79e-1   415
+##  93 Duplication ratio     ray99          1.10e+0   1.03e0     2.79e-1   415
+##  94 Duplication ratio     velvet21       1.00e+0   1.00e0     1.67e-3   238
+##  95 Duplication ratio     velvet63       1.00e+0   1.00e0     1.06e-2   341
+##  96 Duplication ratio     velvet99       1.04e+0   1.00e0     4.05e-1   377
+##  97 Genome fraction (%)   abyss21        7.89e+1   9.52e1     3.19e+1   410
+##  98 Genome fraction (%)   abyss63        8.07e+1   9.77e1     3.03e+1   410
+##  99 Genome fraction (%)   abyss99        7.36e+1   9.11e1     3.25e+1   381
+## 100 Genome fraction (%)   metavelve…     1.79e+1   8.49e0     2.17e+1   239
+## 101 Genome fraction (%)   metavelve…     2.80e+1   1.73e1     2.77e+1   344
+## 102 Genome fraction (%)   metavelve…     3.84e+1   2.70e1     3.12e+1   377
+## 103 Genome fraction (%)   ray21          8.70e+1   9.81e1     2.39e+1   416
+## 104 Genome fraction (%)   ray63          8.83e+1   9.80e1     2.28e+1   415
+## 105 Genome fraction (%)   ray99          8.83e+1   9.80e1     2.28e+1   415
+## 106 Genome fraction (%)   velvet21       1.79e+1   8.49e0     2.18e+1   238
+## 107 Genome fraction (%)   velvet63       2.82e+1   1.73e1     2.77e+1   341
+## 108 Genome fraction (%)   velvet99       3.88e+1   2.63e1     3.12e+1   377
+## 109 genomic features      abyss21      NaN        NA         NA         410
+## 110 genomic features      abyss63      NaN        NA         NA         410
+## 111 genomic features      abyss99      NaN        NA         NA         381
+## 112 genomic features      metavelve…   NaN        NA         NA         239
+## 113 genomic features      metavelve…   NaN        NA         NA         344
+## 114 genomic features      metavelve…   NaN        NA         NA         377
+## 115 genomic features      ray21        NaN        NA         NA         416
+## 116 genomic features      ray63        NaN        NA         NA         415
+## 117 genomic features      ray99        NaN        NA         NA         415
+## 118 genomic features      velvet21     NaN        NA         NA         238
+## 119 genomic features      velvet63     NaN        NA         NA         341
+## 120 genomic features      velvet99     NaN        NA         NA         377
+## 121 indels per 100 kbp    abyss21        6.30e+0   3.38e0     2.58e+1   410
+## 122 indels per 100 kbp    abyss63        5.40e+0   0.         1.92e+1   410
+## 123 indels per 100 kbp    abyss99        3.80e+0   0.         1.39e+1   381
+## 124 indels per 100 kbp    metavelve…     4.83e+0   0.         1.60e+1   239
+## 125 indels per 100 kbp    metavelve…     4.69e+0   0.         1.45e+1   344
+## 126 indels per 100 kbp    metavelve…     1.21e+1   0.         3.51e+1   377
+## 127 indels per 100 kbp    ray21          6.20e+0   0.         2.79e+1   416
+## 128 indels per 100 kbp    ray63          5.31e+0   0.         1.09e+1   415
+## 129 indels per 100 kbp    ray99          5.31e+0   0.         1.09e+1   415
+## 130 indels per 100 kbp    velvet21       7.58e+0   0.         2.95e+1   238
+## 131 indels per 100 kbp    velvet63       4.79e+0   0.         1.78e+1   341
+## 132 indels per 100 kbp    velvet99       1.19e+1   0.         3.37e+1   377
+## 133 L50                   abyss21        3.25e+1   2.00e0     1.31e+2   410
+## 134 L50                   abyss63        1.60e+1   3.00e0     7.10e+1   410
+## 135 L50                   abyss99        6.32e+0   3.00e0     1.30e+1   381
+## 136 L50                   metavelve…     3.24e+1   4.00e0     9.37e+1   239
+## 137 L50                   metavelve…     2.31e+1   5.00e0     9.60e+1   344
+## 138 L50                   metavelve…     9.37e+0   5.00e0     3.90e+1   377
+## 139 L50                   ray21          2.08e+1   2.00e0     8.79e+1   416
+## 140 L50                   ray63          1.79e+1   2.00e0     7.96e+1   415
+## 141 L50                   ray99          1.79e+1   2.00e0     7.96e+1   415
+## 142 L50                   velvet21       3.26e+1   4.00e0     9.43e+1   238
+## 143 L50                   velvet63       2.33e+1   5.00e0     9.64e+1   341
+## 144 L50                   velvet99       9.38e+0   5.00e0     3.87e+1   377
+## 145 L75                   abyss21        5.79e+1   3.00e0     2.40e+2   410
+## 146 L75                   abyss63        2.96e+1   5.00e0     1.34e+2   410
+## 147 L75                   abyss99        1.14e+1   6.00e0     2.48e+1   381
+## 148 L75                   metavelve…     5.34e+1   6.00e0     1.56e+2   239
+## 149 L75                   metavelve…     4.06e+1   8.00e0     1.71e+2   344
+## 150 L75                   metavelve…     1.61e+1   8.00e0     6.73e+1   377
+## 151 L75                   ray21          4.23e+1   3.00e0     1.78e+2   416
+## 152 L75                   ray63          3.62e+1   3.00e0     1.59e+2   415
+## 153 L75                   ray99          3.62e+1   3.00e0     1.59e+2   415
+## 154 L75                   velvet21       5.36e+1   6.00e0     1.57e+2   238
+## 155 L75                   velvet63       4.10e+1   8.00e0     1.72e+2   341
+## 156 L75                   velvet99       1.61e+1   8.00e0     6.70e+1   377
+## 157 LA50                  abyss21        2.05e+0   1.00e0     1.80e+0   410
+## 158 LA50                  abyss63        2.65e+0   2.00e0     2.54e+0   410
+## 159 LA50                  abyss99        4.12e+0   3.00e0     3.17e+0   381
+## 160 LA50                  metavelve…     3.59e+0   3.00e0     2.77e+0   239
+## 161 LA50                  metavelve…     4.27e+0   4.00e0     2.84e+0   344
+## 162 LA50                  metavelve…     5.19e+0   5.00e0     2.62e+0   377
+## 163 LA50                  ray21          2.12e+0   1.00e0     2.00e+0   416
+## 164 LA50                  ray63          2.11e+0   1.00e0     2.14e+0   415
+## 165 LA50                  ray99          2.10e+0   1.00e0     2.14e+0   415
+## 166 LA50                  velvet21       3.57e+0   3.00e0     2.72e+0   238
+## 167 LA50                  velvet63       4.41e+0   4.00e0     2.92e+0   341
+## 168 LA50                  velvet99       5.27e+0   5.00e0     2.58e+0   377
+## 169 LA75                  abyss21        3.12e+0   2.00e0     3.21e+0   410
+## 170 LA75                  abyss63        3.98e+0   3.00e0     3.34e+0   410
+## 171 LA75                  abyss99        7.07e+0   6.00e0     5.69e+0   381
+## 172 LA75                  metavelve…     5.71e+0   4.50e0     4.59e+0   239
+## 173 LA75                  metavelve…     6.43e+0   6.50e0     4.18e+0   344
+## 174 LA75                  metavelve…     8.31e+0   8.00e0     4.13e+0   377
+## 175 LA75                  ray21          3.27e+0   2.00e0     3.65e+0   416
+## 176 LA75                  ray63          3.14e+0   2.00e0     3.49e+0   415
+## 177 LA75                  ray99          3.15e+0   2.00e0     3.51e+0   415
+## 178 LA75                  velvet21       5.69e+0   4.00e0     4.62e+0   238
+## 179 LA75                  velvet63       6.46e+0   6.00e0     4.21e+0   341
+## 180 LA75                  velvet99       8.43e+0   8.00e0     4.12e+0   377
+## 181 Largest alignment     abyss21        1.44e+4   1.50e4     9.96e+3   410
+## 182 Largest alignment     abyss63        1.31e+4   9.99e3     1.06e+4   410
+## 183 Largest alignment     abyss99        1.05e+4   4.42e3     1.11e+4   381
+## 184 Largest alignment     metavelve…     1.01e+3   7.76e2     6.91e+2   239
+## 185 Largest alignment     metavelve…     1.52e+3   9.70e2     1.61e+3   344
+## 186 Largest alignment     metavelve…     2.12e+3   1.06e3     2.75e+3   377
+## 187 Largest alignment     ray21          1.88e+4   2.17e4     1.08e+4   416
+## 188 Largest alignment     ray63          1.90e+4   2.14e4     1.07e+4   415
+## 189 Largest alignment     ray99          1.90e+4   2.14e4     1.08e+4   415
+## 190 Largest alignment     velvet21       1.02e+3   7.92e2     6.89e+2   238
+## 191 Largest alignment     velvet63       1.51e+3   9.82e2     1.61e+3   341
+## 192 Largest alignment     velvet99       2.13e+3   1.09e3     2.75e+3   377
+## 193 Largest contig        abyss21        1.20e+4   9.46e3     1.02e+4   410
+## 194 Largest contig        abyss63        1.12e+4   6.99e3     1.05e+4   410
+## 195 Largest contig        abyss99        9.20e+3   3.31e3     1.07e+4   381
+## 196 Largest contig        metavelve…     1.01e+3   8.42e2     5.53e+2   239
+## 197 Largest contig        metavelve…     1.52e+3   1.09e3     1.41e+3   344
+## 198 Largest contig        metavelve…     2.07e+3   1.28e3     2.46e+3   377
+## 199 Largest contig        ray21          1.90e+4   2.05e4     1.29e+4   416
+## 200 Largest contig        ray63          1.83e+4   1.92e4     1.22e+4   415
+## 201 Largest contig        ray99          1.83e+4   1.92e4     1.22e+4   415
+## 202 Largest contig        velvet21       1.01e+3   8.38e2     5.47e+2   238
+## 203 Largest contig        velvet63       1.52e+3   1.10e3     1.41e+3   341
+## 204 Largest contig        velvet99       2.09e+3   1.26e3     2.46e+3   377
+## 205 local misassemblies   abyss21        4.56e-2   0.         2.23e-1   410
+## 206 local misassemblies   abyss63        2.99e-2   0.         1.87e-1   410
+## 207 local misassemblies   abyss99        1.06e-1   0.         3.64e-1   381
+## 208 local misassemblies   metavelve…     0.        0.         0.        239
+## 209 local misassemblies   metavelve…     0.        0.         0.        344
+## 210 local misassemblies   metavelve…     1.18e-1   0.         3.80e-1   377
+## 211 local misassemblies   ray21          1.55e-1   0.         5.50e-1   416
+## 212 local misassemblies   ray63          1.81e-1   0.         7.29e-1   415
+## 213 local misassemblies   ray99          1.78e-1   0.         7.17e-1   415
+## 214 local misassemblies   velvet21       0.        0.         0.        238
+## 215 local misassemblies   velvet63       0.        0.         0.        341
+## 216 local misassemblies   velvet99       1.16e-1   0.         3.87e-1   377
+## 217 misassembled contigs  abyss21        9.12e-3   0.         9.52e-2   410
+## 218 misassembled contigs  abyss63        8.98e-3   0.         9.45e-2   410
+## 219 misassembled contigs  abyss99        9.35e-2   0.         3.32e-1   381
+## 220 misassembled contigs  metavelve…     1.00e-2   0.         1.00e-1   239
+## 221 misassembled contigs  metavelve…     0.        0.         0.        344
+## 222 misassembled contigs  metavelve…     1.41e-1   0.         4.18e-1   377
+## 223 misassembled contigs  ray21          5.23e-1   0.         9.19e-1   416
+## 224 misassembled contigs  ray63          4.07e-1   0.         9.83e-1   415
+## 225 misassembled contigs  ray99          3.99e-1   0.         9.46e-1   415
+## 226 misassembled contigs  velvet21       1.00e-2   0.         1.00e-1   238
+## 227 misassembled contigs  velvet63       0.        0.         0.        341
+## 228 misassembled contigs  velvet99       1.53e-1   0.         4.36e-1   377
+## 229 Misassembled contigs… abyss21        4.38e+1   0.         7.26e+2   410
+## 230 Misassembled contigs… abyss63        7.41e+1   0.         9.96e+2   410
+## 231 Misassembled contigs… abyss99        2.38e+2   0.         1.83e+3   381
+## 232 Misassembled contigs… metavelve…     6.34e+0   0.         6.34e+1   239
+## 233 Misassembled contigs… metavelve…     0.        0.         0.        344
+## 234 Misassembled contigs… metavelve…     9.57e+1   0.         2.88e+2   377
+## 235 Misassembled contigs… ray21          8.06e+3   0.         1.56e+4   416
+## 236 Misassembled contigs… ray63          5.77e+3   0.         1.34e+4   415
+## 237 Misassembled contigs… ray99          5.76e+3   0.         1.34e+4   415
+## 238 Misassembled contigs… velvet21       6.34e+0   0.         6.34e+1   238
+## 239 Misassembled contigs… velvet63       0.        0.         0.        341
+## 240 Misassembled contigs… velvet99       1.04e+2   0.         3.04e+2   377
+## 241 misassemblies         abyss21        9.12e-3   0.         9.52e-2   410
+## 242 misassemblies         abyss63        8.98e-3   0.         9.45e-2   410
+## 243 misassemblies         abyss99        9.66e-2   0.         3.45e-1   381
+## 244 misassemblies         metavelve…     1.00e-2   0.         1.00e-1   239
+## 245 misassemblies         metavelve…     0.        0.         0.        344
+## 246 misassemblies         metavelve…     1.55e-1   0.         4.73e-1   377
+## 247 misassemblies         ray21          6.21e-1   0.         1.14e+0   416
+## 248 misassemblies         ray63          4.77e-1   0.         1.31e+0   415
+## 249 misassemblies         ray99          4.69e-1   0.         1.28e+0   415
+## 250 misassemblies         velvet21       1.00e-2   0.         1.00e-1   238
+## 251 misassemblies         velvet63       0.        0.         0.        341
+## 252 misassemblies         velvet99       1.66e-1   0.         4.89e-1   377
+## 253 mismatches per 100 k… abyss21        2.72e+1   2.49e1     2.48e+1   410
+## 254 mismatches per 100 k… abyss63        2.68e+1   2.46e1     1.90e+1   410
+## 255 mismatches per 100 k… abyss99        2.68e+1   2.54e1     2.18e+1   381
+## 256 mismatches per 100 k… metavelve…     4.54e+1   1.76e1     7.95e+1   239
+## 257 mismatches per 100 k… metavelve…     3.32e+1   2.22e1     5.20e+1   344
+## 258 mismatches per 100 k… metavelve…     4.33e+1   2.89e1     6.21e+1   377
+## 259 mismatches per 100 k… ray21          3.83e+1   3.35e1     3.21e+1   416
+## 260 mismatches per 100 k… ray63          3.61e+1   3.30e1     3.34e+1   415
+## 261 mismatches per 100 k… ray99          3.61e+1   3.30e1     3.34e+1   415
+## 262 mismatches per 100 k… velvet21       4.45e+1   1.90e1     7.77e+1   238
+## 263 mismatches per 100 k… velvet63       3.36e+1   2.23e1     5.21e+1   341
+## 264 mismatches per 100 k… velvet99       4.26e+1   2.69e1     6.19e+1   377
+## 265 N's per 100 kbp       abyss21        8.36e+2   0.         3.67e+3   410
+## 266 N's per 100 kbp       abyss63        5.59e+2   0.         3.45e+3   410
+## 267 N's per 100 kbp       abyss99        3.30e+2   0.         2.32e+3   381
+## 268 N's per 100 kbp       metavelve…     0.        0.         0.        239
+## 269 N's per 100 kbp       metavelve…     0.        0.         0.        344
+## 270 N's per 100 kbp       metavelve…     0.        0.         0.        377
+## 271 N's per 100 kbp       ray21          2.83e+2   0.         7.32e+2   416
+## 272 N's per 100 kbp       ray63          2.80e+2   0.         7.34e+2   415
+## 273 N's per 100 kbp       ray99          2.81e+2   0.         7.36e+2   415
+## 274 N's per 100 kbp       velvet21       0.        0.         0.        238
+## 275 N's per 100 kbp       velvet63       0.        0.         0.        341
+## 276 N's per 100 kbp       velvet99       0.        0.         0.        377
+## 277 N50                   abyss21        1.10e+4   5.75e3     1.08e+4   410
+## 278 N50                   abyss63        9.62e+3   3.38e3     1.11e+4   410
+## 279 N50                   abyss99        7.74e+3   1.31e3     1.11e+4   381
+## 280 N50                   metavelve…     6.49e+2   6.02e2     1.76e+2   239
+## 281 N50                   metavelve…     7.86e+2   6.82e2     4.49e+2   344
+## 282 N50                   metavelve…     1.25e+3   7.32e2     1.96e+3   377
+## 283 N50                   ray21          1.49e+4   9.29e3     1.38e+4   416
+## 284 N50                   ray63          1.45e+4   8.45e3     1.33e+4   415
+## 285 N50                   ray99          1.45e+4   8.45e3     1.33e+4   415
+## 286 N50                   velvet21       6.55e+2   5.98e2     1.87e+2   238
+## 287 N50                   velvet63       7.92e+2   6.85e2     4.51e+2   341
+## 288 N50                   velvet99       1.24e+3   7.24e2     1.94e+3   377
+## 289 N75                   abyss21        9.33e+3   3.09e3     1.07e+4   410
+## 290 N75                   abyss63        7.89e+3   1.90e3     1.10e+4   410
+## 291 N75                   abyss99        6.75e+3   8.85e2     1.09e+4   381
+## 292 N75                   metavelve…     5.75e+2   5.50e2     8.96e+1   239
+## 293 N75                   metavelve…     6.34e+2   5.74e2     2.62e+2   344
+## 294 N75                   metavelve…     9.30e+2   5.99e2     1.71e+3   377
+## 295 N75                   ray21          1.13e+4   3.30e3     1.33e+4   416
+## 296 N75                   ray63          1.15e+4   2.84e3     1.32e+4   415
+## 297 N75                   ray99          1.15e+4   2.84e3     1.32e+4   415
+## 298 N75                   velvet21       5.76e+2   5.49e2     8.92e+1   238
+## 299 N75                   velvet63       6.38e+2   5.74e2     2.88e+2   341
+## 300 N75                   velvet99       9.33e+2   5.98e2     1.71e+3   377
+## 301 NA50                  abyss21        1.56e+4   1.93e4     1.00e+4   410
+## 302 NA50                  abyss63        1.33e+4   7.47e3     1.14e+4   410
+## 303 NA50                  abyss99        9.87e+3   2.26e3     1.19e+4   381
+## 304 NA50                  metavelve…     7.51e+2   6.66e2     2.90e+2   239
+## 305 NA50                  metavelve…     8.81e+2   6.87e2     6.23e+2   344
+## 306 NA50                  metavelve…     1.42e+3   7.06e2     2.36e+3   377
+## 307 NA50                  ray21          1.85e+4   2.23e4     1.12e+4   416
+## 308 NA50                  ray63          1.86e+4   2.23e4     1.14e+4   415
+## 309 NA50                  ray99          1.86e+4   2.23e4     1.14e+4   415
+## 310 NA50                  velvet21       7.78e+2   6.75e2     3.08e+2   238
+## 311 NA50                  velvet63       8.78e+2   7.03e2     6.19e+2   341
+## 312 NA50                  velvet99       1.39e+3   6.86e2     2.35e+3   377
+## 313 NA75                  abyss21        1.35e+4   1.02e4     1.08e+4   410
+## 314 NA75                  abyss63        1.14e+4   4.72e3     1.19e+4   410
+## 315 NA75                  abyss99        8.80e+3   1.28e3     1.19e+4   381
+## 316 NA75                  metavelve…     6.22e+2   5.76e2     1.31e+2   239
+## 317 NA75                  metavelve…     6.84e+2   5.79e2     3.80e+2   344
+## 318 NA75                  metavelve…     1.05e+3   5.92e2     2.16e+3   377
+## 319 NA75                  ray21          1.53e+4   1.04e4     1.22e+4   416
+## 320 NA75                  ray63          1.64e+4   1.36e4     1.24e+4   415
+## 321 NA75                  ray99          1.64e+4   1.36e4     1.24e+4   415
+## 322 NA75                  velvet21       6.27e+2   5.76e2     1.31e+2   238
+## 323 NA75                  velvet63       6.94e+2   5.82e2     4.22e+2   341
+## 324 NA75                  velvet99       1.05e+3   5.98e2     2.17e+3   377
+## 325 Reference length      abyss21        2.99e+4   2.99e4     0.        410
+## 326 Reference length      abyss63        2.99e+4   2.99e4     0.        410
+## 327 Reference length      abyss99        2.99e+4   2.99e4     0.        381
+## 328 Reference length      metavelve…     2.99e+4   2.99e4     0.        239
+## 329 Reference length      metavelve…     2.99e+4   2.99e4     0.        344
+## 330 Reference length      metavelve…     2.99e+4   2.99e4     0.        377
+## 331 Reference length      ray21          2.99e+4   2.99e4     0.        416
+## 332 Reference length      ray63          2.99e+4   2.99e4     0.        415
+## 333 Reference length      ray99          2.99e+4   2.99e4     0.        415
+## 334 Reference length      velvet21       2.99e+4   2.99e4     0.        238
+## 335 Reference length      velvet63       2.99e+4   2.99e4     0.        341
+## 336 Reference length      velvet99       2.99e+4   2.99e4     0.        377
+## 337 scaffold gap ext. mi… abyss21        3.04e-3   0.         5.51e-2   410
+## 338 scaffold gap ext. mi… abyss63        2.99e-3   0.         5.47e-2   410
+## 339 scaffold gap ext. mi… abyss99        3.12e-3   0.         5.58e-2   381
+## 340 scaffold gap ext. mi… metavelve…     0.        0.         0.        239
+## 341 scaffold gap ext. mi… metavelve…     0.        0.         0.        344
+## 342 scaffold gap ext. mi… metavelve…     0.        0.         0.        377
+## 343 scaffold gap ext. mi… ray21          8.00e-3   0.         8.92e-2   416
+## 344 scaffold gap ext. mi… ray63          0.        0.         0.        415
+## 345 scaffold gap ext. mi… ray99          0.        0.         0.        415
+## 346 scaffold gap ext. mi… velvet21       0.        0.         0.        238
+## 347 scaffold gap ext. mi… velvet63       0.        0.         0.        341
+## 348 scaffold gap ext. mi… velvet99       0.        0.         0.        377
+## 349 scaffold gap loc. mi… abyss21        1.22e-1   0.         5.39e-1   410
+## 350 scaffold gap loc. mi… abyss63        2.57e-1   0.         1.44e+0   410
+## 351 scaffold gap loc. mi… abyss99        2.71e-1   0.         1.18e+0   381
+## 352 scaffold gap loc. mi… metavelve…     0.        0.         0.        239
+## 353 scaffold gap loc. mi… metavelve…     0.        0.         0.        344
+## 354 scaffold gap loc. mi… metavelve…     0.        0.         0.        377
+## 355 scaffold gap loc. mi… ray21          4.77e-1   0.         1.67e+0   416
+## 356 scaffold gap loc. mi… ray63          4.64e-1   0.         1.73e+0   415
+## 357 scaffold gap loc. mi… ray99          4.66e-1   0.         1.75e+0   415
+## 358 scaffold gap loc. mi… velvet21       0.        0.         0.        238
+## 359 scaffold gap loc. mi… velvet63       0.        0.         0.        341
+## 360 scaffold gap loc. mi… velvet99       0.        0.         0.        377
+## 361 Total aligned length  abyss21        2.37e+4   2.85e4     9.59e+3   410
+## 362 Total aligned length  abyss63        2.43e+4   2.93e4     9.12e+3   410
+## 363 Total aligned length  abyss99        2.23e+4   2.79e4     9.84e+3   381
+## 364 Total aligned length  metavelve…     5.36e+3   2.54e3     6.51e+3   239
+## 365 Total aligned length  metavelve…     8.41e+3   5.18e3     8.34e+3   344
+## 366 Total aligned length  metavelve…     1.16e+4   8.10e3     9.42e+3   377
+## 367 Total aligned length  ray21          2.93e+4   2.99e4     1.11e+4   416
+## 368 Total aligned length  ray63          2.86e+4   2.98e4     9.38e+3   415
+## 369 Total aligned length  ray99          2.86e+4   2.98e4     9.38e+3   415
+## 370 Total aligned length  velvet21       5.37e+3   2.54e3     6.52e+3   238
+## 371 Total aligned length  velvet63       8.49e+3   5.22e3     8.35e+3   341
+## 372 Total aligned length  velvet99       1.17e+4   7.92e3     9.42e+3   377
+## 373 Total length          abyss21        9.43e+4   2.90e4     3.82e+5   410
+## 374 Total length          abyss63        5.31e+4   2.96e4     1.78e+5   410
+## 375 Total length          abyss99        2.65e+4   2.80e4     3.39e+4   381
+## 376 Total length          metavelve…     4.86e+4   5.01e3     1.43e+5   239
+## 377 Total length          metavelve…     4.65e+4   7.85e3     1.99e+5   344
+## 378 Total length          metavelve…     2.02e+4   9.24e3     6.79e+4   377
+## 379 Total length          ray21          9.63e+4   3.22e4     3.57e+5   416
+## 380 Total length          ray63          8.14e+4   3.12e4     2.81e+5   415
+## 381 Total length          ray99          8.14e+4   3.12e4     2.81e+5   415
+## 382 Total length          velvet21       4.88e+4   4.83e3     1.44e+5   238
+## 383 Total length          velvet63       4.69e+4   8.27e3     2.00e+5   341
+## 384 Total length          velvet99       2.02e+4   9.40e3     6.79e+4   377
+## 385 Total length (>= 0 b… abyss21        9.84e+5   3.14e4     2.21e+6   410
+## 386 Total length (>= 0 b… abyss63        7.45e+5   3.15e4     2.08e+6   410
+## 387 Total length (>= 0 b… abyss99        2.67e+5   3.17e4     1.68e+6   381
+## 388 Total length (>= 0 b… metavelve…     1.94e+6   5.77e5     3.06e+6   239
+## 389 Total length (>= 0 b… metavelve…     4.27e+5   8.41e4     1.37e+6   344
+## 390 Total length (>= 0 b… metavelve…     1.22e+5   3.21e4     9.15e+5   377
+## 391 Total length (>= 0 b… ray21          5.61e+5   6.13e4     1.23e+6   416
+## 392 Total length (>= 0 b… ray63          4.80e+5   5.44e4     1.13e+6   415
+## 393 Total length (>= 0 b… ray99          4.80e+5   5.44e4     1.13e+6   415
+## 394 Total length (>= 0 b… velvet21       1.94e+6   5.87e5     3.07e+6   238
+## 395 Total length (>= 0 b… velvet63       4.30e+5   8.06e4     1.38e+6   341
+## 396 Total length (>= 0 b… velvet99       1.22e+5   3.22e4     9.14e+5   377
+## 397 Total length (>= 100… abyss21        4.63e+4   2.67e4     2.26e+5   410
+## 398 Total length (>= 100… abyss63        2.85e+4   2.74e4     6.35e+4   410
+## 399 Total length (>= 100… abyss99        1.77e+4   1.86e4     1.75e+4   381
+## 400 Total length (>= 100… metavelve…     3.80e+3   0.         1.30e+4   239
+## 401 Total length (>= 100… metavelve…     1.21e+4   1.09e3     5.67e+4   344
+## 402 Total length (>= 100… metavelve…     7.30e+3   2.16e3     1.36e+4   377
+## 403 Total length (>= 100… ray21          6.12e+4   3.05e4     2.32e+5   416
+## 404 Total length (>= 100… ray63          5.10e+4   2.99e4     1.59e+5   415
+## 405 Total length (>= 100… ray99          5.10e+4   2.99e4     1.59e+5   415
+## 406 Total length (>= 100… velvet21       3.77e+3   0.         1.31e+4   238
+## 407 Total length (>= 100… velvet63       1.22e+4   1.10e3     5.69e+4   341
+## 408 Total length (>= 100… velvet99       7.40e+3   2.11e3     1.41e+4   377
+## 409 Total length (>= 100… abyss21        1.11e+4   0.         1.20e+4   410
+## 410 Total length (>= 100… abyss63        9.51e+3   0.         1.22e+4   410
+## 411 Total length (>= 100… abyss99        7.63e+3   0.         1.22e+4   381
+## 412 Total length (>= 100… metavelve…     0.        0.         0.        239
+## 413 Total length (>= 100… metavelve…     9.88e+1   0.         1.06e+3   344
+## 414 Total length (>= 100… metavelve…     2.48e+2   0.         2.05e+3   377
+## 415 Total length (>= 100… ray21          1.92e+4   2.33e4     1.70e+4   416
+## 416 Total length (>= 100… ray63          1.82e+4   2.23e4     1.52e+4   415
+## 417 Total length (>= 100… ray99          1.82e+4   2.23e4     1.52e+4   415
+## 418 Total length (>= 100… velvet21       0.        0.         0.        238
+## 419 Total length (>= 100… velvet63       9.96e+1   0.         1.06e+3   341
+## 420 Total length (>= 100… velvet99       2.48e+2   0.         2.05e+3   377
+## 421 Total length (>= 250… abyss21        4.78e+3   0.         1.03e+4   410
+## 422 Total length (>= 250… abyss63        5.72e+3   0.         1.15e+4   410
+## 423 Total length (>= 250… abyss99        5.28e+3   0.         1.13e+4   381
+## 424 Total length (>= 250… metavelve…     0.        0.         0.        239
+## 425 Total length (>= 250… metavelve…     0.        0.         0.        344
+## 426 Total length (>= 250… metavelve…     0.        0.         0.        377
+## 427 Total length (>= 250… ray21          1.38e+4   0.         1.74e+4   416
+## 428 Total length (>= 250… ray63          1.29e+4   0.         1.55e+4   415
+## 429 Total length (>= 250… ray99          1.29e+4   0.         1.55e+4   415
+## 430 Total length (>= 250… velvet21       0.        0.         0.        238
+## 431 Total length (>= 250… velvet63       0.        0.         0.        341
+## 432 Total length (>= 250… velvet99       0.        0.         0.        377
+## 433 Total length (>= 500… abyss21        1.51e+4   1.90e4     2.49e+4   410
+## 434 Total length (>= 500… abyss63        1.26e+4   1.09e4     1.25e+4   410
+## 435 Total length (>= 500… abyss99        9.32e+3   0.         1.26e+4   381
+## 436 Total length (>= 500… metavelve…     0.        0.         0.        239
+## 437 Total length (>= 500… metavelve…     2.74e+2   0.         1.71e+3   344
+## 438 Total length (>= 500… metavelve…     1.18e+3   0.         4.41e+3   377
+## 439 Total length (>= 500… ray21          2.38e+4   2.84e4     2.75e+4   416
+## 440 Total length (>= 500… ray63          2.18e+4   2.83e4     1.73e+4   415
+## 441 Total length (>= 500… ray99          2.18e+4   2.83e4     1.73e+4   415
+## 442 Total length (>= 500… velvet21       0.        0.         0.        238
+## 443 Total length (>= 500… velvet63       2.76e+2   0.         1.71e+3   341
+## 444 Total length (>= 500… velvet99       1.13e+3   0.         4.30e+3   377
+## 445 Total length (>= 500… abyss21        0.        0.         0.        410
+## 446 Total length (>= 500… abyss63        0.        0.         0.        410
+## 447 Total length (>= 500… abyss99        0.        0.         0.        381
+## 448 Total length (>= 500… metavelve…     0.        0.         0.        239
+## 449 Total length (>= 500… metavelve…     0.        0.         0.        344
+## 450 Total length (>= 500… metavelve…     0.        0.         0.        377
+## 451 Total length (>= 500… ray21          5.54e+2   0.         5.64e+3   416
+## 452 Total length (>= 500… ray63          5.21e+2   0.         5.29e+3   415
+## 453 Total length (>= 500… ray99          5.21e+2   0.         5.29e+3   415
+## 454 Total length (>= 500… velvet21       0.        0.         0.        238
+## 455 Total length (>= 500… velvet63       0.        0.         0.        341
+## 456 Total length (>= 500… velvet99       0.        0.         0.        377
+## 457 unaligned contigs     abyss21      NaN        NA         NA         410
+## 458 unaligned contigs     abyss63      NaN        NA         NA         410
+## 459 unaligned contigs     abyss99      NaN        NA         NA         381
+## 460 unaligned contigs     metavelve…   NaN        NA         NA         239
+## 461 unaligned contigs     metavelve…   NaN        NA         NA         344
+## 462 unaligned contigs     metavelve…   NaN        NA         NA         377
+## 463 unaligned contigs     ray21        NaN        NA         NA         416
+## 464 unaligned contigs     ray63        NaN        NA         NA         415
+## 465 unaligned contigs     ray99        NaN        NA         NA         415
+## 466 unaligned contigs     velvet21     NaN        NA         NA         238
+## 467 unaligned contigs     velvet63     NaN        NA         NA         341
+## 468 unaligned contigs     velvet99     NaN        NA         NA         377
+## 469 Unaligned length      abyss21        7.52e+4   0.         3.85e+5   410
+## 470 Unaligned length      abyss63        3.33e+4   0.         1.79e+5   410
+## 471 Unaligned length      abyss99        7.70e+3   0.         3.47e+4   381
+## 472 Unaligned length      metavelve…     4.64e+4   2.87e3     1.44e+5   239
+## 473 Unaligned length      metavelve…     4.08e+4   1.73e3     1.98e+5   344
+## 474 Unaligned length      metavelve…     1.08e+4   6.14e2     6.79e+4   377
+## 475 Unaligned length      ray21          6.95e+4   1.37e3     3.54e+5   416
+## 476 Unaligned length      ray63          5.55e+4   1.25e3     2.79e+5   415
+## 477 Unaligned length      ray99          5.55e+4   1.25e3     2.79e+5   415
+## 478 Unaligned length      velvet21       4.66e+4   2.53e3     1.44e+5   238
+## 479 Unaligned length      velvet63       4.11e+4   1.92e3     1.99e+5   341
+## 480 Unaligned length      velvet99       1.09e+4   5.95e2     6.79e+4   377
+## 481 unaligned mis. conti… abyss21        6.08e-3   0.         1.10e-1   410
+## 482 unaligned mis. conti… abyss63        0.        0.         0.        410
+## 483 unaligned mis. conti… abyss99        0.        0.         0.        381
+## 484 unaligned mis. conti… metavelve…     0.        0.         0.        239
+## 485 unaligned mis. conti… metavelve…     0.        0.         0.        344
+## 486 unaligned mis. conti… metavelve…     0.        0.         0.        377
+## 487 unaligned mis. conti… ray21          0.        0.         0.        416
+## 488 unaligned mis. conti… ray63          2.70e-3   0.         5.19e-2   415
+## 489 unaligned mis. conti… ray99          2.70e-3   0.         5.19e-2   415
+## 490 unaligned mis. conti… velvet21       0.        0.         0.        238
+## 491 unaligned mis. conti… velvet63       0.        0.         0.        341
+## 492 unaligned mis. conti… velvet99       0.        0.         0.        377
+```
+
+```r
+kmer_stats %>% filter(Assembly %in% c("Genome fraction (%)", "Largest alignment", "Duplication ratio", "misassemblies", "N50", "NA50",  "L50", "LA50")) %>%
+
+ggplot( aes(X2, mean)) +
+  geom_col() +
+  facet_grid(Assembly~., scales = "free")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-24.png)<!-- -->
 
 ### 90% of the genome is covered by single contig
 
@@ -2316,14 +3612,7 @@ setwd("~/Documents/research/asm/covid19-Assembly/plots/")
 r = read.table("~/Documents/research/asm/covid19-Assembly/files/read_QC_matrix.txt")[,c(1,4)]
 
 r2 = data.frame(id = str_split_fixed(r$V1, "_", 2), read = r$V4)
-head(r2$id[,1])
-```
 
-```
-## NULL
-```
-
-```r
 #sum every two rows of PE data
 r3 = data.frame(id = unique(r2$id.1), read = (rowsum(r2[,3], as.integer(gl(nrow(r2), 2, nrow(r2))))))
 rx = xm %>% filter(Assembly == "Genome fraction (%)")
@@ -2365,12 +3654,98 @@ ggplot(rx2, aes(value, read/1e6)) +
 ```r
 ggsave("readVsGenome.pdf", width = 20, height = 6, units = "cm")
 
+#global cor
 rx3 = na.omit(rx2)
 cor(rx3$value, rx3$read, method = "spearman")
 ```
 
 ```
 ## [1] 0.09714612
+```
+
+```r
+correlation = rx2 %>% filter(Assay_Type == "AMPLICON") %>% na.omit()
+cor(correlation$value, correlation$read)
+```
+
+```
+## [1] 0.06137333
+```
+
+```r
+cor(correlation$value, correlation$read, method = "spearman")
+```
+
+```
+## [1] 0.1618316
+```
+
+```r
+correlation = rx2 %>% filter(Assay_Type == "Targeted-Capture") %>% na.omit()
+cor(correlation$value, correlation$read)
+```
+
+```
+## [1] -0.2388118
+```
+
+```r
+cor(correlation$value, correlation$read, method = "spearman")
+```
+
+```
+## [1] -0.03389161
+```
+
+```r
+correlation = rx2 %>% filter(Assay_Type == "WGA") %>% na.omit()
+cor(correlation$value, correlation$read)
+```
+
+```
+## [1] 0.1314957
+```
+
+```r
+cor(correlation$value, correlation$read, method = "spearman")
+```
+
+```
+## [1] 0.1226009
+```
+
+```r
+correlation = rx2 %>% filter(Assay_Type == "RNA-Seq") %>% na.omit()
+cor(correlation$value, correlation$read)
+```
+
+```
+## [1] 0.01013915
+```
+
+```r
+cor(correlation$value, correlation$read, method = "spearman")
+```
+
+```
+## [1] 0.1870429
+```
+
+```r
+correlation = rx2 %>% filter(Assay_Type == "OTHER") %>% na.omit()
+cor(correlation$value, correlation$read)
+```
+
+```
+## [1] 0.2078841
+```
+
+```r
+cor(correlation$value, correlation$read, method = "spearman")
+```
+
+```
+## [1] 0.3073505
 ```
 
 ```r
