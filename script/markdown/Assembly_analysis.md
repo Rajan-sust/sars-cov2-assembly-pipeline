@@ -9,11 +9,27 @@ output:
 
 
 
+
+>agree disagree read count
+
+
+```r
+x = read.table("/Users/rashedulislam/Documents/research/asm/bam/bwa_alignment/disagreement_MetaSpades_Megahit/merged_vcf/agree_disagree.bed.readcount")
+
+x %>% select(V12, V4) %>%
+  ggplot(aes(V4, V12)) +
+  geom_boxplot()
+```
+
+
+
 ### Spike variants
 
 
 ```r
 library(tidyverse)
+library(reshape2)
+
 setwd("~/Documents/research/asm/covid19-Assembly/plots/")
 
 s = read.table("~/Documents/research/asm/covid19-Assembly/files/SpikeSNVsDetails.txt")
@@ -42,10 +58,77 @@ ggplot(s3, aes(X2, n, fill = V5)) +
         legend.position = "right")
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 
 ```r
 ggsave("Variant_count_spike.pdf", width = 18, height = 13, units = "cm", device = 'pdf')
+
+# mega and meta had 100% spike
+t = read.table("~/Documents/research/asm/covid19-Assembly/files/intersected_samples_list.txt")
+
+mgs = read.table("~/Documents/research/asm/covid19-Assembly/files/spike_intersected_megahit_SRR.txt")
+table(duplicated(mgs))
+```
+
+```
+## 
+## FALSE 
+##   294
+```
+
+```r
+mts = read.table("~/Documents/research/asm/covid19-Assembly/files/spike_intersected_metaspades_SRR.txt")
+table(duplicated(mts))
+```
+
+```
+## 
+## FALSE  TRUE 
+##   292    12
+```
+
+```r
+mts2 = data.frame(V1 = mts[!duplicated(mts$V1), ])
+length(unique(intersect(mgs$V1, mts2$V1)))
+```
+
+```
+## [1] 285
+```
+
+```r
+se_temp = s2 %>% select(X1, X2, V5)
+mg = left_join(mgs, se_temp, by = c("V1" = "X1")) %>% filter(X2 %in% c("megahit"))
+mt = left_join(mts2, se_temp, by = c("V1" = "X1")) %>% filter(X2 %in% c( "metaspades"))
+
+length(unique(intersect(mg$V1, mt$V1)))
+```
+
+```
+## [1] 222
+```
+
+```r
+ms_common = inner_join(mg, mt, by = c("V1" = "V1")) 
+
+s3 %>% filter(X2 %in% c("megahit", "metaspades")) %>%
+ggplot(aes(X2, n, fill = V5)) +
+  geom_bar(position="stack", stat="identity") + 
+    xlab("") +
+    ylab("Total variants at Spike locus") +
+    theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1),
+        strip.background =element_rect(fill="white"),
+        legend.position = "right")
+```
+
+![](Assembly_analysis_files/figure-html/unnamed-chunk-2-2.png)<!-- -->
+
+```r
+ggsave("Variant_count_spike_mega_meta.pdf", width = 10, height = 13, units = "cm", device = 'pdf')
+
+
 
 ## total count of variants
 v = read.table("~/Documents/research/asm/covid19-Assembly/files/Variant_count_all_assembler.txt")
@@ -61,7 +144,7 @@ ggplot(v, aes(V1, V2, fill = V1)) +
         legend.position = "none")
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-1-2.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-2-3.png)<!-- -->
 
 ```r
 ggsave("Variant_count_all.pdf", width = 18, height = 13, units = "cm", device = 'pdf')
@@ -104,7 +187,7 @@ ggplot(df2, aes(variable, value)) +
         legend.position = "none")
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-1-3.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-2-4.png)<!-- -->
 
 ```r
 ggsave("Variant_count_per_sample.pdf", width = 18, height = 13, units = "cm", device = 'pdf')
@@ -128,7 +211,7 @@ ggplot(df3, aes(variable, mean)) +
         legend.position = "none")
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-1-4.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-2-5.png)<!-- -->
 
 ```r
 print(df3, n = Inf)
@@ -179,7 +262,7 @@ ggplot(c, aes(Assembler, `Time(s)`)) +
         legend.position = "none")
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
 
 ```r
 ggsave("CPU_times.pdf", width = 18, height = 13, units = "cm", device = 'pdf')
@@ -201,7 +284,7 @@ ggplot(c, aes(Assembler, Ram_percentage)) +
         legend.position = "none")
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-2-2.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-3-2.png)<!-- -->
 
 ```r
 ggsave("RAM_usage.pdf", width = 18, height = 13, units = "cm", device = 'pdf')
@@ -275,13 +358,13 @@ rownames(anno) = rownames(both5)
 pheatmap(both5, annotation_row = anno, cluster_cols = F, cluster_rows = F, show_rownames = F, show_colnames = F, color = colorRampPalette(c("red", "white", "gray"))(1000), border_color = NA, gaps_col = c(599, 599+599, 599+599+599), gaps_row = c(82, 82+65, 82+65+58, 82+65+58+88))
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
 ```r
 plot.new()
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-3-2.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-4-2.png)<!-- -->
 
 ```r
 jpeg("~/Documents/research/asm/covid19-Assembly/plots/heatmap_v2.jpg", width = 1800, height = 1000)
@@ -295,6 +378,9 @@ dev.off()
 ```
 
 ```r
+#colmeans
+cm = data.frame(colMeans(both5))
+
 #get best and worst asm
 worst = data.frame(asm = rowSums(both5)) %>% arrange(asm) %>% head() 
 best = data.frame(asm = rowSums(both5)) %>% arrange(asm) %>% tail()
@@ -415,28 +501,28 @@ temp %>% filter(X2 == "megahit") %>% head(n=10)
 ```
 
 ```
-##             X1      X2 X3   value            Assembly
-## 1  SRR11783601 megahit PE 100.000 Genome fraction (%)
-## 2   ERR4206143 megahit PE  99.957 Genome fraction (%)
-## 3  SRR11783610 megahit PE  99.957 Genome fraction (%)
-## 4  SRR12182126 megahit PE  99.950 Genome fraction (%)
-## 5   ERR4204166 megahit PE  99.920 Genome fraction (%)
-## 6  SRR11409417 megahit PE  99.920 Genome fraction (%)
-## 7   ERR4204410 megahit PE  99.913 Genome fraction (%)
-## 8   ERR4205160 megahit PE  99.910 Genome fraction (%)
-## 9  SRR11953751 megahit PE  99.910 Genome fraction (%)
-## 10 SRR12182120 megahit PE  99.910 Genome fraction (%)
-##                  variable value.1
-## 1  SRR11783601_megahit_PE 100.000
-## 2   ERR4206143_megahit_PE  99.957
-## 3  SRR11783610_megahit_PE  99.957
-## 4  SRR12182126_megahit_PE  99.950
-## 5   ERR4204166_megahit_PE  99.920
-## 6  SRR11409417_megahit_PE  99.920
-## 7   ERR4204410_megahit_PE  99.913
-## 8   ERR4205160_megahit_PE  99.910
-## 9  SRR11953751_megahit_PE  99.910
-## 10 SRR12182120_megahit_PE  99.910
+##             X1      X2 X3   value            Assembly               variable
+## 1  SRR11783601 megahit PE 100.000 Genome fraction (%) SRR11783601_megahit_PE
+## 2   ERR4206143 megahit PE  99.957 Genome fraction (%)  ERR4206143_megahit_PE
+## 3  SRR11783610 megahit PE  99.957 Genome fraction (%) SRR11783610_megahit_PE
+## 4  SRR12182126 megahit PE  99.950 Genome fraction (%) SRR12182126_megahit_PE
+## 5   ERR4204166 megahit PE  99.920 Genome fraction (%)  ERR4204166_megahit_PE
+## 6  SRR11409417 megahit PE  99.920 Genome fraction (%) SRR11409417_megahit_PE
+## 7   ERR4204410 megahit PE  99.913 Genome fraction (%)  ERR4204410_megahit_PE
+## 8   ERR4205160 megahit PE  99.910 Genome fraction (%)  ERR4205160_megahit_PE
+## 9  SRR11953751 megahit PE  99.910 Genome fraction (%) SRR11953751_megahit_PE
+## 10 SRR12182120 megahit PE  99.910 Genome fraction (%) SRR12182120_megahit_PE
+##    value.1
+## 1  100.000
+## 2   99.957
+## 3   99.957
+## 4   99.950
+## 5   99.920
+## 6   99.920
+## 7   99.913
+## 8   99.910
+## 9   99.910
+## 10  99.910
 ```
 
 ```r
@@ -478,7 +564,7 @@ temp %>% filter(value >= 70) %>%
 ```
 ## # A tibble: 355 x 2
 ##    X1              n
-##    <fct>       <int>
+##    <chr>       <int>
 ##  1 SRR12182137    16
 ##  2 SRR12182146    16
 ##  3 SRR12182151    16
@@ -513,7 +599,7 @@ xm %>% distinct(variable, .keep_all = T) %>%
 ## # A tibble: 5 x 3
 ## # Groups:   Assay_Type [5]
 ##   Assay_Type       X2          n
-##   <chr>            <fct>   <int>
+##   <chr>            <chr>   <int>
 ## 1 AMPLICON         megahit    82
 ## 2 OTHER            abyss63    66
 ## 3 RNA-Seq          abyss21    75
@@ -560,7 +646,7 @@ make_boxplot("Genome fraction (%)")
 ## # A tibble: 80 x 4
 ## # Groups:   Assay_Type [5]
 ##    Assay_Type       X2            mean median
-##    <chr>            <fct>        <dbl>  <dbl>
+##    <chr>            <chr>        <dbl>  <dbl>
 ##  1 AMPLICON         abyss21      84.8   94.8 
 ##  2 AMPLICON         abyss63      83.5   95.6 
 ##  3 AMPLICON         abyss99      70.6   81.5 
@@ -643,7 +729,7 @@ make_boxplot("Genome fraction (%)")
 ## 80 WGA              velvet99     21.3   20.5
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
 
 ```r
 make_boxplot("Largest contig")
@@ -653,7 +739,7 @@ make_boxplot("Largest contig")
 ## # A tibble: 80 x 4
 ## # Groups:   Assay_Type [5]
 ##    Assay_Type       X2             mean median
-##    <chr>            <fct>         <dbl>  <dbl>
+##    <chr>            <chr>         <dbl>  <dbl>
 ##  1 AMPLICON         abyss21      12912. 12340.
 ##  2 AMPLICON         abyss63      10376.  6950 
 ##  3 AMPLICON         abyss99       5917.  2826 
@@ -736,7 +822,7 @@ make_boxplot("Largest contig")
 ## 80 WGA              velvet99      1154.  1072.
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-2.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-2.png)<!-- -->
 
 ```r
 make_boxplot("Total length")
@@ -746,7 +832,7 @@ make_boxplot("Total length")
 ## # A tibble: 80 x 4
 ## # Groups:   Assay_Type [5]
 ##    Assay_Type       X2               mean  median
-##    <chr>            <fct>           <dbl>   <dbl>
+##    <chr>            <chr>           <dbl>   <dbl>
 ##  1 AMPLICON         abyss21        25718.  28690.
 ##  2 AMPLICON         abyss63        25518.  28960 
 ##  3 AMPLICON         abyss99        21873.  25571 
@@ -829,7 +915,7 @@ make_boxplot("Total length")
 ## 80 WGA              velvet99       17133.   9277
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-3.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-3.png)<!-- -->
 
 ```r
 make_boxplot("contigs")
@@ -839,7 +925,7 @@ make_boxplot("contigs")
 ## # A tibble: 80 x 4
 ## # Groups:   Assay_Type [5]
 ##    Assay_Type       X2             mean median
-##    <chr>            <fct>         <dbl>  <dbl>
+##    <chr>            <chr>         <dbl>  <dbl>
 ##  1 AMPLICON         abyss21        7.76    5  
 ##  2 AMPLICON         abyss63       10.2     9  
 ##  3 AMPLICON         abyss99       13.9    14.5
@@ -922,7 +1008,7 @@ make_boxplot("contigs")
 ## 80 WGA              velvet99      24.9    13.5
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-4.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-4.png)<!-- -->
 
 ```r
 make_boxplot("contigs (>= 1000 bp)")
@@ -932,7 +1018,7 @@ make_boxplot("contigs (>= 1000 bp)")
 ## # A tibble: 80 x 4
 ## # Groups:   Assay_Type [5]
 ##    Assay_Type       X2             mean median
-##    <chr>            <fct>         <dbl>  <dbl>
+##    <chr>            <chr>         <dbl>  <dbl>
 ##  1 AMPLICON         abyss21        3.88    3  
 ##  2 AMPLICON         abyss63        5.38    5  
 ##  3 AMPLICON         abyss99        5.36    5.5
@@ -1015,7 +1101,7 @@ make_boxplot("contigs (>= 1000 bp)")
 ## 80 WGA              velvet99       2.32    1
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-5.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-5.png)<!-- -->
 
 ```r
 make_boxplot("Largest alignment")
@@ -1025,7 +1111,7 @@ make_boxplot("Largest alignment")
 ## # A tibble: 80 x 4
 ## # Groups:   Assay_Type [5]
 ##    Assay_Type       X2             mean median
-##    <chr>            <fct>         <dbl>  <dbl>
+##    <chr>            <chr>         <dbl>  <dbl>
 ##  1 AMPLICON         abyss21      13111. 12314.
 ##  2 AMPLICON         abyss63      10592.  6996 
 ##  3 AMPLICON         abyss99       6017.  2917 
@@ -1108,7 +1194,7 @@ make_boxplot("Largest alignment")
 ## 80 WGA              velvet99       934.   863
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-6.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-6.png)<!-- -->
 
 ```r
 make_boxplot("mismatches per 100 kbp")
@@ -1118,7 +1204,7 @@ make_boxplot("mismatches per 100 kbp")
 ## # A tibble: 80 x 4
 ## # Groups:   Assay_Type [5]
 ##    Assay_Type       X2            mean median
-##    <chr>            <fct>        <dbl>  <dbl>
+##    <chr>            <chr>        <dbl>  <dbl>
 ##  1 AMPLICON         abyss21       24.6  25.3 
 ##  2 AMPLICON         abyss63       27.1  26.9 
 ##  3 AMPLICON         abyss99       27.4  25.6 
@@ -1201,7 +1287,7 @@ make_boxplot("mismatches per 100 kbp")
 ## 80 WGA              velvet99      43.0  35.4
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-7.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-7.png)<!-- -->
 
 ```r
 make_boxplot("indels per 100 kbp")
@@ -1211,7 +1297,7 @@ make_boxplot("indels per 100 kbp")
 ## # A tibble: 80 x 4
 ## # Groups:   Assay_Type [5]
 ##    Assay_Type       X2             mean median
-##    <chr>            <fct>         <dbl>  <dbl>
+##    <chr>            <chr>         <dbl>  <dbl>
 ##  1 AMPLICON         abyss21       9.77    3.48
 ##  2 AMPLICON         abyss63       5.69    3.39
 ##  3 AMPLICON         abyss99       7.38    0   
@@ -1294,7 +1380,7 @@ make_boxplot("indels per 100 kbp")
 ## 80 WGA              velvet99     19.9    16.8
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-8.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-8.png)<!-- -->
 
 ```r
 make_boxplot("Total aligned length")
@@ -1304,7 +1390,7 @@ make_boxplot("Total aligned length")
 ## # A tibble: 80 x 4
 ## # Groups:   Assay_Type [5]
 ##    Assay_Type       X2              mean median
-##    <chr>            <fct>          <dbl>  <dbl>
+##    <chr>            <chr>          <dbl>  <dbl>
 ##  1 AMPLICON         abyss21       25541. 28664.
 ##  2 AMPLICON         abyss63       25150. 28892 
 ##  3 AMPLICON         abyss99       21509. 25098.
@@ -1387,7 +1473,7 @@ make_boxplot("Total aligned length")
 ## 80 WGA              velvet99       6403.  6214
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-9.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-9.png)<!-- -->
 
 ```r
 #make_boxplot("unaligned contigs")
@@ -1398,7 +1484,7 @@ make_boxplot("N50")
 ## # A tibble: 80 x 4
 ## # Groups:   Assay_Type [5]
 ##    Assay_Type       X2             mean median
-##    <chr>            <fct>         <dbl>  <dbl>
+##    <chr>            <chr>         <dbl>  <dbl>
 ##  1 AMPLICON         abyss21      11643.  8250.
 ##  2 AMPLICON         abyss63       8927.  4117 
 ##  3 AMPLICON         abyss99       4241.  1278.
@@ -1481,7 +1567,7 @@ make_boxplot("N50")
 ## 80 WGA              velvet99       648.   628
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-10.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-10.png)<!-- -->
 
 ```r
 make_boxplot("N75")
@@ -1491,7 +1577,7 @@ make_boxplot("N75")
 ## # A tibble: 80 x 4
 ## # Groups:   Assay_Type [5]
 ##    Assay_Type       X2             mean median
-##    <chr>            <fct>         <dbl>  <dbl>
+##    <chr>            <chr>         <dbl>  <dbl>
 ##  1 AMPLICON         abyss21       8296.  5720.
 ##  2 AMPLICON         abyss63       6135.  2545 
 ##  3 AMPLICON         abyss99       2238.   713 
@@ -1574,7 +1660,7 @@ make_boxplot("N75")
 ## 80 WGA              velvet99       564.   553
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-11.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-11.png)<!-- -->
 
 ```r
 #make_boxplot("L50")
@@ -1585,7 +1671,7 @@ make_boxplot("L75")
 ## # A tibble: 80 x 4
 ## # Groups:   Assay_Type [5]
 ##    Assay_Type       X2             mean median
-##    <chr>            <fct>         <dbl>  <dbl>
+##    <chr>            <chr>         <dbl>  <dbl>
 ##  1 AMPLICON         abyss21        4.4     3  
 ##  2 AMPLICON         abyss63        5.79    5  
 ##  3 AMPLICON         abyss99        8.65    7.5
@@ -1668,7 +1754,7 @@ make_boxplot("L75")
 ## 80 WGA              velvet99      17.4    10
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-12.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-12.png)<!-- -->
 
 ```r
 make_boxplot("NA50")
@@ -1678,7 +1764,7 @@ make_boxplot("NA50")
 ## # A tibble: 80 x 4
 ## # Groups:   Assay_Type [5]
 ##    Assay_Type       X2             mean median
-##    <chr>            <fct>         <dbl>  <dbl>
+##    <chr>            <chr>         <dbl>  <dbl>
 ##  1 AMPLICON         abyss21      12311.  8610 
 ##  2 AMPLICON         abyss63       9431.  4624.
 ##  3 AMPLICON         abyss99       4517.  1480 
@@ -1761,7 +1847,7 @@ make_boxplot("NA50")
 ## 80 WGA              velvet99       597.   584.
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-13.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-13.png)<!-- -->
 
 ```r
 make_boxplot("NA75")
@@ -1771,7 +1857,7 @@ make_boxplot("NA75")
 ## # A tibble: 80 x 4
 ## # Groups:   Assay_Type [5]
 ##    Assay_Type       X2             mean median
-##    <chr>            <fct>         <dbl>  <dbl>
+##    <chr>            <chr>         <dbl>  <dbl>
 ##  1 AMPLICON         abyss21       8901.  6368 
 ##  2 AMPLICON         abyss63       6416.  3052.
 ##  3 AMPLICON         abyss99       2379.   866.
@@ -1854,7 +1940,7 @@ make_boxplot("NA75")
 ## 80 WGA              velvet99       527.   528.
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-14.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-14.png)<!-- -->
 
 ```r
 #make_boxplot("LA50")
@@ -1865,7 +1951,7 @@ make_boxplot("LA75")
 ## # A tibble: 80 x 4
 ## # Groups:   Assay_Type [5]
 ##    Assay_Type       X2             mean median
-##    <chr>            <fct>         <dbl>  <dbl>
+##    <chr>            <chr>         <dbl>  <dbl>
 ##  1 AMPLICON         abyss21        3.93    2  
 ##  2 AMPLICON         abyss63        5.37    4.5
 ##  3 AMPLICON         abyss99        8.58    8.5
@@ -1948,7 +2034,7 @@ make_boxplot("LA75")
 ## 80 WGA              velvet99       8.65    8.5
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-15.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-15.png)<!-- -->
 
 ```r
 make_boxplot("unaligned mis. contigs")
@@ -1958,7 +2044,7 @@ make_boxplot("unaligned mis. contigs")
 ## # A tibble: 80 x 4
 ## # Groups:   Assay_Type [5]
 ##    Assay_Type       X2             mean median
-##    <chr>            <fct>         <dbl>  <dbl>
+##    <chr>            <chr>         <dbl>  <dbl>
 ##  1 AMPLICON         abyss21      0.0256      0
 ##  2 AMPLICON         abyss63      0           0
 ##  3 AMPLICON         abyss99      0           0
@@ -2041,7 +2127,7 @@ make_boxplot("unaligned mis. contigs")
 ## 80 WGA              velvet99     0           0
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-16.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-16.png)<!-- -->
 
 ```r
 make_boxplot("N's per 100 kbp")
@@ -2051,7 +2137,7 @@ make_boxplot("N's per 100 kbp")
 ## # A tibble: 80 x 4
 ## # Groups:   Assay_Type [5]
 ##    Assay_Type       X2              mean median
-##    <chr>            <fct>          <dbl>  <dbl>
+##    <chr>            <chr>          <dbl>  <dbl>
 ##  1 AMPLICON         abyss21       813.    132. 
 ##  2 AMPLICON         abyss63       919.    166. 
 ##  3 AMPLICON         abyss99      1209.      0  
@@ -2134,7 +2220,7 @@ make_boxplot("N's per 100 kbp")
 ## 80 WGA              velvet99        0       0
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-17.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-17.png)<!-- -->
 
 ```r
 #n50
@@ -2183,7 +2269,7 @@ make_boxplot_v2("L50")
 ## # A tibble: 80 x 5
 ## # Groups:   X2 [16]
 ##    X2           Assay_Type         mean median maximum
-##    <fct>        <chr>             <dbl>  <dbl>   <dbl>
+##    <chr>        <chr>             <dbl>  <dbl>   <dbl>
 ##  1 abyss21      AMPLICON           2.56    2        12
 ##  2 abyss21      OTHER             10.6     2       220
 ##  3 abyss21      RNA-Seq          155.     24      1478
@@ -2268,7 +2354,7 @@ make_boxplot_v2("L50")
 ## # A tibble: 80 x 3
 ## # Groups:   X2 [16]
 ##    X2           Assay_Type           n
-##    <fct>        <chr>            <dbl>
+##    <chr>        <chr>            <dbl>
 ##  1 abyss21      AMPLICON           205
 ##  2 abyss21      OTHER              692
 ##  3 abyss21      RNA-Seq          11601
@@ -2351,7 +2437,7 @@ make_boxplot_v2("L50")
 ## 80 velvet99     WGA               1032
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-18.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-18.png)<!-- -->
 
 ```r
 make_boxplot_v2("LA50")
@@ -2361,7 +2447,7 @@ make_boxplot_v2("LA50")
 ## # A tibble: 80 x 5
 ## # Groups:   X2 [16]
 ##    X2           Assay_Type        mean median maximum
-##    <fct>        <chr>            <dbl>  <dbl>   <dbl>
+##    <chr>        <chr>            <dbl>  <dbl>   <dbl>
 ##  1 abyss21      AMPLICON          2.28    2         7
 ##  2 abyss21      OTHER             2.54    1.5       9
 ##  3 abyss21      RNA-Seq           6.43    8        12
@@ -2446,7 +2532,7 @@ make_boxplot_v2("LA50")
 ## # A tibble: 80 x 3
 ## # Groups:   X2 [16]
 ##    X2           Assay_Type           n
-##    <fct>        <chr>            <dbl>
+##    <chr>        <chr>            <dbl>
 ##  1 abyss21      AMPLICON           171
 ##  2 abyss21      OTHER              142
 ##  3 abyss21      RNA-Seq             45
@@ -2529,7 +2615,7 @@ make_boxplot_v2("LA50")
 ## 80 velvet99     WGA                376
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-19.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-19.png)<!-- -->
 
 ```r
 make_boxplot_v2("Duplication ratio")
@@ -2539,7 +2625,7 @@ make_boxplot_v2("Duplication ratio")
 ## # A tibble: 80 x 5
 ## # Groups:   X2 [16]
 ##    X2           Assay_Type        mean median maximum
-##    <fct>        <chr>            <dbl>  <dbl>   <dbl>
+##    <chr>        <chr>            <dbl>  <dbl>   <dbl>
 ##  1 abyss21      AMPLICON          1.02   1.00    2.08
 ##  2 abyss21      OTHER             1.00   1.00    1.01
 ##  3 abyss21      RNA-Seq           1.02   1       1.33
@@ -2624,7 +2710,7 @@ make_boxplot_v2("Duplication ratio")
 ## # A tibble: 80 x 3
 ## # Groups:   X2 [16]
 ##    X2           Assay_Type           n
-##    <fct>        <chr>            <dbl>
+##    <chr>        <chr>            <dbl>
 ##  1 abyss21      AMPLICON          79.7
 ##  2 abyss21      OTHER             59.2
 ##  3 abyss21      RNA-Seq           32.5
@@ -2707,7 +2793,7 @@ make_boxplot_v2("Duplication ratio")
 ## 80 velvet99     WGA               93.6
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-20.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-20.png)<!-- -->
 
 ```r
 make_boxplot_v2("misassemblies")
@@ -2717,7 +2803,7 @@ make_boxplot_v2("misassemblies")
 ## # A tibble: 80 x 5
 ## # Groups:   X2 [16]
 ##    X2           Assay_Type          mean median maximum
-##    <fct>        <chr>              <dbl>  <dbl>   <dbl>
+##    <chr>        <chr>              <dbl>  <dbl>   <dbl>
 ##  1 abyss21      AMPLICON          0.0128      0       1
 ##  2 abyss21      OTHER             0.0169      0       1
 ##  3 abyss21      RNA-Seq           0.0312      0       1
@@ -2802,7 +2888,7 @@ make_boxplot_v2("misassemblies")
 ## # A tibble: 80 x 3
 ## # Groups:   X2 [16]
 ##    X2           Assay_Type           n
-##    <fct>        <chr>            <dbl>
+##    <chr>        <chr>            <dbl>
 ##  1 abyss21      AMPLICON             1
 ##  2 abyss21      OTHER                1
 ##  3 abyss21      RNA-Seq              1
@@ -2885,7 +2971,7 @@ make_boxplot_v2("misassemblies")
 ## 80 velvet99     WGA                 32
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-21.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-21.png)<!-- -->
 
 ```r
 #num of mis asm
@@ -2943,7 +3029,7 @@ ggplot(s3, aes(mis, dupliR)) +
   guides(color = guide_legend(override.aes = list(size = 3)))
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-22.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-22.png)<!-- -->
 
 ```r
 ggsave("Scatter_misasm_dupliR.pdf", width = 24, height = 10, units = "cm")
@@ -2956,7 +3042,7 @@ s3 %>% group_by(asm, assay) %>%
 ## # A tibble: 80 x 3
 ## # Groups:   asm [16]
 ##    asm     assay            count
-##    <fct>   <chr>            <int>
+##    <chr>   <chr>            <int>
 ##  1 abyss21 AMPLICON            78
 ##  2 abyss21 OTHER               59
 ##  3 abyss21 RNA-Seq             32
@@ -2988,12 +3074,225 @@ x6 = data.frame(assembly = x5$X2, match = as.numeric(as.character(x5$X1.1)), mis
         axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-23.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-23.png)<!-- -->
 
 ```r
 ggsave("percent features mapped.pdf", width = 15, height = 10, units = "cm")
 
-# k-mer quality
+
+# average qualily across all samples
+avg = xm %>% filter(Assembly %in% c("Genome fraction (%)", "Largest alignment", "Duplication ratio", "misassemblies", "N50", "NA50",  "L50", "LA50")) %>%
+  group_by(Assembly, X2) %>%
+  summarise(mean = mean(value, na.rm = T),
+            median = median(value, na.rm = T),
+            max = max(value, na.rm = T),
+            min = min(value, na.rm = T),
+            sd = sd(value, na.rm = T),
+            count = n())
+
+print(avg, n = Inf)
+```
+
+```
+## # A tibble: 128 x 8
+## # Groups:   Assembly [8]
+##     Assembly        X2              mean  median     max     min        sd count
+##     <chr>           <chr>          <dbl>   <dbl>   <dbl>   <dbl>     <dbl> <int>
+##   1 Duplication ra… abyss21      1.01e+0  1.00e0  2.08e0   0.997   8.56e-2   410
+##   2 Duplication ra… abyss63      1.01e+0  1.00e0  1.99e0   0.998   6.01e-2   410
+##   3 Duplication ra… abyss99      1.02e+0  1.01e0  3.00e0   0.995   1.16e-1   381
+##   4 Duplication ra… megahit      1.01e+0  1.00e0  1.52e0   0.999   4.13e-2   416
+##   5 Duplication ra… metaspades   1.09e+0  1.00e0  4.57e0   0.997   4.08e-1   416
+##   6 Duplication ra… metavelve…   1.00e+0  1.00e0  1.01e0   1       1.58e-3   239
+##   7 Duplication ra… metavelve…   1.00e+0  1.00e0  1.14e0   0.997   1.04e-2   344
+##   8 Duplication ra… metavelve…   1.04e+0  1.00e0  7.21e0   0.997   4.01e-1   377
+##   9 Duplication ra… ray21        1.15e+0  1.04e0  4.04e0   0.997   3.15e-1   416
+##  10 Duplication ra… ray63        1.10e+0  1.03e0  4.62e0   0.998   2.79e-1   415
+##  11 Duplication ra… ray99        1.10e+0  1.03e0  4.62e0   0.998   2.79e-1   415
+##  12 Duplication ra… spades       4.57e+0  1.01e0  1.77e2   0.994   1.90e+1   416
+##  13 Duplication ra… trinity      1.44e+0  1.10e0  9.81e0   0.999   9.32e-1   416
+##  14 Duplication ra… velvet21     1.00e+0  1.00e0  1.01e0   1       1.67e-3   238
+##  15 Duplication ra… velvet63     1.00e+0  1.00e0  1.14e0   0.997   1.06e-2   341
+##  16 Duplication ra… velvet99     1.04e+0  1.00e0  7.21e0   0.996   4.05e-1   377
+##  17 Genome fractio… abyss21      7.89e+1  9.52e1  9.98e1   1.67    3.19e+1   410
+##  18 Genome fractio… abyss63      8.07e+1  9.77e1  9.99e1   1.72    3.03e+1   410
+##  19 Genome fractio… abyss99      7.36e+1  9.11e1  9.99e1   1.60    3.25e+1   381
+##  20 Genome fractio… megahit      9.22e+1  9.97e1  1.00e2   1.21    2.25e+1   416
+##  21 Genome fractio… metaspades   9.18e+1  9.97e1  1.00e2   1.44    2.26e+1   416
+##  22 Genome fractio… metavelve…   1.79e+1  8.49e0  9.28e1   1.70    2.17e+1   239
+##  23 Genome fractio… metavelve…   2.80e+1  1.73e1  9.80e1   1.48    2.77e+1   344
+##  24 Genome fractio… metavelve…   3.84e+1  2.70e1  9.99e1   0.254   3.12e+1   377
+##  25 Genome fractio… ray21        8.70e+1  9.81e1  1.00e2   1.26    2.39e+1   416
+##  26 Genome fractio… ray63        8.83e+1  9.80e1  9.99e1   0.278   2.28e+1   415
+##  27 Genome fractio… ray99        8.83e+1  9.80e1  9.99e1   0.278   2.28e+1   415
+##  28 Genome fractio… spades       9.24e+1  9.97e1  1.00e2   1.27    2.15e+1   416
+##  29 Genome fractio… trinity      8.55e+1  9.95e1  1.00e2   1.06    2.63e+1   416
+##  30 Genome fractio… velvet21     1.79e+1  8.49e0  9.28e1   1.71    2.18e+1   238
+##  31 Genome fractio… velvet63     2.82e+1  1.73e1  9.86e1   1.48    2.77e+1   341
+##  32 Genome fractio… velvet99     3.88e+1  2.63e1  9.99e1   0.254   3.12e+1   377
+##  33 L50             abyss21      3.25e+1  2.00e0  1.48e3   1       1.31e+2   410
+##  34 L50             abyss63      1.60e+1  3.00e0  7.83e2   1       7.10e+1   410
+##  35 L50             abyss99      6.32e+0  3.00e0  1.30e2   1       1.30e+1   381
+##  36 L50             megahit      4.72e+1  1.00e0  1.87e3   1       1.70e+2   416
+##  37 L50             metaspades   5.41e+1  1.00e0  2.22e3   1       1.91e+2   416
+##  38 L50             metavelve…   3.24e+1  4.00e0  9.61e2   1       9.37e+1   239
+##  39 L50             metavelve…   2.31e+1  5.00e0  1.02e3   1       9.60e+1   344
+##  40 L50             metavelve…   9.37e+0  5.00e0  7.19e2   1       3.90e+1   377
+##  41 L50             ray21        2.08e+1  2.00e0  8.67e2   1       8.79e+1   416
+##  42 L50             ray63        1.79e+1  2.00e0  8.11e2   1       7.96e+1   415
+##  43 L50             ray99        1.79e+1  2.00e0  8.11e2   1       7.96e+1   415
+##  44 L50             spades       4.64e+1  2.00e0  1.93e3   1       1.52e+2   416
+##  45 L50             trinity      6.01e+1  2.00e0  2.57e3   1       2.20e+2   416
+##  46 L50             velvet21     3.26e+1  4.00e0  9.72e2   1       9.43e+1   238
+##  47 L50             velvet63     2.33e+1  5.00e0  1.02e3   1       9.64e+1   341
+##  48 L50             velvet99     9.38e+0  5.00e0  7.14e2   1       3.87e+1   377
+##  49 LA50            abyss21      2.05e+0  1.00e0  1.20e1   1       1.80e+0   410
+##  50 LA50            abyss63      2.65e+0  2.00e0  2.40e1   1       2.54e+0   410
+##  51 LA50            abyss99      4.12e+0  3.00e0  1.90e1   1       3.17e+0   381
+##  52 LA50            megahit      1.33e+0  1.00e0  8.00e0   1       1.00e+0   416
+##  53 LA50            metaspades   1.44e+0  1.00e0  2.40e1   1       1.81e+0   416
+##  54 LA50            metavelve…   3.59e+0  3.00e0  1.20e1   1       2.77e+0   239
+##  55 LA50            metavelve…   4.27e+0  4.00e0  1.70e1   1       2.84e+0   344
+##  56 LA50            metavelve…   5.19e+0  5.00e0  2.10e1   1       2.62e+0   377
+##  57 LA50            ray21        2.12e+0  1.00e0  1.10e1   1       2.00e+0   416
+##  58 LA50            ray63        2.11e+0  1.00e0  1.90e1   1       2.14e+0   415
+##  59 LA50            ray99        2.10e+0  1.00e0  1.90e1   1       2.14e+0   415
+##  60 LA50            spades       5.64e+0  1.00e0  1.81e2   1       1.97e+1   416
+##  61 LA50            trinity      3.02e+0  1.00e0  6.10e1   1       5.66e+0   416
+##  62 LA50            velvet21     3.57e+0  3.00e0  1.10e1   1       2.72e+0   238
+##  63 LA50            velvet63     4.41e+0  4.00e0  1.50e1   1       2.92e+0   341
+##  64 LA50            velvet99     5.27e+0  5.00e0  1.90e1   1       2.58e+0   377
+##  65 Largest alignm… abyss21      1.44e+4  1.50e4  2.99e4 500       9.96e+3   410
+##  66 Largest alignm… abyss63      1.31e+4  9.99e3  3.00e4 522       1.06e+4   410
+##  67 Largest alignm… abyss99      1.05e+4  4.42e3  3.01e4  98       1.11e+4   381
+##  68 Largest alignm… megahit      2.35e+4  2.98e4  3.01e4 361       1.00e+4   416
+##  69 Largest alignm… metaspades   2.25e+4  2.74e4  2.99e4 433       9.83e+3   416
+##  70 Largest alignm… metavelve…   1.01e+3  7.76e2  3.67e3 509       6.91e+2   239
+##  71 Largest alignm… metavelve…   1.52e+3  9.70e2  1.21e4 442       1.61e+3   344
+##  72 Largest alignm… metavelve…   2.12e+3  1.06e3  2.24e4  76       2.75e+3   377
+##  73 Largest alignm… ray21        1.88e+4  2.17e4  3.08e4 340       1.08e+4   416
+##  74 Largest alignm… ray63        1.90e+4  2.14e4  3.20e4  83       1.07e+4   415
+##  75 Largest alignm… ray99        1.90e+4  2.14e4  3.20e4  83       1.08e+4   415
+##  76 Largest alignm… spades       1.97e+4  2.20e4  3.06e4 410       1.03e+4   416
+##  77 Largest alignm… trinity      1.75e+4  1.85e4  2.99e4 575       1.07e+4   416
+##  78 Largest alignm… velvet21     1.02e+3  7.92e2  3.67e3 509       6.89e+2   238
+##  79 Largest alignm… velvet63     1.51e+3  9.82e2  1.21e4 442       1.61e+3   341
+##  80 Largest alignm… velvet99     2.13e+3  1.09e3  2.24e4  76       2.75e+3   377
+##  81 misassemblies   abyss21      9.12e-3  0.      1.00e0   0       9.52e-2   410
+##  82 misassemblies   abyss63      8.98e-3  0.      1.00e0   0       9.45e-2   410
+##  83 misassemblies   abyss99      9.66e-2  0.      2.00e0   0       3.45e-1   381
+##  84 misassemblies   megahit      1.86e-1  0.      1.00e1   0       9.50e-1   416
+##  85 misassemblies   metaspades   3.49e-1  0.      3.30e1   0       2.64e+0   416
+##  86 misassemblies   metavelve…   1.00e-2  0.      1.00e0   0       1.00e-1   239
+##  87 misassemblies   metavelve…   0.       0.      0.       0       0.        344
+##  88 misassemblies   metavelve…   1.55e-1  0.      3.00e0   0       4.73e-1   377
+##  89 misassemblies   ray21        6.21e-1  0.      7.00e0   0       1.14e+0   416
+##  90 misassemblies   ray63        4.77e-1  0.      1.70e1   0       1.31e+0   415
+##  91 misassemblies   ray99        4.69e-1  0.      1.70e1   0       1.28e+0   415
+##  92 misassemblies   spades       4.73e+0  0.      2.06e2   0       2.12e+1   416
+##  93 misassemblies   trinity      1.13e+0  0.      5.50e1   0       5.24e+0   416
+##  94 misassemblies   velvet21     1.00e-2  0.      1.00e0   0       1.00e-1   238
+##  95 misassemblies   velvet63     0.       0.      0.       0       0.        341
+##  96 misassemblies   velvet99     1.66e-1  0.      3.00e0   0       4.89e-1   377
+##  97 N50             abyss21      1.10e+4  5.75e3  2.99e4 503       1.08e+4   410
+##  98 N50             abyss63      9.62e+3  3.38e3  3.02e4 510       1.11e+4   410
+##  99 N50             abyss99      7.74e+3  1.31e3  3.02e4 501       1.11e+4   381
+## 100 N50             megahit      1.68e+4  2.23e4  3.09e4 655       1.34e+4   416
+## 101 N50             metaspades   1.65e+4  2.16e4  3.01e4 556       1.30e+4   416
+## 102 N50             metavelve…   6.49e+2  6.02e2  1.83e3 500       1.76e+2   239
+## 103 N50             metavelve…   7.86e+2  6.82e2  5.64e3 503       4.49e+2   344
+## 104 N50             metavelve…   1.25e+3  7.32e2  2.24e4 504       1.96e+3   377
+## 105 N50             ray21        1.49e+4  9.29e3  6.04e4 569       1.38e+4   416
+## 106 N50             ray63        1.45e+4  8.45e3  5.35e4 580       1.33e+4   415
+## 107 N50             ray99        1.45e+4  8.45e3  5.35e4 580       1.33e+4   415
+## 108 N50             spades       1.47e+4  1.02e4  5.40e4 625       1.27e+4   416
+## 109 N50             trinity      1.31e+4  7.79e3  5.96e4 585       1.25e+4   416
+## 110 N50             velvet21     6.55e+2  5.98e2  1.83e3 500       1.87e+2   238
+## 111 N50             velvet63     7.92e+2  6.85e2  5.52e3 503       4.51e+2   341
+## 112 N50             velvet99     1.24e+3  7.24e2  2.24e4 504       1.94e+3   377
+## 113 NA50            abyss21      1.56e+4  1.93e4  2.99e4 518       1.00e+4   410
+## 114 NA50            abyss63      1.33e+4  7.47e3  3.00e4 307       1.14e+4   410
+## 115 NA50            abyss99      9.87e+3  2.26e3  3.01e4 483       1.19e+4   381
+## 116 NA50            megahit      2.49e+4  2.98e4  3.01e4 850       8.83e+3   416
+## 117 NA50            metaspades   2.41e+4  2.83e4  2.99e4 581       8.71e+3   416
+## 118 NA50            metavelve…   7.51e+2  6.66e2  1.83e3 509       2.90e+2   239
+## 119 NA50            metavelve…   8.81e+2  6.87e2  5.64e3 442       6.23e+2   344
+## 120 NA50            metavelve…   1.42e+3  7.06e2  2.24e4 157       2.36e+3   377
+## 121 NA50            ray21        1.85e+4  2.23e4  3.08e4 569       1.12e+4   416
+## 122 NA50            ray63        1.86e+4  2.23e4  3.08e4 687       1.14e+4   415
+## 123 NA50            ray99        1.86e+4  2.23e4  3.08e4 687       1.14e+4   415
+## 124 NA50            spades       1.92e+4  2.20e4  3.03e4 716       1.04e+4   416
+## 125 NA50            trinity      1.82e+4  2.23e4  2.99e4 467       1.12e+4   416
+## 126 NA50            velvet21     7.78e+2  6.75e2  1.83e3 509       3.08e+2   238
+## 127 NA50            velvet63     8.78e+2  7.03e2  5.52e3 442       6.19e+2   341
+## 128 NA50            velvet99     1.39e+3  6.86e2  2.24e4 157       2.35e+3   377
+```
+
+```r
+# supplementary file 1
+med = xm %>% 
+  group_by(Assembly, X2) %>%
+  summarise(median = median(value, na.rm = T)) %>%
+  spread(key = "X2", value = median, fill = NA)
+
+print(med, n = Inf)
+```
+
+```
+## # A tibble: 41 x 17
+## # Groups:   Assembly [41]
+##    Assembly abyss21 abyss63 abyss99 megahit metaspades metavelvet21 metavelvet63
+##    <chr>      <dbl>   <dbl>   <dbl>   <dbl>      <dbl>        <dbl>        <dbl>
+##  1 contigs   6.00e0  9.00e0  1.00e1  1.00e1       9            8            11  
+##  2 contigs…  4.15e1  2.80e1  3.90e1  2.10e1      40.5       5662           488. 
+##  3 contigs…  3.00e0  4.00e0  3.00e0  4.00e0       4            0             1  
+##  4 contigs…  0.      0.      0.      1.00e0       1            0             0  
+##  5 contigs…  0.      0.      0.      1.00e0       1            0             0  
+##  6 contigs…  1.00e0  1.00e0  0.      1.00e0       1            0             0  
+##  7 contigs…  0.      0.      0.      0.           0            0             0  
+##  8 Duplica…  1.00e0  1.00e0  1.01e0  1.00e0       1.00         1             1  
+##  9 Genome …  9.52e1  9.77e1  9.11e1  9.97e1      99.7          8.49         17.3
+## 10 genomic… NA      NA      NA      NA           NA           NA            NA  
+## 11 indels …  3.38e0  0.      0.      0.           0            0             0  
+## 12 L50       2.00e0  3.00e0  3.00e0  1.00e0       1            4             5  
+## 13 L75       3.00e0  5.00e0  6.00e0  2.00e0       2            6             8  
+## 14 LA50      1.00e0  2.00e0  3.00e0  1.00e0       1            3             4  
+## 15 LA75      2.00e0  3.00e0  6.00e0  1.00e0       1            4.5           6.5
+## 16 Largest…  1.50e4  9.99e3  4.42e3  2.98e4   27419          776.          970. 
+## 17 Largest…  9.46e3  6.99e3  3.31e3  2.98e4   27419          842          1091  
+## 18 local m…  0.      0.      0.      0.           0            0             0  
+## 19 misasse…  0.      0.      0.      0.           0            0             0  
+## 20 Misasse…  0.      0.      0.      0.           0            0             0  
+## 21 misasse…  0.      0.      0.      0.           0            0             0  
+## 22 mismatc…  2.49e1  2.46e1  2.54e1  2.68e1      26.8         17.6          22.2
+## 23 N's per…  0.      0.      0.      0.           0            0             0  
+## 24 N50       5.75e3  3.38e3  1.31e3  2.23e4   21586          602           682  
+## 25 N75       3.09e3  1.90e3  8.85e2  4.62e3    4740          550           574. 
+## 26 NA50      1.93e4  7.47e3  2.26e3  2.98e4   28289          666           687  
+## 27 NA75      1.02e4  4.72e3  1.28e3  2.98e4   27994          576.          579  
+## 28 Referen…  2.99e4  2.99e4  2.99e4  2.99e4   29903        29903         29903  
+## 29 scaffol…  0.      0.      0.      0.           0            0             0  
+## 30 scaffol…  0.      0.      0.      0.           0            0             0  
+## 31 Total a…  2.85e4  2.93e4  2.79e4  2.98e4   29829         2538          5183  
+## 32 Total l…  2.90e4  2.96e4  2.80e4  3.30e4   32708.        5008          7847  
+## 33 Total l…  3.14e4  3.15e4  3.17e4  3.85e4   45378.      576562         84112. 
+## 34 Total l…  2.67e4  2.74e4  1.86e4  3.00e4   29940.           0          1094. 
+## 35 Total l…  0.      0.      0.      2.98e4   27419            0             0  
+## 36 Total l…  0.      0.      0.      2.98e4   27419            0             0  
+## 37 Total l…  1.90e4  1.09e4  0.      2.99e4   29431            0             0  
+## 38 Total l…  0.      0.      0.      0.           0            0             0  
+## 39 unalign… NA      NA      NA      NA           NA           NA            NA  
+## 40 Unalign…  0.      0.      0.      5.01e3    4151         2874          1728. 
+## 41 unalign…  0.      0.      0.      0.           0            0             0  
+## # … with 9 more variables: metavelvet99 <dbl>, ray21 <dbl>, ray63 <dbl>,
+## #   ray99 <dbl>, spades <dbl>, trinity <dbl>, velvet21 <dbl>, velvet63 <dbl>,
+## #   velvet99 <dbl>
+```
+
+```r
+write.table(med, "~/Documents/research/asm/covid19-Assembly/Supplementary_files/Median_Assembly_Quality_assemblers.tsv", quote = F, row.names = F, sep = ",")
+
+# k-mer quality across all samples
 kmer = c("abyss21", "abyss63", "abyss99", "metavelvet21", "metavelvet63", "metavelvet99", "ray21", "ray63", "ray99", "velvet21", "velvet63", "velvet99")
 xmk = xm %>% filter(X2 %in% kmer) 
 
@@ -3002,6 +3301,8 @@ kmer_stats = xmk %>%
   group_by(Assembly, X2) %>%
   summarise(mean = mean(value, na.rm = T),
             median = median(value, na.rm = T),
+            max = max(value, na.rm = T),
+            min = min(value, na.rm = T),
             sd = sd(value, na.rm = T),
             count = n())
 
@@ -3009,513 +3310,521 @@ print(kmer_stats, n = Inf)
 ```
 
 ```
-## # A tibble: 492 x 6
+## # A tibble: 492 x 8
 ## # Groups:   Assembly [41]
-##     Assembly              X2                mean   median          sd count
-##     <chr>                 <fct>            <dbl>    <dbl>       <dbl> <int>
-##   1 contigs               abyss21        9.25e+1   6.00e0     3.91e+2   410
-##   2 contigs               abyss63        4.74e+1   9.00e0     2.14e+2   410
-##   3 contigs               abyss99        1.83e+1   1.00e1     4.01e+1   381
-##   4 contigs               metavelve…     7.61e+1   8.00e0     2.25e+2   239
-##   5 contigs               metavelve…     6.13e+1   1.10e1     2.62e+2   344
-##   6 contigs               metavelve…     2.41e+1   1.20e1     9.96e+1   377
-##   7 contigs               ray21          7.50e+1   9.00e0     3.16e+2   416
-##   8 contigs               ray63          6.36e+1   9.00e0     2.75e+2   415
-##   9 contigs               ray99          6.37e+1   9.00e0     2.75e+2   415
-##  10 contigs               velvet21       7.64e+1   8.00e0     2.26e+2   238
-##  11 contigs               velvet63       6.19e+1   1.20e1     2.63e+2   341
-##  12 contigs               velvet99       2.41e+1   1.20e1     9.92e+1   377
-##  13 contigs (>= 0 bp)     abyss21        1.71e+4   4.15e1     4.01e+4   410
-##  14 contigs (>= 0 bp)     abyss63        6.54e+3   2.80e1     1.93e+4   410
-##  15 contigs (>= 0 bp)     abyss99        1.66e+3   3.90e1     1.12e+4   381
-##  16 contigs (>= 0 bp)     metavelve…     1.68e+4   5.66e3     2.53e+4   239
-##  17 contigs (>= 0 bp)     metavelve…     1.80e+3   4.88e2     5.23e+3   344
-##  18 contigs (>= 0 bp)     metavelve…     3.91e+2   7.60e1     3.00e+3   377
-##  19 contigs (>= 0 bp)     ray21          3.00e+3   1.92e2     6.71e+3   416
-##  20 contigs (>= 0 bp)     ray63          2.36e+3   1.44e2     5.96e+3   415
-##  21 contigs (>= 0 bp)     ray99          2.36e+3   1.44e2     5.96e+3   415
-##  22 contigs (>= 0 bp)     velvet21       1.68e+4   5.77e3     2.54e+4   238
-##  23 contigs (>= 0 bp)     velvet63       1.80e+3   4.82e2     5.25e+3   341
-##  24 contigs (>= 0 bp)     velvet99       3.89e+2   7.40e1     2.99e+3   377
-##  25 contigs (>= 1000 bp)  abyss21        2.05e+1   3.00e0     1.25e+2   410
-##  26 contigs (>= 1000 bp)  abyss63        1.04e+1   4.00e0     4.15e+1   410
-##  27 contigs (>= 1000 bp)  abyss99        5.38e+0   3.00e0     9.37e+0   381
-##  28 contigs (>= 1000 bp)  metavelve…     2.99e+0   0.         1.05e+1   239
-##  29 contigs (>= 1000 bp)  metavelve…     8.42e+0   1.00e0     4.04e+1   344
-##  30 contigs (>= 1000 bp)  metavelve…     4.10e+0   1.00e0     8.93e+0   377
-##  31 contigs (>= 1000 bp)  ray21          2.29e+1   5.00e0     1.20e+2   416
-##  32 contigs (>= 1000 bp)  ray63          1.85e+1   5.00e0     8.91e+1   415
-##  33 contigs (>= 1000 bp)  ray99          1.85e+1   5.00e0     8.90e+1   415
-##  34 contigs (>= 1000 bp)  velvet21       2.97e+0   0.         1.07e+1   238
-##  35 contigs (>= 1000 bp)  velvet63       8.53e+0   1.00e0     4.06e+1   341
-##  36 contigs (>= 1000 bp)  velvet99       4.16e+0   1.00e0     9.44e+0   377
-##  37 contigs (>= 10000 bp) abyss21        5.44e-1   0.         6.17e-1   410
-##  38 contigs (>= 10000 bp) abyss63        4.46e-1   0.         5.67e-1   410
-##  39 contigs (>= 10000 bp) abyss99        3.33e-1   0.         5.30e-1   381
-##  40 contigs (>= 10000 bp) metavelve…     0.        0.         0.        239
-##  41 contigs (>= 10000 bp) metavelve…     8.72e-3   0.         9.31e-2   344
-##  42 contigs (>= 10000 bp) metavelve…     1.59e-2   0.         1.25e-1   377
-##  43 contigs (>= 10000 bp) ray21          7.69e-1   1.00e0     6.76e-1   416
-##  44 contigs (>= 10000 bp) ray63          7.47e-1   1.00e0     6.34e-1   415
-##  45 contigs (>= 10000 bp) ray99          7.47e-1   1.00e0     6.34e-1   415
-##  46 contigs (>= 10000 bp) velvet21       0.        0.         0.        238
-##  47 contigs (>= 10000 bp) velvet63       8.80e-3   0.         9.35e-2   341
-##  48 contigs (>= 10000 bp) velvet99       1.59e-2   0.         1.25e-1   377
-##  49 contigs (>= 25000 bp) abyss21        1.78e-1   0.         3.83e-1   410
-##  50 contigs (>= 25000 bp) abyss63        2.00e-1   0.         4.00e-1   410
-##  51 contigs (>= 25000 bp) abyss99        1.78e-1   0.         3.83e-1   381
-##  52 contigs (>= 25000 bp) metavelve…     0.        0.         0.        239
-##  53 contigs (>= 25000 bp) metavelve…     0.        0.         0.        344
-##  54 contigs (>= 25000 bp) metavelve…     0.        0.         0.        377
-##  55 contigs (>= 25000 bp) ray21          4.38e-1   0.         5.30e-1   416
-##  56 contigs (>= 25000 bp) ray63          4.19e-1   0.         4.94e-1   415
-##  57 contigs (>= 25000 bp) ray99          4.19e-1   0.         4.94e-1   415
-##  58 contigs (>= 25000 bp) velvet21       0.        0.         0.        238
-##  59 contigs (>= 25000 bp) velvet63       0.        0.         0.        341
-##  60 contigs (>= 25000 bp) velvet99       0.        0.         0.        377
-##  61 contigs (>= 5000 bp)  abyss21        1.14e+0   1.00e0     3.60e+0   410
-##  62 contigs (>= 5000 bp)  abyss63        9.20e-1   1.00e0     9.77e-1   410
-##  63 contigs (>= 5000 bp)  abyss99        5.85e-1   0.         8.22e-1   381
-##  64 contigs (>= 5000 bp)  metavelve…     0.        0.         0.        239
-##  65 contigs (>= 5000 bp)  metavelve…     3.78e-2   0.         2.32e-1   344
-##  66 contigs (>= 5000 bp)  metavelve…     1.56e-1   0.         5.64e-1   377
-##  67 contigs (>= 5000 bp)  ray21          1.45e+0   1.00e0     3.23e+0   416
-##  68 contigs (>= 5000 bp)  ray63          1.29e+0   1.00e0     1.63e+0   415
-##  69 contigs (>= 5000 bp)  ray99          1.29e+0   1.00e0     1.64e+0   415
-##  70 contigs (>= 5000 bp)  velvet21       0.        0.         0.        238
-##  71 contigs (>= 5000 bp)  velvet63       3.81e-2   0.         2.33e-1   341
-##  72 contigs (>= 5000 bp)  velvet99       1.49e-1   0.         5.45e-1   377
-##  73 contigs (>= 50000 bp) abyss21        0.        0.         0.        410
-##  74 contigs (>= 50000 bp) abyss63        0.        0.         0.        410
-##  75 contigs (>= 50000 bp) abyss99        0.        0.         0.        381
-##  76 contigs (>= 50000 bp) metavelve…     0.        0.         0.        239
-##  77 contigs (>= 50000 bp) metavelve…     0.        0.         0.        344
-##  78 contigs (>= 50000 bp) metavelve…     0.        0.         0.        377
-##  79 contigs (>= 50000 bp) ray21          9.62e-3   0.         9.77e-2   416
-##  80 contigs (>= 50000 bp) ray63          9.64e-3   0.         9.78e-2   415
-##  81 contigs (>= 50000 bp) ray99          9.64e-3   0.         9.78e-2   415
-##  82 contigs (>= 50000 bp) velvet21       0.        0.         0.        238
-##  83 contigs (>= 50000 bp) velvet63       0.        0.         0.        341
-##  84 contigs (>= 50000 bp) velvet99       0.        0.         0.        377
-##  85 Duplication ratio     abyss21        1.01e+0   1.00e0     8.56e-2   410
-##  86 Duplication ratio     abyss63        1.01e+0   1.00e0     6.01e-2   410
-##  87 Duplication ratio     abyss99        1.02e+0   1.01e0     1.16e-1   381
-##  88 Duplication ratio     metavelve…     1.00e+0   1.00e0     1.58e-3   239
-##  89 Duplication ratio     metavelve…     1.00e+0   1.00e0     1.04e-2   344
-##  90 Duplication ratio     metavelve…     1.04e+0   1.00e0     4.01e-1   377
-##  91 Duplication ratio     ray21          1.15e+0   1.04e0     3.15e-1   416
-##  92 Duplication ratio     ray63          1.10e+0   1.03e0     2.79e-1   415
-##  93 Duplication ratio     ray99          1.10e+0   1.03e0     2.79e-1   415
-##  94 Duplication ratio     velvet21       1.00e+0   1.00e0     1.67e-3   238
-##  95 Duplication ratio     velvet63       1.00e+0   1.00e0     1.06e-2   341
-##  96 Duplication ratio     velvet99       1.04e+0   1.00e0     4.05e-1   377
-##  97 Genome fraction (%)   abyss21        7.89e+1   9.52e1     3.19e+1   410
-##  98 Genome fraction (%)   abyss63        8.07e+1   9.77e1     3.03e+1   410
-##  99 Genome fraction (%)   abyss99        7.36e+1   9.11e1     3.25e+1   381
-## 100 Genome fraction (%)   metavelve…     1.79e+1   8.49e0     2.17e+1   239
-## 101 Genome fraction (%)   metavelve…     2.80e+1   1.73e1     2.77e+1   344
-## 102 Genome fraction (%)   metavelve…     3.84e+1   2.70e1     3.12e+1   377
-## 103 Genome fraction (%)   ray21          8.70e+1   9.81e1     2.39e+1   416
-## 104 Genome fraction (%)   ray63          8.83e+1   9.80e1     2.28e+1   415
-## 105 Genome fraction (%)   ray99          8.83e+1   9.80e1     2.28e+1   415
-## 106 Genome fraction (%)   velvet21       1.79e+1   8.49e0     2.18e+1   238
-## 107 Genome fraction (%)   velvet63       2.82e+1   1.73e1     2.77e+1   341
-## 108 Genome fraction (%)   velvet99       3.88e+1   2.63e1     3.12e+1   377
-## 109 genomic features      abyss21      NaN        NA         NA         410
-## 110 genomic features      abyss63      NaN        NA         NA         410
-## 111 genomic features      abyss99      NaN        NA         NA         381
-## 112 genomic features      metavelve…   NaN        NA         NA         239
-## 113 genomic features      metavelve…   NaN        NA         NA         344
-## 114 genomic features      metavelve…   NaN        NA         NA         377
-## 115 genomic features      ray21        NaN        NA         NA         416
-## 116 genomic features      ray63        NaN        NA         NA         415
-## 117 genomic features      ray99        NaN        NA         NA         415
-## 118 genomic features      velvet21     NaN        NA         NA         238
-## 119 genomic features      velvet63     NaN        NA         NA         341
-## 120 genomic features      velvet99     NaN        NA         NA         377
-## 121 indels per 100 kbp    abyss21        6.30e+0   3.38e0     2.58e+1   410
-## 122 indels per 100 kbp    abyss63        5.40e+0   0.         1.92e+1   410
-## 123 indels per 100 kbp    abyss99        3.80e+0   0.         1.39e+1   381
-## 124 indels per 100 kbp    metavelve…     4.83e+0   0.         1.60e+1   239
-## 125 indels per 100 kbp    metavelve…     4.69e+0   0.         1.45e+1   344
-## 126 indels per 100 kbp    metavelve…     1.21e+1   0.         3.51e+1   377
-## 127 indels per 100 kbp    ray21          6.20e+0   0.         2.79e+1   416
-## 128 indels per 100 kbp    ray63          5.31e+0   0.         1.09e+1   415
-## 129 indels per 100 kbp    ray99          5.31e+0   0.         1.09e+1   415
-## 130 indels per 100 kbp    velvet21       7.58e+0   0.         2.95e+1   238
-## 131 indels per 100 kbp    velvet63       4.79e+0   0.         1.78e+1   341
-## 132 indels per 100 kbp    velvet99       1.19e+1   0.         3.37e+1   377
-## 133 L50                   abyss21        3.25e+1   2.00e0     1.31e+2   410
-## 134 L50                   abyss63        1.60e+1   3.00e0     7.10e+1   410
-## 135 L50                   abyss99        6.32e+0   3.00e0     1.30e+1   381
-## 136 L50                   metavelve…     3.24e+1   4.00e0     9.37e+1   239
-## 137 L50                   metavelve…     2.31e+1   5.00e0     9.60e+1   344
-## 138 L50                   metavelve…     9.37e+0   5.00e0     3.90e+1   377
-## 139 L50                   ray21          2.08e+1   2.00e0     8.79e+1   416
-## 140 L50                   ray63          1.79e+1   2.00e0     7.96e+1   415
-## 141 L50                   ray99          1.79e+1   2.00e0     7.96e+1   415
-## 142 L50                   velvet21       3.26e+1   4.00e0     9.43e+1   238
-## 143 L50                   velvet63       2.33e+1   5.00e0     9.64e+1   341
-## 144 L50                   velvet99       9.38e+0   5.00e0     3.87e+1   377
-## 145 L75                   abyss21        5.79e+1   3.00e0     2.40e+2   410
-## 146 L75                   abyss63        2.96e+1   5.00e0     1.34e+2   410
-## 147 L75                   abyss99        1.14e+1   6.00e0     2.48e+1   381
-## 148 L75                   metavelve…     5.34e+1   6.00e0     1.56e+2   239
-## 149 L75                   metavelve…     4.06e+1   8.00e0     1.71e+2   344
-## 150 L75                   metavelve…     1.61e+1   8.00e0     6.73e+1   377
-## 151 L75                   ray21          4.23e+1   3.00e0     1.78e+2   416
-## 152 L75                   ray63          3.62e+1   3.00e0     1.59e+2   415
-## 153 L75                   ray99          3.62e+1   3.00e0     1.59e+2   415
-## 154 L75                   velvet21       5.36e+1   6.00e0     1.57e+2   238
-## 155 L75                   velvet63       4.10e+1   8.00e0     1.72e+2   341
-## 156 L75                   velvet99       1.61e+1   8.00e0     6.70e+1   377
-## 157 LA50                  abyss21        2.05e+0   1.00e0     1.80e+0   410
-## 158 LA50                  abyss63        2.65e+0   2.00e0     2.54e+0   410
-## 159 LA50                  abyss99        4.12e+0   3.00e0     3.17e+0   381
-## 160 LA50                  metavelve…     3.59e+0   3.00e0     2.77e+0   239
-## 161 LA50                  metavelve…     4.27e+0   4.00e0     2.84e+0   344
-## 162 LA50                  metavelve…     5.19e+0   5.00e0     2.62e+0   377
-## 163 LA50                  ray21          2.12e+0   1.00e0     2.00e+0   416
-## 164 LA50                  ray63          2.11e+0   1.00e0     2.14e+0   415
-## 165 LA50                  ray99          2.10e+0   1.00e0     2.14e+0   415
-## 166 LA50                  velvet21       3.57e+0   3.00e0     2.72e+0   238
-## 167 LA50                  velvet63       4.41e+0   4.00e0     2.92e+0   341
-## 168 LA50                  velvet99       5.27e+0   5.00e0     2.58e+0   377
-## 169 LA75                  abyss21        3.12e+0   2.00e0     3.21e+0   410
-## 170 LA75                  abyss63        3.98e+0   3.00e0     3.34e+0   410
-## 171 LA75                  abyss99        7.07e+0   6.00e0     5.69e+0   381
-## 172 LA75                  metavelve…     5.71e+0   4.50e0     4.59e+0   239
-## 173 LA75                  metavelve…     6.43e+0   6.50e0     4.18e+0   344
-## 174 LA75                  metavelve…     8.31e+0   8.00e0     4.13e+0   377
-## 175 LA75                  ray21          3.27e+0   2.00e0     3.65e+0   416
-## 176 LA75                  ray63          3.14e+0   2.00e0     3.49e+0   415
-## 177 LA75                  ray99          3.15e+0   2.00e0     3.51e+0   415
-## 178 LA75                  velvet21       5.69e+0   4.00e0     4.62e+0   238
-## 179 LA75                  velvet63       6.46e+0   6.00e0     4.21e+0   341
-## 180 LA75                  velvet99       8.43e+0   8.00e0     4.12e+0   377
-## 181 Largest alignment     abyss21        1.44e+4   1.50e4     9.96e+3   410
-## 182 Largest alignment     abyss63        1.31e+4   9.99e3     1.06e+4   410
-## 183 Largest alignment     abyss99        1.05e+4   4.42e3     1.11e+4   381
-## 184 Largest alignment     metavelve…     1.01e+3   7.76e2     6.91e+2   239
-## 185 Largest alignment     metavelve…     1.52e+3   9.70e2     1.61e+3   344
-## 186 Largest alignment     metavelve…     2.12e+3   1.06e3     2.75e+3   377
-## 187 Largest alignment     ray21          1.88e+4   2.17e4     1.08e+4   416
-## 188 Largest alignment     ray63          1.90e+4   2.14e4     1.07e+4   415
-## 189 Largest alignment     ray99          1.90e+4   2.14e4     1.08e+4   415
-## 190 Largest alignment     velvet21       1.02e+3   7.92e2     6.89e+2   238
-## 191 Largest alignment     velvet63       1.51e+3   9.82e2     1.61e+3   341
-## 192 Largest alignment     velvet99       2.13e+3   1.09e3     2.75e+3   377
-## 193 Largest contig        abyss21        1.20e+4   9.46e3     1.02e+4   410
-## 194 Largest contig        abyss63        1.12e+4   6.99e3     1.05e+4   410
-## 195 Largest contig        abyss99        9.20e+3   3.31e3     1.07e+4   381
-## 196 Largest contig        metavelve…     1.01e+3   8.42e2     5.53e+2   239
-## 197 Largest contig        metavelve…     1.52e+3   1.09e3     1.41e+3   344
-## 198 Largest contig        metavelve…     2.07e+3   1.28e3     2.46e+3   377
-## 199 Largest contig        ray21          1.90e+4   2.05e4     1.29e+4   416
-## 200 Largest contig        ray63          1.83e+4   1.92e4     1.22e+4   415
-## 201 Largest contig        ray99          1.83e+4   1.92e4     1.22e+4   415
-## 202 Largest contig        velvet21       1.01e+3   8.38e2     5.47e+2   238
-## 203 Largest contig        velvet63       1.52e+3   1.10e3     1.41e+3   341
-## 204 Largest contig        velvet99       2.09e+3   1.26e3     2.46e+3   377
-## 205 local misassemblies   abyss21        4.56e-2   0.         2.23e-1   410
-## 206 local misassemblies   abyss63        2.99e-2   0.         1.87e-1   410
-## 207 local misassemblies   abyss99        1.06e-1   0.         3.64e-1   381
-## 208 local misassemblies   metavelve…     0.        0.         0.        239
-## 209 local misassemblies   metavelve…     0.        0.         0.        344
-## 210 local misassemblies   metavelve…     1.18e-1   0.         3.80e-1   377
-## 211 local misassemblies   ray21          1.55e-1   0.         5.50e-1   416
-## 212 local misassemblies   ray63          1.81e-1   0.         7.29e-1   415
-## 213 local misassemblies   ray99          1.78e-1   0.         7.17e-1   415
-## 214 local misassemblies   velvet21       0.        0.         0.        238
-## 215 local misassemblies   velvet63       0.        0.         0.        341
-## 216 local misassemblies   velvet99       1.16e-1   0.         3.87e-1   377
-## 217 misassembled contigs  abyss21        9.12e-3   0.         9.52e-2   410
-## 218 misassembled contigs  abyss63        8.98e-3   0.         9.45e-2   410
-## 219 misassembled contigs  abyss99        9.35e-2   0.         3.32e-1   381
-## 220 misassembled contigs  metavelve…     1.00e-2   0.         1.00e-1   239
-## 221 misassembled contigs  metavelve…     0.        0.         0.        344
-## 222 misassembled contigs  metavelve…     1.41e-1   0.         4.18e-1   377
-## 223 misassembled contigs  ray21          5.23e-1   0.         9.19e-1   416
-## 224 misassembled contigs  ray63          4.07e-1   0.         9.83e-1   415
-## 225 misassembled contigs  ray99          3.99e-1   0.         9.46e-1   415
-## 226 misassembled contigs  velvet21       1.00e-2   0.         1.00e-1   238
-## 227 misassembled contigs  velvet63       0.        0.         0.        341
-## 228 misassembled contigs  velvet99       1.53e-1   0.         4.36e-1   377
-## 229 Misassembled contigs… abyss21        4.38e+1   0.         7.26e+2   410
-## 230 Misassembled contigs… abyss63        7.41e+1   0.         9.96e+2   410
-## 231 Misassembled contigs… abyss99        2.38e+2   0.         1.83e+3   381
-## 232 Misassembled contigs… metavelve…     6.34e+0   0.         6.34e+1   239
-## 233 Misassembled contigs… metavelve…     0.        0.         0.        344
-## 234 Misassembled contigs… metavelve…     9.57e+1   0.         2.88e+2   377
-## 235 Misassembled contigs… ray21          8.06e+3   0.         1.56e+4   416
-## 236 Misassembled contigs… ray63          5.77e+3   0.         1.34e+4   415
-## 237 Misassembled contigs… ray99          5.76e+3   0.         1.34e+4   415
-## 238 Misassembled contigs… velvet21       6.34e+0   0.         6.34e+1   238
-## 239 Misassembled contigs… velvet63       0.        0.         0.        341
-## 240 Misassembled contigs… velvet99       1.04e+2   0.         3.04e+2   377
-## 241 misassemblies         abyss21        9.12e-3   0.         9.52e-2   410
-## 242 misassemblies         abyss63        8.98e-3   0.         9.45e-2   410
-## 243 misassemblies         abyss99        9.66e-2   0.         3.45e-1   381
-## 244 misassemblies         metavelve…     1.00e-2   0.         1.00e-1   239
-## 245 misassemblies         metavelve…     0.        0.         0.        344
-## 246 misassemblies         metavelve…     1.55e-1   0.         4.73e-1   377
-## 247 misassemblies         ray21          6.21e-1   0.         1.14e+0   416
-## 248 misassemblies         ray63          4.77e-1   0.         1.31e+0   415
-## 249 misassemblies         ray99          4.69e-1   0.         1.28e+0   415
-## 250 misassemblies         velvet21       1.00e-2   0.         1.00e-1   238
-## 251 misassemblies         velvet63       0.        0.         0.        341
-## 252 misassemblies         velvet99       1.66e-1   0.         4.89e-1   377
-## 253 mismatches per 100 k… abyss21        2.72e+1   2.49e1     2.48e+1   410
-## 254 mismatches per 100 k… abyss63        2.68e+1   2.46e1     1.90e+1   410
-## 255 mismatches per 100 k… abyss99        2.68e+1   2.54e1     2.18e+1   381
-## 256 mismatches per 100 k… metavelve…     4.54e+1   1.76e1     7.95e+1   239
-## 257 mismatches per 100 k… metavelve…     3.32e+1   2.22e1     5.20e+1   344
-## 258 mismatches per 100 k… metavelve…     4.33e+1   2.89e1     6.21e+1   377
-## 259 mismatches per 100 k… ray21          3.83e+1   3.35e1     3.21e+1   416
-## 260 mismatches per 100 k… ray63          3.61e+1   3.30e1     3.34e+1   415
-## 261 mismatches per 100 k… ray99          3.61e+1   3.30e1     3.34e+1   415
-## 262 mismatches per 100 k… velvet21       4.45e+1   1.90e1     7.77e+1   238
-## 263 mismatches per 100 k… velvet63       3.36e+1   2.23e1     5.21e+1   341
-## 264 mismatches per 100 k… velvet99       4.26e+1   2.69e1     6.19e+1   377
-## 265 N's per 100 kbp       abyss21        8.36e+2   0.         3.67e+3   410
-## 266 N's per 100 kbp       abyss63        5.59e+2   0.         3.45e+3   410
-## 267 N's per 100 kbp       abyss99        3.30e+2   0.         2.32e+3   381
-## 268 N's per 100 kbp       metavelve…     0.        0.         0.        239
-## 269 N's per 100 kbp       metavelve…     0.        0.         0.        344
-## 270 N's per 100 kbp       metavelve…     0.        0.         0.        377
-## 271 N's per 100 kbp       ray21          2.83e+2   0.         7.32e+2   416
-## 272 N's per 100 kbp       ray63          2.80e+2   0.         7.34e+2   415
-## 273 N's per 100 kbp       ray99          2.81e+2   0.         7.36e+2   415
-## 274 N's per 100 kbp       velvet21       0.        0.         0.        238
-## 275 N's per 100 kbp       velvet63       0.        0.         0.        341
-## 276 N's per 100 kbp       velvet99       0.        0.         0.        377
-## 277 N50                   abyss21        1.10e+4   5.75e3     1.08e+4   410
-## 278 N50                   abyss63        9.62e+3   3.38e3     1.11e+4   410
-## 279 N50                   abyss99        7.74e+3   1.31e3     1.11e+4   381
-## 280 N50                   metavelve…     6.49e+2   6.02e2     1.76e+2   239
-## 281 N50                   metavelve…     7.86e+2   6.82e2     4.49e+2   344
-## 282 N50                   metavelve…     1.25e+3   7.32e2     1.96e+3   377
-## 283 N50                   ray21          1.49e+4   9.29e3     1.38e+4   416
-## 284 N50                   ray63          1.45e+4   8.45e3     1.33e+4   415
-## 285 N50                   ray99          1.45e+4   8.45e3     1.33e+4   415
-## 286 N50                   velvet21       6.55e+2   5.98e2     1.87e+2   238
-## 287 N50                   velvet63       7.92e+2   6.85e2     4.51e+2   341
-## 288 N50                   velvet99       1.24e+3   7.24e2     1.94e+3   377
-## 289 N75                   abyss21        9.33e+3   3.09e3     1.07e+4   410
-## 290 N75                   abyss63        7.89e+3   1.90e3     1.10e+4   410
-## 291 N75                   abyss99        6.75e+3   8.85e2     1.09e+4   381
-## 292 N75                   metavelve…     5.75e+2   5.50e2     8.96e+1   239
-## 293 N75                   metavelve…     6.34e+2   5.74e2     2.62e+2   344
-## 294 N75                   metavelve…     9.30e+2   5.99e2     1.71e+3   377
-## 295 N75                   ray21          1.13e+4   3.30e3     1.33e+4   416
-## 296 N75                   ray63          1.15e+4   2.84e3     1.32e+4   415
-## 297 N75                   ray99          1.15e+4   2.84e3     1.32e+4   415
-## 298 N75                   velvet21       5.76e+2   5.49e2     8.92e+1   238
-## 299 N75                   velvet63       6.38e+2   5.74e2     2.88e+2   341
-## 300 N75                   velvet99       9.33e+2   5.98e2     1.71e+3   377
-## 301 NA50                  abyss21        1.56e+4   1.93e4     1.00e+4   410
-## 302 NA50                  abyss63        1.33e+4   7.47e3     1.14e+4   410
-## 303 NA50                  abyss99        9.87e+3   2.26e3     1.19e+4   381
-## 304 NA50                  metavelve…     7.51e+2   6.66e2     2.90e+2   239
-## 305 NA50                  metavelve…     8.81e+2   6.87e2     6.23e+2   344
-## 306 NA50                  metavelve…     1.42e+3   7.06e2     2.36e+3   377
-## 307 NA50                  ray21          1.85e+4   2.23e4     1.12e+4   416
-## 308 NA50                  ray63          1.86e+4   2.23e4     1.14e+4   415
-## 309 NA50                  ray99          1.86e+4   2.23e4     1.14e+4   415
-## 310 NA50                  velvet21       7.78e+2   6.75e2     3.08e+2   238
-## 311 NA50                  velvet63       8.78e+2   7.03e2     6.19e+2   341
-## 312 NA50                  velvet99       1.39e+3   6.86e2     2.35e+3   377
-## 313 NA75                  abyss21        1.35e+4   1.02e4     1.08e+4   410
-## 314 NA75                  abyss63        1.14e+4   4.72e3     1.19e+4   410
-## 315 NA75                  abyss99        8.80e+3   1.28e3     1.19e+4   381
-## 316 NA75                  metavelve…     6.22e+2   5.76e2     1.31e+2   239
-## 317 NA75                  metavelve…     6.84e+2   5.79e2     3.80e+2   344
-## 318 NA75                  metavelve…     1.05e+3   5.92e2     2.16e+3   377
-## 319 NA75                  ray21          1.53e+4   1.04e4     1.22e+4   416
-## 320 NA75                  ray63          1.64e+4   1.36e4     1.24e+4   415
-## 321 NA75                  ray99          1.64e+4   1.36e4     1.24e+4   415
-## 322 NA75                  velvet21       6.27e+2   5.76e2     1.31e+2   238
-## 323 NA75                  velvet63       6.94e+2   5.82e2     4.22e+2   341
-## 324 NA75                  velvet99       1.05e+3   5.98e2     2.17e+3   377
-## 325 Reference length      abyss21        2.99e+4   2.99e4     0.        410
-## 326 Reference length      abyss63        2.99e+4   2.99e4     0.        410
-## 327 Reference length      abyss99        2.99e+4   2.99e4     0.        381
-## 328 Reference length      metavelve…     2.99e+4   2.99e4     0.        239
-## 329 Reference length      metavelve…     2.99e+4   2.99e4     0.        344
-## 330 Reference length      metavelve…     2.99e+4   2.99e4     0.        377
-## 331 Reference length      ray21          2.99e+4   2.99e4     0.        416
-## 332 Reference length      ray63          2.99e+4   2.99e4     0.        415
-## 333 Reference length      ray99          2.99e+4   2.99e4     0.        415
-## 334 Reference length      velvet21       2.99e+4   2.99e4     0.        238
-## 335 Reference length      velvet63       2.99e+4   2.99e4     0.        341
-## 336 Reference length      velvet99       2.99e+4   2.99e4     0.        377
-## 337 scaffold gap ext. mi… abyss21        3.04e-3   0.         5.51e-2   410
-## 338 scaffold gap ext. mi… abyss63        2.99e-3   0.         5.47e-2   410
-## 339 scaffold gap ext. mi… abyss99        3.12e-3   0.         5.58e-2   381
-## 340 scaffold gap ext. mi… metavelve…     0.        0.         0.        239
-## 341 scaffold gap ext. mi… metavelve…     0.        0.         0.        344
-## 342 scaffold gap ext. mi… metavelve…     0.        0.         0.        377
-## 343 scaffold gap ext. mi… ray21          8.00e-3   0.         8.92e-2   416
-## 344 scaffold gap ext. mi… ray63          0.        0.         0.        415
-## 345 scaffold gap ext. mi… ray99          0.        0.         0.        415
-## 346 scaffold gap ext. mi… velvet21       0.        0.         0.        238
-## 347 scaffold gap ext. mi… velvet63       0.        0.         0.        341
-## 348 scaffold gap ext. mi… velvet99       0.        0.         0.        377
-## 349 scaffold gap loc. mi… abyss21        1.22e-1   0.         5.39e-1   410
-## 350 scaffold gap loc. mi… abyss63        2.57e-1   0.         1.44e+0   410
-## 351 scaffold gap loc. mi… abyss99        2.71e-1   0.         1.18e+0   381
-## 352 scaffold gap loc. mi… metavelve…     0.        0.         0.        239
-## 353 scaffold gap loc. mi… metavelve…     0.        0.         0.        344
-## 354 scaffold gap loc. mi… metavelve…     0.        0.         0.        377
-## 355 scaffold gap loc. mi… ray21          4.77e-1   0.         1.67e+0   416
-## 356 scaffold gap loc. mi… ray63          4.64e-1   0.         1.73e+0   415
-## 357 scaffold gap loc. mi… ray99          4.66e-1   0.         1.75e+0   415
-## 358 scaffold gap loc. mi… velvet21       0.        0.         0.        238
-## 359 scaffold gap loc. mi… velvet63       0.        0.         0.        341
-## 360 scaffold gap loc. mi… velvet99       0.        0.         0.        377
-## 361 Total aligned length  abyss21        2.37e+4   2.85e4     9.59e+3   410
-## 362 Total aligned length  abyss63        2.43e+4   2.93e4     9.12e+3   410
-## 363 Total aligned length  abyss99        2.23e+4   2.79e4     9.84e+3   381
-## 364 Total aligned length  metavelve…     5.36e+3   2.54e3     6.51e+3   239
-## 365 Total aligned length  metavelve…     8.41e+3   5.18e3     8.34e+3   344
-## 366 Total aligned length  metavelve…     1.16e+4   8.10e3     9.42e+3   377
-## 367 Total aligned length  ray21          2.93e+4   2.99e4     1.11e+4   416
-## 368 Total aligned length  ray63          2.86e+4   2.98e4     9.38e+3   415
-## 369 Total aligned length  ray99          2.86e+4   2.98e4     9.38e+3   415
-## 370 Total aligned length  velvet21       5.37e+3   2.54e3     6.52e+3   238
-## 371 Total aligned length  velvet63       8.49e+3   5.22e3     8.35e+3   341
-## 372 Total aligned length  velvet99       1.17e+4   7.92e3     9.42e+3   377
-## 373 Total length          abyss21        9.43e+4   2.90e4     3.82e+5   410
-## 374 Total length          abyss63        5.31e+4   2.96e4     1.78e+5   410
-## 375 Total length          abyss99        2.65e+4   2.80e4     3.39e+4   381
-## 376 Total length          metavelve…     4.86e+4   5.01e3     1.43e+5   239
-## 377 Total length          metavelve…     4.65e+4   7.85e3     1.99e+5   344
-## 378 Total length          metavelve…     2.02e+4   9.24e3     6.79e+4   377
-## 379 Total length          ray21          9.63e+4   3.22e4     3.57e+5   416
-## 380 Total length          ray63          8.14e+4   3.12e4     2.81e+5   415
-## 381 Total length          ray99          8.14e+4   3.12e4     2.81e+5   415
-## 382 Total length          velvet21       4.88e+4   4.83e3     1.44e+5   238
-## 383 Total length          velvet63       4.69e+4   8.27e3     2.00e+5   341
-## 384 Total length          velvet99       2.02e+4   9.40e3     6.79e+4   377
-## 385 Total length (>= 0 b… abyss21        9.84e+5   3.14e4     2.21e+6   410
-## 386 Total length (>= 0 b… abyss63        7.45e+5   3.15e4     2.08e+6   410
-## 387 Total length (>= 0 b… abyss99        2.67e+5   3.17e4     1.68e+6   381
-## 388 Total length (>= 0 b… metavelve…     1.94e+6   5.77e5     3.06e+6   239
-## 389 Total length (>= 0 b… metavelve…     4.27e+5   8.41e4     1.37e+6   344
-## 390 Total length (>= 0 b… metavelve…     1.22e+5   3.21e4     9.15e+5   377
-## 391 Total length (>= 0 b… ray21          5.61e+5   6.13e4     1.23e+6   416
-## 392 Total length (>= 0 b… ray63          4.80e+5   5.44e4     1.13e+6   415
-## 393 Total length (>= 0 b… ray99          4.80e+5   5.44e4     1.13e+6   415
-## 394 Total length (>= 0 b… velvet21       1.94e+6   5.87e5     3.07e+6   238
-## 395 Total length (>= 0 b… velvet63       4.30e+5   8.06e4     1.38e+6   341
-## 396 Total length (>= 0 b… velvet99       1.22e+5   3.22e4     9.14e+5   377
-## 397 Total length (>= 100… abyss21        4.63e+4   2.67e4     2.26e+5   410
-## 398 Total length (>= 100… abyss63        2.85e+4   2.74e4     6.35e+4   410
-## 399 Total length (>= 100… abyss99        1.77e+4   1.86e4     1.75e+4   381
-## 400 Total length (>= 100… metavelve…     3.80e+3   0.         1.30e+4   239
-## 401 Total length (>= 100… metavelve…     1.21e+4   1.09e3     5.67e+4   344
-## 402 Total length (>= 100… metavelve…     7.30e+3   2.16e3     1.36e+4   377
-## 403 Total length (>= 100… ray21          6.12e+4   3.05e4     2.32e+5   416
-## 404 Total length (>= 100… ray63          5.10e+4   2.99e4     1.59e+5   415
-## 405 Total length (>= 100… ray99          5.10e+4   2.99e4     1.59e+5   415
-## 406 Total length (>= 100… velvet21       3.77e+3   0.         1.31e+4   238
-## 407 Total length (>= 100… velvet63       1.22e+4   1.10e3     5.69e+4   341
-## 408 Total length (>= 100… velvet99       7.40e+3   2.11e3     1.41e+4   377
-## 409 Total length (>= 100… abyss21        1.11e+4   0.         1.20e+4   410
-## 410 Total length (>= 100… abyss63        9.51e+3   0.         1.22e+4   410
-## 411 Total length (>= 100… abyss99        7.63e+3   0.         1.22e+4   381
-## 412 Total length (>= 100… metavelve…     0.        0.         0.        239
-## 413 Total length (>= 100… metavelve…     9.88e+1   0.         1.06e+3   344
-## 414 Total length (>= 100… metavelve…     2.48e+2   0.         2.05e+3   377
-## 415 Total length (>= 100… ray21          1.92e+4   2.33e4     1.70e+4   416
-## 416 Total length (>= 100… ray63          1.82e+4   2.23e4     1.52e+4   415
-## 417 Total length (>= 100… ray99          1.82e+4   2.23e4     1.52e+4   415
-## 418 Total length (>= 100… velvet21       0.        0.         0.        238
-## 419 Total length (>= 100… velvet63       9.96e+1   0.         1.06e+3   341
-## 420 Total length (>= 100… velvet99       2.48e+2   0.         2.05e+3   377
-## 421 Total length (>= 250… abyss21        4.78e+3   0.         1.03e+4   410
-## 422 Total length (>= 250… abyss63        5.72e+3   0.         1.15e+4   410
-## 423 Total length (>= 250… abyss99        5.28e+3   0.         1.13e+4   381
-## 424 Total length (>= 250… metavelve…     0.        0.         0.        239
-## 425 Total length (>= 250… metavelve…     0.        0.         0.        344
-## 426 Total length (>= 250… metavelve…     0.        0.         0.        377
-## 427 Total length (>= 250… ray21          1.38e+4   0.         1.74e+4   416
-## 428 Total length (>= 250… ray63          1.29e+4   0.         1.55e+4   415
-## 429 Total length (>= 250… ray99          1.29e+4   0.         1.55e+4   415
-## 430 Total length (>= 250… velvet21       0.        0.         0.        238
-## 431 Total length (>= 250… velvet63       0.        0.         0.        341
-## 432 Total length (>= 250… velvet99       0.        0.         0.        377
-## 433 Total length (>= 500… abyss21        1.51e+4   1.90e4     2.49e+4   410
-## 434 Total length (>= 500… abyss63        1.26e+4   1.09e4     1.25e+4   410
-## 435 Total length (>= 500… abyss99        9.32e+3   0.         1.26e+4   381
-## 436 Total length (>= 500… metavelve…     0.        0.         0.        239
-## 437 Total length (>= 500… metavelve…     2.74e+2   0.         1.71e+3   344
-## 438 Total length (>= 500… metavelve…     1.18e+3   0.         4.41e+3   377
-## 439 Total length (>= 500… ray21          2.38e+4   2.84e4     2.75e+4   416
-## 440 Total length (>= 500… ray63          2.18e+4   2.83e4     1.73e+4   415
-## 441 Total length (>= 500… ray99          2.18e+4   2.83e4     1.73e+4   415
-## 442 Total length (>= 500… velvet21       0.        0.         0.        238
-## 443 Total length (>= 500… velvet63       2.76e+2   0.         1.71e+3   341
-## 444 Total length (>= 500… velvet99       1.13e+3   0.         4.30e+3   377
-## 445 Total length (>= 500… abyss21        0.        0.         0.        410
-## 446 Total length (>= 500… abyss63        0.        0.         0.        410
-## 447 Total length (>= 500… abyss99        0.        0.         0.        381
-## 448 Total length (>= 500… metavelve…     0.        0.         0.        239
-## 449 Total length (>= 500… metavelve…     0.        0.         0.        344
-## 450 Total length (>= 500… metavelve…     0.        0.         0.        377
-## 451 Total length (>= 500… ray21          5.54e+2   0.         5.64e+3   416
-## 452 Total length (>= 500… ray63          5.21e+2   0.         5.29e+3   415
-## 453 Total length (>= 500… ray99          5.21e+2   0.         5.29e+3   415
-## 454 Total length (>= 500… velvet21       0.        0.         0.        238
-## 455 Total length (>= 500… velvet63       0.        0.         0.        341
-## 456 Total length (>= 500… velvet99       0.        0.         0.        377
-## 457 unaligned contigs     abyss21      NaN        NA         NA         410
-## 458 unaligned contigs     abyss63      NaN        NA         NA         410
-## 459 unaligned contigs     abyss99      NaN        NA         NA         381
-## 460 unaligned contigs     metavelve…   NaN        NA         NA         239
-## 461 unaligned contigs     metavelve…   NaN        NA         NA         344
-## 462 unaligned contigs     metavelve…   NaN        NA         NA         377
-## 463 unaligned contigs     ray21        NaN        NA         NA         416
-## 464 unaligned contigs     ray63        NaN        NA         NA         415
-## 465 unaligned contigs     ray99        NaN        NA         NA         415
-## 466 unaligned contigs     velvet21     NaN        NA         NA         238
-## 467 unaligned contigs     velvet63     NaN        NA         NA         341
-## 468 unaligned contigs     velvet99     NaN        NA         NA         377
-## 469 Unaligned length      abyss21        7.52e+4   0.         3.85e+5   410
-## 470 Unaligned length      abyss63        3.33e+4   0.         1.79e+5   410
-## 471 Unaligned length      abyss99        7.70e+3   0.         3.47e+4   381
-## 472 Unaligned length      metavelve…     4.64e+4   2.87e3     1.44e+5   239
-## 473 Unaligned length      metavelve…     4.08e+4   1.73e3     1.98e+5   344
-## 474 Unaligned length      metavelve…     1.08e+4   6.14e2     6.79e+4   377
-## 475 Unaligned length      ray21          6.95e+4   1.37e3     3.54e+5   416
-## 476 Unaligned length      ray63          5.55e+4   1.25e3     2.79e+5   415
-## 477 Unaligned length      ray99          5.55e+4   1.25e3     2.79e+5   415
-## 478 Unaligned length      velvet21       4.66e+4   2.53e3     1.44e+5   238
-## 479 Unaligned length      velvet63       4.11e+4   1.92e3     1.99e+5   341
-## 480 Unaligned length      velvet99       1.09e+4   5.95e2     6.79e+4   377
-## 481 unaligned mis. conti… abyss21        6.08e-3   0.         1.10e-1   410
-## 482 unaligned mis. conti… abyss63        0.        0.         0.        410
-## 483 unaligned mis. conti… abyss99        0.        0.         0.        381
-## 484 unaligned mis. conti… metavelve…     0.        0.         0.        239
-## 485 unaligned mis. conti… metavelve…     0.        0.         0.        344
-## 486 unaligned mis. conti… metavelve…     0.        0.         0.        377
-## 487 unaligned mis. conti… ray21          0.        0.         0.        416
-## 488 unaligned mis. conti… ray63          2.70e-3   0.         5.19e-2   415
-## 489 unaligned mis. conti… ray99          2.70e-3   0.         5.19e-2   415
-## 490 unaligned mis. conti… velvet21       0.        0.         0.        238
-## 491 unaligned mis. conti… velvet63       0.        0.         0.        341
-## 492 unaligned mis. conti… velvet99       0.        0.         0.        377
+##     Assembly      X2            mean  median       max       min        sd count
+##     <chr>         <chr>        <dbl>   <dbl>     <dbl>     <dbl>     <dbl> <int>
+##   1 contigs       abyss21    9.25e+1  6.00e0    4.04e3     1       3.91e+2   410
+##   2 contigs       abyss63    4.74e+1  9.00e0    2.29e3     1       2.14e+2   410
+##   3 contigs       abyss99    1.83e+1  1.00e1    4.32e2     1       4.01e+1   381
+##   4 contigs       metave…    7.61e+1  8.00e0    2.36e3     1       2.25e+2   239
+##   5 contigs       metave…    6.13e+1  1.10e1    2.52e3     1       2.62e+2   344
+##   6 contigs       metave…    2.41e+1  1.20e1    1.82e3     1       9.96e+1   377
+##   7 contigs       ray21      7.50e+1  9.00e0    2.92e3     1       3.16e+2   416
+##   8 contigs       ray63      6.36e+1  9.00e0    2.74e3     1       2.75e+2   415
+##   9 contigs       ray99      6.37e+1  9.00e0    2.74e3     1       2.75e+2   415
+##  10 contigs       velvet…    7.64e+1  8.00e0    2.39e3     1       2.26e+2   238
+##  11 contigs       velvet…    6.19e+1  1.20e1    2.53e3     1       2.63e+2   341
+##  12 contigs       velvet…    2.41e+1  1.20e1    1.81e3     1       9.92e+1   377
+##  13 contigs (>= … abyss21    1.71e+4  4.15e1    4.14e5     1       4.01e+4   410
+##  14 contigs (>= … abyss63    6.54e+3  2.80e1    2.19e5     1       1.93e+4   410
+##  15 contigs (>= … abyss99    1.66e+3  3.90e1    1.51e5     1       1.12e+4   381
+##  16 contigs (>= … metave…    1.68e+4  5.66e3    1.69e5   108       2.53e+4   239
+##  17 contigs (>= … metave…    1.80e+3  4.88e2    7.93e4    19       5.23e+3   344
+##  18 contigs (>= … metave…    3.91e+2  7.60e1    5.72e4     2       3.00e+3   377
+##  19 contigs (>= … ray21      3.00e+3  1.92e2    5.62e4     1       6.71e+3   416
+##  20 contigs (>= … ray63      2.36e+3  1.44e2    5.81e4     1       5.96e+3   415
+##  21 contigs (>= … ray99      2.36e+3  1.44e2    5.81e4     1       5.96e+3   415
+##  22 contigs (>= … velvet…    1.68e+4  5.77e3    1.69e5   114       2.54e+4   238
+##  23 contigs (>= … velvet…    1.80e+3  4.82e2    7.92e4    19       5.25e+3   341
+##  24 contigs (>= … velvet…    3.89e+2  7.40e1    5.71e4     2       2.99e+3   377
+##  25 contigs (>= … abyss21    2.05e+1  3.00e0    1.44e3     0       1.25e+2   410
+##  26 contigs (>= … abyss63    1.04e+1  4.00e0    4.97e2     0       4.15e+1   410
+##  27 contigs (>= … abyss99    5.38e+0  3.00e0    1.35e2     0       9.37e+0   381
+##  28 contigs (>= … metave…    2.99e+0  0.        1.30e2     0       1.05e+1   239
+##  29 contigs (>= … metave…    8.42e+0  1.00e0    4.55e2     0       4.04e+1   344
+##  30 contigs (>= … metave…    4.10e+0  1.00e0    1.32e2     0       8.93e+0   377
+##  31 contigs (>= … ray21      2.29e+1  5.00e0    1.50e3     0       1.20e+2   416
+##  32 contigs (>= … ray63      1.85e+1  5.00e0    1.24e3     0       8.91e+1   415
+##  33 contigs (>= … ray99      1.85e+1  5.00e0    1.24e3     0       8.90e+1   415
+##  34 contigs (>= … velvet…    2.97e+0  0.        1.34e2     0       1.07e+1   238
+##  35 contigs (>= … velvet…    8.53e+0  1.00e0    4.54e2     0       4.06e+1   341
+##  36 contigs (>= … velvet…    4.16e+0  1.00e0    1.47e2     0       9.44e+0   377
+##  37 contigs (>= … abyss21    5.44e-1  0.        4.00e0     0       6.17e-1   410
+##  38 contigs (>= … abyss63    4.46e-1  0.        2.00e0     0       5.67e-1   410
+##  39 contigs (>= … abyss99    3.33e-1  0.        2.00e0     0       5.30e-1   381
+##  40 contigs (>= … metave…    0.       0.        0.         0       0.        239
+##  41 contigs (>= … metave…    8.72e-3  0.        1.00e0     0       9.31e-2   344
+##  42 contigs (>= … metave…    1.59e-2  0.        1.00e0     0       1.25e-1   377
+##  43 contigs (>= … ray21      7.69e-1  1.00e0    5.00e0     0       6.76e-1   416
+##  44 contigs (>= … ray63      7.47e-1  1.00e0    4.00e0     0       6.34e-1   415
+##  45 contigs (>= … ray99      7.47e-1  1.00e0    4.00e0     0       6.34e-1   415
+##  46 contigs (>= … velvet…    0.       0.        0.         0       0.        238
+##  47 contigs (>= … velvet…    8.80e-3  0.        1.00e0     0       9.35e-2   341
+##  48 contigs (>= … velvet…    1.59e-2  0.        1.00e0     0       1.25e-1   377
+##  49 contigs (>= … abyss21    1.78e-1  0.        1.00e0     0       3.83e-1   410
+##  50 contigs (>= … abyss63    2.00e-1  0.        1.00e0     0       4.00e-1   410
+##  51 contigs (>= … abyss99    1.78e-1  0.        1.00e0     0       3.83e-1   381
+##  52 contigs (>= … metave…    0.       0.        0.         0       0.        239
+##  53 contigs (>= … metave…    0.       0.        0.         0       0.        344
+##  54 contigs (>= … metave…    0.       0.        0.         0       0.        377
+##  55 contigs (>= … ray21      4.38e-1  0.        3.00e0     0       5.30e-1   416
+##  56 contigs (>= … ray63      4.19e-1  0.        1.00e0     0       4.94e-1   415
+##  57 contigs (>= … ray99      4.19e-1  0.        1.00e0     0       4.94e-1   415
+##  58 contigs (>= … velvet…    0.       0.        0.         0       0.        238
+##  59 contigs (>= … velvet…    0.       0.        0.         0       0.        341
+##  60 contigs (>= … velvet…    0.       0.        0.         0       0.        377
+##  61 contigs (>= … abyss21    1.14e+0  1.00e0    7.10e1     0       3.60e+0   410
+##  62 contigs (>= … abyss63    9.20e-1  1.00e0    5.00e0     0       9.77e-1   410
+##  63 contigs (>= … abyss99    5.85e-1  0.        3.00e0     0       8.22e-1   381
+##  64 contigs (>= … metave…    0.       0.        0.         0       0.        239
+##  65 contigs (>= … metave…    3.78e-2  0.        2.00e0     0       2.32e-1   344
+##  66 contigs (>= … metave…    1.56e-1  0.        3.00e0     0       5.64e-1   377
+##  67 contigs (>= … ray21      1.45e+0  1.00e0    4.80e1     0       3.23e+0   416
+##  68 contigs (>= … ray63      1.29e+0  1.00e0    2.20e1     0       1.63e+0   415
+##  69 contigs (>= … ray99      1.29e+0  1.00e0    2.20e1     0       1.64e+0   415
+##  70 contigs (>= … velvet…    0.       0.        0.         0       0.        238
+##  71 contigs (>= … velvet…    3.81e-2  0.        2.00e0     0       2.33e-1   341
+##  72 contigs (>= … velvet…    1.49e-1  0.        3.00e0     0       5.45e-1   377
+##  73 contigs (>= … abyss21    0.       0.        0.         0       0.        410
+##  74 contigs (>= … abyss63    0.       0.        0.         0       0.        410
+##  75 contigs (>= … abyss99    0.       0.        0.         0       0.        381
+##  76 contigs (>= … metave…    0.       0.        0.         0       0.        239
+##  77 contigs (>= … metave…    0.       0.        0.         0       0.        344
+##  78 contigs (>= … metave…    0.       0.        0.         0       0.        377
+##  79 contigs (>= … ray21      9.62e-3  0.        1.00e0     0       9.77e-2   416
+##  80 contigs (>= … ray63      9.64e-3  0.        1.00e0     0       9.78e-2   415
+##  81 contigs (>= … ray99      9.64e-3  0.        1.00e0     0       9.78e-2   415
+##  82 contigs (>= … velvet…    0.       0.        0.         0       0.        238
+##  83 contigs (>= … velvet…    0.       0.        0.         0       0.        341
+##  84 contigs (>= … velvet…    0.       0.        0.         0       0.        377
+##  85 Duplication … abyss21    1.01e+0  1.00e0    2.08e0     0.997   8.56e-2   410
+##  86 Duplication … abyss63    1.01e+0  1.00e0    1.99e0     0.998   6.01e-2   410
+##  87 Duplication … abyss99    1.02e+0  1.01e0    3.00e0     0.995   1.16e-1   381
+##  88 Duplication … metave…    1.00e+0  1.00e0    1.01e0     1       1.58e-3   239
+##  89 Duplication … metave…    1.00e+0  1.00e0    1.14e0     0.997   1.04e-2   344
+##  90 Duplication … metave…    1.04e+0  1.00e0    7.21e0     0.997   4.01e-1   377
+##  91 Duplication … ray21      1.15e+0  1.04e0    4.04e0     0.997   3.15e-1   416
+##  92 Duplication … ray63      1.10e+0  1.03e0    4.62e0     0.998   2.79e-1   415
+##  93 Duplication … ray99      1.10e+0  1.03e0    4.62e0     0.998   2.79e-1   415
+##  94 Duplication … velvet…    1.00e+0  1.00e0    1.01e0     1       1.67e-3   238
+##  95 Duplication … velvet…    1.00e+0  1.00e0    1.14e0     0.997   1.06e-2   341
+##  96 Duplication … velvet…    1.04e+0  1.00e0    7.21e0     0.996   4.05e-1   377
+##  97 Genome fract… abyss21    7.89e+1  9.52e1    9.98e1     1.67    3.19e+1   410
+##  98 Genome fract… abyss63    8.07e+1  9.77e1    9.99e1     1.72    3.03e+1   410
+##  99 Genome fract… abyss99    7.36e+1  9.11e1    9.99e1     1.60    3.25e+1   381
+## 100 Genome fract… metave…    1.79e+1  8.49e0    9.28e1     1.70    2.17e+1   239
+## 101 Genome fract… metave…    2.80e+1  1.73e1    9.80e1     1.48    2.77e+1   344
+## 102 Genome fract… metave…    3.84e+1  2.70e1    9.99e1     0.254   3.12e+1   377
+## 103 Genome fract… ray21      8.70e+1  9.81e1    1.00e2     1.26    2.39e+1   416
+## 104 Genome fract… ray63      8.83e+1  9.80e1    9.99e1     0.278   2.28e+1   415
+## 105 Genome fract… ray99      8.83e+1  9.80e1    9.99e1     0.278   2.28e+1   415
+## 106 Genome fract… velvet…    1.79e+1  8.49e0    9.28e1     1.71    2.18e+1   238
+## 107 Genome fract… velvet…    2.82e+1  1.73e1    9.86e1     1.48    2.77e+1   341
+## 108 Genome fract… velvet…    3.88e+1  2.63e1    9.99e1     0.254   3.12e+1   377
+## 109 genomic feat… abyss21  NaN       NA      -Inf        Inf      NA         410
+## 110 genomic feat… abyss63  NaN       NA      -Inf        Inf      NA         410
+## 111 genomic feat… abyss99  NaN       NA      -Inf        Inf      NA         381
+## 112 genomic feat… metave…  NaN       NA      -Inf        Inf      NA         239
+## 113 genomic feat… metave…  NaN       NA      -Inf        Inf      NA         344
+## 114 genomic feat… metave…  NaN       NA      -Inf        Inf      NA         377
+## 115 genomic feat… ray21    NaN       NA      -Inf        Inf      NA         416
+## 116 genomic feat… ray63    NaN       NA      -Inf        Inf      NA         415
+## 117 genomic feat… ray99    NaN       NA      -Inf        Inf      NA         415
+## 118 genomic feat… velvet…  NaN       NA      -Inf        Inf      NA         238
+## 119 genomic feat… velvet…  NaN       NA      -Inf        Inf      NA         341
+## 120 genomic feat… velvet…  NaN       NA      -Inf        Inf      NA         377
+## 121 indels per 1… abyss21    6.30e+0  3.38e0    3.51e2     0       2.58e+1   410
+## 122 indels per 1… abyss63    5.40e+0  0.        1.95e2     0       1.92e+1   410
+## 123 indels per 1… abyss99    3.80e+0  0.        1.56e2     0       1.39e+1   381
+## 124 indels per 1… metave…    4.83e+0  0.        8.59e1     0       1.60e+1   239
+## 125 indels per 1… metave…    4.69e+0  0.        1.38e2     0       1.45e+1   344
+## 126 indels per 1… metave…    1.21e+1  0.        3.69e2     0       3.51e+1   377
+## 127 indels per 1… ray21      6.20e+0  0.        5.12e2     0       2.79e+1   416
+## 128 indels per 1… ray63      5.31e+0  0.        8.90e1     0       1.09e+1   415
+## 129 indels per 1… ray99      5.31e+0  0.        8.60e1     0       1.09e+1   415
+## 130 indels per 1… velvet…    7.58e+0  0.        2.55e2     0       2.95e+1   238
+## 131 indels per 1… velvet…    4.79e+0  0.        1.80e2     0       1.78e+1   341
+## 132 indels per 1… velvet…    1.19e+1  0.        3.69e2     0       3.37e+1   377
+## 133 L50           abyss21    3.25e+1  2.00e0    1.48e3     1       1.31e+2   410
+## 134 L50           abyss63    1.60e+1  3.00e0    7.83e2     1       7.10e+1   410
+## 135 L50           abyss99    6.32e+0  3.00e0    1.30e2     1       1.30e+1   381
+## 136 L50           metave…    3.24e+1  4.00e0    9.61e2     1       9.37e+1   239
+## 137 L50           metave…    2.31e+1  5.00e0    1.02e3     1       9.60e+1   344
+## 138 L50           metave…    9.37e+0  5.00e0    7.19e2     1       3.90e+1   377
+## 139 L50           ray21      2.08e+1  2.00e0    8.67e2     1       8.79e+1   416
+## 140 L50           ray63      1.79e+1  2.00e0    8.11e2     1       7.96e+1   415
+## 141 L50           ray99      1.79e+1  2.00e0    8.11e2     1       7.96e+1   415
+## 142 L50           velvet…    3.26e+1  4.00e0    9.72e2     1       9.43e+1   238
+## 143 L50           velvet…    2.33e+1  5.00e0    1.02e3     1       9.64e+1   341
+## 144 L50           velvet…    9.38e+0  5.00e0    7.14e2     1       3.87e+1   377
+## 145 L75           abyss21    5.79e+1  3.00e0    2.63e3     1       2.40e+2   410
+## 146 L75           abyss63    2.96e+1  5.00e0    1.44e3     1       1.34e+2   410
+## 147 L75           abyss99    1.14e+1  6.00e0    2.54e2     1       2.48e+1   381
+## 148 L75           metave…    5.34e+1  6.00e0    1.63e3     1       1.56e+2   239
+## 149 L75           metave…    4.06e+1  8.00e0    1.73e3     1       1.71e+2   344
+## 150 L75           metave…    1.61e+1  8.00e0    1.24e3     1       6.73e+1   377
+## 151 L75           ray21      4.23e+1  3.00e0    1.71e3     1       1.78e+2   416
+## 152 L75           ray63      3.62e+1  3.00e0    1.56e3     1       1.59e+2   415
+## 153 L75           ray99      3.62e+1  3.00e0    1.56e3     1       1.59e+2   415
+## 154 L75           velvet…    5.36e+1  6.00e0    1.65e3     1       1.57e+2   238
+## 155 L75           velvet…    4.10e+1  8.00e0    1.74e3     1       1.72e+2   341
+## 156 L75           velvet…    1.61e+1  8.00e0    1.23e3     1       6.70e+1   377
+## 157 LA50          abyss21    2.05e+0  1.00e0    1.20e1     1       1.80e+0   410
+## 158 LA50          abyss63    2.65e+0  2.00e0    2.40e1     1       2.54e+0   410
+## 159 LA50          abyss99    4.12e+0  3.00e0    1.90e1     1       3.17e+0   381
+## 160 LA50          metave…    3.59e+0  3.00e0    1.20e1     1       2.77e+0   239
+## 161 LA50          metave…    4.27e+0  4.00e0    1.70e1     1       2.84e+0   344
+## 162 LA50          metave…    5.19e+0  5.00e0    2.10e1     1       2.62e+0   377
+## 163 LA50          ray21      2.12e+0  1.00e0    1.10e1     1       2.00e+0   416
+## 164 LA50          ray63      2.11e+0  1.00e0    1.90e1     1       2.14e+0   415
+## 165 LA50          ray99      2.10e+0  1.00e0    1.90e1     1       2.14e+0   415
+## 166 LA50          velvet…    3.57e+0  3.00e0    1.10e1     1       2.72e+0   238
+## 167 LA50          velvet…    4.41e+0  4.00e0    1.50e1     1       2.92e+0   341
+## 168 LA50          velvet…    5.27e+0  5.00e0    1.90e1     1       2.58e+0   377
+## 169 LA75          abyss21    3.12e+0  2.00e0    2.10e1     1       3.21e+0   410
+## 170 LA75          abyss63    3.98e+0  3.00e0    1.50e1     1       3.34e+0   410
+## 171 LA75          abyss99    7.07e+0  6.00e0    2.00e1     1       5.69e+0   381
+## 172 LA75          metave…    5.71e+0  4.50e0    1.90e1     1       4.59e+0   239
+## 173 LA75          metave…    6.43e+0  6.50e0    1.80e1     1       4.18e+0   344
+## 174 LA75          metave…    8.31e+0  8.00e0    2.00e1     1       4.13e+0   377
+## 175 LA75          ray21      3.27e+0  2.00e0    1.80e1     1       3.65e+0   416
+## 176 LA75          ray63      3.14e+0  2.00e0    2.10e1     1       3.49e+0   415
+## 177 LA75          ray99      3.15e+0  2.00e0    2.20e1     1       3.51e+0   415
+## 178 LA75          velvet…    5.69e+0  4.00e0    1.90e1     1       4.62e+0   238
+## 179 LA75          velvet…    6.46e+0  6.00e0    1.80e1     1       4.21e+0   341
+## 180 LA75          velvet…    8.43e+0  8.00e0    2.00e1     1       4.12e+0   377
+## 181 Largest alig… abyss21    1.44e+4  1.50e4    2.99e4   500       9.96e+3   410
+## 182 Largest alig… abyss63    1.31e+4  9.99e3    3.00e4   522       1.06e+4   410
+## 183 Largest alig… abyss99    1.05e+4  4.42e3    3.01e4    98       1.11e+4   381
+## 184 Largest alig… metave…    1.01e+3  7.76e2    3.67e3   509       6.91e+2   239
+## 185 Largest alig… metave…    1.52e+3  9.70e2    1.21e4   442       1.61e+3   344
+## 186 Largest alig… metave…    2.12e+3  1.06e3    2.24e4    76       2.75e+3   377
+## 187 Largest alig… ray21      1.88e+4  2.17e4    3.08e4   340       1.08e+4   416
+## 188 Largest alig… ray63      1.90e+4  2.14e4    3.20e4    83       1.07e+4   415
+## 189 Largest alig… ray99      1.90e+4  2.14e4    3.20e4    83       1.08e+4   415
+## 190 Largest alig… velvet…    1.02e+3  7.92e2    3.67e3   509       6.89e+2   238
+## 191 Largest alig… velvet…    1.51e+3  9.82e2    1.21e4   442       1.61e+3   341
+## 192 Largest alig… velvet…    2.13e+3  1.09e3    2.24e4    76       2.75e+3   377
+## 193 Largest cont… abyss21    1.20e+4  9.46e3    2.99e4   503       1.02e+4   410
+## 194 Largest cont… abyss63    1.12e+4  6.99e3    3.02e4   510       1.05e+4   410
+## 195 Largest cont… abyss99    9.20e+3  3.31e3    3.02e4   501       1.07e+4   381
+## 196 Largest cont… metave…    1.01e+3  8.42e2    3.67e3   500       5.53e+2   239
+## 197 Largest cont… metave…    1.52e+3  1.09e3    1.21e4   503       1.41e+3   344
+## 198 Largest cont… metave…    2.07e+3  1.28e3    2.24e4   510       2.46e+3   377
+## 199 Largest cont… ray21      1.90e+4  2.05e4    6.04e4   623       1.29e+4   416
+## 200 Largest cont… ray63      1.83e+4  1.92e4    5.59e4   724       1.22e+4   415
+## 201 Largest cont… ray99      1.83e+4  1.92e4    5.59e4   724       1.22e+4   415
+## 202 Largest cont… velvet…    1.01e+3  8.38e2    3.67e3   500       5.47e+2   238
+## 203 Largest cont… velvet…    1.52e+3  1.10e3    1.21e4   503       1.41e+3   341
+## 204 Largest cont… velvet…    2.09e+3  1.26e3    2.24e4   507       2.46e+3   377
+## 205 local misass… abyss21    4.56e-2  0.        2.00e0     0       2.23e-1   410
+## 206 local misass… abyss63    2.99e-2  0.        2.00e0     0       1.87e-1   410
+## 207 local misass… abyss99    1.06e-1  0.        3.00e0     0       3.64e-1   381
+## 208 local misass… metave…    0.       0.        0.         0       0.        239
+## 209 local misass… metave…    0.       0.        0.         0       0.        344
+## 210 local misass… metave…    1.18e-1  0.        3.00e0     0       3.80e-1   377
+## 211 local misass… ray21      1.55e-1  0.        5.00e0     0       5.50e-1   416
+## 212 local misass… ray63      1.81e-1  0.        7.00e0     0       7.29e-1   415
+## 213 local misass… ray99      1.78e-1  0.        7.00e0     0       7.17e-1   415
+## 214 local misass… velvet…    0.       0.        0.         0       0.        238
+## 215 local misass… velvet…    0.       0.        0.         0       0.        341
+## 216 local misass… velvet…    1.16e-1  0.        3.00e0     0       3.87e-1   377
+## 217 misassembled… abyss21    9.12e-3  0.        1.00e0     0       9.52e-2   410
+## 218 misassembled… abyss63    8.98e-3  0.        1.00e0     0       9.45e-2   410
+## 219 misassembled… abyss99    9.35e-2  0.        2.00e0     0       3.32e-1   381
+## 220 misassembled… metave…    1.00e-2  0.        1.00e0     0       1.00e-1   239
+## 221 misassembled… metave…    0.       0.        0.         0       0.        344
+## 222 misassembled… metave…    1.41e-1  0.        2.00e0     0       4.18e-1   377
+## 223 misassembled… ray21      5.23e-1  0.        6.00e0     0       9.19e-1   416
+## 224 misassembled… ray63      4.07e-1  0.        1.00e1     0       9.83e-1   415
+## 225 misassembled… ray99      3.99e-1  0.        1.00e1     0       9.46e-1   415
+## 226 misassembled… velvet…    1.00e-2  0.        1.00e0     0       1.00e-1   238
+## 227 misassembled… velvet…    0.       0.        0.         0       0.        341
+## 228 misassembled… velvet…    1.53e-1  0.        3.00e0     0       4.36e-1   377
+## 229 Misassembled… abyss21    4.38e+1  0.        1.31e4     0       7.26e+2   410
+## 230 Misassembled… abyss63    7.41e+1  0.        1.65e4     0       9.96e+2   410
+## 231 Misassembled… abyss99    2.38e+2  0.        2.78e4     0       1.83e+3   381
+## 232 Misassembled… metave…    6.34e+0  0.        6.34e2     0       6.34e+1   239
+## 233 Misassembled… metave…    0.       0.        0.         0       0.        344
+## 234 Misassembled… metave…    9.57e+1  0.        1.61e3     0       2.88e+2   377
+## 235 Misassembled… ray21      8.06e+3  0.        7.89e4     0       1.56e+4   416
+## 236 Misassembled… ray63      5.77e+3  0.        8.64e4     0       1.34e+4   415
+## 237 Misassembled… ray99      5.76e+3  0.        8.64e4     0       1.34e+4   415
+## 238 Misassembled… velvet…    6.34e+0  0.        6.34e2     0       6.34e+1   238
+## 239 Misassembled… velvet…    0.       0.        0.         0       0.        341
+## 240 Misassembled… velvet…    1.04e+2  0.        2.02e3     0       3.04e+2   377
+## 241 misassemblies abyss21    9.12e-3  0.        1.00e0     0       9.52e-2   410
+## 242 misassemblies abyss63    8.98e-3  0.        1.00e0     0       9.45e-2   410
+## 243 misassemblies abyss99    9.66e-2  0.        2.00e0     0       3.45e-1   381
+## 244 misassemblies metave…    1.00e-2  0.        1.00e0     0       1.00e-1   239
+## 245 misassemblies metave…    0.       0.        0.         0       0.        344
+## 246 misassemblies metave…    1.55e-1  0.        3.00e0     0       4.73e-1   377
+## 247 misassemblies ray21      6.21e-1  0.        7.00e0     0       1.14e+0   416
+## 248 misassemblies ray63      4.77e-1  0.        1.70e1     0       1.31e+0   415
+## 249 misassemblies ray99      4.69e-1  0.        1.70e1     0       1.28e+0   415
+## 250 misassemblies velvet…    1.00e-2  0.        1.00e0     0       1.00e-1   238
+## 251 misassemblies velvet…    0.       0.        0.         0       0.        341
+## 252 misassemblies velvet…    1.66e-1  0.        3.00e0     0       4.89e-1   377
+## 253 mismatches p… abyss21    2.72e+1  2.49e1    2.95e2     0       2.48e+1   410
+## 254 mismatches p… abyss63    2.68e+1  2.46e1    1.95e2     0       1.90e+1   410
+## 255 mismatches p… abyss99    2.68e+1  2.54e1    2.07e2     0       2.18e+1   381
+## 256 mismatches p… metave…    4.54e+1  1.76e1    5.18e2     0       7.95e+1   239
+## 257 mismatches p… metave…    3.32e+1  2.22e1    5.09e2     0       5.20e+1   344
+## 258 mismatches p… metave…    4.33e+1  2.89e1    5.63e2     0       6.21e+1   377
+## 259 mismatches p… ray21      3.83e+1  3.35e1    5.12e2     0       3.21e+1   416
+## 260 mismatches p… ray63      3.61e+1  3.30e1    5.28e2     0       3.34e+1   415
+## 261 mismatches p… ray99      3.61e+1  3.30e1    5.28e2     0       3.34e+1   415
+## 262 mismatches p… velvet…    4.45e+1  1.90e1    5.18e2     0       7.77e+1   238
+## 263 mismatches p… velvet…    3.36e+1  2.23e1    5.09e2     0       5.21e+1   341
+## 264 mismatches p… velvet…    4.26e+1  2.69e1    5.63e2     0       6.19e+1   377
+## 265 N's per 100 … abyss21    8.36e+2  0.        4.08e4     0       3.67e+3   410
+## 266 N's per 100 … abyss63    5.59e+2  0.        5.10e4     0       3.45e+3   410
+## 267 N's per 100 … abyss99    3.30e+2  0.        3.93e4     0       2.32e+3   381
+## 268 N's per 100 … metave…    0.       0.        0.         0       0.        239
+## 269 N's per 100 … metave…    0.       0.        0.         0       0.        344
+## 270 N's per 100 … metave…    0.       0.        0.         0       0.        377
+## 271 N's per 100 … ray21      2.83e+2  0.        7.79e3     0       7.32e+2   416
+## 272 N's per 100 … ray63      2.80e+2  0.        6.73e3     0       7.34e+2   415
+## 273 N's per 100 … ray99      2.81e+2  0.        6.73e3     0       7.36e+2   415
+## 274 N's per 100 … velvet…    0.       0.        0.         0       0.        238
+## 275 N's per 100 … velvet…    0.       0.        0.         0       0.        341
+## 276 N's per 100 … velvet…    0.       0.        0.         0       0.        377
+## 277 N50           abyss21    1.10e+4  5.75e3    2.99e4   503       1.08e+4   410
+## 278 N50           abyss63    9.62e+3  3.38e3    3.02e4   510       1.11e+4   410
+## 279 N50           abyss99    7.74e+3  1.31e3    3.02e4   501       1.11e+4   381
+## 280 N50           metave…    6.49e+2  6.02e2    1.83e3   500       1.76e+2   239
+## 281 N50           metave…    7.86e+2  6.82e2    5.64e3   503       4.49e+2   344
+## 282 N50           metave…    1.25e+3  7.32e2    2.24e4   504       1.96e+3   377
+## 283 N50           ray21      1.49e+4  9.29e3    6.04e4   569       1.38e+4   416
+## 284 N50           ray63      1.45e+4  8.45e3    5.35e4   580       1.33e+4   415
+## 285 N50           ray99      1.45e+4  8.45e3    5.35e4   580       1.33e+4   415
+## 286 N50           velvet…    6.55e+2  5.98e2    1.83e3   500       1.87e+2   238
+## 287 N50           velvet…    7.92e+2  6.85e2    5.52e3   503       4.51e+2   341
+## 288 N50           velvet…    1.24e+3  7.24e2    2.24e4   504       1.94e+3   377
+## 289 N75           abyss21    9.33e+3  3.09e3    2.99e4   500       1.07e+4   410
+## 290 N75           abyss63    7.89e+3  1.90e3    3.02e4   504       1.10e+4   410
+## 291 N75           abyss99    6.75e+3  8.85e2    3.02e4   501       1.09e+4   381
+## 292 N75           metave…    5.75e+2  5.50e2    1.06e3   500       8.96e+1   239
+## 293 N75           metave…    6.34e+2  5.74e2    3.79e3   500       2.62e+2   344
+## 294 N75           metave…    9.30e+2  5.99e2    2.24e4   502       1.71e+3   377
+## 295 N75           ray21      1.13e+4  3.30e3    6.04e4   534       1.33e+4   416
+## 296 N75           ray63      1.15e+4  2.84e3    5.35e4   513       1.32e+4   415
+## 297 N75           ray99      1.15e+4  2.84e3    5.35e4   513       1.32e+4   415
+## 298 N75           velvet…    5.76e+2  5.49e2    1.06e3   500       8.92e+1   238
+## 299 N75           velvet…    6.38e+2  5.74e2    3.79e3   503       2.88e+2   341
+## 300 N75           velvet…    9.33e+2  5.98e2    2.24e4   502       1.71e+3   377
+## 301 NA50          abyss21    1.56e+4  1.93e4    2.99e4   518       1.00e+4   410
+## 302 NA50          abyss63    1.33e+4  7.47e3    3.00e4   307       1.14e+4   410
+## 303 NA50          abyss99    9.87e+3  2.26e3    3.01e4   483       1.19e+4   381
+## 304 NA50          metave…    7.51e+2  6.66e2    1.83e3   509       2.90e+2   239
+## 305 NA50          metave…    8.81e+2  6.87e2    5.64e3   442       6.23e+2   344
+## 306 NA50          metave…    1.42e+3  7.06e2    2.24e4   157       2.36e+3   377
+## 307 NA50          ray21      1.85e+4  2.23e4    3.08e4   569       1.12e+4   416
+## 308 NA50          ray63      1.86e+4  2.23e4    3.08e4   687       1.14e+4   415
+## 309 NA50          ray99      1.86e+4  2.23e4    3.08e4   687       1.14e+4   415
+## 310 NA50          velvet…    7.78e+2  6.75e2    1.83e3   509       3.08e+2   238
+## 311 NA50          velvet…    8.78e+2  7.03e2    5.52e3   442       6.19e+2   341
+## 312 NA50          velvet…    1.39e+3  6.86e2    2.24e4   157       2.35e+3   377
+## 313 NA75          abyss21    1.35e+4  1.02e4    2.99e4   532       1.08e+4   410
+## 314 NA75          abyss63    1.14e+4  4.72e3    3.00e4   514       1.19e+4   410
+## 315 NA75          abyss99    8.80e+3  1.28e3    3.01e4   398       1.19e+4   381
+## 316 NA75          metave…    6.22e+2  5.76e2    1.06e3   505       1.31e+2   239
+## 317 NA75          metave…    6.84e+2  5.79e2    3.79e3   442       3.80e+2   344
+## 318 NA75          metave…    1.05e+3  5.92e2    2.24e4    96       2.16e+3   377
+## 319 NA75          ray21      1.53e+4  1.04e4    3.08e4   529       1.22e+4   416
+## 320 NA75          ray63      1.64e+4  1.36e4    3.08e4   245       1.24e+4   415
+## 321 NA75          ray99      1.64e+4  1.36e4    3.08e4   245       1.24e+4   415
+## 322 NA75          velvet…    6.27e+2  5.76e2    1.06e3   505       1.31e+2   238
+## 323 NA75          velvet…    6.94e+2  5.82e2    3.79e3   442       4.22e+2   341
+## 324 NA75          velvet…    1.05e+3  5.98e2    2.24e4    96       2.17e+3   377
+## 325 Reference le… abyss21    2.99e+4  2.99e4    2.99e4 29903       0.        410
+## 326 Reference le… abyss63    2.99e+4  2.99e4    2.99e4 29903       0.        410
+## 327 Reference le… abyss99    2.99e+4  2.99e4    2.99e4 29903       0.        381
+## 328 Reference le… metave…    2.99e+4  2.99e4    2.99e4 29903       0.        239
+## 329 Reference le… metave…    2.99e+4  2.99e4    2.99e4 29903       0.        344
+## 330 Reference le… metave…    2.99e+4  2.99e4    2.99e4 29903       0.        377
+## 331 Reference le… ray21      2.99e+4  2.99e4    2.99e4 29903       0.        416
+## 332 Reference le… ray63      2.99e+4  2.99e4    2.99e4 29903       0.        415
+## 333 Reference le… ray99      2.99e+4  2.99e4    2.99e4 29903       0.        415
+## 334 Reference le… velvet…    2.99e+4  2.99e4    2.99e4 29903       0.        238
+## 335 Reference le… velvet…    2.99e+4  2.99e4    2.99e4 29903       0.        341
+## 336 Reference le… velvet…    2.99e+4  2.99e4    2.99e4 29903       0.        377
+## 337 scaffold gap… abyss21    3.04e-3  0.        1.00e0     0       5.51e-2   410
+## 338 scaffold gap… abyss63    2.99e-3  0.        1.00e0     0       5.47e-2   410
+## 339 scaffold gap… abyss99    3.12e-3  0.        1.00e0     0       5.58e-2   381
+## 340 scaffold gap… metave…    0.       0.        0.         0       0.        239
+## 341 scaffold gap… metave…    0.       0.        0.         0       0.        344
+## 342 scaffold gap… metave…    0.       0.        0.         0       0.        377
+## 343 scaffold gap… ray21      8.00e-3  0.        1.00e0     0       8.92e-2   416
+## 344 scaffold gap… ray63      0.       0.        0.         0       0.        415
+## 345 scaffold gap… ray99      0.       0.        0.         0       0.        415
+## 346 scaffold gap… velvet…    0.       0.        0.         0       0.        238
+## 347 scaffold gap… velvet…    0.       0.        0.         0       0.        341
+## 348 scaffold gap… velvet…    0.       0.        0.         0       0.        377
+## 349 scaffold gap… abyss21    1.22e-1  0.        7.00e0     0       5.39e-1   410
+## 350 scaffold gap… abyss63    2.57e-1  0.        2.40e1     0       1.44e+0   410
+## 351 scaffold gap… abyss99    2.71e-1  0.        1.60e1     0       1.18e+0   381
+## 352 scaffold gap… metave…    0.       0.        0.         0       0.        239
+## 353 scaffold gap… metave…    0.       0.        0.         0       0.        344
+## 354 scaffold gap… metave…    0.       0.        0.         0       0.        377
+## 355 scaffold gap… ray21      4.77e-1  0.        1.40e1     0       1.67e+0   416
+## 356 scaffold gap… ray63      4.64e-1  0.        1.60e1     0       1.73e+0   415
+## 357 scaffold gap… ray99      4.66e-1  0.        1.70e1     0       1.75e+0   415
+## 358 scaffold gap… velvet…    0.       0.        0.         0       0.        238
+## 359 scaffold gap… velvet…    0.       0.        0.         0       0.        341
+## 360 scaffold gap… velvet…    0.       0.        0.         0       0.        377
+## 361 Total aligne… abyss21    2.37e+4  2.85e4    3.41e4   500       9.59e+3   410
+## 362 Total aligne… abyss63    2.43e+4  2.93e4    3.02e4   522       9.12e+3   410
+## 363 Total aligne… abyss99    2.23e+4  2.79e4    3.10e4   479       9.84e+3   381
+## 364 Total aligne… metave…    5.36e+3  2.54e3    2.78e4   509       6.51e+3   239
+## 365 Total aligne… metave…    8.41e+3  5.18e3    2.95e4   442       8.34e+3   344
+## 366 Total aligne… metave…    1.16e+4  8.10e3    3.02e4    76       9.42e+3   377
+## 367 Total aligne… ray21      2.93e+4  2.99e4    1.05e5   526       1.11e+4   416
+## 368 Total aligne… ray63      2.86e+4  2.98e4    8.64e4    83       9.38e+3   415
+## 369 Total aligne… ray99      2.86e+4  2.98e4    8.64e4    83       9.38e+3   415
+## 370 Total aligne… velvet…    5.37e+3  2.54e3    2.78e4   511       6.52e+3   238
+## 371 Total aligne… velvet…    8.49e+3  5.22e3    2.98e4   442       8.35e+3   341
+## 372 Total aligne… velvet…    1.17e+4  7.92e3    3.02e4    76       9.42e+3   377
+## 373 Total length  abyss21    9.43e+4  2.90e4    3.90e6   503       3.82e+5   410
+## 374 Total length  abyss63    5.31e+4  2.96e4    2.05e6   510       1.78e+5   410
+## 375 Total length  abyss99    2.65e+4  2.80e4    4.27e5   501       3.39e+4   381
+## 376 Total length  metave…    4.86e+4  5.01e3    1.53e6   500       1.43e+5   239
+## 377 Total length  metave…    4.65e+4  7.85e3    1.89e6   503       1.99e+5   344
+## 378 Total length  metave…    2.02e+4  9.24e3    1.22e6   510       6.79e+4   377
+## 379 Total length  ray21      9.63e+4  3.22e4    4.01e6   623       3.57e+5   416
+## 380 Total length  ray63      8.14e+4  3.12e4    3.40e6   724       2.81e+5   415
+## 381 Total length  ray99      8.14e+4  3.12e4    3.40e6   724       2.81e+5   415
+## 382 Total length  velvet…    4.88e+4  4.83e3    1.54e6   503       1.44e+5   238
+## 383 Total length  velvet…    4.69e+4  8.27e3    1.89e6   503       2.00e+5   341
+## 384 Total length  velvet…    2.02e+4  9.40e3    1.22e6   507       6.79e+4   377
+## 385 Total length… abyss21    9.84e+5  3.14e4    1.98e7  4905       2.21e+6   410
+## 386 Total length… abyss63    7.45e+5  3.15e4    2.23e7  5130       2.08e+6   410
+## 387 Total length… abyss99    2.67e+5  3.17e4    2.48e7  3148       1.68e+6   381
+## 388 Total length… metave…    1.94e+6  5.77e5    2.22e7 22400       3.06e+6   239
+## 389 Total length… metave…    4.27e+5  8.41e4    2.14e7  9043       1.37e+6   344
+## 390 Total length… metave…    1.22e+5  3.21e4    1.75e7  1655       9.15e+5   377
+## 391 Total length… ray21      5.61e+5  6.13e4    9.71e6  9933       1.23e+6   416
+## 392 Total length… ray63      4.80e+5  5.44e4    1.00e7  9385       1.13e+6   415
+## 393 Total length… ray99      4.80e+5  5.44e4    1.00e7  9385       1.13e+6   415
+## 394 Total length… velvet…    1.94e+6  5.87e5    2.22e7 21781       3.07e+6   238
+## 395 Total length… velvet…    4.30e+5  8.06e4    2.14e7  9043       1.38e+6   341
+## 396 Total length… velvet…    1.22e+5  3.22e4    1.75e7  1657       9.14e+5   377
+## 397 Total length… abyss21    4.63e+4  2.67e4    3.21e6     0       2.26e+5   410
+## 398 Total length… abyss63    2.85e+4  2.74e4    8.39e5     0       6.35e+4   410
+## 399 Total length… abyss99    1.77e+4  1.86e4    2.20e5     0       1.75e+4   381
+## 400 Total length… metave…    3.80e+3  0.        1.58e5     0       1.30e+4   239
+## 401 Total length… metave…    1.21e+4  1.09e3    6.53e5     0       5.67e+4   344
+## 402 Total length… metave…    7.30e+3  2.16e3    1.66e5     0       1.36e+4   377
+## 403 Total length… ray21      6.12e+4  3.05e4    3.19e6     0       2.32e+5   416
+## 404 Total length… ray63      5.10e+4  2.99e4    2.35e6     0       1.59e+5   415
+## 405 Total length… ray99      5.10e+4  2.99e4    2.35e6     0       1.59e+5   415
+## 406 Total length… velvet…    3.77e+3  0.        1.63e5     0       1.31e+4   238
+## 407 Total length… velvet…    1.22e+4  1.10e3    6.53e5     0       5.69e+4   341
+## 408 Total length… velvet…    7.40e+3  2.11e3    1.81e5     0       1.41e+4   377
+## 409 Total length… abyss21    1.11e+4  0.        4.18e4     0       1.20e+4   410
+## 410 Total length… abyss63    9.51e+3  0.        3.30e4     0       1.22e+4   410
+## 411 Total length… abyss99    7.63e+3  0.        3.02e4     0       1.22e+4   381
+## 412 Total length… metave…    0.       0.        0.         0       0.        239
+## 413 Total length… metave…    9.88e+1  0.        1.21e4     0       1.06e+3   344
+## 414 Total length… metave…    2.48e+2  0.        2.24e4     0       2.05e+3   377
+## 415 Total length… ray21      1.92e+4  2.33e4    1.05e5     0       1.70e+4   416
+## 416 Total length… ray63      1.82e+4  2.23e4    8.64e4     0       1.52e+4   415
+## 417 Total length… ray99      1.82e+4  2.23e4    8.64e4     0       1.52e+4   415
+## 418 Total length… velvet…    0.       0.        0.         0       0.        238
+## 419 Total length… velvet…    9.96e+1  0.        1.21e4     0       1.06e+3   341
+## 420 Total length… velvet…    2.48e+2  0.        2.24e4     0       2.05e+3   377
+## 421 Total length… abyss21    4.78e+3  0.        2.99e4     0       1.03e+4   410
+## 422 Total length… abyss63    5.72e+3  0.        3.02e4     0       1.15e+4   410
+## 423 Total length… abyss99    5.28e+3  0.        3.02e4     0       1.13e+4   381
+## 424 Total length… metave…    0.       0.        0.         0       0.        239
+## 425 Total length… metave…    0.       0.        0.         0       0.        344
+## 426 Total length… metave…    0.       0.        0.         0       0.        377
+## 427 Total length… ray21      1.38e+4  0.        1.05e5     0       1.74e+4   416
+## 428 Total length… ray63      1.29e+4  0.        5.59e4     0       1.55e+4   415
+## 429 Total length… ray99      1.29e+4  0.        5.59e4     0       1.55e+4   415
+## 430 Total length… velvet…    0.       0.        0.         0       0.        238
+## 431 Total length… velvet…    0.       0.        0.         0       0.        341
+## 432 Total length… velvet…    0.       0.        0.         0       0.        377
+## 433 Total length… abyss21    1.51e+4  1.90e4    4.50e5     0       2.49e+4   410
+## 434 Total length… abyss63    1.26e+4  1.09e4    4.63e4     0       1.25e+4   410
+## 435 Total length… abyss99    9.32e+3  0.        3.11e4     0       1.26e+4   381
+## 436 Total length… metave…    0.       0.        0.         0       0.        239
+## 437 Total length… metave…    2.74e+2  0.        1.67e4     0       1.71e+3   344
+## 438 Total length… metave…    1.18e+3  0.        2.91e4     0       4.41e+3   377
+## 439 Total length… ray21      2.38e+4  2.84e4    3.54e5     0       2.75e+4   416
+## 440 Total length… ray63      2.18e+4  2.83e4    1.77e5     0       1.73e+4   415
+## 441 Total length… ray99      2.18e+4  2.83e4    1.77e5     0       1.73e+4   415
+## 442 Total length… velvet…    0.       0.        0.         0       0.        238
+## 443 Total length… velvet…    2.76e+2  0.        1.66e4     0       1.71e+3   341
+## 444 Total length… velvet…    1.13e+3  0.        2.91e4     0       4.30e+3   377
+## 445 Total length… abyss21    0.       0.        0.         0       0.        410
+## 446 Total length… abyss63    0.       0.        0.         0       0.        410
+## 447 Total length… abyss99    0.       0.        0.         0       0.        381
+## 448 Total length… metave…    0.       0.        0.         0       0.        239
+## 449 Total length… metave…    0.       0.        0.         0       0.        344
+## 450 Total length… metave…    0.       0.        0.         0       0.        377
+## 451 Total length… ray21      5.54e+2  0.        6.04e4     0       5.64e+3   416
+## 452 Total length… ray63      5.21e+2  0.        5.59e4     0       5.29e+3   415
+## 453 Total length… ray99      5.21e+2  0.        5.59e4     0       5.29e+3   415
+## 454 Total length… velvet…    0.       0.        0.         0       0.        238
+## 455 Total length… velvet…    0.       0.        0.         0       0.        341
+## 456 Total length… velvet…    0.       0.        0.         0       0.        377
+## 457 unaligned co… abyss21  NaN       NA      -Inf        Inf      NA         410
+## 458 unaligned co… abyss63  NaN       NA      -Inf        Inf      NA         410
+## 459 unaligned co… abyss99  NaN       NA      -Inf        Inf      NA         381
+## 460 unaligned co… metave…  NaN       NA      -Inf        Inf      NA         239
+## 461 unaligned co… metave…  NaN       NA      -Inf        Inf      NA         344
+## 462 unaligned co… metave…  NaN       NA      -Inf        Inf      NA         377
+## 463 unaligned co… ray21    NaN       NA      -Inf        Inf      NA         416
+## 464 unaligned co… ray63    NaN       NA      -Inf        Inf      NA         415
+## 465 unaligned co… ray99    NaN       NA      -Inf        Inf      NA         415
+## 466 unaligned co… velvet…  NaN       NA      -Inf        Inf      NA         238
+## 467 unaligned co… velvet…  NaN       NA      -Inf        Inf      NA         341
+## 468 unaligned co… velvet…  NaN       NA      -Inf        Inf      NA         377
+## 469 Unaligned le… abyss21    7.52e+4  0.        3.90e6     0       3.85e+5   410
+## 470 Unaligned le… abyss63    3.33e+4  0.        2.02e6     0       1.79e+5   410
+## 471 Unaligned le… abyss99    7.70e+3  0.        4.26e5     0       3.47e+4   381
+## 472 Unaligned le… metave…    4.64e+4  2.87e3    1.53e6     0       1.44e+5   239
+## 473 Unaligned le… metave…    4.08e+4  1.73e3    1.87e6     0       1.98e+5   344
+## 474 Unaligned le… metave…    1.08e+4  6.14e2    1.22e6     0       6.79e+4   377
+## 475 Unaligned le… ray21      6.95e+4  1.37e3    3.89e6     0       3.54e+5   416
+## 476 Unaligned le… ray63      5.55e+4  1.25e3    3.32e6     0       2.79e+5   415
+## 477 Unaligned le… ray99      5.55e+4  1.25e3    3.32e6     0       2.79e+5   415
+## 478 Unaligned le… velvet…    4.66e+4  2.53e3    1.54e6     0       1.44e+5   238
+## 479 Unaligned le… velvet…    4.11e+4  1.92e3    1.87e6     0       1.99e+5   341
+## 480 Unaligned le… velvet…    1.09e+4  5.95e2    1.22e6     0       6.79e+4   377
+## 481 unaligned mi… abyss21    6.08e-3  0.        2.00e0     0       1.10e-1   410
+## 482 unaligned mi… abyss63    0.       0.        0.         0       0.        410
+## 483 unaligned mi… abyss99    0.       0.        0.         0       0.        381
+## 484 unaligned mi… metave…    0.       0.        0.         0       0.        239
+## 485 unaligned mi… metave…    0.       0.        0.         0       0.        344
+## 486 unaligned mi… metave…    0.       0.        0.         0       0.        377
+## 487 unaligned mi… ray21      0.       0.        0.         0       0.        416
+## 488 unaligned mi… ray63      2.70e-3  0.        1.00e0     0       5.19e-2   415
+## 489 unaligned mi… ray99      2.70e-3  0.        1.00e0     0       5.19e-2   415
+## 490 unaligned mi… velvet…    0.       0.        0.         0       0.        238
+## 491 unaligned mi… velvet…    0.       0.        0.         0       0.        341
+## 492 unaligned mi… velvet…    0.       0.        0.         0       0.        377
 ```
 
 ```r
 kmer_stats %>% filter(Assembly %in% c("Genome fraction (%)", "Largest alignment", "Duplication ratio", "misassemblies", "N50", "NA50",  "L50", "LA50")) %>%
-
-ggplot( aes(X2, mean)) +
+  ggplot( aes(X2, mean)) +
   geom_col() +
-  facet_grid(Assembly~., scales = "free")
+  facet_grid(Assembly~., scales = "free") +
+  xlab("") +
+  ylab("Mean") +
+  theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(fill = NA, colour = "black", size = .5),
+        axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-4-24.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-5-24.png)<!-- -->
+
+```r
+ggsave("k-mer_stats.pdf", width = 25, height = 40, units = "cm")
+```
 
 ### 90% of the genome is covered by single contig
 
@@ -3535,7 +3844,7 @@ print(contig2, n = Inf)
 ## # A tibble: 46 x 3
 ## # Groups:   X2 [10]
 ##    X2         Assay_Type       count
-##    <fct>      <chr>            <int>
+##    <chr>      <chr>            <int>
 ##  1 abyss21    AMPLICON             6
 ##  2 abyss21    Targeted-Capture     3
 ##  3 abyss21    WGA                 11
@@ -3596,7 +3905,7 @@ ggplot(contig, aes(X2)) +
         axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
 
 ```r
 ggsave("90_percent_genome_single_contig.pdf", width = 20, height = 6, units = "cm")
@@ -3649,7 +3958,7 @@ ggplot(rx2, aes(value, read/1e6)) +
         legend.position = "none") 
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
 ```r
 ggsave("readVsGenome.pdf", width = 20, height = 6, units = "cm")
@@ -3762,7 +4071,7 @@ ggplot(dist, aes(Assay_Type, log10(read))) +
         axis.text = element_text(color = "black", angle = 90, hjust = 1)) 
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-6-2.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-7-2.png)<!-- -->
 
 ```r
 ggsave("readDist.pdf", width = 7, height = 10, units = "cm")
@@ -3787,7 +4096,7 @@ rx2 %>% filter(Assembly == "Genome fraction (%)") %>% na.omit() %>%
         axis.text.x=element_blank()) 
 ```
 
-![](Assembly_analysis_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](Assembly_analysis_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
 
 ```r
 ggsave("sampleVsassembler_color_bk.pdf", width = 30, height = 20, units = "cm")
@@ -3896,30 +4205,30 @@ kable(df, caption = "Summary of all data. This table will add table paper")
 
 Table: Summary of all data. This table will add table paper
 
-Assay_Type         LibrarySource        LibraryLayout       n
------------------  -------------------  --------------  -----
-AMPLICON           METAGENOMIC          SINGLE             41
-AMPLICON           SYNTHETIC            SINGLE            136
-AMPLICON           VIRAL RNA            PAIRED           5254
-AMPLICON           VIRAL RNA            SINGLE           6507
-OTHER              METAGENOMIC          PAIRED              1
-OTHER              VIRAL RNA            PAIRED             68
-RNA-Seq            GENOMIC              PAIRED              1
-RNA-Seq            METAGENOMIC          PAIRED              9
-RNA-Seq            METAGENOMIC          SINGLE              9
-RNA-Seq            METATRANSCRIPTOMIC   PAIRED              9
-RNA-Seq            TRANSCRIPTOMIC       PAIRED             16
-RNA-Seq            TRANSCRIPTOMIC       SINGLE              3
-RNA-Seq            VIRAL RNA            PAIRED            682
-RNA-Seq            VIRAL RNA            SINGLE            654
-Targeted-Capture   VIRAL RNA            PAIRED            194
-Targeted-Capture   VIRAL RNA            SINGLE            241
-WGA                GENOMIC              PAIRED              6
-WGA                METAGENOMIC          PAIRED              5
-WGA                VIRAL RNA            PAIRED           1061
-WGS                GENOMIC              PAIRED             11
-WGS                METAGENOMIC          PAIRED              6
-WGS                VIRAL RNA            PAIRED             93
+|Assay_Type       |LibrarySource      |LibraryLayout |    n|
+|:----------------|:------------------|:-------------|----:|
+|AMPLICON         |METAGENOMIC        |SINGLE        |   41|
+|AMPLICON         |SYNTHETIC          |SINGLE        |  136|
+|AMPLICON         |VIRAL RNA          |PAIRED        | 5254|
+|AMPLICON         |VIRAL RNA          |SINGLE        | 6507|
+|OTHER            |METAGENOMIC        |PAIRED        |    1|
+|OTHER            |VIRAL RNA          |PAIRED        |   68|
+|RNA-Seq          |GENOMIC            |PAIRED        |    1|
+|RNA-Seq          |METAGENOMIC        |PAIRED        |    9|
+|RNA-Seq          |METAGENOMIC        |SINGLE        |    9|
+|RNA-Seq          |METATRANSCRIPTOMIC |PAIRED        |    9|
+|RNA-Seq          |TRANSCRIPTOMIC     |PAIRED        |   16|
+|RNA-Seq          |TRANSCRIPTOMIC     |SINGLE        |    3|
+|RNA-Seq          |VIRAL RNA          |PAIRED        |  682|
+|RNA-Seq          |VIRAL RNA          |SINGLE        |  654|
+|Targeted-Capture |VIRAL RNA          |PAIRED        |  194|
+|Targeted-Capture |VIRAL RNA          |SINGLE        |  241|
+|WGA              |GENOMIC            |PAIRED        |    6|
+|WGA              |METAGENOMIC        |PAIRED        |    5|
+|WGA              |VIRAL RNA          |PAIRED        | 1061|
+|WGS              |GENOMIC            |PAIRED        |   11|
+|WGS              |METAGENOMIC        |PAIRED        |    6|
+|WGS              |VIRAL RNA          |PAIRED        |   93|
 
 ```r
 #write_tsv(df, "~/Documents/research/asm/covid19-Assembly/files//summary_data.tsv")
@@ -3932,17 +4241,17 @@ kable(df2, caption = "Summary of VIRAL RNA data")
 
 Table: Summary of VIRAL RNA data
 
-Assay_Type         LibrarySource   LibraryLayout       n
------------------  --------------  --------------  -----
-AMPLICON           VIRAL RNA       PAIRED           5254
-AMPLICON           VIRAL RNA       SINGLE           6507
-OTHER              VIRAL RNA       PAIRED             68
-RNA-Seq            VIRAL RNA       PAIRED            682
-RNA-Seq            VIRAL RNA       SINGLE            654
-Targeted-Capture   VIRAL RNA       PAIRED            194
-Targeted-Capture   VIRAL RNA       SINGLE            241
-WGA                VIRAL RNA       PAIRED           1061
-WGS                VIRAL RNA       PAIRED             93
+|Assay_Type       |LibrarySource |LibraryLayout |    n|
+|:----------------|:-------------|:-------------|----:|
+|AMPLICON         |VIRAL RNA     |PAIRED        | 5254|
+|AMPLICON         |VIRAL RNA     |SINGLE        | 6507|
+|OTHER            |VIRAL RNA     |PAIRED        |   68|
+|RNA-Seq          |VIRAL RNA     |PAIRED        |  682|
+|RNA-Seq          |VIRAL RNA     |SINGLE        |  654|
+|Targeted-Capture |VIRAL RNA     |PAIRED        |  194|
+|Targeted-Capture |VIRAL RNA     |SINGLE        |  241|
+|WGA              |VIRAL RNA     |PAIRED        | 1061|
+|WGS              |VIRAL RNA     |PAIRED        |   93|
 
 ```r
 ##subsample main paper
@@ -4008,15 +4317,15 @@ kable(ab2, caption = "List of total 9 different categories. Maximum 100 samples 
 
 Table: List of total 9 different categories. Maximum 100 samples are randomly selected
 
-LibType                                n
-----------------------------------  ----
-PE: AMPLICON of VIRAL RNA            100
-PE: OTHER of VIRAL RNA                68
-PE: RNA-Seq of VIRAL RNA             100
-PE: Targeted-Capture of VIRAL RNA    100
-PE: WGA of VIRAL RNA                 100
-PE: WGS of VIRAL RNA                  93
-SE: AMPLICON of VIRAL RNA            100
-SE: RNA-Seq of VIRAL RNA             100
-SE: Targeted-Capture of VIRAL RNA    100
+|LibType                           |   n|
+|:---------------------------------|---:|
+|PE: AMPLICON of VIRAL RNA         | 100|
+|PE: OTHER of VIRAL RNA            |  68|
+|PE: RNA-Seq of VIRAL RNA          | 100|
+|PE: Targeted-Capture of VIRAL RNA | 100|
+|PE: WGA of VIRAL RNA              | 100|
+|PE: WGS of VIRAL RNA              |  93|
+|SE: AMPLICON of VIRAL RNA         | 100|
+|SE: RNA-Seq of VIRAL RNA          | 100|
+|SE: Targeted-Capture of VIRAL RNA | 100|
 

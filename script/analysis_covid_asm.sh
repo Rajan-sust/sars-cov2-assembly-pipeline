@@ -139,6 +139,61 @@ META_TRINITY_MERGED_VCF: https://github.com/istiakshihab/x-genomics-alignment-te
 MEGA_TRINITY_MERGED_VCF: https://github.com/istiakshihab/x-genomics-alignment-tester/tree/master/6k_TrinMegaMeta_Assembler_All_Miismatch/TRINITY_BAM/MEGA_TRINITY_MERGED_VCF
 
 
+## read cov at disagreement
 
+cd /Users/rashedulislam/Documents/research/asm/bam/bwa_alignment/disagreement_MetaSpades_Megahit
+
+for f in *.bam.sorted.bam.sorted_dupsMarked.bam; do echo $f;done | awk '{gsub(".bam.sorted.bam.sorted_dupsMarked.bam", ""); print}' >bam_id
+
+mkdir merged_vcf
+
+while read line; 
+do echo $line; 
+cp /Users/rashedulislam/Documents/x-genomics-alignment-tester-master/6k_MegaMeta_Assembler_FASTA_AND_PROCESSED/MERGED_VCF/$line*.merge.txt ./merged_vcf/
+done <bam_id
+
+cd merged_vcf
+
+cat *.merge.txt | awk '$7=="True"{print }' | awk '$5==$6{print }' | awk '{print "MN908947.3" "\t" $2 "\t" $2+1}' | sort -k1,1 -k2,2n | mergeBED -i stdin | awk '{print $0 "\t" "agree"}' >agree.bed
+cat *.merge.txt | awk '$7=="True"{print }' | awk '$5!=$6{print }' | awk '{print "MN908947.3" "\t" $2 "\t" $2+1}' | sort -k1,1 -k2,2n | mergeBED -i stdin | awk '{print $0 "\t" "disagree"}' >disagree.bed
+
+cat agree.bed disagree.bed >agree_disagree.bed
+less agree_disagree.bed
+
+#
+~/Documents/Tools/bedtools2/bin/multiBamCov -bams ../*.bam.sorted.bam.sorted_dupsMarked.bam -bed agree_disagree.bed >agree_disagree.bed.readcount
+
+
+## disagree at spike
+cd /Users/rashedulislam/Documents/x-genomics-alignment-tester-master/6k_MegaMeta_Assembler_FASTA_AND_PROCESSED/MERGED_VCF/
+
+#at the overlapping regions
+for f in *.merge.txt; 
+do echo $f; 
+intersectBED -a <(less $f | awk '$7=="True"{print }' | awk '$5!=$6{print }' | awk '{print "MN908947.3" "\t" $2 "\t" $2+1}' | sort -k1,1 -k2,2n | grep -v REF) -b /Users/rashedulislam/Downloads/BED_files/spike.bed; 
+done | awk '$3 >0{print $0}' | wc -l
+#32
+
+#all variants
+for f in *.merge.txt; 
+do echo $f; 
+intersectBED -a <(less $f | awk '$5!=$6{print }' | awk '{print "MN908947.3" "\t" $2 "\t" $2+1}' | grep -v REF | sort -k1,1 -k2,2n) -b /Users/rashedulislam/Downloads/BED_files/spike.bed; 
+done | awk '$3 >0{print $0}' | wc -l
+#49
+
+
+
+
+#picard dups marking BSMRAU
+bam=/Users/rashedulislam/Documents/research/Bioinformatics_ResearchLab/xgenonmics/BSMRAU_Fungus/short_read_align/bwa/
+cd /Users/rashedulislam/Documents/Tools/
+for f in $bam/*/*.sorted.bam;
+do ls $f;
+java -jar picard.jar MarkDuplicates I=$f O=$f.dupsMarked.bam M=$f.marked_dup_metrics.txt
+done
+
+
+cd /Users/rashedulislam/Documents/research/Bioinformatics_ResearchLab/xgenonmics/BSMRAU_Fungus/short_read_align/bwa/rice
+java -jar /Users/rashedulislam/Documents/Tools/picard.jar MarkDuplicates I=BSMRAU-RB-136_S1_L001.sorted.bam O=BSMRAU-RB-136_S1_L001.sorted_dupsMarked.bam M=BSMRAU-RB-136_S1_L001.sorted.bam.marked_dup_metrics.txt
 
 

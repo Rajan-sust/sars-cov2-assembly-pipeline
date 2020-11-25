@@ -11,10 +11,25 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
+>agree disagree read count
+
+```{r, eval=FALSE}
+x = read.table("/Users/rashedulislam/Documents/research/asm/bam/bwa_alignment/disagreement_MetaSpades_Megahit/merged_vcf/agree_disagree.bed.readcount")
+
+x %>% select(V12, V4) %>%
+  ggplot(aes(V4, V12)) +
+  geom_boxplot()
+```
+
+
+
 ### Spike variants
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
 library(tidyverse)
+library(reshape2)
+
 setwd("~/Documents/research/asm/covid19-Assembly/plots/")
 
 s = read.table("~/Documents/research/asm/covid19-Assembly/files/SpikeSNVsDetails.txt")
@@ -238,6 +253,9 @@ plot.new()
 jpeg("~/Documents/research/asm/covid19-Assembly/plots/heatmap_v2.jpg", width = 1800, height = 1000)
 pheatmap(both5, annotation_row = anno, cluster_cols = F, cluster_rows = F, show_rownames = F, show_colnames = F, color = colorRampPalette(c("red", "white", "gray"))(1000), border_color = NA, gaps_col = c(599, 599+599, 599+599+599), gaps_row = c(81, 81+60, 81+60+41, 81+60+41+83))
 dev.off()
+
+#colmeans
+cm = data.frame(colMeans(both5))
 
 #get best and worst asm
 worst = data.frame(asm = rowSums(both5)) %>% arrange(asm) %>% head() 
