@@ -1,65 +1,62 @@
+### Abstract
+Coronavirus Disease 2019 (COVID-19), caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2), has become a global pandemic following its initial emergence in China. SARS-CoV-2 has a positive-sense single-stranded RNA virus genome of around 30Kb. Using next-generation sequencing technologies, a large number of SARS-CoV-2 genomes are being sequenced at an unprecedented rate and being deposited in public repositories. For the de novo assembly of the SARS-CoV-2 genomes, a myriad of assemblers is being used, although their impact on the assembly quality has not been characterized for this virus. In this study, we aim to understand the variabilities on assembly qualities due to the choice of the assemblers.We performed 6648 de novo assemblies of 416 SARS-CoV-2 samples using eight different assemblers with different k-mer lengths. We used Illumina paired-end sequencing reads and compared the assembly quality of those assemblers. We showed that the choice of assembler plays a significant role in reconstructing the SARS-CoV-2 genome. Two metagenomic assemblers, e.g. MEGAHIT and metaSPAdes, performed better compared with others in most of the assembly quality metrics including, recovery of a larger fraction of the genome, constructing larger contigs and higher N50, NA50 values, etc. We showed that at least 09\% (259/2873) of the variants present in the assemblies between MEGAHIT and metaSPAdes are unique to one of the assembly methods.Our analyses indicate the critical role of assembly methods for assembling SARS-CoV-2 genome using short reads and their impact on variant characterization. This study could help guide future studies to determine the best-suited assembler for the de novo assembly of virus genomes.
+
 ### Analysis can be found [HERE](https://github.com/Rajan-sust/covid19-Assembly/blob/master/script/markdown/Assembly_analysis.md).
 
-### Scripts for assembly
+### SARS-CoV-2 Genome Assembly Pipeline
 
 ```
-script/paired_assembler.sh
-```
+# Create new environment
+conda create -n sars-cov2 python=3.8
 
-### Single and Paired SRA list files
+# Activate it
+conda activate sars-cov2
 
-```
-files/PE_561samples_final_561runs.txt
-files/SE_300samples_final_300runs.txt
-```
+# Add channels
+conda config --env --add channels conda-forge
+conda config --env --add channels bioconda
 
-### Requirements Installation
+# Install conda packages step by step
+conda install -y sra-tools fastqc fastp megahit seqkit
 
-```
-apt-get update
-apt-get install sra-toolkit
-apt-get install abyss
-```
-
-```
-pip install multiqc
-```
-
-```
-conda install -c bioconda fastqc
-conda install -c bioconda trimmomatic
-conda install -c bioconda megahit
-conda install -c bioconda trinity
-conda install -c bioconda spades
-conda install -c bioconda velvet
-conda install -c bioconda ray
-conda install -c bioconda soapdenovo2
-conda install -c bioconda minia
+# Install quast
+wget https://github.com/ablab/quast/releases/download/quast_5.3.0/quast-5.3.0.tar.gz
+tar -xzf quast-5.3.0.tar.gz
+cd quast-5.3.0
+./setup.py install
+cd ..
 ```
 
 ```
-wget https://sourceforge.net/projects/quast/files/quast-5.0.2.tar.gz
-tar -zxvf quast-5.0.2.tar.gz
+Usage: bash main.sh -a <SRA_ACCESSION> [-o <OUTPUT_DIR>] [-t <THREADS>]
+
+Options:
+  -a    SRA accession number (required)
+  -o    Output directory (default: current directory)
+  -t    Number of threads (default: 4)
+  -h    Show this help message
+
+Example:
+  main.sh -a SRR1234567 -o ./analysis -t 8
 ```
 
-### Required files for running the PE script
-- [PE_561samples_final_561runs.txt](https://github.com/Rajan-sust/covid19-Assembly/blob/master/files/PE_561samples_final_561runs.txt)
 
-- [adapter_pe.fa](https://github.com/Rajan-sust/covid19-Assembly/blob/master/files/adapter_pe.fa)
 
-- [configSoapDenovo.txt](https://github.com/Rajan-sust/covid19-Assembly/blob/master/files/configSoapDenovo.txt)
-
-- [MN908947.3.fasta](https://github.com/Rajan-sust/covid19-Assembly/blob/master/files/MN908947.3.fasta)
-
-### Run the Script for PE
-
+### Citation
 ```
-bash paired_assembler.sh PE_561samples_final_561runs.txt adapter_pe.fa configSoapDenovo.txt 
-```
+@article{10.1093/bib/bbab102,
+    author = {Islam, Rashedul and Raju, Rajan Saha and Tasnim, Nazia and Shihab, Istiak Hossain and Bhuiyan, Maruf Ahmed and Araf, Yusha and Islam, Tofazzal},
+    title = {Choice of assemblers has a critical impact on de novo assembly of SARS-CoV-2 genome and characterizing variants},
+    journal = {Briefings in Bioinformatics},
+    volume = {22},
+    number = {5},
+    pages = {bbab102},
+    year = {2021},
+    month = {04},
+    issn = {1477-4054},
+    doi = {10.1093/bib/bbab102},
+    url = {https://doi.org/10.1093/bib/bbab102},
+    eprint = {https://academic.oup.com/bib/article-pdf/22/5/bbab102/40261256/bbab102.pdf},
+}
 
-### SE
-
-
-```
-bash se_assembler.sh sra_sample.txt adapter_SE.fa
 ```
