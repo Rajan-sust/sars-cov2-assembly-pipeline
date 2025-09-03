@@ -3,23 +3,23 @@ Coronavirus Disease 2019 (COVID-19), caused by severe acute respiratory syndrome
 
 ### Analysis can be found [HERE](https://github.com/Rajan-sust/covid19-Assembly/blob/master/script/markdown/Assembly_analysis.md).
 
-### SARS-CoV-2 Genome Assembly Pipeline
+### SARS-CoV-2 Genome Assembly Pipeline for Single-End (SE) and Paired-End (PE) Data
 
-```
-# Create new environment
+```bash
+# Create a new conda environment with Python 3.8
 conda create -n sars-cov2 python=3.8
 
-# Activate it
+# Activate the environment
 conda activate sars-cov2
 
-# Add channels
+# Add required channels for bioinformatics tools
 conda config --env --add channels conda-forge
 conda config --env --add channels bioconda
 
-# Install conda packages step by step
+# Install essential packages
 conda install -y sra-tools fastqc fastp megahit seqkit
 
-# Install quast
+# Download and install QUAST for assembly quality assessment
 wget https://github.com/ablab/quast/releases/download/quast_5.3.0/quast-5.3.0.tar.gz
 tar -xzf quast-5.3.0.tar.gz
 cd quast-5.3.0
@@ -27,20 +27,21 @@ cd quast-5.3.0
 cd ..
 ```
 
-```
-Usage: bash main.sh -a <SRA_ACCESSION> [-o <OUTPUT_DIR>] [-t <THREADS>]
-
-Options:
-  -a    SRA accession number (required)
-  -o    Output directory (default: current directory)
-  -t    Number of threads (default: 4)
-  -h    Show this help message
-
-Example:
-  main.sh -a SRR1234567 -o ./analysis -t 8
+**Usage:**
+```bash
+bash main.sh -a <SRA_ACCESSION> [-o <OUTPUT_DIR>] [-t <THREADS>]
 ```
 
+**Options:**
+- `-a`    SRA accession number (**required**)
+- `-o`    Output directory (default: current directory)
+- `-t`    Number of threads (default: 4)
+- `-h`    Show help message
 
+**Example:**
+```bash
+bash main.sh -a SRR1234567 -o ./analysis -t 8
+```
 
 ### Citation
 ```
